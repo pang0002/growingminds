@@ -202,13 +202,25 @@ header.is-scrolled {
 
 .logo a { display: flex; align-items: center; gap: 10px; }
 
-.logo-img {
+.logo-crop {
+    display: block;
     height: 44px;
     max-height: 44px;
+    overflow: hidden;
+}
+
+.logo-img {
+    /* Scaled up and top-aligned so the crop container above clips off
+       the small tagline line at the bottom of the source image.
+       If the crop isn't quite right for your logo's proportions,
+       nudge the height value up/down a little. */
+    height: 62px;
     width: auto;
-    max-width: 160px;
+    max-width: none;
     object-fit: contain;
+    object-position: top;
     display: block;
+    margin-top: 0;
 }
 
 .logo-img:not([src]),
