@@ -202,6 +202,20 @@ header.is-scrolled {
 
 .logo a { display: flex; align-items: center; gap: 10px; }
 
+.logo-img {
+    height: 44px;
+    max-height: 44px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-img:not([src]),
+.logo-img[src=""] {
+    display: none;
+}
+
 .logo-icon {
     font-size: 26px;
     display: inline-block;
@@ -1099,6 +1113,18 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.footer-brand .logo-img-footer {
+    height: 48px;
+    max-height: 48px;
+    width: auto;
+    max-width: 170px;
+    object-fit: contain;
+    margin-bottom: 6px;
+    /* If your logo.png has dark text/colors, it may be hard to see on this
+       dark footer background. Uncomment the line below to force it white: */
+    /* filter: brightness(0) invert(1); */
 }
 
 .footer-brand .logo-icon { font-size: 26px; }
