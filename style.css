@@ -1128,15 +1128,16 @@ footer {
 }
 
 .footer-brand .logo-img-footer {
-    height: 48px;
-    max-height: 48px;
+    height: 96px;
+    max-height: 96px;
     width: auto;
-    max-width: 170px;
+    max-width: 260px;
     object-fit: contain;
-    margin-bottom: 6px;
-    /* If your logo.png has dark text/colors, it may be hard to see on this
-       dark footer background. Uncomment the line below to force it white: */
-    /* filter: brightness(0) invert(1); */
+    margin-bottom: 10px;
+    /* Logo has dark navy text, which is hard to read on this dark footer
+       background — inverting to white keeps it legible. Comment the line
+       below out again if you swap in a logo with light/white text already. */
+    filter: brightness(0) invert(1);
 }
 
 .footer-brand .logo-icon { font-size: 26px; }
