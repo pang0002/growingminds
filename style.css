@@ -673,14 +673,17 @@ nav a:not(.btn-nav):hover::after {
 }
 
 .path-step:nth-child(1) { margin-bottom: 0; }
-.path-step:nth-child(2) { margin-bottom: 26px; }
-.path-step:nth-child(3) { margin-bottom: 52px; }
-.path-step:nth-child(4) { margin-bottom: 78px; }
-.path-step:nth-child(5) { margin-bottom: 104px; }
+.path-step:nth-child(2) { margin-bottom: 40px; }
+.path-step:nth-child(3) { margin-bottom: 80px; }
+.path-step:nth-child(4) { margin-bottom: 120px; }
+.path-step:nth-child(5) { margin-bottom: 160px; }
 
 .path-card {
     position: relative;
     width: 100%;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
     background: var(--color-white);
     border-radius: var(--radius-lg);
     padding: 34px 20px 26px;
