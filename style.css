@@ -1354,7 +1354,74 @@ footer {
     margin-bottom: 14px;
 }
 
-.service-detail > .service-detail-content > p { margin-bottom: 12px; }
+.service-detail > .service-detail-content > p { margin-bottom: 14px; }
+
+/* Non-sequential attribute lists ("may explore", "support may focus on") —
+   rendered as scannable pills instead of a dense checklist. */
+.tag-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-list li {
+    background: var(--color-sage);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 9px 18px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.tag-list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    flex-shrink: 0;
+}
+
+/* Sequential lists ("the journey includes") — numbered steps with room to breathe */
+.journey-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 32px;
+}
+
+.journey-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--color-ink-soft);
+    line-height: 1.5;
+}
+
+.journey-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
 
 .service-detail ul {
     list-style: none;
@@ -1638,7 +1705,8 @@ footer {
     .page-hero h1 { font-size: 32px; }
 
     .service-detail h2 { font-size: 24px; }
-    .service-detail ul { grid-template-columns: 1fr; }
+    .service-detail ul,
+    .journey-list { grid-template-columns: 1fr; }
 
     .contact-form { padding: 24px; }
 
