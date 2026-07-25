@@ -1344,6 +1344,7 @@ footer {
 
 .service-detail h2 {
     font-size: 28px;
+    margin-bottom: 12px;
 }
 
 .service-detail h3 {
@@ -1380,11 +1381,10 @@ footer {
 }
 
 .tag-list li::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-teal);
+    content: "✓";
+    color: var(--color-teal);
+    font-weight: 700;
+    font-size: 12px;
     flex-shrink: 0;
 }
 
@@ -1421,30 +1421,6 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 1px;
-}
-
-.service-detail ul {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 20px;
-}
-
-.service-detail ul li {
-    padding: 6px 0;
-    padding-left: 26px;
-    position: relative;
-    font-size: 15px;
-}
-
-.service-detail ul li::before {
-    content: "✓";
-    color: var(--color-teal);
-    position: absolute;
-    left: 0;
-    font-weight: 700;
 }
 
 .service-detail h4 {
@@ -1705,7 +1681,6 @@ footer {
     .page-hero h1 { font-size: 32px; }
 
     .service-detail h2 { font-size: 24px; }
-    .service-detail ul,
     .journey-list { grid-template-columns: 1fr; }
 
     .contact-form { padding: 24px; }
