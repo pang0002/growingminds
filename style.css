@@ -588,9 +588,10 @@ nav a:not(.btn-nav):hover::after {
 }
 
 .brand-stats {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
+    align-content: start;
 }
 
 .stat-card {
@@ -1593,7 +1594,7 @@ footer {
         gap: 24px;
     }
 
-    .brand-stats { gap: 14px; }
+    .brand-stats { grid-template-columns: 1fr; gap: 14px; }
 
     .cta-section h2 { font-size: 28px; }
 
