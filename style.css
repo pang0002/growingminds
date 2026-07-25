@@ -656,22 +656,22 @@ nav a:not(.btn-nav):hover::after {
     position: relative;
     max-width: 1120px;
     margin: 0 auto;
-    padding: 20px 0 40px;
+    padding: 70px 0 20px;
 }
 
 .growth-path-svg {
     position: absolute;
-    top: 60px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 60px);
+    height: 70px;
     z-index: 0;
 }
 
 .path-steps {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    gap: 20px 28px;
     position: relative;
     z-index: 1;
 }
@@ -682,9 +682,6 @@ nav a:not(.btn-nav):hover::after {
     align-items: center;
     text-align: center;
 }
-
-.path-step:nth-child(odd) { transform: translateY(0); }
-.path-step:nth-child(even) { transform: translateY(56px); }
 
 .path-node {
     width: 64px;
@@ -1497,8 +1494,6 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         row-gap: 48px;
     }
-    .path-step:nth-child(even) { transform: translateY(0); }
-    .path-step:nth-child(4), .path-step:nth-child(5) { grid-column: span 1; }
     .growth-path-svg { display: none; }
 }
 
