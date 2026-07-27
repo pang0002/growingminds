@@ -260,7 +260,7 @@ em {
 }
 
 /* ============================================================
-   HEADER - ENHANCED WITH MASSIVELY ENLARGED LOGO
+   HEADER
    ============================================================ */
 
 header {
@@ -317,10 +317,6 @@ header.is-scrolled::after {
     margin: 0 auto;
     gap: 20px;
 }
-
-/* ============================================================
-   LOGO - MASSIVELY ENLARGED
-   ============================================================ */
 
 .logo {
     display: flex;
@@ -430,7 +426,7 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   NAVIGATION - Adjusted for larger logo
+   NAVIGATION
    ============================================================ */
 
 #site-nav {
@@ -452,7 +448,7 @@ header.is-scrolled::after {
 }
 
 #site-nav a {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     color: var(--color-ink-soft);
     transition: all 0.3s var(--ease);
@@ -512,7 +508,7 @@ header.is-scrolled::after {
     padding: 12px 32px;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 17px;
     transition: all 0.35s var(--ease-bounce);
     position: relative;
     overflow: hidden;
