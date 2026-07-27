@@ -1512,72 +1512,132 @@ header.is-scrolled::after {
     .process-card { padding: 24px; }
 }
 
-/* ----- SERVICES ----- */
-.services {
-    padding: 100px 0;
+/* ============================================================
+   SERVICES OVERVIEW — 4 CARD GRID & UNDERLINED BUTTONS
+   ============================================================ */
+.services-overview {
+    padding: 90px 0;
     background: var(--color-white);
 }
 
-.pathway-grid {
+.services-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on desktop */
     gap: 28px;
+    margin-top: 40px;
 }
 
-.pathway-card--wide {
-    grid-column: 1 / -1;
-}
-
-.pathway-card {
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    padding: 34px 32px;
-    transition: transform 0.4s var(--ease-bounce), box-shadow 0.4s var(--ease);
-    border: 1px solid rgba(10,72,96,0.06);
+.service-card {
+    background: var(--color-cream, #FFFDF8);
+    border: 1px solid rgba(10, 72, 96, 0.08);
+    border-radius: var(--radius-lg, 20px);
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    cursor: default;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    position: relative;
 }
 
-.pathway-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(10, 72, 96, 0.08);
+    border-color: var(--color-teal, #2CB5A5);
 }
 
-.pathway-card .service-icon {
-    width: 60px;
-    height: 60px;
+.service-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.service-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--color-white, #FFFFFF);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-white);
-    border-radius: 50%;
-    margin-bottom: 16px;
-    transition: transform 0.4s var(--ease-bounce);
+    font-size: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.pathway-card:hover .service-icon {
-    transform: scale(1.1) rotate(-6deg);
+/* Keyword Tag */
+.service-keyword {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-teal-dark, #0A4860);
+    background: rgba(44, 181, 165, 0.12);
+    padding: 6px 12px;
+    border-radius: 50px;
 }
 
-.pathway-card .service-icon .icon-search,
-.pathway-card .service-icon .icon-build,
-.pathway-card .service-icon .icon-social-connection,
-.pathway-card .service-icon .icon-parent {
-    width: 28px;
-    height: 28px;
+.service-card h3 {
+    font-size: 22px;
+    color: var(--color-primary, #0A4860);
+    margin-bottom: 12px;
 }
 
-.pathway-card h3 {
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.pathway-card p {
+.service-card p {
     font-size: 15px;
-    margin-bottom: 22px;
-    flex-grow: 1;
+    line-height: 1.6;
+    color: var(--color-ink-soft, #5A6E77);
+    margin-bottom: 24px;
+    flex-grow: 1; /* Ensures buttons align at bottom */
+}
+
+/* Underlined "Learn More" Link */
+.service-card-footer {
+    margin-top: auto;
+}
+
+.link-underlined {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-primary, #0A4860);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* Animated Underline Effect */
+.link-underlined::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-teal, #2CB5A5);
+    transform: scaleX(0.4);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.link-underlined span {
+    transition: transform 0.3s var(--ease);
+}
+
+.service-card:hover .link-underlined::after {
+    transform: scaleX(1);
+    background: var(--color-primary, #0A4860);
+}
+
+.service-card:hover .link-underlined span {
+    transform: translateX(5px);
+}
+
+/* Responsive: 1 column on tablet and mobile */
+@media (max-width: 868px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ----- FRAMEWORK ----- */
