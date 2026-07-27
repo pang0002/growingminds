@@ -851,7 +851,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initProcessTimeline();
 
     // ============================================================
-    // EXPANDABLE CARDS - FIXED
+    // EXPANDABLE CARDS - ACCORDION BEHAVIOR (ONLY ONE AT A TIME)
     // ============================================================
     function initExpandableCards() {
         const cards = document.querySelectorAll('.expandable-card');
@@ -875,20 +875,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // Check if this card is already expanded
             const isExpanded = card.classList.contains('expanded');
             
-
+            // Close ALL cards first
             const allCards = document.querySelectorAll('.expandable-card');
             allCards.forEach(function(otherCard) {
-                if (otherCard !== card && otherCard.classList.contains('expanded')) {
-                    otherCard.classList.remove('expanded');
-                }
+                otherCard.classList.remove('expanded');
             });
             
-            // Toggle the clicked card
-            if (isExpanded) {
-                card.classList.remove('expanded');
-            } else {
+            // If the clicked card was NOT expanded, open it
+            if (!isExpanded) {
                 card.classList.add('expanded');
             }
+            // If it WAS expanded, it stays closed (because we closed all cards above)
         });
     }
 
