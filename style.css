@@ -963,41 +963,83 @@ header.is-scrolled::after {
     margin: 0 auto;
 }
 
-/* ----- HERO TAGLINE ----- */
+/* ============================================================
+   HERO TAGLINE - PROMINENT DISPLAY
+   ============================================================ */
+
+.hero-tagline-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+.hero-tagline-icon {
+    color: var(--color-gold);
+    font-size: 14px;
+    opacity: 0.6;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
 .hero-tagline {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--color-teal-dark);
-    margin-top: 12px;
-    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
     letter-spacing: 0.5px;
+    margin: 0;
     position: relative;
     display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-teal-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.hero-tagline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
-    border-radius: 2px;
-    opacity: 0.4;
+.hero-tagline-sub {
+    font-size: 16px;
+    color: var(--color-ink-soft);
+    max-width: 520px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    line-height: 1.6;
+    padding-left: 2px;
 }
 
-/* Responsive tagline */
+/* Responsive Tagline */
 @media (max-width: 768px) {
+    .hero-tagline-wrapper {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    
     .hero-tagline {
-        font-size: 18px;
+        font-size: 20px;
+    }
+    
+    .hero-tagline-sub {
+        font-size: 15px;
+        max-width: 100%;
+    }
+    
+    .hero-tagline-icon {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 480px) {
     .hero-tagline {
-        font-size: 16px;
+        font-size: 17px;
+    }
+    
+    .hero-tagline-sub {
+        font-size: 14px;
+    }
+    
+    .hero-tagline-wrapper {
+        gap: 8px;
     }
 }
 
