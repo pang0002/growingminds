@@ -1512,9 +1512,7 @@ header.is-scrolled::after {
     .process-card { padding: 24px; }
 }
 
-/* ============================================================
-   SERVICES OVERVIEW — 4 CARD GRID & UNDERLINED BUTTONS
-   ============================================================ */
+/* ----- SERVICES ----- */
 .services-overview {
     padding: 90px 0;
     background: var(--color-white);
