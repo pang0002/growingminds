@@ -94,59 +94,96 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- BRAND POSITION -->
+    <!-- BRAND POSITION - REDESIGNED -->
     <!-- ============================================================ -->
     <section class="brand-position">
         <div class="container">
+            <!-- Main Goal First - Full width -->
+            <div class="brand-goal reveal">
+                <span class="eyebrow">Our Goal</span>
+                <h2 class="goal-headline">Understand first. Support intentionally. <span>Help every child thrive.</span></h2>
+                <p class="goal-description">
+                    Growing Minds is a Child Development &amp; Learning Studio founded by an Educational Psychologist. 
+                    We help families understand how their child learns — not just what they can do.
+                </p>
+            </div>
+
+            <!-- Two-column layout: Left = Why, Right = Interactive Cards -->
             <div class="brand-grid">
                 <div class="brand-text reveal-left">
-                    <span class="eyebrow">Why Growing Minds</span>
+                    <span class="section-tag">Why Growing Minds</span>
                     <h2>Every child learns differently</h2>
-                    <p>
-                        Growing Minds is a Child Development &amp; Learning Studio founded by an Educational Psychologist.
-                        We help families understand how their child learns—not just what they can do.
-                    </p>
                     <p>
                         By identifying each child's unique learning profile, we create personalised pathways that strengthen
                         the emotional, social, thinking and learning skills that support lifelong success.
                     </p>
                     <p>
-                        Growing Minds welcomes children of all learning styles and developmental profiles—from those seeking
+                        Growing Minds welcomes children of all learning styles and developmental profiles — from those seeking
                         enrichment and school readiness to those who would benefit from additional learning support.
                     </p>
-                    <p style="font-weight:600;color:var(--color-primary);margin-bottom:8px;">Our goal is simple:</p>
-                    <p class="brand-mission">
-                        Understand first. Support intentionally. Help every child thrive.
-                    </p>
+                    <a href="services.html" class="btn btn-primary btn-ripple" style="margin-top:8px;">Explore Our Services →</a>
                 </div>
-                <div class="brand-stats reveal-right">
-                    <div class="stat-card glow-on-hover">
-                        <span class="stat-icon">🧠</span>
-                        <div>
-                            <h3>Evidence-informed</h3>
-                            <p>Educational Psychology</p>
+
+                <!-- Interactive Carousel Cards - Right Side -->
+                <div class="brand-interactive reveal-right">
+                    <div class="interactive-cards" id="interactiveCards">
+                        <!-- Card 1 -->
+                        <div class="interactive-card active" data-index="0">
+                            <div class="card-visual">
+                                <span class="card-emoji">🧠</span>
+                                <div class="card-ring"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Evidence-Informed</h3>
+                                <p>Every strategy we use is grounded in educational psychology and backed by research. We don't guess — we use what works.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="interactive-card" data-index="1">
+                            <div class="card-visual">
+                                <span class="card-emoji">🌿</span>
+                                <div class="card-ring"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Holistic &amp; Individualised</h3>
+                                <p>We look at the whole child — emotional, social, cognitive and physical development — and create a plan that's uniquely theirs.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="interactive-card" data-index="2">
+                            <div class="card-visual">
+                                <span class="card-emoji">⭐</span>
+                                <div class="card-ring"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Skills for Life</h3>
+                                <p>We build the foundational skills behind learning, wellbeing and independence — not just for school, but for life.</p>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="interactive-card" data-index="3">
+                            <div class="card-visual">
+                                <span class="card-emoji">👨‍👩‍👧</span>
+                                <div class="card-ring"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Family &amp; School Partnership</h3>
+                                <p>We work alongside parents and educators to ensure your child gets consistent, coordinated support everywhere they go.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="stat-card glow-on-hover">
-                        <span class="stat-icon">🌿</span>
-                        <div>
-                            <h3>Holistic &amp; individualised</h3>
-                            <p>Support for every child</p>
-                        </div>
+
+                    <!-- Navigation Dots -->
+                    <div class="card-nav-dots">
+                        <button class="dot active" data-index="0" aria-label="Show card 1"></button>
+                        <button class="dot" data-index="1" aria-label="Show card 2"></button>
+                        <button class="dot" data-index="2" aria-label="Show card 3"></button>
+                        <button class="dot" data-index="3" aria-label="Show card 4"></button>
                     </div>
-                    <div class="stat-card glow-on-hover">
-                        <span class="stat-icon">🌟</span>
-                        <div>
-                            <h3>Skills for life</h3>
-                            <p>Learning, wellbeing &amp; independence</p>
-                        </div>
-                    </div>
-                    <div class="stat-card glow-on-hover">
-                        <span class="stat-icon">👨‍👩‍👧</span>
-                        <div>
-                            <h3>Family &amp; school partnership</h3>
-                            <p>Working together for your child</p>
-                        </div>
+
+                    <!-- Auto-rotation indicator -->
+                    <div class="auto-rotate-indicator">
+                        <span class="rotate-bar"></span>
                     </div>
                 </div>
             </div>
@@ -347,7 +384,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- WHY GROWING MINDS -->
+    <!-- WHY GROWING MINDS - SHORT QUOTE SECTION -->
     <!-- ============================================================ -->
     <section class="why-grow reveal">
         <div class="container why-grow-inner">
@@ -358,7 +395,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- TESTIMONIALS (NEW) -->
+    <!-- TESTIMONIALS -->
     <!-- ============================================================ -->
     <section class="testimonials">
         <div class="container">
@@ -402,37 +439,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ABOUT PREVIEW -->
-    <!-- ============================================================ -->
-    <section class="about" id="about">
-        <div class="blob blob-gold"></div>
-        <div class="container about-container">
-            <div class="about-image reveal-left">
-                <div class="img-frame">
-                    <div class="img-slot">
-                        <span class="img-slot-icon">👩‍🏫</span>
-                        <p>Xue Min Ng</p>
-                    </div>
-                </div>
-            </div>
-            <div class="about-content reveal-right">
-                <span class="section-tag">Meet the Founder</span>
-                <h2>Xue Min Ng</h2>
-                <p class="about-role">Educational Psychologist | Founder of Growing Minds</p>
-                <p>
-                    Xue Min is an Educational Psychologist with experience supporting children across early childhood and
-                    school-age settings in both Malaysia and New Zealand.
-                </p>
-                <p>
-                    She is passionate about helping families understand the skills behind learning and creating personalised
-                    pathways that empower children to grow with confidence.
-                </p>
-                <a href="about.html" class="btn btn-primary btn-ripple">Learn More About Our Approach →</a>
             </div>
         </div>
     </section>

@@ -93,40 +93,160 @@ document.addEventListener('DOMContentLoaded', function () {
     initRippleEffect();
 
     // ============================================================
-    // COUNTER ANIMATION
+    // INTERACTIVE CARDS - Auto-rotating card display
     // ============================================================
-    function initCounters() {
-        const counters = document.querySelectorAll('.counter-value');
+    function initInteractiveCards() {
+        const container = document.getElementById('interactiveCards');
+        if (!container) return;
 
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseInt(el.getAttribute('data-target'), 10);
-                        if (!target || el.dataset.counted === 'true') return;
+        const cards = container.querySelectorAll('.interactive-card');
+        const dots = document.querySelectorAll('.card-nav-dots .dot');
+        const rotateBar = document.querySelector('.rotate-bar');
+        let currentIndex = 0;
+        let intervalId = null;
+        let isPaused = false;
 
-                        el.dataset.counted = 'true';
-                        let current = 0;
-                        const increment = Math.ceil(target / 40);
-                        const timer = setInterval(function () {
-                            current += increment;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                            }
-                            el.textContent = current.toLocaleString();
-                        }, 30);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            counters.forEach(function (el) {
-                observer.observe(el);
+        // Show a specific card
+        function showCard(index) {
+            // Update cards
+            cards.forEach(function (card, i) {
+                if (i === index) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
             });
+
+            // Update dots
+            dots.forEach(function (dot, i) {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            currentIndex = index;
+
+            // Reset and restart progress bar
+            if (rotateBar) {
+                rotateBar.classList.remove('animating');
+                // Force reflow
+                void rotateBar.offsetWidth;
+                rotateBar.style.width = '0%';
+                setTimeout(function () {
+                    if (!isPaused) {
+                        rotateBar.classList.add('animating');
+                    }
+                }, 50);
+            }
         }
+
+        // Go to next card
+        function nextCard() {
+            const nextIndex = (currentIndex + 1) % cards.length;
+            showCard(nextIndex);
+        }
+
+        // Start auto-rotation
+        function startAutoRotate() {
+            if (intervalId) clearInterval(intervalId);
+            isPaused = false;
+
+            // Start progress bar
+            if (rotateBar) {
+                rotateBar.classList.remove('animating');
+                void rotateBar.offsetWidth;
+                rotateBar.style.width = '0%';
+                setTimeout(function () {
+                    if (!isPaused) {
+                        rotateBar.classList.add('animating');
+                    }
+                }, 50);
+            }
+
+            // Change card every 4 seconds
+            intervalId = setInterval(function () {
+                if (!isPaused) {
+                    nextCard();
+                }
+            }, 4000);
+        }
+
+        // Pause auto-rotation
+        function pauseAutoRotate() {
+            isPaused = true;
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+            if (rotateBar) {
+                rotateBar.classList.remove('animating');
+            }
+        }
+
+        // Resume auto-rotation
+        function resumeAutoRotate() {
+            if (!isPaused) return;
+            isPaused = false;
+
+            // Restart progress bar from current position
+            if (rotateBar) {
+                rotateBar.classList.remove('animating');
+                void rotateBar.offsetWidth;
+                // Start from beginning of cycle
+                rotateBar.style.width = '0%';
+                setTimeout(function () {
+                    if (!isPaused) {
+                        rotateBar.classList.add('animating');
+                    }
+                }, 50);
+            }
+
+            // Restart interval
+            if (intervalId) clearInterval(intervalId);
+            intervalId = setInterval(function () {
+                if (!isPaused) {
+                    nextCard();
+                }
+            }, 4000);
+        }
+
+        // Set up dot click handlers
+        dots.forEach(function (dot, index) {
+            dot.addEventListener('click', function () {
+                pauseAutoRotate();
+                showCard(index);
+                // Resume after a delay
+                setTimeout(resumeAutoRotate, 5000);
+            });
+        });
+
+        // Pause on hover
+        const cardContainer = document.querySelector('.brand-interactive');
+        if (cardContainer) {
+            cardContainer.addEventListener('mouseenter', pauseAutoRotate);
+            cardContainer.addEventListener('mouseleave', resumeAutoRotate);
+        }
+
+        // Also pause on touch devices
+        if (cardContainer) {
+            cardContainer.addEventListener('touchstart', function () {
+                pauseAutoRotate();
+                // Resume after touch ends
+                setTimeout(resumeAutoRotate, 5000);
+            }, { passive: true });
+        }
+
+        // Initialize first card
+        showCard(0);
+
+        // Start auto-rotation after a short delay
+        setTimeout(startAutoRotate, 800);
     }
-    initCounters();
+
+    // Call interactive cards after DOM is ready
+    initInteractiveCards();
 
     // ============================================================
     // HEADER BEHAVIOR
