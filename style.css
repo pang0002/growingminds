@@ -1519,44 +1519,23 @@ header.is-scrolled::after {
     margin-top: 40px;
 }
 
-/* Card body hidden by default - using max-height approach instead of display */
-.expandable-card .service-card-body {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-top: 0;
-    padding-bottom: 0;
-    transition: max-height 0.5s var(--ease), opacity 0.5s var(--ease), padding 0.5s var(--ease);
-    visibility: hidden;
-}
-
-/* Show card body when card has .expanded class */
-.expandable-card.expanded .service-card-body {
-    max-height: 500px;
-    opacity: 1;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    visibility: visible;
-    overflow: visible;
-}
-
-/* Toggle button styling */
-.expand-toggle::after {
-    content: '+';
-    font-size: 22px;
-    font-weight: 300;
-    color: var(--color-teal-dark);
+/* ----- EXPANDABLE CARDS ----- */
+.expandable-card {
+    background: var(--color-cream, #FFFDF8);
+    border: 1px solid rgba(10, 72, 96, 0.08);
+    border-radius: var(--radius-lg, 20px);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
     transition: all 0.4s var(--ease);
+    position: relative;
+    cursor: default;
+    overflow: hidden;
 }
 
-.expandable-card.expanded .expand-toggle::after {
-    content: '✕';
-    color: var(--color-white);
-}
-
-.expandable-card.expanded .expand-toggle {
-    background: var(--color-teal);
-    transform: rotate(0deg);
+.expandable-card:hover {
+    border-color: var(--color-teal, #2CB5A5);
+    box-shadow: 0 8px 24px rgba(10, 72, 96, 0.06);
 }
 
 /* Card Header */
@@ -1606,6 +1585,26 @@ header.is-scrolled::after {
     line-height: 1.3;
 }
 
+/* ============================================================
+   FIX: EXPANDABLE CARD BODY - HIDE/SHOW
+   ============================================================ */
+
+/* HIDDEN BY DEFAULT */
+.expandable-card .service-card-body {
+    display: none;
+}
+
+/* SHOW WHEN EXPANDED - USING !important to ensure it works */
+.expandable-card.expanded .service-card-body {
+    display: block !important;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* ============================================================
+   END FIX
+   ============================================================ */
+
 /* Expand Toggle Button */
 .expand-toggle {
     background: none;
@@ -1628,8 +1627,7 @@ header.is-scrolled::after {
     transform: rotate(90deg);
 }
 
-.expand-toggle::after {
-    content: '+';
+.expand-toggle .plus-icon {
     font-size: 22px;
     font-weight: 300;
     color: var(--color-teal-dark);
@@ -1637,8 +1635,19 @@ header.is-scrolled::after {
     line-height: 1;
 }
 
-.expand-toggle:hover::after {
+.expand-toggle:hover .plus-icon {
     color: var(--color-white);
+}
+
+/* Expanded state - toggle icon */
+.expandable-card.expanded .expand-toggle {
+    background: var(--color-teal);
+    transform: rotate(45deg);
+}
+
+.expandable-card.expanded .expand-toggle .plus-icon {
+    color: var(--color-white);
+    /* The + will change to ✕ via CSS content or you can use JavaScript to change text */
 }
 
 .service-description {
@@ -3144,7 +3153,7 @@ footer {
         height: 28px;
     }
 
-    .expand-toggle::after {
+    .expand-toggle .plus-icon {
         font-size: 18px;
     }
 }
