@@ -450,4 +450,160 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     // Run after header loads
     setTimeout(initActiveNav, 500);
+
+    // ============================================================
+    // FRAMEWORK INTERACTIVE TABS & DATA
+    // ============================================================
+    function initFrameworkTabs() {
+        const tabBtns = document.querySelectorAll('.framework-tabs .tab-btn');
+        if (!tabBtns.length) return;
+
+        // Framework Data Dictionary
+        const frameworkData = [
+            {
+                num: "1",
+                title: "Self-Awareness",
+                subtitle: "Understanding Self as a Learner",
+                icon: "🧠",
+                emoji: "💡",
+                desc: "Helping children understand their individual learning styles, strengths, and sensory or cognitive boundaries, turning self-doubt into constructive self-knowledge.",
+                features: [
+                    "Identifying individual learning profiles & preferred styles",
+                    "Building emotional and cognitive self-vocabulary",
+                    "Fostering realistic, stigma-free self-acceptance"
+                ],
+                quote: "He went from saying 'I'm stupid' to 'I just need a visual tool to process this.' That shift changed everything for us.",
+                author: "— Parent of 8-year-old"
+            },
+            {
+                num: "2",
+                title: "Self-Management",
+                subtitle: "Emotional & Executive Regulation",
+                icon: "🌿",
+                emoji: "🧘‍♂️",
+                desc: "Equipping children with practical tools to manage emotions, direct focus, handle frustrations, and navigate overwhelming cognitive or environmental inputs.",
+                features: [
+                    "Emotion regulation and soothing strategies",
+                    "Focus calibration & task-switching techniques",
+                    "Impulse control and stress tolerance routines"
+                ],
+                quote: "She now uses her break card before a meltdown happens. The difference in her everyday confidence is night and day.",
+                author: "— Parent of 6-year-old"
+            },
+            {
+                num: "3",
+                title: "Social Connection",
+                subtitle: "Relational & Communication Skills",
+                icon: "💬",
+                emoji: "🤝",
+                desc: "Nurturing genuine interpersonal empathy, dynamic communication, and relationship-building skills to help children connect authentically with peers and adults.",
+                features: [
+                    "Perspective-taking & empathy building",
+                    "Clear verbal and non-verbal expression",
+                    "Collaborative play and conflict resolution"
+                ],
+                quote: "Watching him make his first real friend at the studio group was a moment our family will never forget.",
+                author: "— Parent of 7-year-old"
+            },
+            {
+                num: "4",
+                title: "Thinking Skills",
+                subtitle: "Cognitive & Executive Functioning",
+                icon: "⚙️",
+                emoji: "🧩",
+                desc: "Strengthening core cognitive processes—working memory, flexible thinking, problem-solving, and planning—that drive academic and real-world success.",
+                features: [
+                    "Working memory & information processing",
+                    "Cognitive flexibility & adaptability to change",
+                    "Sequential planning & problem-solving"
+                ],
+                quote: "Homework time is no longer a battleground because she now knows how to break tasks into bite-sized steps.",
+                author: "— Parent of 10-year-old"
+            },
+            {
+                num: "5",
+                title: "Learning Independence",
+                subtitle: "Autonomy & Lifelong Resilience",
+                icon: "🚀",
+                emoji: "🌟",
+                desc: "Empowering children to take active ownership of their learning journeys, developing the confidence and initiative needed for lifelong independence.",
+                features: [
+                    "Self-advocacy & asking for help effectively",
+                    "Goal setting and self-monitoring progress",
+                    "Building intrinsic motivation and resilience"
+                ],
+                quote: "He packs his own bag and plans his study time now. The self-reliance he developed is priceless.",
+                author: "— Parent of 11-year-old"
+            }
+        ];
+
+        // Dom References
+        const icon = document.getElementById('pillarIcon');
+        const subtitle = document.getElementById('pillarSubtitle');
+        const title = document.getElementById('pillarTitle');
+        const desc = document.getElementById('pillarDesc');
+        const featuresList = document.getElementById('pillarFeatures');
+        const quote = document.getElementById('pillarQuote');
+        const author = document.getElementById('pillarAuthor');
+        const centerEmoji = document.getElementById('centerEmoji');
+        const pillarNum = document.getElementById('pillarNum');
+        const panel = document.getElementById('pillar-panel');
+
+        function updatePanel(index) {
+            const data = frameworkData[index];
+
+            // Smooth transition effect
+            panel.style.opacity = '0.4';
+            panel.style.transform = 'translateY(8px)';
+
+            setTimeout(() => {
+                icon.textContent = data.icon;
+                subtitle.textContent = data.subtitle;
+                title.textContent = data.title;
+                desc.textContent = data.desc;
+                quote.textContent = `"${data.quote}"`;
+                author.textContent = data.author;
+                centerEmoji.textContent = data.emoji;
+                pillarNum.textContent = data.num;
+
+                // Populate features
+                featuresList.innerHTML = '';
+                data.features.forEach(feat => {
+                    const li = document.createElement('li');
+                    li.textContent = feat;
+                    featuresList.appendChild(li);
+                });
+
+                panel.style.opacity = '1';
+                panel.style.transform = 'translateY(0)';
+            }, 200);
+        }
+
+        tabBtns.forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const index = parseInt(this.getAttribute('data-pillar'));
+
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                updatePanel(index);
+            });
+        });
+
+        // Initialize with first tab active
+        const firstTab = document.querySelector('.framework-tabs .tab-btn[data-pillar="0"]');
+        if (firstTab) {
+            firstTab.classList.add('active');
+            firstTab.setAttribute('aria-selected', 'true');
+            updatePanel(0);
+        }
+    }
+
+    // Initialize Framework Tabs
+    initFrameworkTabs();
 });
