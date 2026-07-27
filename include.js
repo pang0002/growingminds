@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         ];
 
-        // Dom References
+        // DOM References
         const icon = document.getElementById('pillarIcon');
         const subtitle = document.getElementById('pillarSubtitle');
         const title = document.getElementById('pillarTitle');
@@ -556,19 +556,19 @@ document.addEventListener('DOMContentLoaded', function () {
             panel.style.opacity = '0.4';
             panel.style.transform = 'translateY(8px)';
 
-            setTimeout(() => {
+            setTimeout(function () {
                 icon.textContent = data.icon;
                 subtitle.textContent = data.subtitle;
                 title.textContent = data.title;
                 desc.textContent = data.desc;
-                quote.textContent = `"${data.quote}"`;
+                quote.textContent = '"' + data.quote + '"';
                 author.textContent = data.author;
                 centerEmoji.textContent = data.emoji;
                 pillarNum.textContent = data.num;
 
                 // Populate features
                 featuresList.innerHTML = '';
-                data.features.forEach(feat => {
+                data.features.forEach(function (feat) {
                     const li = document.createElement('li');
                     li.textContent = feat;
                     featuresList.appendChild(li);
@@ -579,11 +579,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 200);
         }
 
-        tabBtns.forEach((btn) => {
+        tabBtns.forEach(function (btn) {
             btn.addEventListener('click', function () {
-                const index = parseInt(this.getAttribute('data-pillar'));
+                const index = parseInt(this.getAttribute('data-pillar'), 10);
 
-                tabBtns.forEach(b => {
+                tabBtns.forEach(function (b) {
                     b.classList.remove('active');
                     b.setAttribute('aria-selected', 'false');
                 });
@@ -606,4 +606,148 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Framework Tabs
     initFrameworkTabs();
+
+    // ============================================================
+    // INTERACTIVE PROCESS TIMELINE
+    // ============================================================
+    function initProcessTimeline() {
+        const stepNodes = document.querySelectorAll('.step-node');
+        const card = document.getElementById('processCard');
+        const progressBar = document.getElementById('timelineProgress');
+
+        if (!stepNodes.length || !card) return;
+
+        // Preserving EXACT original titles, subtitles, and descriptions
+        const processData = [
+            {
+                phase: "Phase 01",
+                title: "Understand",
+                subtitle: "Screening & Assessment",
+                icon: "🔍",
+                desc: "We begin by understanding your child's unique learning profile through comprehensive screening and assessment.",
+                highlights: [
+                    { icon: "📄", title: "Comprehensive Intake", desc: "Detailed history & parent perspective" },
+                    { icon: "🎯", title: "Profile Mapping", desc: "Pinpointing cognitive & learning strengths" }
+                ]
+            },
+            {
+                phase: "Phase 02",
+                title: "Plan",
+                subtitle: "Personalised Learning Plan",
+                icon: "📅",
+                desc: "We create a tailored plan that addresses your child's specific strengths, needs and developmental goals.",
+                highlights: [
+                    { icon: "🛣️", title: "Targeted Roadmap", desc: "Clear milestones & achievable goals" },
+                    { icon: "🤝", title: "Parent Alignment", desc: "Co-designed strategies for home consistency" }
+                ]
+            },
+            {
+                phase: "Phase 03",
+                title: "Build",
+                subtitle: "Evidence-Based Intervention",
+                icon: "🔧",
+                desc: "We implement targeted, evidence-informed interventions to build the skills behind learning and development.",
+                highlights: [
+                    { icon: "🧩", title: "Skill-Building Sessions", desc: "Structured, engaging learning intervention" },
+                    { icon: "🧠", title: "Cognitive Scaffolding", desc: "Developing executive & emotional tools" }
+                ]
+            },
+            {
+                phase: "Phase 04",
+                title: "Thrive",
+                subtitle: "Confidence & Independence",
+                icon: "⭐",
+                desc: "Your child gains the confidence and independence to navigate learning and life with resilience.",
+                highlights: [
+                    { icon: "🚀", title: "Self-Advocacy", desc: "Empowering children to articulate their needs" },
+                    { icon: "🌱", title: "Real-World Application", desc: "Applying strategies in school and daily life" }
+                ]
+            },
+            {
+                phase: "Phase 05",
+                title: "Grow",
+                subtitle: "Progress Monitoring",
+                icon: "❇️",
+                desc: "We continuously monitor progress, adjusting our approach to ensure your child keeps growing and achieving.",
+                highlights: [
+                    { icon: "📊", title: "Regular Reviews", desc: "Transparent feedback and progress tracking" },
+                    { icon: "🔄", title: "Adaptive Planning", desc: "Evolving strategies as your child advances" }
+                ]
+            }
+        ];
+
+        const stepPhase = document.getElementById('stepPhase');
+        const stepTitle = document.getElementById('stepTitle');
+        const stepSubtitle = document.getElementById('stepSubtitle');
+        const stepIcon = document.getElementById('stepIcon');
+        const stepDesc = document.getElementById('stepDesc');
+        const highlightsContainer = card.querySelector('.step-highlights');
+
+        function updateStep(index) {
+            const data = processData[index];
+            if (!data) return;
+
+            // Update timeline bar fill width
+            if (progressBar) {
+                const percentage = (index / (processData.length - 1)) * 100;
+                progressBar.style.width = percentage + '%';
+            }
+
+            // Animate card swap
+            card.style.opacity = '0.3';
+            card.style.transform = 'translateY(6px)';
+
+            setTimeout(function () {
+                if (stepPhase) stepPhase.textContent = data.phase;
+                if (stepTitle) stepTitle.textContent = data.title;
+                if (stepSubtitle) stepSubtitle.textContent = data.subtitle;
+                if (stepIcon) stepIcon.textContent = data.icon;
+                if (stepDesc) stepDesc.textContent = data.desc;
+
+                // Render takeaway highlights
+                if (highlightsContainer) {
+                    highlightsContainer.innerHTML = '';
+                    data.highlights.forEach(function (hl) {
+                        const item = document.createElement('div');
+                        item.className = 'highlight-item';
+                        item.innerHTML = `
+                            <span class="hl-icon">${hl.icon}</span>
+                            <div>
+                                <strong>${hl.title}</strong>
+                                <small>${hl.desc}</small>
+                            </div>
+                        `;
+                        highlightsContainer.appendChild(item);
+                    });
+                }
+
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 180);
+        }
+
+        stepNodes.forEach(function (node) {
+            node.addEventListener('click', function () {
+                const index = parseInt(this.getAttribute('data-step'), 10);
+
+                stepNodes.forEach(function (n) {
+                    n.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                updateStep(index);
+            });
+        });
+
+        // Initialize initial state (Step 1)
+        // Set first node as active
+        if (stepNodes.length > 0) {
+            stepNodes[0].classList.add('active');
+        }
+        updateStep(0);
+    }
+
+    // Initialize Process Timeline
+    initProcessTimeline();
+
 });

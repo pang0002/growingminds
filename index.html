@@ -181,10 +181,11 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- HOW WE SUPPORT YOUR CHILD (Growth Path) -->
+    <!-- PROCESS SECTION — How We Support Your Child -->
     <!-- ============================================================ -->
-    <section class="support-cycle" id="approach">
+    <section class="process-section" id="process">
         <div class="container">
+            
             <div class="section-header reveal">
                 <span class="section-tag">Our Process</span>
                 <h2>How We Support Your Child</h2>
@@ -192,56 +193,71 @@
                 <div class="section-divider"></div>
             </div>
 
-            <div class="growth-path">
-                <div class="path-steps">
-                    <div class="path-step reveal-stagger">
-                        <div class="path-card glow-on-hover">
-                            <span class="path-step-number">1</span>
-                            <div class="path-node"><span class="icon-search"></span></div>
-                            <h3>Understand</h3>
-                            <p class="path-label">Screening &amp; Assessment</p>
-                            <p class="path-detail">We begin by understanding your child's unique learning profile through comprehensive screening and assessment.</p>
-                        </div>
+            <!-- Timeline Step Track -->
+            <div class="process-timeline reveal">
+                <div class="timeline-line">
+                    <div class="timeline-progress" id="timelineProgress"></div>
+                </div>
+
+                <div class="timeline-steps">
+                    <button class="step-node active" data-step="0">
+                        <span class="step-num">1</span>
+                        <span class="step-label">Understand</span>
+                    </button>
+                    <button class="step-node" data-step="1">
+                        <span class="step-num">2</span>
+                        <span class="step-label">Plan</span>
+                    </button>
+                    <button class="step-node" data-step="2">
+                        <span class="step-num">3</span>
+                        <span class="step-label">Build</span>
+                    </button>
+                    <button class="step-node" data-step="3">
+                        <span class="step-num">4</span>
+                        <span class="step-label">Thrive</span>
+                    </button>
+                    <button class="step-node" data-step="4">
+                        <span class="step-num">5</span>
+                        <span class="step-label">Grow</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Process Content Card -->
+            <div class="process-card reveal" id="processCard">
+                <div class="process-card-header">
+                    <div class="step-badge-icon" id="stepIcon">🔍</div>
+                    <div>
+                        <span class="step-phase-tag" id="stepPhase">Phase 01</span>
+                        <h3 id="stepTitle">Understand</h3>
+                        <span class="step-subtitle" id="stepSubtitle">Screening & Assessment</span>
                     </div>
-                    <div class="path-step reveal-stagger">
-                        <div class="path-card glow-on-hover">
-                            <span class="path-step-number">2</span>
-                            <div class="path-node"><span class="icon-plan"></span></div>
-                            <h3>Plan</h3>
-                            <p class="path-label">Personalised Learning Plan</p>
-                            <p class="path-detail">We create a tailored plan that addresses your child's specific strengths, needs and developmental goals.</p>
+                </div>
+
+                <div class="process-card-body">
+                    <p class="step-description" id="stepDesc">
+                        We begin by understanding your child's unique learning profile through comprehensive screening and assessment.
+                    </p>
+
+                    <div class="step-highlights">
+                        <div class="highlight-item">
+                            <span class="hl-icon">📋</span>
+                            <div>
+                                <strong>Parent Call & Intake</strong>
+                                <small>Deep-dive conversation on goals and concerns</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="path-step reveal-stagger">
-                        <div class="path-card glow-on-hover">
-                            <span class="path-step-number">3</span>
-                            <div class="path-node"><span class="icon-build"></span></div>
-                            <h3>Build</h3>
-                            <p class="path-label">Evidence-Based Intervention</p>
-                            <p class="path-detail">We implement targeted, evidence-informed interventions to build the skills behind learning and development.</p>
-                        </div>
-                    </div>
-                    <div class="path-step reveal-stagger">
-                        <div class="path-card glow-on-hover">
-                            <span class="path-step-number">4</span>
-                            <div class="path-node"><span class="icon-thrive"></span></div>
-                            <h3>Thrive</h3>
-                            <p class="path-label">Confidence &amp; Independence</p>
-                            <p class="path-detail">Your child gains the confidence and independence to navigate learning and life with resilience.</p>
-                        </div>
-                    </div>
-                    <div class="path-step reveal-stagger">
-                        <div class="path-card glow-on-hover">
-                            <span class="path-step-number">5</span>
-                            <div class="path-node"><span class="icon-grow"></span></div>
-                            <h3>Grow</h3>
-                            <p class="path-label">Progress Monitoring</p>
-                            <p class="path-detail">We continuously monitor progress, adjusting our approach to ensure your child keeps growing and achieving.</p>
+                        <div class="highlight-item">
+                            <span class="hl-icon">🧩</span>
+                            <div>
+                                <strong>Child Learning Profile</strong>
+                                <small>Comprehensive skill mapping and insights</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="growth-baseline" aria-hidden="true"></div>
             </div>
+
         </div>
     </section>
 
