@@ -851,29 +851,46 @@ document.addEventListener('DOMContentLoaded', function () {
     initProcessTimeline();
 
     // ============================================================
-    // EXPANDABLE CARDS
+    // EXPANDABLE CARDS - FIXED
     // ============================================================
     function initExpandableCards() {
         const cards = document.querySelectorAll('.expandable-card');
         
-        cards.forEach(function(card) {
-            const toggleBtn = card.querySelector('.expand-toggle');
+        if (!cards.length) return;
+        
+        // Use event delegation for better performance and reliability
+        document.addEventListener('click', function(e) {
+            // Find if click was on a toggle button or its child
+            const toggleBtn = e.target.closest('.expand-toggle');
+            if (!toggleBtn) return;
             
-            if (toggleBtn) {
-                toggleBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    card.classList.toggle('expanded');
-                    
-                    // Optional: Close other cards when one opens
-                    // Uncomment below if you want only one card open at a time
-                    /*
-                    cards.forEach(function(otherCard) {
-                        if (otherCard !== card && otherCard.classList.contains('expanded')) {
-                            otherCard.classList.remove('expanded');
-                        }
-                    });
-                    */
-                });
+            // Find the parent card
+            const card = toggleBtn.closest('.expandable-card');
+            if (!card) return;
+            
+            // Prevent default behavior
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Check if this card is already expanded
+            const isExpanded = card.classList.contains('expanded');
+            
+            // Optional: Close all other cards first (accordion behavior)
+            // Uncomment the lines below if you want only one card open at a time
+            /*
+            const allCards = document.querySelectorAll('.expandable-card');
+            allCards.forEach(function(otherCard) {
+                if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            */
+            
+            // Toggle the clicked card
+            if (isExpanded) {
+                card.classList.remove('expanded');
+            } else {
+                card.classList.add('expanded');
             }
         });
     }
