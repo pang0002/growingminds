@@ -851,44 +851,42 @@ document.addEventListener('DOMContentLoaded', function () {
     initProcessTimeline();
 
     // ============================================================
-    // EXPANDABLE CARDS - COMPLETELY REWRITTEN FOR RELIABILITY
+    // EXPANDABLE CARDS - FULLY FIXED WITH EVENT DELEGATION
     // ============================================================
     function initExpandableCards() {
         // Get all expandable cards
         const cards = document.querySelectorAll('.expandable-card');
         
-        if (!cards.length) return;
+        if (!cards.length) {
+            console.log('No expandable cards found');
+            return;
+        }
 
-        // Loop through each card and set up its toggle
-        cards.forEach(function(card) {
-            // Find the toggle button within this card
-            const toggleBtn = card.querySelector('.expand-toggle');
+        console.log('Found ' + cards.length + ' expandable cards');
+
+        // Use event delegation on the document to catch all clicks
+        document.addEventListener('click', function(e) {
+            // Find if click was on a toggle button or its child
+            const toggleBtn = e.target.closest('.expand-toggle');
+            if (!toggleBtn) return;
             
-            if (toggleBtn) {
-                // Remove any existing event listeners by cloning and replacing
-                const newToggle = toggleBtn.cloneNode(true);
-                toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
-                
-                // Add click event to the new toggle button
-                newToggle.addEventListener('click', function(e) {
-                    // Stop event from bubbling up
-                    e.stopPropagation();
-                    e.preventDefault();
-                    
-                    // Toggle ONLY this specific card
-                    // Check current state
-                    const isExpanded = card.classList.contains('expanded');
-                    
-                    // Toggle the clicked card
-                    if (isExpanded) {
-                        card.classList.remove('expanded');
-                    } else {
-                        card.classList.add('expanded');
-                    }
-                    
-                    // Debug log to verify
-                    console.log('Card toggled:', card.querySelector('h3')?.textContent || 'unknown', 'Expanded:', !isExpanded);
-                });
+            // Find the parent card
+            const card = toggleBtn.closest('.expandable-card');
+            if (!card) return;
+            
+            // Prevent default and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle only this specific card
+            const isExpanded = card.classList.contains('expanded');
+            
+            if (isExpanded) {
+                card.classList.remove('expanded');
+                console.log('Card closed:', card.querySelector('h3')?.textContent || 'unknown');
+            } else {
+                card.classList.add('expanded');
+                console.log('Card opened:', card.querySelector('h3')?.textContent || 'unknown');
             }
         });
     }
