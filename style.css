@@ -1521,6 +1521,7 @@ header.is-scrolled::after {
     display: flex;
     flex-direction: column;
     cursor: default;
+    text-align: center;
 }
 
 .pillar-card:nth-child(1) { margin-top: 0; }
@@ -1542,7 +1543,7 @@ header.is-scrolled::after {
     justify-content: center;
     background: var(--color-sage);
     border-radius: 50%;
-    margin-bottom: 14px;
+    margin: 0 auto 14px;
     transition: transform 0.4s var(--ease-bounce), background 0.4s var(--ease);
 }
 
@@ -1570,15 +1571,15 @@ header.is-scrolled::after {
 
 .pillar-card h3 {
     font-size: 18px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
 }
 
 .pillar-tagline {
-    font-size: 13.5px;
-    color: var(--color-teal-dark);
-    font-weight: 600;
-    margin-bottom: 16px;
-    line-height: 1.4;
+    font-size: 14px;
+    color: var(--color-ink-soft);
+    line-height: 1.5;
+    margin-bottom: 0;
 }
 
 /* ----- WHY GROWING MINDS ----- */
