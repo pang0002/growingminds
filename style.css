@@ -1,6 +1,6 @@
 /* ============================================================
    GROWING MINDS — ENHANCED DESIGN SYSTEM
-   Added micro-interactions, animations, and visual polish
+   Full updated stylesheet with all improvements
    ============================================================ */
 
 /* ----- RESET & BASE ----- */
@@ -44,12 +44,13 @@
     /* Header specific variables */
     --header-height: 80px;
     --header-padding-y: 16px;
-    --header-logo-size: 48px;
+    --header-logo-size: 52px;
+    --header-logo-hover-scale: 1.08;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Increased for fixed header */
+    scroll-padding-top: calc(var(--header-height) + 20px);
 }
 
 body {
@@ -178,6 +179,11 @@ em {
     50% { box-shadow: 0 0 0 12px rgba(44, 181, 165, 0); }
 }
 
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
 .floating {
     animation: float 3s ease-in-out infinite;
 }
@@ -259,7 +265,7 @@ em {
 }
 
 /* ============================================================
-   HEADER - ENHANCED WITH EXPANDED MARGINS & BETTER UX
+   HEADER - ENHANCED WITH LOGO ONLY, CAREER LINK & BETTER UX
    ============================================================ */
 
 header {
@@ -277,18 +283,20 @@ header {
     align-items: center;
 }
 
+/* Decorative gradient line at bottom */
 header::after {
     content: '';
     position: absolute;
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), var(--color-teal), transparent);
     opacity: 0;
-    transition: opacity 0.4s var(--ease);
+    transition: opacity 0.5s var(--ease);
 }
 
+/* Scrolled state */
 header.is-scrolled {
     box-shadow: 0 8px 40px rgba(10, 72, 96, 0.10);
     padding: 10px 0;
@@ -297,70 +305,90 @@ header.is-scrolled {
 }
 
 header.is-scrolled::after {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
-/* Header Container - Expanded margins */
+/* Header Container - Expanded with more breathing room */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     width: 100%;
-    padding: 0 40px; /* Expanded from 24px to 40px */
-    max-width: 1280px; /* Slightly wider */
+    padding: 0 48px;
+    max-width: 1320px;
     margin: 0 auto;
+    gap: 20px;
 }
 
-/* Logo Section - Enhanced */
+/* ============================================================
+   LOGO - Enhanced with Only Logo (No Text)
+   ============================================================ */
+
 .logo {
     display: flex;
     align-items: center;
-    gap: 14px;
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--color-primary);
     flex-shrink: 0;
 }
 
 .logo a {
     display: flex;
     align-items: center;
-    gap: 14px;
-    transition: transform 0.3s var(--ease);
+    transition: all 0.4s var(--ease-bounce);
+    position: relative;
 }
 
-.logo a:hover {
-    transform: scale(1.02);
-}
-
+/* Logo Container with enhanced visual treatment */
 .logo-crop {
     display: block;
     height: var(--header-logo-size);
+    width: var(--header-logo-size);
     max-height: var(--header-logo-size);
+    max-width: var(--header-logo-size);
     overflow: hidden;
-    border-radius: 10px;
-    transition: border-radius 0.3s var(--ease);
+    border-radius: 14px;
+    transition: all 0.4s var(--ease-bounce);
+    position: relative;
+    background: var(--color-white);
+    box-shadow: 0 2px 12px rgba(10, 72, 96, 0.06);
+}
+
+/* Glow ring around logo on hover */
+.logo-crop::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 17px;
+    background: linear-gradient(135deg, var(--color-teal), var(--color-gold), var(--color-teal));
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+    z-index: -1;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+.logo a:hover .logo-crop::before {
+    opacity: 1;
 }
 
 .logo a:hover .logo-crop {
-    border-radius: 6px;
+    transform: scale(var(--header-logo-hover-scale)) rotate(-2deg);
+    box-shadow: 0 8px 32px rgba(44, 181, 165, 0.25);
 }
 
+/* Logo Image */
 .logo-img {
-    height: 62px;
-    width: auto;
-    max-width: none;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
-    object-position: top;
+    object-position: center;
     display: block;
-    margin-top: 0;
-    transition: transform 0.4s var(--ease);
+    transition: transform 0.5s var(--ease-bounce);
+    padding: 4px;
 }
 
 .logo a:hover .logo-img {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .logo-img:not([src]),
@@ -368,34 +396,10 @@ header.is-scrolled::after {
     display: none;
 }
 
-.logo-text {
-    letter-spacing: -0.3px;
-    position: relative;
-    transition: color 0.3s var(--ease);
-}
+/* ============================================================
+   NAVIGATION - Enhanced with Career Link
+   ============================================================ */
 
-.logo a:hover .logo-text {
-    color: var(--color-teal-dark);
-}
-
-.logo-text::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--color-teal);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s var(--ease);
-}
-
-.logo a:hover .logo-text::after {
-    transform: scaleX(1);
-}
-
-/* Navigation - Enhanced */
 #site-nav {
     display: flex;
     align-items: center;
@@ -405,9 +409,13 @@ header.is-scrolled::after {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 36px; /* Increased from 30px */
+    gap: 8px;
     margin: 0;
     padding: 0;
+}
+
+#site-nav li {
+    position: relative;
 }
 
 #site-nav a {
@@ -416,40 +424,61 @@ header.is-scrolled::after {
     color: var(--color-ink-soft);
     transition: all 0.3s var(--ease);
     position: relative;
-    padding: 6px 0;
+    padding: 8px 16px;
     letter-spacing: 0.2px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
-/* Enhanced link underline animation */
+/* Enhanced link underline animation with dot */
 #site-nav a:not(.btn-nav)::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -4px;
+    left: 50%;
+    bottom: 4px;
     width: 0;
     height: 2.5px;
     background: var(--color-teal);
-    transition: width 0.35s var(--ease), background 0.3s var(--ease);
+    transition: all 0.35s var(--ease);
     border-radius: 2px;
+    transform: translateX(-50%);
 }
 
 #site-nav a:not(.btn-nav):hover {
     color: var(--color-primary);
+    background: rgba(44, 181, 165, 0.06);
 }
 
 #site-nav a:not(.btn-nav):hover::after {
-    width: 100%;
-    background: var(--color-teal);
+    width: 60%;
 }
 
-/* Active link state */
+/* Active link state with different color */
 #site-nav a:not(.btn-nav).active {
     color: var(--color-primary);
     font-weight: 600;
+    background: rgba(44, 181, 165, 0.08);
 }
 
 #site-nav a:not(.btn-nav).active::after {
-    width: 100%;
+    width: 60%;
+    background: var(--color-gold);
+}
+
+/* Career link special styling */
+#site-nav a[href="careers.html"] {
+    position: relative;
+}
+
+#site-nav a[href="careers.html"]::before {
+    content: '🌟';
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+#site-nav a[href="careers.html"]:not(.btn-nav)::after {
     background: var(--color-gold);
 }
 
@@ -457,7 +486,7 @@ header.is-scrolled::after {
 .btn-nav {
     background: var(--color-teal);
     color: var(--color-white) !important;
-    padding: 12px 28px; /* Increased padding */
+    padding: 12px 28px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 14px;
@@ -471,6 +500,7 @@ header.is-scrolled::after {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-left: 4px;
 }
 
 .btn-nav::before {
@@ -498,13 +528,16 @@ header.is-scrolled::after {
     transform: scale(0.96);
 }
 
-/* Mobile Toggle - Enhanced */
+/* ============================================================
+   MOBILE TOGGLE - Enhanced
+   ============================================================ */
+
 .nav-toggle {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     width: 44px;
     height: 44px;
     background: rgba(10, 72, 96, 0.04);
@@ -514,11 +547,13 @@ header.is-scrolled::after {
     z-index: 210;
     transition: all 0.3s var(--ease);
     padding: 0;
+    flex-shrink: 0;
 }
 
 .nav-toggle:hover {
     background: rgba(10, 72, 96, 0.08);
     border-color: var(--color-teal);
+    transform: scale(1.02);
 }
 
 .nav-toggle span {
@@ -541,7 +576,7 @@ header.is-scrolled::after {
 }
 
 .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
+    transform: translateY(7.5px) rotate(45deg);
     width: 26px;
 }
 
@@ -551,13 +586,35 @@ header.is-scrolled::after {
 }
 
 .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
+    transform: translateY(-7.5px) rotate(-45deg);
     width: 26px;
 }
 
 /* ============================================================
-   SCROLL PROGRESS BAR
+   NAV SCRIM (Mobile Overlay)
    ============================================================ */
+
+.nav-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 72, 96, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 199;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+}
+
+.nav-scrim.is-visible {
+    display: block;
+    opacity: 1;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR (Positioned below header)
+   ============================================================ */
+
 .scroll-progress {
     position: fixed;
     top: var(--header-height);
@@ -2219,17 +2276,51 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ----- RESPONSIVE ----- */
+/* ============================================================
+   RESPONSIVE HEADER
+   ============================================================ */
 
-/* Desktop - Large */
+/* Desktop - Large screens */
 @media (max-width: 1200px) {
     .header-container {
         padding: 0 32px;
     }
+    
+    #site-nav ul {
+        gap: 4px;
+    }
+    
+    #site-nav a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
 
-/* Tablet */
+/* Desktop - Medium */
 @media (max-width: 992px) {
+    .header-container {
+        padding: 0 24px;
+    }
+    
+    #site-nav ul {
+        gap: 2px;
+    }
+    
+    #site-nav a {
+        padding: 8px 10px;
+        font-size: 13.5px;
+    }
+    
+    .btn-nav {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    :root {
+        --header-logo-size: 44px;
+    }
+
+    /* Other responsive adjustments */
     .hero-container,
     .brand-grid,
     .about-container,
@@ -2284,17 +2375,13 @@ footer {
     .brand-goal .goal-headline {
         font-size: 32px;
     }
-
-    .header-container {
-        padding: 0 24px;
-    }
 }
 
-/* Mobile */
+/* Tablet and Mobile Navigation */
 @media (max-width: 768px) {
     :root {
-        --header-height: 68px;
-        --header-padding-y: 12px;
+        --header-height: 64px;
+        --header-padding-y: 10px;
         --header-logo-size: 40px;
     }
 
@@ -2307,71 +2394,72 @@ footer {
         padding: 0 16px;
     }
 
-    .logo {
-        gap: 10px;
-        font-size: 20px;
-    }
-
-    .logo a {
-        gap: 10px;
-    }
-
-    .logo-crop {
-        height: var(--header-logo-size);
-        max-height: var(--header-logo-size);
-    }
-
-    .logo-img {
-        height: 48px;
-    }
-
-    .logo-text {
-        font-size: 18px;
-    }
-
-    /* Mobile Navigation */
+    /* Mobile Navigation Slide-in */
     #site-nav {
         position: fixed;
         top: 0;
         right: 0;
         height: 100vh;
-        width: min(320px, 80vw);
+        width: min(340px, 85vw);
         background: var(--color-white);
         box-shadow: -10px 0 40px rgba(10,72,96,0.15);
         transform: translateX(100%);
         transition: transform 0.4s var(--ease);
         z-index: 205;
-        padding: 80px 32px 32px;
+        padding: 80px 32px 40px;
         overflow-y: auto;
         display: block;
     }
 
-    #site-nav.nav-open { transform: translateX(0); }
+    #site-nav.nav-open {
+        transform: translateX(0);
+    }
 
     #site-nav ul {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+        align-items: stretch;
+        gap: 4px;
+        width: 100%;
+    }
+
+    #site-nav li {
         width: 100%;
     }
 
     #site-nav a {
         font-size: 18px;
-        padding: 8px 0;
+        padding: 14px 16px;
         width: 100%;
-        border-bottom: 1px solid rgba(10,72,96,0.04);
+        border-radius: 10px;
+        justify-content: flex-start;
     }
 
     #site-nav a:not(.btn-nav)::after {
-        bottom: -2px;
+        display: none;
+    }
+
+    #site-nav a:not(.btn-nav):hover {
+        background: rgba(44, 181, 165, 0.08);
+    }
+
+    #site-nav a:not(.btn-nav).active {
+        background: rgba(44, 181, 165, 0.12);
+    }
+
+    /* Career link in mobile */
+    #site-nav a[href="careers.html"]::before {
+        content: '🌟';
+        font-size: 16px;
+        margin-right: 8px;
     }
 
     #site-nav .btn-nav {
         margin-top: 12px;
-        padding: 14px 32px;
+        padding: 16px 32px;
         font-size: 16px;
         width: 100%;
         justify-content: center;
+        border-radius: 12px;
     }
 
     .nav-toggle {
@@ -2380,15 +2468,19 @@ footer {
         height: 40px;
     }
 
-    .nav-scrim {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(10,72,96,0.35);
-        z-index: 199;
+    .nav-toggle span {
+        width: 20px;
+        height: 2.5px;
     }
 
-    .nav-scrim.is-visible { display: block; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1),
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        width: 22px;
+    }
+
+    .nav-scrim.is-visible {
+        display: block;
+    }
 
     .scroll-progress {
         top: var(--header-height);
@@ -2426,8 +2518,6 @@ footer {
         grid-template-columns: 1fr 1fr;
         gap: 24px;
     }
-
-    .brand-stats { grid-template-columns: 1fr; gap: 14px; }
 
     .cta-section h2 { font-size: 28px; }
 
@@ -2498,59 +2588,62 @@ footer {
 
 /* Small Mobile */
 @media (max-width: 480px) {
+    :root {
+        --header-height: 56px;
+        --header-padding-y: 8px;
+        --header-logo-size: 36px;
+    }
+
     .header-container {
         padding: 0 12px;
     }
 
-    .logo {
-        font-size: 17px;
-        gap: 8px;
+    .logo-crop {
+        border-radius: 10px;
     }
 
-    .logo a {
-        gap: 8px;
+    .logo a:hover .logo-crop {
+        transform: scale(1.04) rotate(-1deg);
     }
 
-    .logo-img {
-        height: 40px;
+    #site-nav {
+        width: min(300px, 90vw);
+        padding: 70px 20px 30px;
     }
 
-    .logo-text {
-        font-size: 15px;
+    #site-nav a {
+        font-size: 16px;
+        padding: 12px 14px;
     }
 
-    .logo-text::after {
-        display: none;
+    #site-nav .btn-nav {
+        padding: 14px 24px;
+        font-size: 14px;
     }
 
     .nav-toggle {
         width: 36px;
         height: 36px;
-        gap: 5px;
+        border-radius: 10px;
+        gap: 4px;
     }
 
     .nav-toggle span {
-        width: 20px;
+        width: 18px;
         height: 2px;
     }
 
     .nav-toggle[aria-expanded="true"] span:nth-child(1),
     .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-        width: 22px;
+        width: 20px;
     }
 
-    #site-nav {
-        width: min(280px, 85vw);
-        padding: 70px 20px 20px;
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
     }
 
-    #site-nav a {
-        font-size: 16px;
-    }
-
-    #site-nav .btn-nav {
-        padding: 12px 24px;
-        font-size: 14px;
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
     }
 
     .brand-goal .goal-headline {
