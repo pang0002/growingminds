@@ -336,6 +336,18 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('header').outerHTML = data;
             initHeaderBehavior();
             initSmoothScroll();
+
+            // Set active nav link after header loads
+            setTimeout(function () {
+                var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                var navLinks = document.querySelectorAll('#site-nav a:not(.btn-nav)');
+                navLinks.forEach(function (link) {
+                    var href = link.getAttribute('href');
+                    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                        link.classList.add('active');
+                    }
+                });
+            }, 100);
         })
         .catch(function (error) { console.error('Error loading header:', error); });
 
