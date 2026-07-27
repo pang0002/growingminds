@@ -875,16 +875,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Check if this card is already expanded
             const isExpanded = card.classList.contains('expanded');
             
-            // Optional: Close all other cards first (accordion behavior)
-            // Uncomment the lines below if you want only one card open at a time
-            /*
+
             const allCards = document.querySelectorAll('.expandable-card');
             allCards.forEach(function(otherCard) {
                 if (otherCard !== card && otherCard.classList.contains('expanded')) {
                     otherCard.classList.remove('expanded');
                 }
             });
-            */
             
             // Toggle the clicked card
             if (isExpanded) {
