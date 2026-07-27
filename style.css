@@ -1496,8 +1496,7 @@ header.is-scrolled::after {
     width: 0%;
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
     border-radius: 4px;
-    /* Smooth CSS transition for step jumps */
-    transition: width 0.6s ease-in-out; 
+    transition: width 0.6s ease-in-out; /* Smooth transition for step jumps */
 }
 
 /* Responsive adjustments */

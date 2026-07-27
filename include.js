@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initFrameworkTabs();
 
     // ============================================================
-    // INTERACTIVE PROCESS TIMELINE - FIXED AUTO-ROTATION
+    // INTERACTIVE PROCESS TIMELINE - WITH SMOOTH PROGRESS ANIMATION
     // ============================================================
     function initProcessTimeline() {
         const stepNodes = document.querySelectorAll('.step-node');
@@ -618,6 +618,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Tracking state and timer configurations
         let currentIndex = 0;
         let timer = null;
+        let progressTimer = null;
+        let progressValue = 0;
         const intervalTime = 5000; // Delay in milliseconds (5 seconds)
         const processSection = document.getElementById('process'); // Reference for hover detection
 
@@ -689,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const stepDesc = document.getElementById('stepDesc');
         const highlightsContainer = card.querySelector('.step-highlights');
 
-        function updateStep(index) {
+        function updateStep(index, animateProgress) {
             const data = processData[index];
             if (!data) return;
 
@@ -705,9 +707,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Update timeline bar fill width
-            if (progressBar) {
+            // If animateProgress is true, we'll animate the bar smoothly
+            if (animateProgress !== false) {
+                // Set the progress bar to the exact position for this step
                 const percentage = (index / (processData.length - 1)) * 100;
+                progressBar.style.transition = 'width 0.6s ease-in-out';
                 progressBar.style.width = percentage + '%';
             }
 
@@ -744,12 +748,59 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 180);
         }
 
+        // Start the progress bar animation (smoothly moves from current to next)
+        function startProgressAnimation() {
+            stopProgressAnimation();
+            
+            const startPercent = (currentIndex / (processData.length - 1)) * 100;
+            const endPercent = ((currentIndex + 1) / (processData.length - 1)) * 100;
+            
+            // Only animate if not at the last step
+            if (currentIndex < processData.length - 1) {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = startPercent + '%';
+                
+                // Force reflow
+                void progressBar.offsetWidth;
+                
+                // Start the smooth animation to the next step
+                progressBar.style.transition = 'width ' + (intervalTime / 1000) + 's linear';
+                progressBar.style.width = endPercent + '%';
+            } else {
+                // At the last step, just show full progress
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '100%';
+            }
+        }
+
+        function stopProgressAnimation() {
+            if (progressTimer) {
+                clearInterval(progressTimer);
+                progressTimer = null;
+            }
+        }
+
         // Start auto-advancing through steps
         function startAutoSwap() {
             stopAutoSwap(); // Prevent duplicate running timers
+            stopProgressAnimation();
+            
+            // Start progress bar animation
+            startProgressAnimation();
+            
+            // Set timer to change step
             timer = setInterval(function () {
                 const nextIndex = (currentIndex + 1) % processData.length;
-                updateStep(nextIndex);
+                updateStep(nextIndex, false); // Don't animate progress bar here, it's already animated
+                
+                // Start the next progress animation
+                if (nextIndex < processData.length - 1) {
+                    startProgressAnimation();
+                } else {
+                    // At the last step, we stay at 100%
+                    progressBar.style.transition = 'none';
+                    progressBar.style.width = '100%';
+                }
             }, intervalTime);
         }
 
@@ -759,6 +810,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearInterval(timer);
                 timer = null;
             }
+            stopProgressAnimation();
         }
 
         // Click handler for step nodes
@@ -768,19 +820,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 // Reset auto-swap timer on manual interaction
                 stopAutoSwap();
-                updateStep(index);
+                updateStep(index, true); // Animate progress bar
                 startAutoSwap(); // Restart auto-swap after manual click
             });
         });
 
         // Pause timer when parent hovers mouse over the section to read
         if (processSection) {
-            processSection.addEventListener('mouseenter', stopAutoSwap);
-            processSection.addEventListener('mouseleave', startAutoSwap);
+            processSection.addEventListener('mouseenter', function() {
+                stopAutoSwap();
+                // Pause the progress bar animation
+                const currentWidth = parseFloat(progressBar.style.width) || 0;
+                progressBar.style.transition = 'none';
+                progressBar.style.width = currentWidth + '%';
+            });
+            
+            processSection.addEventListener('mouseleave', function() {
+                startAutoSwap();
+            });
         }
 
         // Initialize with first step
-        updateStep(0);
+        updateStep(0, true);
         
         // Start auto-swap after a short delay
         setTimeout(startAutoSwap, 1000);
