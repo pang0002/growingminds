@@ -1,26 +1,9 @@
 /* ============================================================
-   GROWING MINDS — DESIGN SYSTEM
-   A warm, organic identity for a Child Development & Learning
-   Studio. The "growing" metaphor (seed → sprout → bloom) runs
-   through color, shape and motion: soft organic blobs instead
-   of hard geometry, a winding path instead of boxy arrows.
-
-   Palette
-     --color-primary   #0a4860  deep harbour blue (trust, expertise)
-     --color-teal      #2cb5a5  growth teal (vitality)
-     --color-gold      #f7c948  warm gold (optimism, highlight)
-     --color-accent    #8e7df0  soft lavender (modern contrast)
-     --color-cream     #fbf7ef  warm paper background
-     --color-sage      #eef6f1  soft section tint
-     --color-ink       #12303f  primary text
-
-   Type
-     Display  — Fraunces (warm, organic serif, used with restraint)
-     Body/UI  — Inter
-     Accent   — Caveat (hand-written eyebrow labels, used sparingly)
+   GROWING MINDS — ENHANCED DESIGN SYSTEM
+   Added micro-interactions, animations, and visual polish
    ============================================================ */
 
-/* ----- RESET & BASE ----- */
+/* ----- RESET & BASE (Existing) ----- */
 * {
     margin: 0;
     padding: 0;
@@ -53,8 +36,10 @@
     --shadow-soft: 0 20px 50px rgba(10, 72, 96, 0.10);
     --shadow-lift: 0 16px 40px rgba(10, 72, 96, 0.16);
     --shadow-card: 0 10px 30px rgba(10, 72, 96, 0.08);
+    --shadow-hover: 0 20px 60px rgba(10, 72, 96, 0.18);
 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 html {
@@ -81,7 +66,6 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
 img { max-width: 100%; display: block; }
 
 h1, h2, h3, h4 {
@@ -96,21 +80,117 @@ em {
     color: var(--color-teal);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        transition-duration: 0.001ms !important;
+/* ===== NEW: REVEAL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.reveal-stagger {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal-stagger.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays */
+.reveal-stagger:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger:nth-child(6) { transition-delay: 0.40s; }
+
+/* ===== NEW: FLOATING ANIMATION ===== */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 181, 165, 0.3); }
+    50% { box-shadow: 0 0 0 12px rgba(44, 181, 165, 0); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-slow {
+    animation: float-slow 4s ease-in-out infinite;
+}
+
+/* ===== NEW: COUNTER ANIMATION ===== */
+.counter-value {
+    display: inline-block;
+    font-size: inherit;
+}
+
+/* ===== NEW: INTERACTIVE CURSOR GLOW (desktop only) ===== */
+@media (hover: hover) {
+    .glow-on-hover {
+        transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .glow-on-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(10, 72, 96, 0.15), 0 0 0 4px rgba(44, 181, 165, 0.15);
     }
 }
 
-:focus-visible {
-    outline: 3px solid var(--color-gold);
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
-/* ----- EYEBROW / TAG LABELS (hand-written accent, used sparingly) ----- */
+/* ----- EYEBROW (Existing) ----- */
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -144,7 +224,7 @@ em {
     margin-bottom: 14px;
 }
 
-/* ----- ORGANIC BLOB DECORATIONS ----- */
+/* ----- ORGANIC BLOB DECORATIONS (Existing) ----- */
 .blob {
     position: absolute;
     z-index: 0;
@@ -156,19 +236,22 @@ em {
 .blob-teal {
     background: linear-gradient(135deg, rgba(44,181,165,0.28), rgba(44,181,165,0.05));
     border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
+    animation: float-slow 6s ease-in-out infinite;
 }
 
 .blob-gold {
     background: linear-gradient(135deg, rgba(247,201,72,0.35), rgba(247,201,72,0.06));
     border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    animation: float 7s ease-in-out infinite reverse;
 }
 
 .blob-blue {
     background: linear-gradient(135deg, rgba(10,72,96,0.14), rgba(10,72,96,0.03));
     border-radius: 55% 45% 40% 60% / 40% 60% 40% 60%;
+    animation: float-slow 5s ease-in-out infinite;
 }
 
-/* ----- HEADER / NAVIGATION ----- */
+/* ----- HEADER (Enhanced with progress bar) ----- */
 header {
     padding: 14px 0;
     background: rgba(251, 247, 239, 0.9);
@@ -177,12 +260,25 @@ header {
     top: 0;
     z-index: 200;
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     transition: box-shadow 0.3s var(--ease), padding 0.3s var(--ease);
 }
 
 header.is-scrolled {
     box-shadow: 0 8px 30px rgba(10, 72, 96, 0.10);
     padding: 8px 0;
+}
+
+/* ===== NEW: Scroll Progress Bar ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+    z-index: 999;
+    transition: width 0.1s linear;
+    width: 0%;
 }
 
 .header-container {
@@ -225,14 +321,6 @@ header.is-scrolled {
 .logo-img[src=""] {
     display: none;
 }
-
-.logo-icon {
-    font-size: 26px;
-    display: inline-block;
-    transition: transform 0.4s var(--ease);
-}
-
-.logo:hover .logo-icon { transform: rotate(-12deg) scale(1.1); }
 
 .logo-text { letter-spacing: -0.3px; }
 
@@ -317,7 +405,41 @@ nav a:not(.btn-nav):hover::after {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ----- BUTTONS ----- */
+/* ===== NEW: BACK TO TOP BUTTON ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 8px 24px rgba(10, 72, 96, 0.25);
+    z-index: 150;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--color-teal-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 72, 96, 0.35);
+}
+
+/* ----- BUTTONS (Enhanced) ----- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -326,11 +448,27 @@ nav a:not(.btn-nav):hover::after {
     border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
-    transition: all 0.25s var(--ease);
+    transition: all 0.3s var(--ease-bounce);
     text-align: center;
     border: none;
     cursor: pointer;
     font-family: var(--font-body);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn:hover::after {
+    opacity: 1;
 }
 
 .btn-primary {
@@ -340,8 +478,8 @@ nav a:not(.btn-nav):hover::after {
 
 .btn-primary:hover {
     background: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(10, 72, 96, 0.28), 0 0 0 3px rgba(142, 125, 240, 0.2);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(10, 72, 96, 0.3);
 }
 
 .btn-secondary {
@@ -351,8 +489,8 @@ nav a:not(.btn-nav):hover::after {
 
 .btn-secondary:hover {
     background: var(--color-teal-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(44, 181, 165, 0.3), 0 0 0 3px rgba(142, 125, 240, 0.2);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(44, 181, 165, 0.35);
 }
 
 .btn-outline {
@@ -364,8 +502,8 @@ nav a:not(.btn-nav):hover::after {
 .btn-outline:hover {
     background: var(--color-primary);
     color: var(--color-white);
-    transform: translateY(-2px);
-    box-shadow: 0 0 0 3px rgba(142, 125, 240, 0.25);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(10, 72, 96, 0.2);
 }
 
 .btn-outline-light {
@@ -377,10 +515,32 @@ nav a:not(.btn-nav):hover::after {
 .btn-outline-light:hover {
     background: var(--color-white);
     color: var(--color-primary);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
 }
 
-/* ----- IMAGE SLOTS (placeholders — swap for real photos later) ----- */
+/* ===== NEW: RIPPLE EFFECT FOR BUTTONS ===== */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-anim 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ----- IMAGE SLOTS (Enhanced) ----- */
 .img-slot {
     width: 100%;
     height: 100%;
@@ -392,11 +552,13 @@ nav a:not(.btn-nav):hover::after {
     background: linear-gradient(150deg, var(--color-sage) 0%, #e4f1ee 100%);
     color: var(--color-primary);
     text-align: center;
+    transition: transform 0.5s var(--ease);
 }
 
 .img-slot-icon {
     font-size: 40px;
     opacity: 0.5;
+    transition: transform 0.5s var(--ease-bounce);
 }
 
 .img-slot p {
@@ -411,71 +573,19 @@ nav a:not(.btn-nav):hover::after {
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(44, 181, 165, 0.15);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-/* ============================================================
-   CUSTOM SVG ICONS (inline)
-   ============================================================ */
-.icon-search,
-.icon-plan,
-.icon-build,
-.icon-thrive,
-.icon-grow,
-.icon-self-awareness,
-.icon-self-management,
-.icon-social-connection,
-.icon-thinking,
-.icon-independence,
-.icon-parent,
-.icon-school {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.img-frame:hover {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-lift);
 }
 
-.icon-search {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
-}
-.icon-plan {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
-}
-.icon-build {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'/%3E%3C/svg%3E");
-}
-.icon-thrive {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z'/%3E%3C/svg%3E");
-}
-.icon-grow {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/%3E%3C/svg%3E");
-}
-.icon-self-awareness {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
-}
-.icon-self-management {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
-}
-.icon-social-connection {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
-}
-.icon-thinking {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 2A4.5 4.5 0 0 0 5 6.5c0 1.5.75 2.82 1.9 3.64A3 3 0 0 1 8 13v1'/%3E%3Cpath d='M14.5 2A4.5 4.5 0 0 1 19 6.5c0 1.5-.75 2.82-1.9 3.64A3 3 0 0 0 16 13v1'/%3E%3Cpath d='M7 18h10'/%3E%3Cpath d='M10 21h4'/%3E%3C/svg%3E");
-}
-.icon-independence {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
-}
-.icon-parent {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
-}
-.icon-school {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a4860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10v6M2 10l10-5 10 5-10 5z'/%3E%3Cpath d='M6 12v5c0 1.5 2 3 6 3s6-1.5 6-3v-5'/%3E%3C/svg%3E");
+.img-frame:hover .img-slot-icon {
+    transform: scale(1.1) rotate(-8deg);
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* ----- HERO (Enhanced) ----- */
 .hero {
     position: relative;
     padding: 76px 0 90px;
@@ -503,6 +613,25 @@ nav a:not(.btn-nav):hover::after {
     letter-spacing: -0.5px;
 }
 
+/* ===== NEW: Typewriter effect for hero ===== */
+.hero-content h1 .highlight {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-content h1 .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--color-gold);
+    opacity: 0.4;
+    border-radius: 4px;
+    z-index: -1;
+}
+
 .hero-description {
     font-size: 18px;
     color: var(--color-ink-soft);
@@ -522,6 +651,9 @@ nav a:not(.btn-nav):hover::after {
     font-weight: 600;
     color: var(--color-ink-soft);
     margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .hero-visual {
@@ -546,6 +678,7 @@ nav a:not(.btn-nav):hover::after {
     gap: 12px;
     box-shadow: var(--shadow-lift);
     max-width: 220px;
+    animation: float 3.5s ease-in-out infinite;
 }
 
 .floating-card span {
@@ -564,9 +697,35 @@ nav a:not(.btn-nav):hover::after {
     color: var(--color-ink-soft);
 }
 
-/* ============================================================
-   BRAND POSITION
-   ============================================================ */
+/* ===== NEW: Trust Badges ===== */
+.trust-badges {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink-soft);
+}
+
+.trust-badge .badge-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* ----- BRAND POSITION (Enhanced) ----- */
 .brand-position {
     padding: 100px 0;
     background: var(--color-white);
@@ -616,10 +775,14 @@ nav a:not(.btn-nav):hover::after {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    transition: transform 0.25s var(--ease);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    cursor: default;
 }
 
-.stat-card:hover { transform: translateX(4px); }
+.stat-card:hover {
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
 
 .stat-card h3 {
     font-size: 16px;
@@ -640,9 +803,7 @@ nav a:not(.btn-nav):hover::after {
     flex-shrink: 0;
 }
 
-/* ============================================================
-   SECTION HEADERS
-   ============================================================ */
+/* ----- SECTION HEADERS (Enhanced) ----- */
 .section-header {
     text-align: center;
     max-width: 700px;
@@ -661,9 +822,16 @@ nav a:not(.btn-nav):hover::after {
     margin-top: 12px;
 }
 
-/* ============================================================
-   GROWTH PATH — signature process section
-   ============================================================ */
+/* ===== NEW: Decorative divider ===== */
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+    border-radius: 4px;
+    margin: 16px auto 0;
+}
+
+/* ----- GROWTH PATH (Enhanced) ----- */
 .support-cycle {
     padding: 100px 0 60px;
     background: var(--color-sage);
@@ -709,15 +877,16 @@ nav a:not(.btn-nav):hover::after {
     text-align: center;
     box-shadow: var(--shadow-card);
     border-top: 4px solid var(--color-teal);
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    transition: transform 0.4s var(--ease-bounce), box-shadow 0.4s var(--ease), border-color 0.3s var(--ease);
+    cursor: default;
 }
 
 .path-step:nth-child(3n+2) .path-card { border-top-color: var(--color-gold); }
 .path-step:nth-child(3n+3) .path-card { border-top-color: var(--color-primary); }
 
 .path-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-hover);
     border-color: var(--color-accent);
 }
 
@@ -749,11 +918,11 @@ nav a:not(.btn-nav):hover::after {
     align-items: center;
     justify-content: center;
     margin: 6px auto 14px;
-    transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+    transition: transform 0.4s var(--ease-bounce), background 0.4s var(--ease);
 }
 
 .path-card:hover .path-node {
-    transform: scale(1.1);
+    transform: scale(1.12) rotate(-6deg);
     background: var(--color-teal);
 }
 
@@ -791,9 +960,7 @@ nav a:not(.btn-nav):hover::after {
     opacity: 0.5;
 }
 
-/* ============================================================
-   SERVICES
-   ============================================================ */
+/* ----- SERVICES (Enhanced) ----- */
 .services {
     padding: 100px 0;
     background: var(--color-white);
@@ -813,16 +980,17 @@ nav a:not(.btn-nav):hover::after {
     background: var(--color-cream);
     border-radius: var(--radius-lg);
     padding: 34px 32px;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    transition: transform 0.4s var(--ease-bounce), box-shadow 0.4s var(--ease);
     border: 1px solid rgba(10,72,96,0.06);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    cursor: default;
 }
 
 .pathway-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
 }
 
 .pathway-card .service-icon {
@@ -834,6 +1002,11 @@ nav a:not(.btn-nav):hover::after {
     background: var(--color-white);
     border-radius: 50%;
     margin-bottom: 16px;
+    transition: transform 0.4s var(--ease-bounce);
+}
+
+.pathway-card:hover .service-icon {
+    transform: scale(1.1) rotate(-6deg);
 }
 
 .pathway-card .service-icon .icon-search,
@@ -855,9 +1028,7 @@ nav a:not(.btn-nav):hover::after {
     flex-grow: 1;
 }
 
-/* ============================================================
-   FRAMEWORK PILLARS (5 developmental pillars)
-   ============================================================ */
+/* ----- FRAMEWORK PILLARS (Enhanced) ----- */
 .framework {
     padding: 100px 0;
     background: var(--color-sage);
@@ -876,9 +1047,10 @@ nav a:not(.btn-nav):hover::after {
     border-radius: var(--radius-lg);
     padding: 28px 22px;
     box-shadow: var(--shadow-card);
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    transition: transform 0.4s var(--ease-bounce), box-shadow 0.4s var(--ease);
     display: flex;
     flex-direction: column;
+    cursor: default;
 }
 
 .pillar-card:nth-child(1) { margin-top: 0; }
@@ -888,8 +1060,8 @@ nav a:not(.btn-nav):hover::after {
 .pillar-card:nth-child(5) { margin-top: 0; }
 
 .pillar-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-hover);
 }
 
 .pillar-card .pillar-icon {
@@ -901,6 +1073,20 @@ nav a:not(.btn-nav):hover::after {
     background: var(--color-sage);
     border-radius: 50%;
     margin-bottom: 14px;
+    transition: transform 0.4s var(--ease-bounce), background 0.4s var(--ease);
+}
+
+.pillar-card:hover .pillar-icon {
+    transform: scale(1.1);
+    background: var(--color-teal);
+}
+
+.pillar-card:hover .pillar-icon .icon-self-awareness,
+.pillar-card:hover .pillar-icon .icon-self-management,
+.pillar-card:hover .pillar-icon .icon-social-connection,
+.pillar-card:hover .pillar-icon .icon-thinking,
+.pillar-card:hover .pillar-icon .icon-independence {
+    filter: brightness(0) invert(1);
 }
 
 .pillar-card .pillar-icon .icon-self-awareness,
@@ -940,15 +1126,21 @@ nav a:not(.btn-nav):hover::after {
     padding: 5px 11px;
     border-radius: 50px;
     white-space: nowrap;
+    transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+    cursor: default;
 }
 
-/* ============================================================
-   WHY GROWING MINDS
-   ============================================================ */
+.skill-tag:hover {
+    transform: scale(1.05);
+    background: var(--color-gold);
+}
+
+/* ----- WHY GROWING MINDS (Enhanced) ----- */
 .why-grow {
     padding: 90px 0;
     background: var(--color-white);
     text-align: center;
+    position: relative;
 }
 
 .why-grow-inner {
@@ -959,6 +1151,8 @@ nav a:not(.btn-nav):hover::after {
 .why-grow-icon {
     font-size: 38px;
     margin-bottom: 18px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
 }
 
 .why-grow blockquote {
@@ -977,9 +1171,7 @@ nav a:not(.btn-nav):hover::after {
     margin: 0 auto;
 }
 
-/* ============================================================
-   RESOURCES
-   ============================================================ */
+/* ----- RESOURCES (Enhanced) ----- */
 .resources {
     padding: 100px 0;
     background: var(--color-sage);
@@ -1003,11 +1195,13 @@ nav a:not(.btn-nav):hover::after {
     padding: 10px 22px;
     border-radius: 50px;
     box-shadow: var(--shadow-card);
-    transition: transform 0.2s var(--ease), color 0.2s;
+    transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s var(--ease), color 0.3s;
+    cursor: default;
 }
 
 .resource-tag:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: var(--shadow-lift);
     color: var(--color-teal-dark);
 }
 
@@ -1019,9 +1213,7 @@ nav a:not(.btn-nav):hover::after {
     margin-bottom: 32px;
 }
 
-/* ============================================================
-   ABOUT PREVIEW
-   ============================================================ */
+/* ----- ABOUT PREVIEW (Enhanced) ----- */
 .about {
     padding: 100px 0;
     background: var(--color-sage);
@@ -1050,9 +1242,7 @@ nav a:not(.btn-nav):hover::after {
 .about-content .btn { margin-top: 8px; }
 .about-content p { margin-bottom: 14px; }
 
-/* ============================================================
-   CTA SECTION
-   ============================================================ */
+/* ----- CTA SECTION (Enhanced) ----- */
 .cta-section {
     padding: 90px 0;
     background: linear-gradient(120deg, var(--color-primary) 0%, #0d5972 100%);
@@ -1085,9 +1275,77 @@ nav a:not(.btn-nav):hover::after {
     flex-wrap: wrap;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* ===== NEW: Testimonials Section ===== */
+.testimonials {
+    padding: 80px 0;
+    background: var(--color-white);
+    overflow: hidden;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 30px 28px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.4s var(--ease-bounce), box-shadow 0.4s var(--ease);
+    border: 1px solid rgba(10,72,96,0.04);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimonial-stars {
+    color: var(--color-gold);
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.testimonial-card blockquote {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin-bottom: 12px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
+.testimonial-role {
+    font-size: 12px;
+    color: var(--color-ink-soft);
+    opacity: 0.7;
+}
+
+/* ----- FOOTER (Enhanced) ----- */
 footer {
     background: var(--color-primary-dark);
     color: rgba(255,255,255,0.85);
@@ -1156,13 +1414,13 @@ footer {
 .footer-column ul a {
     font-size: 14px;
     opacity: 0.72;
-    transition: opacity 0.2s, padding-left 0.2s;
+    transition: opacity 0.2s, padding-left 0.2s, color 0.2s;
 }
 
 .footer-column ul a:hover {
     opacity: 1;
     color: var(--color-teal);
-    padding-left: 3px;
+    padding-left: 4px;
 }
 
 .footer-bottom {
@@ -1173,9 +1431,7 @@ footer {
     background: rgba(0,0,0,0.15);
 }
 
-/* ============================================================
-   PAGE HERO (about / services / contact)
-   ============================================================ */
+/* ----- PAGE HERO (Enhanced) ----- */
 .page-hero {
     position: relative;
     padding: 90px 0 64px;
@@ -1199,9 +1455,7 @@ footer {
     color: var(--color-ink-soft);
 }
 
-/* ============================================================
-   ABOUT PAGE
-   ============================================================ */
+/* ----- ABOUT PAGE (Enhanced) ----- */
 .founder-details {
     padding: 80px 0 20px;
     background: var(--color-white);
@@ -1243,6 +1497,13 @@ footer {
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+    cursor: default;
+}
+
+.credential-chip:hover {
+    transform: translateY(-2px);
+    background: var(--color-gold);
 }
 
 .credential-chip strong { font-size: 15px; }
@@ -1263,6 +1524,12 @@ footer {
     padding: 32px;
     border-radius: var(--radius-lg);
     border-left: 4px solid var(--color-teal);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.mission:hover, .vision:hover {
+    transform: translateX(6px);
+    box-shadow: var(--shadow-card);
 }
 
 .mission h3, .vision h3 {
@@ -1280,9 +1547,20 @@ footer {
 .philosophy h2 { margin-bottom: 18px; }
 .philosophy p { margin-bottom: 14px; font-size: 16.5px; }
 
-/* ============================================================
-   SERVICES PAGE
-   ============================================================ */
+/* ===== NEW: Philosophy decorative quote ===== */
+.philosophy-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--color-primary);
+    padding: 24px 32px;
+    background: var(--color-sage);
+    border-radius: var(--radius-md);
+    margin: 24px 0 0;
+    border-left: 4px solid var(--color-gold);
+}
+
+/* ----- SERVICES PAGE (Enhanced) ----- */
 .service-details {
     padding: 80px 0;
     background: var(--color-white);
@@ -1320,6 +1598,11 @@ footer {
     background: var(--color-sage);
     border-radius: 50%;
     margin-bottom: 16px;
+    transition: transform 0.4s var(--ease-bounce);
+}
+
+.service-detail:hover .service-detail-icon {
+    transform: scale(1.1) rotate(-4deg);
 }
 
 .service-detail-icon .icon-search,
@@ -1365,6 +1648,13 @@ footer {
     display: flex;
     align-items: center;
     gap: 7px;
+    transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+    cursor: default;
+}
+
+.tag-list li:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: var(--color-gold);
 }
 
 .tag-list li::before {
@@ -1391,6 +1681,11 @@ footer {
     font-size: 15px;
     color: var(--color-ink-soft);
     line-height: 1.5;
+    transition: transform 0.2s var(--ease);
+}
+
+.journey-list li:hover {
+    transform: translateX(4px);
 }
 
 .journey-num {
@@ -1428,6 +1723,12 @@ footer {
     padding: 18px 22px;
     border-radius: var(--radius-md);
     border-left: 3px solid var(--color-gold);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.programme-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-card);
 }
 
 .programme-item h4 {
@@ -1441,9 +1742,7 @@ footer {
     margin: 0;
 }
 
-/* ============================================================
-   CONTACT PAGE
-   ============================================================ */
+/* ----- CONTACT PAGE (Enhanced) ----- */
 .contact-page {
     padding: 80px 0;
     background: var(--color-white);
@@ -1468,6 +1767,11 @@ footer {
     position: relative;
     font-size: 15px;
     color: var(--color-ink-soft);
+    transition: transform 0.2s var(--ease);
+}
+
+.contact-can-list li:hover {
+    transform: translateX(4px);
 }
 
 .contact-can-list li::before {
@@ -1483,6 +1787,13 @@ footer {
     gap: 16px;
     align-items: flex-start;
     margin-top: 24px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    transition: background 0.3s var(--ease);
+}
+
+.contact-item:hover {
+    background: var(--color-sage);
 }
 
 .contact-icon {
@@ -1495,6 +1806,13 @@ footer {
     background: var(--color-sage);
     border-radius: 50%;
     flex-shrink: 0;
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.1);
+    background: var(--color-teal);
+    color: var(--color-white);
 }
 
 .contact-item h4 {
@@ -1515,6 +1833,11 @@ footer {
     background: var(--color-sage);
     padding: 40px;
     border-radius: var(--radius-lg);
+    transition: box-shadow 0.3s var(--ease);
+}
+
+.contact-form:hover {
+    box-shadow: var(--shadow-soft);
 }
 
 .contact-form h2 { margin-bottom: 20px; }
@@ -1538,7 +1861,7 @@ footer {
     font-family: inherit;
     font-size: 15px;
     background: var(--color-white);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .form-group input:focus,
@@ -1546,11 +1869,36 @@ footer {
     outline: none;
     border-color: var(--color-teal);
     box-shadow: 0 0 0 4px rgba(44, 181, 165, 0.12);
+    transform: scale(1.01);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: var(--color-teal-dark);
+}
+
+/* ===== NEW: Form success state ===== */
+.form-success {
+    display: none;
+    padding: 20px;
+    background: #d4edda;
+    border-radius: var(--radius-sm);
+    color: #155724;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.form-success.show {
+    display: block;
+    animation: fadeIn 0.5s var(--ease);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----- RESPONSIVE (Enhanced) ----- */
 @media (max-width: 1100px) {
     .pillar-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1569,6 +1917,10 @@ footer {
         margin-bottom: 0 !important;
     }
     .growth-baseline { display: none; }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1597,6 +1949,12 @@ footer {
     .pathway-card--wide {
         grid-column: 1;
     }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1612,6 +1970,7 @@ footer {
         transition: transform 0.35s var(--ease);
         z-index: 205;
         padding: 90px 32px 32px;
+        overflow-y: auto;
     }
 
     nav.nav-open { transform: translateX(0); }
@@ -1635,6 +1994,14 @@ footer {
     }
 
     .nav-scrim.is-visible { display: block; }
+
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1643,6 +2010,7 @@ footer {
     .hero-buttons .btn,
     .cta-buttons .btn {
         width: 100%;
+        justify-content: center;
     }
 
     .pillar-grid {
@@ -1680,5 +2048,9 @@ footer {
     }
     .pathway-card--wide {
         grid-column: 1;
+    }
+
+    .trust-badges {
+        justify-content: center;
     }
 }
