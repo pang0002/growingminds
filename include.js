@@ -875,32 +875,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     e.stopPropagation();
                     e.preventDefault();
                     
-                    // Toggle this specific card
-                    card.classList.toggle('expanded');
+                    // Toggle ONLY this specific card
+                    // Check current state
+                    const isExpanded = card.classList.contains('expanded');
+                    
+                    // Toggle the clicked card
+                    if (isExpanded) {
+                        card.classList.remove('expanded');
+                    } else {
+                        card.classList.add('expanded');
+                    }
+                    
+                    // Debug log to verify
+                    console.log('Card toggled:', card.querySelector('h3')?.textContent || 'unknown', 'Expanded:', !isExpanded);
                 });
-            }
-            
-            // OPTIONAL: If you want clicking the whole card header to toggle
-            // Find the header
-            const header = card.querySelector('.service-card-header');
-            if (header) {
-                // Clone and replace to remove old listeners
-                const newHeader = header.cloneNode(true);
-                header.parentNode.replaceChild(newHeader, header);
-                
-                // Re-find the toggle button inside the new header
-                const newToggleBtn = newHeader.querySelector('.expand-toggle');
-                
-                if (newToggleBtn) {
-                    newToggleBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        card.classList.toggle('expanded');
-                    });
-                }
-                
-                // Optional: Click on header background toggles too (excluding the button)
-                // We handle this with the button above only to avoid double triggers
             }
         });
     }

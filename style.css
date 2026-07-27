@@ -1519,23 +1519,44 @@ header.is-scrolled::after {
     margin-top: 40px;
 }
 
-/* ----- EXPANDABLE CARDS ----- */
-.expandable-card {
-    background: var(--color-cream, #FFFDF8);
-    border: 1px solid rgba(10, 72, 96, 0.08);
-    border-radius: var(--radius-lg, 20px);
-    padding: 28px 28px 24px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.4s var(--ease);
-    position: relative;
-    cursor: default;
+/* Card body hidden by default - using max-height approach instead of display */
+.expandable-card .service-card-body {
+    max-height: 0;
+    opacity: 0;
     overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: max-height 0.5s var(--ease), opacity 0.5s var(--ease), padding 0.5s var(--ease);
+    visibility: hidden;
 }
 
-.expandable-card:hover {
-    border-color: var(--color-teal, #2CB5A5);
-    box-shadow: 0 8px 24px rgba(10, 72, 96, 0.06);
+/* Show card body when card has .expanded class */
+.expandable-card.expanded .service-card-body {
+    max-height: 500px;
+    opacity: 1;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    visibility: visible;
+    overflow: visible;
+}
+
+/* Toggle button styling */
+.expand-toggle::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--color-teal-dark);
+    transition: all 0.4s var(--ease);
+}
+
+.expandable-card.expanded .expand-toggle::after {
+    content: '✕';
+    color: var(--color-white);
+}
+
+.expandable-card.expanded .expand-toggle {
+    background: var(--color-teal);
+    transform: rotate(0deg);
 }
 
 /* Card Header */
@@ -1618,32 +1639,6 @@ header.is-scrolled::after {
 
 .expand-toggle:hover::after {
     color: var(--color-white);
-}
-
-/* Expanded state - toggle icon */
-.expandable-card.expanded .expand-toggle {
-    background: var(--color-teal);
-    transform: rotate(45deg);
-}
-
-.expandable-card.expanded .expand-toggle::after {
-    content: '✕';
-    color: var(--color-white);
-}
-
-/* Card Body - Hidden by default */
-.expandable-card .service-card-body {
-    display: none;
-}
-
-/* Show card body when card has .expanded class */
-.expandable-card.expanded .service-card-body {
-    display: block;
-}
-
-/* Expanded body */
-.expandable-card.expanded .service-card-body {
-    padding-top: 20px;
 }
 
 .service-description {
