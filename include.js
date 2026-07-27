@@ -615,6 +615,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = document.getElementById('processCard');
         const progressBar = document.getElementById('timelineProgress');
 
+        // Tracking state and timer configurations
+        let currentIndex = 0;
+        let timer = null;
+        const intervalTime = 5000; // Delay in milliseconds (5 seconds)
+        const processSection = document.getElementById('process'); // Reference for hover detection
+
         if (!stepNodes.length || !card) return;
 
         // Preserving EXACT original titles, subtitles, and descriptions
@@ -687,6 +693,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = processData[index];
             if (!data) return;
 
+            stepNodes.forEach((node, idx) => {
+                if (idx === index) {
+                    node.classList.add('active');
+                } else {
+                    node.classList.remove('active');
+                }
+            });
+
             // Update timeline bar fill width
             if (progressBar) {
                 const percentage = (index / (processData.length - 1)) * 100;
@@ -726,6 +740,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 180);
         }
 
+                // Added: Start auto-advancing through steps
+        function startAutoSwap() {
+            stopAutoSwap(); // Prevent duplicate running timers
+            timer = setInterval(() => {
+                const nextIndex = (currentIndex + 1) % processData.length;
+                updateStep(nextIndex);
+            }, intervalTime);
+        }
+
+        // Added: Clear the running timer
+        function stopAutoSwap() {
+            if (timer) clearInterval(timer);
+        }
+
         stepNodes.forEach(function (node) {
             node.addEventListener('click', function () {
                 const index = parseInt(this.getAttribute('data-step'), 10);
@@ -736,15 +764,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.add('active');
 
                 updateStep(index);
+                startAutoSwap();
             });
         });
 
-        // Initialize initial state (Step 1)
-        // Set first node as active
-        if (stepNodes.length > 0) {
-            stepNodes[0].classList.add('active');
-        }
+        // Pause timer when parent hovers mouse over the section to read
+            if (processSection) {
+                processSection.addEventListener('mouseenter', stopAutoSwap);
+                processSection.addEventListener('mouseleave', startAutoSwap);
+            }
         updateStep(0);
+        startAutoSwap();
     }
 
     // Initialize Process Timeline
