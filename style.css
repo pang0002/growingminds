@@ -346,8 +346,6 @@ header.is-scrolled::after {
     border-radius: 18px;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
-    /* background: var(--color-white); */  /* REMOVED - no white background */
-    box-shadow: 0 4px 20px rgba(10, 72, 96, 0.10);
     flex-shrink: 0;
 }
 
