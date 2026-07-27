@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initFrameworkTabs();
 
     // ============================================================
-    // INTERACTIVE PROCESS TIMELINE
+    // INTERACTIVE PROCESS TIMELINE - FIXED AUTO-ROTATION
     // ============================================================
     function initProcessTimeline() {
         const stepNodes = document.querySelectorAll('.step-node');
@@ -693,7 +693,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = processData[index];
             if (!data) return;
 
-            stepNodes.forEach((node, idx) => {
+            // Update current index
+            currentIndex = index;
+
+            // Update step nodes
+            stepNodes.forEach(function (node, idx) {
                 if (idx === index) {
                     node.classList.add('active');
                 } else {
@@ -740,41 +744,46 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 180);
         }
 
-                // Added: Start auto-advancing through steps
+        // Start auto-advancing through steps
         function startAutoSwap() {
             stopAutoSwap(); // Prevent duplicate running timers
-            timer = setInterval(() => {
+            timer = setInterval(function () {
                 const nextIndex = (currentIndex + 1) % processData.length;
                 updateStep(nextIndex);
             }, intervalTime);
         }
 
-        // Added: Clear the running timer
+        // Clear the running timer
         function stopAutoSwap() {
-            if (timer) clearInterval(timer);
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
         }
 
+        // Click handler for step nodes
         stepNodes.forEach(function (node) {
             node.addEventListener('click', function () {
                 const index = parseInt(this.getAttribute('data-step'), 10);
-
-                stepNodes.forEach(function (n) {
-                    n.classList.remove('active');
-                });
-                this.classList.add('active');
-
+                
+                // Reset auto-swap timer on manual interaction
+                stopAutoSwap();
                 updateStep(index);
-                startAutoSwap();
+                startAutoSwap(); // Restart auto-swap after manual click
             });
         });
 
         // Pause timer when parent hovers mouse over the section to read
-            if (processSection) {
-                processSection.addEventListener('mouseenter', stopAutoSwap);
-                processSection.addEventListener('mouseleave', startAutoSwap);
-            }
+        if (processSection) {
+            processSection.addEventListener('mouseenter', stopAutoSwap);
+            processSection.addEventListener('mouseleave', startAutoSwap);
+        }
+
+        // Initialize with first step
         updateStep(0);
-        startAutoSwap();
+        
+        // Start auto-swap after a short delay
+        setTimeout(startAutoSwap, 1000);
     }
 
     // Initialize Process Timeline
