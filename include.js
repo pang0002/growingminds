@@ -850,4 +850,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Process Timeline
     initProcessTimeline();
 
+    // ============================================================
+    // EXPANDABLE CARDS
+    // ============================================================
+    function initExpandableCards() {
+        const cards = document.querySelectorAll('.expandable-card');
+        
+        cards.forEach(function(card) {
+            const toggleBtn = card.querySelector('.expand-toggle');
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    card.classList.toggle('expanded');
+                    
+                    // Optional: Close other cards when one opens
+                    // Uncomment below if you want only one card open at a time
+                    /*
+                    cards.forEach(function(otherCard) {
+                        if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                            otherCard.classList.remove('expanded');
+                        }
+                    });
+                    */
+                });
+            }
+        });
+    }
+
+    // Initialize Expandable Cards
+    initExpandableCards();
+
 });
