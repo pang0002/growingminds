@@ -1530,7 +1530,7 @@ header.is-scrolled::after {
     transition: all 0.4s var(--ease);
     position: relative;
     cursor: default;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .expandable-card:hover {
@@ -1585,26 +1585,6 @@ header.is-scrolled::after {
     line-height: 1.3;
 }
 
-/* ============================================================
-   FIX: EXPANDABLE CARD BODY - HIDE/SHOW
-   ============================================================ */
-
-/* HIDDEN BY DEFAULT */
-.expandable-card .service-card-body {
-    display: none;
-}
-
-/* SHOW WHEN EXPANDED - USING !important to ensure it works */
-.expandable-card.expanded .service-card-body {
-    display: block !important;
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-
-/* ============================================================
-   END FIX
-   ============================================================ */
-
 /* Expand Toggle Button */
 .expand-toggle {
     background: none;
@@ -1647,8 +1627,38 @@ header.is-scrolled::after {
 
 .expandable-card.expanded .expand-toggle .plus-icon {
     color: var(--color-white);
-    /* The + will change to ✕ via CSS content or you can use JavaScript to change text */
 }
+
+/* ============================================================
+   CARD BODY - HIDE/SHOW WITH MAX-HEIGHT
+   ============================================================ */
+
+/* HIDDEN BY DEFAULT */
+.expandable-card .service-card-body {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 0 0 0;
+    margin: 0;
+    visibility: hidden;
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                padding 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* SHOW WHEN EXPANDED */
+.expandable-card.expanded .service-card-body {
+    max-height: 800px;
+    opacity: 1;
+    padding: 20px 0 10px 0;
+    visibility: visible;
+    overflow: visible;
+}
+
+/* ============================================================
+   END CARD BODY FIX
+   ============================================================ */
 
 .service-description {
     font-size: 15px;
