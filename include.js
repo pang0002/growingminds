@@ -1,6 +1,7 @@
 // include.js
 document.addEventListener('DOMContentLoaded', function () {
 
+    // ----- HEADER BEHAVIOR: scrolled state + mobile nav -----
     function initHeaderBehavior() {
         var header = document.querySelector('header');
         var nav = document.getElementById('site-nav');
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // Scroll-triggered header shrink
         if (header) {
             var onScroll = function () {
                 if (window.scrollY > 12) {
@@ -49,7 +51,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Load header
+    // ----- SMOOTH SCROLL FOR ANCHOR LINKS -----
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    var headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    // ----- LOAD HEADER -----
     fetch('header.html')
         .then(function (response) {
             if (!response.ok) { throw new Error('Header not found'); }
@@ -58,10 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function (data) {
             document.querySelector('header').outerHTML = data;
             initHeaderBehavior();
+            initSmoothScroll();
         })
         .catch(function (error) { console.error('Error loading header:', error); });
 
-    // Load footer
+    // ----- LOAD FOOTER -----
     fetch('footer.html')
         .then(function (response) {
             if (!response.ok) { throw new Error('Footer not found'); }
