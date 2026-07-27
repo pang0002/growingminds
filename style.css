@@ -1,6 +1,6 @@
 /* ============================================================
    GROWING MINDS — ENHANCED DESIGN SYSTEM
-   Full updated stylesheet with all improvements
+   Full updated stylesheet with larger logo & no career emoji
    ============================================================ */
 
 /* ----- RESET & BASE ----- */
@@ -41,10 +41,10 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Header specific variables */
-    --header-height: 80px;
-    --header-padding-y: 16px;
-    --header-logo-size: 52px;
+    /* Header specific variables - ENLARGED LOGO */
+    --header-height: 88px;
+    --header-padding-y: 14px;
+    --header-logo-size: 68px;
     --header-logo-hover-scale: 1.08;
 }
 
@@ -265,7 +265,7 @@ em {
 }
 
 /* ============================================================
-   HEADER - ENHANCED WITH LOGO ONLY, CAREER LINK & BETTER UX
+   HEADER - ENHANCED WITH LARGER LOGO & NO CAREER EMOJI
    ============================================================ */
 
 header {
@@ -322,7 +322,7 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   LOGO - Enhanced with Only Logo (No Text)
+   LOGO - ENLARGED VERSION
    ============================================================ */
 
 .logo {
@@ -338,7 +338,7 @@ header.is-scrolled::after {
     position: relative;
 }
 
-/* Logo Container with enhanced visual treatment */
+/* Logo Container - Larger size */
 .logo-crop {
     display: block;
     height: var(--header-logo-size);
@@ -346,19 +346,19 @@ header.is-scrolled::after {
     max-height: var(--header-logo-size);
     max-width: var(--header-logo-size);
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 16px;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
     background: var(--color-white);
-    box-shadow: 0 2px 12px rgba(10, 72, 96, 0.06);
+    box-shadow: 0 2px 16px rgba(10, 72, 96, 0.08);
 }
 
-/* Glow ring around logo on hover */
+/* Glow ring around logo on hover - enhanced */
 .logo-crop::before {
     content: '';
     position: absolute;
-    inset: -3px;
-    border-radius: 17px;
+    inset: -4px;
+    border-radius: 20px;
     background: linear-gradient(135deg, var(--color-teal), var(--color-gold), var(--color-teal));
     background-size: 300% 300%;
     opacity: 0;
@@ -373,10 +373,10 @@ header.is-scrolled::after {
 
 .logo a:hover .logo-crop {
     transform: scale(var(--header-logo-hover-scale)) rotate(-2deg);
-    box-shadow: 0 8px 32px rgba(44, 181, 165, 0.25);
+    box-shadow: 0 8px 40px rgba(44, 181, 165, 0.30);
 }
 
-/* Logo Image */
+/* Logo Image - Larger */
 .logo-img {
     height: 100%;
     width: 100%;
@@ -384,7 +384,7 @@ header.is-scrolled::after {
     object-position: center;
     display: block;
     transition: transform 0.5s var(--ease-bounce);
-    padding: 4px;
+    padding: 6px;
 }
 
 .logo a:hover .logo-img {
@@ -397,7 +397,7 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   NAVIGATION - Enhanced with Career Link
+   NAVIGATION - Enhanced with Career Link (No Emoji)
    ============================================================ */
 
 #site-nav {
@@ -467,17 +467,7 @@ header.is-scrolled::after {
     background: var(--color-gold);
 }
 
-/* Career link special styling */
-#site-nav a[href="careers.html"] {
-    position: relative;
-}
-
-#site-nav a[href="careers.html"]::before {
-    content: '🌟';
-    font-size: 14px;
-    margin-right: 4px;
-}
-
+/* Career link - No emoji, just clean text */
 #site-nav a[href="careers.html"]:not(.btn-nav)::after {
     background: var(--color-gold);
 }
@@ -2298,6 +2288,11 @@ footer {
 
 /* Desktop - Medium */
 @media (max-width: 992px) {
+    :root {
+        --header-logo-size: 58px;
+        --header-height: 80px;
+    }
+
     .header-container {
         padding: 0 24px;
     }
@@ -2314,10 +2309,6 @@ footer {
     .btn-nav {
         padding: 10px 20px;
         font-size: 13px;
-    }
-    
-    :root {
-        --header-logo-size: 44px;
     }
 
     /* Other responsive adjustments */
@@ -2380,9 +2371,9 @@ footer {
 /* Tablet and Mobile Navigation */
 @media (max-width: 768px) {
     :root {
-        --header-height: 64px;
+        --header-height: 72px;
         --header-padding-y: 10px;
-        --header-logo-size: 40px;
+        --header-logo-size: 50px;
     }
 
     header {
@@ -2446,11 +2437,9 @@ footer {
         background: rgba(44, 181, 165, 0.12);
     }
 
-    /* Career link in mobile */
+    /* Career link - No emoji in mobile */
     #site-nav a[href="careers.html"]::before {
-        content: '🌟';
-        font-size: 16px;
-        margin-right: 8px;
+        display: none;
     }
 
     #site-nav .btn-nav {
@@ -2589,9 +2578,9 @@ footer {
 /* Small Mobile */
 @media (max-width: 480px) {
     :root {
-        --header-height: 56px;
+        --header-height: 64px;
         --header-padding-y: 8px;
-        --header-logo-size: 36px;
+        --header-logo-size: 44px;
     }
 
     .header-container {
@@ -2599,7 +2588,7 @@ footer {
     }
 
     .logo-crop {
-        border-radius: 10px;
+        border-radius: 12px;
     }
 
     .logo a:hover .logo-crop {
