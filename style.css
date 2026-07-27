@@ -1334,7 +1334,7 @@ header.is-scrolled::after {
     width: 0%;
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
     border-radius: 4px;
-    transition: width 0.4s var(--ease);
+    transition: width 0.6s ease-in-out;
 }
 
 .timeline-steps {
@@ -1491,14 +1491,6 @@ header.is-scrolled::after {
     color: var(--color-ink-soft);
 }
 
-.timeline-progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
-    border-radius: 4px;
-    transition: width 0.6s ease-in-out; /* Smooth transition for step jumps */
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .timeline-line { display: none; }
@@ -1512,9 +1504,8 @@ header.is-scrolled::after {
     .process-card { padding: 24px; }
 }
 
-/* ----- SERVICES ----- */
 /* ============================================================
-   SERVICES OVERVIEW — 4 EXPANDABLE CARDS
+   SERVICES OVERVIEW — 4 CARD GRID & UNDERLINED BUTTONS
    ============================================================ */
 .services-overview {
     padding: 90px 0;
@@ -1528,7 +1519,7 @@ header.is-scrolled::after {
     margin-top: 40px;
 }
 
-/* ----- EXPANDABLE CARD ----- */
+/* ----- EXPANDABLE CARDS ----- */
 .expandable-card {
     background: var(--color-cream, #FFFDF8);
     border: 1px solid rgba(10, 72, 96, 0.08);
@@ -1616,7 +1607,8 @@ header.is-scrolled::after {
     transform: rotate(90deg);
 }
 
-.expand-toggle .plus-icon {
+.expand-toggle::after {
+    content: '+';
     font-size: 22px;
     font-weight: 300;
     color: var(--color-teal-dark);
@@ -1624,33 +1616,33 @@ header.is-scrolled::after {
     line-height: 1;
 }
 
-.expand-toggle:hover .plus-icon {
+.expand-toggle:hover::after {
     color: var(--color-white);
 }
 
-/* Expanded state */
+/* Expanded state - toggle icon */
 .expandable-card.expanded .expand-toggle {
     background: var(--color-teal);
     transform: rotate(45deg);
 }
 
-.expandable-card.expanded .expand-toggle .plus-icon {
+.expandable-card.expanded .expand-toggle::after {
+    content: '✕';
     color: var(--color-white);
 }
 
 /* Card Body - Hidden by default */
-.service-card-body {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.5s var(--ease);
-    padding-top: 0;
+.expandable-card .service-card-body {
+    display: none;
+}
+
+/* Show card body when card has .expanded class */
+.expandable-card.expanded .service-card-body {
+    display: block;
 }
 
 /* Expanded body */
 .expandable-card.expanded .service-card-body {
-    max-height: 500px;
-    opacity: 1;
     padding-top: 20px;
 }
 
@@ -1757,7 +1749,9 @@ header.is-scrolled::after {
     }
 }
 
-/* ----- FRAMEWORK ----- */
+/* ============================================================
+   FRAMEWORK
+   ============================================================ */
 .framework {
     padding: 100px 0;
     background: var(--color-sage);
@@ -2838,13 +2832,6 @@ footer {
         gap: 40px;
     }
 
-    .pathway-grid {
-        grid-template-columns: 1fr;
-    }
-    .pathway-card--wide {
-        grid-column: 1;
-    }
-
     .testimonials-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
@@ -3007,11 +2994,6 @@ footer {
         justify-content: center;
     }
 
-    .pillar-grid {
-        grid-template-columns: 1fr;
-    }
-    .pillar-card:nth-child(3n+2) { margin-top: 0; }
-
     .why-grow blockquote { font-size: 21px; }
 
     .footer-links {
@@ -3030,17 +3012,7 @@ footer {
 
     .programme-grid { grid-template-columns: 1fr; }
 
-    .path-steps { flex-wrap: wrap; }
-    .path-step { flex: 1 1 calc(50% - 10px); }
-
     .floating-card { left: 0; bottom: -16px; padding: 12px 16px; }
-
-    .pathway-grid {
-        grid-template-columns: 1fr;
-    }
-    .pathway-card--wide {
-        grid-column: 1;
-    }
 
     .trust-badges {
         justify-content: center;
@@ -3157,5 +3129,27 @@ footer {
 
     .brand-goal .goal-headline {
         font-size: 22px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .expandable-card {
+        padding: 18px 16px 16px;
+    }
+
+    .service-title-group h3 {
+        font-size: 17px;
+    }
+
+    .expand-toggle {
+        width: 28px;
+        height: 28px;
+    }
+
+    .expand-toggle::after {
+        font-size: 18px;
     }
 }

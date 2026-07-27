@@ -851,36 +851,24 @@ document.addEventListener('DOMContentLoaded', function () {
     initProcessTimeline();
 
     // ============================================================
-    // EXPANDABLE CARDS - ACCORDION BEHAVIOR (ONLY ONE AT A TIME)
+    // EXPANDABLE CARDS - INDEPENDENT TOGGLE (MULTI-EXPANDABLE)
     // ============================================================
     function initExpandableCards() {
         const cards = document.querySelectorAll('.expandable-card');
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            // Find the toggle button inside this specific card
+            // Target the expand/collapse toggle button inside the card
             const toggleBtn = card.querySelector('.expand-toggle');
-            
-            // Allow clicking either the '+' button or the main card header to toggle
-            const clickableTarget = toggleBtn || card.querySelector('.service-card-header');
 
-            if (clickableTarget) {
-                clickableTarget.addEventListener('click', function (e) {
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
 
-                    // Check if THIS specific card is currently expanded
-                    const isCurrentlyExpanded = card.classList.contains('expanded');
-
-                    // 1. Close ALL expandable cards
-                    cards.forEach(function (c) {
-                        c.classList.remove('expanded');
-                    });
-
-                    // 2. If the clicked card wasn't expanded before, expand it now
-                    if (!isCurrentlyExpanded) {
-                        card.classList.add('expanded');
-                    }
+                    // Toggle the expanded class ONLY on this clicked card
+                    // This allows Card 1 and Card 2 to stay open together
+                    card.classList.toggle('expanded');
                 });
             }
         });
