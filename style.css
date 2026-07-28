@@ -1526,6 +1526,7 @@ header.is-scrolled::after {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
     margin-top: 40px;
+    align-items: start;
 }
 
 /* ----- EXPANDABLE CARD ----- */
