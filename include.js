@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================================
     // LOAD HEADER
     // ============================================================
-    fetch('header.html')
+    fetch('header.html', { cache: 'no-store' })
         .then(function (response) {
             if (!response.ok) { throw new Error('Header not found'); }
             return response.text();
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================================
     // LOAD FOOTER
     // ============================================================
-    fetch('footer.html')
+    fetch('footer.html', { cache: 'no-store' })
         .then(function (response) {
             if (!response.ok) { throw new Error('Footer not found'); }
             return response.text();
