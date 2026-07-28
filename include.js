@@ -865,36 +865,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================================
     // EXPANDABLE CARDS - ACCORDION BEHAVIOR (ONLY ONE AT A TIME)
+    // Uses event delegation on the shared grid container instead of a
+    // separate listener per card/button. This is deliberately more
+    // robust than per-element listeners: it can't end up with stale
+    // or missing bindings if the DOM changes, and there's exactly one
+    // listener responsible for the accordion behavior — so there's no
+    // possibility of two separate handlers disagreeing with each other.
     // ============================================================
     function initExpandableCards() {
-        const cards = document.querySelectorAll('.expandable-card');
-        if (!cards.length) return;
+        const cardsContainer = document.querySelector('.services-grid');
+        if (!cardsContainer) return;
 
-        cards.forEach(function (card) {
-            // Find the toggle button inside this specific card
-            const toggleBtn = card.querySelector('.expand-toggle');
-            
-            // Allow clicking either the '+' button or the main card header to toggle
-            const clickableTarget = toggleBtn || card.querySelector('.service-card-header');
+        cardsContainer.addEventListener('click', function (e) {
+            const toggleBtn = e.target.closest('.expand-toggle');
+            const header = e.target.closest('.service-card-header');
+            const trigger = toggleBtn || header;
+            if (!trigger) return;
 
-            if (clickableTarget) {
-                clickableTarget.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+            const card = trigger.closest('.expandable-card');
+            if (!card || !cardsContainer.contains(card)) return;
 
-                    // Check if THIS specific card is currently expanded
-                    const isCurrentlyExpanded = card.classList.contains('expanded');
+            e.preventDefault();
 
-                    // 1. Close ALL expandable cards
-                    cards.forEach(function (c) {
-                        c.classList.remove('expanded');
-                    });
+            const isCurrentlyExpanded = card.classList.contains('expanded');
 
-                    // 2. If the clicked card wasn't expanded before, expand it now
-                    if (!isCurrentlyExpanded) {
-                        card.classList.add('expanded');
-                    }
-                });
+            // Close every expanded card in this grid...
+            cardsContainer.querySelectorAll('.expandable-card.expanded').forEach(function (c) {
+                c.classList.remove('expanded');
+            });
+
+            // ...then re-open only the one that was clicked (unless it
+            // was the one already open, in which case leave it closed).
+            if (!isCurrentlyExpanded) {
+                card.classList.add('expanded');
             }
         });
     }
