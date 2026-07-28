@@ -502,48 +502,56 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   NAV DROPDOWN - VERTICAL LAYOUT
+   NAV DROPDOWN MENU - CLEAN VERTICAL LAYOUT
    ============================================================ */
+
+.nav-dropdown {
+    position: relative;
+}
+
 .nav-caret {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-left: 2px;
+    width: 6px;
+    height: 6px;
+    margin-left: 6px;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
-    transform: rotate(45deg) translateY(-2px);
+    transform: rotate(45deg) translateY(-3px);
     transition: transform 0.25s var(--ease);
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .nav-dropdown:hover .nav-caret,
 .nav-dropdown:focus-within .nav-caret {
-    transform: rotate(225deg) translateY(2px);
+    transform: rotate(225deg) translateY(1px);
 }
 
+/* Dropdown Container */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 8px);
     left: 0;
-    min-width: 220px;
-    background: var(--color-white);
-    border-radius: 14px;
-    box-shadow: 0 16px 40px rgba(10, 72, 96, 0.16);
-    border: 1px solid rgba(10, 72, 96, 0.06);
+    min-width: 240px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(10, 72, 96, 0.12);
+    border: 1px solid rgba(10, 72, 96, 0.08);
     padding: 8px;
     list-style: none;
     margin: 0;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
-    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
-    z-index: 50;
-    /* VERTICAL LAYOUT - items stack vertically */
-    display: flex;
-    flex-direction: column;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 100;
+
+    /* FORCE VERTICAL STACKING */
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2px;
 }
 
+/* Hover & Focus state */
 .nav-dropdown:hover .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
     opacity: 1;
@@ -551,29 +559,37 @@ header.is-scrolled::after {
     transform: translateY(0);
 }
 
+/* List Items */
 .dropdown-menu li {
     width: 100%;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 
+/* Dropdown Link Styles */
 .dropdown-menu a {
     display: block;
     width: 100%;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--color-ink-soft);
-    padding: 11px 14px;
-    border-radius: 9px;
-    white-space: nowrap;
-    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    color: var(--color-ink-soft, #3c5866) !important;
+    padding: 10px 16px !important;
+    border-radius: 8px;
+    white-space: normal; /* Allows long text to wrap cleanly if needed */
+    line-height: 1.4;
+    transition: background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
 }
 
+/* Hover State for Dropdown Items */
 .dropdown-menu a:hover,
 .dropdown-menu a:focus {
-    background: rgba(44, 181, 165, 0.08);
-    color: var(--color-primary);
+    background: rgba(44, 181, 165, 0.08) !important;
+    color: var(--color-primary, #0a4860) !important;
 }
 
+/* Disable default link underline pseudo-element inside dropdowns */
 .dropdown-menu a::after {
     display: none !important;
 }
@@ -3057,6 +3073,9 @@ footer {
         background: rgba(44, 181, 165, 0.04);
         margin: 2px 0 8px;
         padding: 4px;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px;
     }
 
     .dropdown-menu a {
