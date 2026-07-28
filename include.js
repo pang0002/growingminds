@@ -1,6 +1,19 @@
 // include.js - Enhanced with interactions
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Runs an init function in isolation — if it throws, the error is
+    // logged but every OTHER init() call below it still runs normally.
+    // Without this, a single bug in e.g. the parallax or tabs feature
+    // would silently stop every feature listed after it (including the
+    // expandable cards accordion) from ever being wired up.
+    function safeInit(fn, label) {
+        try {
+            fn();
+        } catch (err) {
+            console.error('Growing Minds site: "' + label + '" failed to initialize:', err);
+        }
+    }
+
     // ============================================================
     // SCROLL PROGRESS BAR
     // ============================================================
@@ -16,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             progressBar.style.width = progress + '%';
         }, { passive: true });
     }
-    initScrollProgress();
+    safeInit(initScrollProgress, 'initScrollProgress');
 
     // ============================================================
     // BACK TO TOP BUTTON
@@ -40,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, { passive: true });
     }
-    initBackToTop();
+    safeInit(initBackToTop, 'initBackToTop');
 
     // ============================================================
     // SCROLL REVEAL ANIMATIONS (Intersection Observer)
@@ -70,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-    initScrollReveal();
+    safeInit(initScrollReveal, 'initScrollReveal');
 
     // ============================================================
     // BUTTON RIPPLE EFFECT
@@ -90,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-    initRippleEffect();
+    safeInit(initRippleEffect, 'initRippleEffect');
 
     // ============================================================
     // INTERACTIVE CARDS - Auto-rotating card display
@@ -246,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Call interactive cards after DOM is ready
-    initInteractiveCards();
+    safeInit(initInteractiveCards, 'initInteractiveCards');
 
     // ============================================================
     // HEADER BEHAVIOR
@@ -334,8 +347,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             document.querySelector('header').outerHTML = data;
-            initHeaderBehavior();
-            initSmoothScroll();
+            safeInit(initHeaderBehavior, 'initHeaderBehavior');
+            safeInit(initSmoothScroll, 'initSmoothScroll');
 
             // Set active nav link after header loads
             setTimeout(function () {
@@ -414,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-    initContactForm();
+    safeInit(initContactForm, 'initContactForm');
 
     // ============================================================
     // PARALLAX EFFECT FOR HERO BLOBS
@@ -431,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }, { passive: true });
     }
-    initParallax();
+    safeInit(initParallax, 'initParallax');
 
     // ============================================================
     // ACTIVE NAV LINK HIGHLIGHTING
@@ -605,7 +618,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize Framework Tabs
-    initFrameworkTabs();
+    safeInit(initFrameworkTabs, 'initFrameworkTabs');
 
     // ============================================================
     // INTERACTIVE PROCESS TIMELINE - WITH SMOOTH PROGRESS ANIMATION
@@ -848,50 +861,45 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize Process Timeline
-    initProcessTimeline();
+    safeInit(initProcessTimeline, 'initProcessTimeline');
 
     // ============================================================
-    // EXPANDABLE CARDS - FULLY FIXED WITH EVENT DELEGATION
+    // EXPANDABLE CARDS - ACCORDION BEHAVIOR (ONLY ONE AT A TIME)
     // ============================================================
     function initExpandableCards() {
-        // Get all expandable cards
         const cards = document.querySelectorAll('.expandable-card');
-        
-        if (!cards.length) {
-            console.log('No expandable cards found');
-            return;
-        }
+        if (!cards.length) return;
 
-        console.log('Found ' + cards.length + ' expandable cards');
+        cards.forEach(function (card) {
+            // Find the toggle button inside this specific card
+            const toggleBtn = card.querySelector('.expand-toggle');
+            
+            // Allow clicking either the '+' button or the main card header to toggle
+            const clickableTarget = toggleBtn || card.querySelector('.service-card-header');
 
-        // Use event delegation on the document to catch all clicks
-        document.addEventListener('click', function(e) {
-            // Find if click was on a toggle button or its child
-            const toggleBtn = e.target.closest('.expand-toggle');
-            if (!toggleBtn) return;
-            
-            // Find the parent card
-            const card = toggleBtn.closest('.expandable-card');
-            if (!card) return;
-            
-            // Prevent default and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle only this specific card
-            const isExpanded = card.classList.contains('expanded');
-            
-            if (isExpanded) {
-                card.classList.remove('expanded');
-                console.log('Card closed:', card.querySelector('h3')?.textContent || 'unknown');
-            } else {
-                card.classList.add('expanded');
-                console.log('Card opened:', card.querySelector('h3')?.textContent || 'unknown');
+            if (clickableTarget) {
+                clickableTarget.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Check if THIS specific card is currently expanded
+                    const isCurrentlyExpanded = card.classList.contains('expanded');
+
+                    // 1. Close ALL expandable cards
+                    cards.forEach(function (c) {
+                        c.classList.remove('expanded');
+                    });
+
+                    // 2. If the clicked card wasn't expanded before, expand it now
+                    if (!isCurrentlyExpanded) {
+                        card.classList.add('expanded');
+                    }
+                });
             }
         });
     }
 
     // Initialize Expandable Cards
-    initExpandableCards();
+    safeInit(initExpandableCards, 'initExpandableCards');
 
 });
