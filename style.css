@@ -576,7 +576,7 @@ header.is-scrolled::after {
     color: var(--color-ink-soft, #3c5866) !important;
     padding: 10px 16px !important;
     border-radius: 8px;
-    white-space: normal; /* Allows long text to wrap cleanly if needed */
+    white-space: normal;
     line-height: 1.4;
     transition: background 0.2s ease, color 0.2s ease;
     text-decoration: none;
@@ -2864,6 +2864,252 @@ footer {
 }
 
 /* ============================================================
+   NEW PAGE STYLES - Mission, Philosophy, Service Detail Pages
+   ============================================================ */
+
+/* Service detail pages - enhance the existing styles */
+.service-detail {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-detail .service-detail-content {
+    padding: 0 20px;
+}
+
+.service-detail .tag-list {
+    margin: 18px 0 24px;
+}
+
+.service-detail .journey-list {
+    margin: 18px 0 28px;
+}
+
+/* Introduction section on about.html */
+.about-intro {
+    padding: 60px 0 40px;
+    background: var(--color-white);
+}
+
+.about-intro .intro-content {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-intro .intro-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+}
+
+.about-intro .intro-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+/* Quick links grid on about.html */
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.quick-link-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    text-align: center;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    text-decoration: none;
+    border: 1px solid rgba(10, 72, 96, 0.06);
+    display: block;
+}
+
+.quick-link-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.quick-link-card .ql-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.quick-link-card h4 {
+    font-size: 18px;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+.quick-link-card p {
+    font-size: 14px;
+    color: var(--color-ink-soft);
+}
+
+/* Value cards on mission-vision page */
+.value-card {
+    background: var(--color-sage);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    text-align: center;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-card .value-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.value-card h4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.value-card p {
+    font-size: 15px;
+    color: var(--color-ink-soft);
+}
+
+/* Philosophy page - pillar cards */
+.philosophy-pillar {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    border-left: 4px solid var(--color-teal);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.philosophy-pillar:hover {
+    transform: translateX(6px);
+    box-shadow: var(--shadow-card);
+}
+
+.philosophy-pillar:nth-child(even) {
+    border-left-color: var(--color-gold);
+}
+
+.philosophy-pillar h4 {
+    font-size: 18px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.philosophy-pillar p {
+    font-size: 15px;
+    color: var(--color-ink-soft);
+}
+
+/* Services overview cards on services.html */
+.services-overview-card {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    border: 1px solid rgba(10, 72, 96, 0.08);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    text-decoration: none;
+    display: block;
+}
+
+.services-overview-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.services-overview-card .card-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.services-overview-card .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.services-overview-card .card-keyword {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-teal-dark);
+    background: rgba(44, 181, 165, 0.12);
+    padding: 4px 10px;
+    border-radius: 50px;
+}
+
+.services-overview-card h3 {
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.services-overview-card p {
+    font-size: 15px;
+    color: var(--color-ink-soft);
+    margin-bottom: 16px;
+}
+
+/* Careers page */
+.careers-intro {
+    padding: 80px 0;
+    background: var(--color-white);
+}
+
+.careers-intro .careers-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.careers-intro .careers-content h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.careers-intro .careers-content p {
+    font-size: 17px;
+    color: var(--color-ink-soft);
+    line-height: 1.8;
+}
+
+/* Responsive adjustments for new pages */
+@media (max-width: 768px) {
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .value-card {
+        padding: 24px 20px;
+    }
+    
+    .philosophy-pillar {
+        padding: 24px 20px;
+    }
+}
+
+/* ============================================================
    RESPONSIVE HEADER
    ============================================================ */
 
@@ -3210,6 +3456,10 @@ footer {
     .logo-text-next {
         display: none !important;
     }
+
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Small Mobile */
@@ -3279,5 +3529,10 @@ footer {
 
     .brand-goal .goal-headline {
         font-size: 22px;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
