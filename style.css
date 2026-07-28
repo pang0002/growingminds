@@ -502,7 +502,7 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   NAV DROPDOWN ("About" > Meet Our Founder / Mission & Vision / Philosophy)
+   NAV DROPDOWN - VERTICAL LAYOUT
    ============================================================ */
 .nav-caret {
     display: inline-block;
@@ -525,7 +525,7 @@ header.is-scrolled::after {
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
-    min-width: 230px;
+    min-width: 220px;
     background: var(--color-white);
     border-radius: 14px;
     box-shadow: 0 16px 40px rgba(10, 72, 96, 0.16);
@@ -538,6 +538,10 @@ header.is-scrolled::after {
     transform: translateY(-8px);
     transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
     z-index: 50;
+    /* VERTICAL LAYOUT - items stack vertically */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .nav-dropdown:hover .dropdown-menu,
@@ -549,6 +553,7 @@ header.is-scrolled::after {
 
 .dropdown-menu li {
     width: 100%;
+    list-style: none;
 }
 
 .dropdown-menu a {
@@ -560,6 +565,7 @@ header.is-scrolled::after {
     padding: 11px 14px;
     border-radius: 9px;
     white-space: nowrap;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .dropdown-menu a:hover,
