@@ -63,8 +63,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Unified background utility classes — every page section uses one of these (or is transparent by
-   default) so the whole site reads as one continuous canvas instead of stacked color blocks. */
 .section-white-bg,
 .section-sage-bg {
     background: transparent;
@@ -747,8 +745,8 @@ header.is-scrolled::after {
    ============================================================ */
 
 .scroll-progress {
-    position: fixed;
-    top: var(--header-height);
+    position: absolute;
+    bottom: 0;         
     left: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold), var(--color-accent));
