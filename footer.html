@@ -1,19 +1,22 @@
-<!-- footer.html -->
 <footer>
     <div class="container footer-container">
-        <!-- Column 1: Brand -->
+        <!-- Column 1: Brand & Bio -->
         <div class="footer-brand">
-            <img src="images/logo.png" alt="Growing Minds" class="logo-img-footer" />
-            <p>Building the Skills Behind Learning</p>
+            <a href="index.html" class="footer-logo-link">
+                <img src="images/logo.png" alt="Growing Minds" class="logo-img-footer" />
+            </a>
+            <p class="brand-tagline">Building the Skills Behind Learning</p>
+            <p class="brand-desc">Empowering children through tailored cognitive and learning support across Malaysia.</p>
         </div>
 
-        <!-- Column 2: Quick Links -->
+        <!-- Column 2: Navigation & Services -->
         <div class="footer-column">
-            <h4>Quick Links</h4>
+            <h4>Explore</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="meet-founder.html">Meet Our Founder</a></li>
+                <li><a href="philosophy.html">Our Philosophy</a></li>
                 <li><a href="careers.html">Careers</a></li>
             </ul>
         </div>
@@ -24,34 +27,36 @@
             <ul>
                 <li><a href="services.html">All Services</a></li>
                 <li><a href="services.html#assessment">Assessment</a></li>
-                <li><a href="services.html#one-to-one">1:1 Support</a></li>
+                <li><a href="services.html#one-to-one">1 to 1 Support</a></li>
                 <li><a href="services.html#groups">Small Groups</a></li>
             </ul>
         </div>
 
-        <!-- Column 4: About -->
-        <div class="footer-column">
-            <h4>About</h4>
-            <ul>
-                <li><a href="meet-founder.html">Meet Our Founder</a></li>
-                <li><a href="mission-vision.html">Our Mission &amp; Vision</a></li>
-                <li><a href="philosophy.html">Our Philosophy</a></li>
-            </ul>
-        </div>
-
-        <!-- Column 5: Contact -->
-        <div class="footer-column">
-            <h4>Contact</h4>
-            <ul>
-                <li><a href="https://wa.me/60123456789" target="_blank">WhatsApp</a></li>
-                <li><a href="mailto:hello@growingminds.com.my">Email</a></li>
-                <li><a href="contact.html">Book a Consultation</a></li>
-            </ul>
+        <!-- Column 4: Quick Contact / CTA -->
+        <div class="footer-column footer-contact-col">
+            <h4>Get in Touch</h4>
+            <div class="footer-contact-actions">
+                <a href="https://wa.me/60123456789" target="_blank" class="footer-btn btn-whatsapp" aria-label="Chat on WhatsApp">
+                    <span class="btn-icon">💬</span> Chat on WhatsApp
+                </a>
+                <a href="mailto:hello@growingminds.com.my" class="footer-btn btn-email" aria-label="Send Email">
+                    <span class="btn-icon">✉️</span> Email Us
+                </a>
+                <a href="contact.html" class="footer-btn btn-consult" aria-label="Book Consultation">
+                    <span class="btn-icon">📅</span> Book Consultation
+                </a>
+            </div>
         </div>
     </div>
+
+    <!-- Footer Bottom -->
     <div class="footer-bottom">
-        <div class="container">
+        <div class="container footer-bottom-container">
             <p>&copy; 2026 Growing Minds. All rights reserved.</p>
+            <ul class="footer-legal">
+                <li><a href="contact.html">Privacy Policy</a></li>
+                <li><a href="contact.html">Terms of Service</a></li>
+            </ul>
         </div>
     </div>
 </footer>
