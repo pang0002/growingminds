@@ -100,23 +100,34 @@ em {
 }
 
 /* ============================================================
-   UNIFIED BACKGROUND & SECTION SPACING SYSTEM
+   UNIFIED BACKGROUND SYSTEM
+   One continuous warm-cream canvas runs under the whole site.
+   Content sections alternate between exactly two tones (white
+   and a soft sage tint) for gentle rhythm — never more than
+   that, and never a hard edge/border between them. Hero and CTA
+   sections get a soft directional gradient into that canvas.
    ============================================================ */
 
-/* Section background utility classes */
-.section-sage-bg {
-    background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-sage) 15%, var(--color-sage) 85%, var(--color-cream) 100%);
+body {
+    background: var(--color-cream);
 }
 
+/* The only two content-section tones used anywhere on the site */
+.section-bg-white,
 .section-white-bg {
     background: var(--color-white);
+}
+
+.section-bg-tint,
+.section-sage-bg {
+    background: var(--color-sage);
 }
 
 .section-cream-bg {
     background: var(--color-cream);
 }
 
-/* Standardized Page Hero Background */
+/* Standardized page hero — identical structure on every page */
 .page-hero {
     position: relative;
     padding: 90px 0 70px;
@@ -125,12 +136,26 @@ em {
     text-align: center;
 }
 
+.page-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
 /* ============================================================
    UNIFIED BLOB SYSTEM
+   Soft blurred-glow accents — restrained and consistent rather
+   than a lumpy "clip-art" shape. Sizing/position is fixed per
+   context below, so blobs never need inline style overrides in
+   the HTML: just <div class="blob blob-teal"></div>.
+
+   Color pairing is deliberate, not random: every hero pairs
+   teal (the anchor colour, always top-right) with ONE second
+   colour (bottom-left) — gold for practical/service pages,
+   purple for reflective/About pages. CTA sections always use
+   teal + gold, site-wide, no exceptions.
    ============================================================ */
 
-/* Ensure all sections with blobs are relative containers */
-section, .hero, .page-hero, .cta-section, .brand-position, 
+section, .hero, .page-hero, .cta-section, .brand-position,
 .framework, .services-overview, .testimonials, .resources,
 .process-section, .why-grow, .philosophy-section, .pillars-section,
 .mission-vision, .core-values, .founder-details, .contact-page,
@@ -142,46 +167,58 @@ section, .hero, .page-hero, .cta-section, .brand-position,
 .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.40;
+    filter: blur(70px);
+    opacity: 0.26;
     pointer-events: none;
     z-index: 0;
 }
 
-.blob-teal {
-    background: var(--color-teal);
+.blob-teal { background: var(--color-teal); animation: float 8s ease-in-out infinite; }
+.blob-gold { background: var(--color-gold); animation: float-slow 10s ease-in-out infinite reverse; }
+.blob-purple { background: var(--color-accent); animation: float 9s ease-in-out infinite; }
+.blob-blue { background: var(--color-primary); animation: float-slow 7s ease-in-out infinite; }
+
+/* Fixed sizing/position per context — this is what removes the
+   need for any inline style="" on a blob, anywhere on the site */
+.page-hero .blob-teal {
+    width: 340px;
+    height: 340px;
+    top: -120px;
+    right: -100px;
 }
 
-.blob-gold {
-    background: var(--color-gold);
+.page-hero .blob-gold,
+.page-hero .blob-purple {
+    width: 260px;
+    height: 260px;
+    bottom: -100px;
+    left: -80px;
 }
 
-.blob-purple {
-    background: var(--color-accent);
-}
+/* Homepage hero sizing lives with the .hero block itself, further
+   down this file — kept there since it's genuinely a different
+   section with its own full ruleset already. */
 
-.blob-blue {
-    background: var(--color-primary);
-}
-
-/* Floating animations for blobs */
-.blob-teal { animation: float 8s ease-in-out infinite; }
-.blob-gold { animation: float-slow 10s ease-in-out infinite reverse; }
-.blob-purple { animation: float 9s ease-in-out infinite; }
-.blob-blue { animation: float-slow 7s ease-in-out infinite; }
+/* Homepage-only sections with their own single accent blob */
+.brand-position .blob-teal { width: 340px; height: 340px; top: -40px; left: -140px; opacity: 0.20; }
+.brand-position .blob-purple { width: 260px; height: 260px; bottom: 40px; right: -100px; opacity: 0.18; }
+.process-section .blob-gold { width: 280px; height: 280px; top: -60px; right: -100px; opacity: 0.16; }
+.framework .blob-blue { width: 300px; height: 300px; top: 20%; right: -100px; }
+.services-overview .blob-purple { width: 260px; height: 260px; bottom: -60px; left: -90px; opacity: 0.14; }
+.testimonials .blob-teal { width: 240px; height: 240px; top: -50px; right: -80px; opacity: 0.12; }
 
 /* Responsive blob scaling */
 @media (max-width: 768px) {
     .blob {
-        filter: blur(35px);
-        opacity: 0.30;
+        filter: blur(40px);
+        opacity: 0.20;
     }
 }
 
 @media (max-width: 480px) {
     .blob {
-        filter: blur(25px);
-        opacity: 0.25;
+        filter: blur(28px);
+        opacity: 0.18;
         width: 180px !important;
         height: 180px !important;
     }
@@ -336,38 +373,8 @@ section, .hero, .page-hero, .cta-section, .brand-position,
     margin-bottom: 14px;
 }
 
-/* ----- ORGANIC BLOB DECORATIONS (Legacy) ----- */
-.blob {
-    position: absolute;
-    z-index: 0;
-    filter: blur(2px);
-    opacity: 0.55;
-    pointer-events: none;
-}
-
-.blob-teal {
-    background: linear-gradient(135deg, rgba(44,181,165,0.28), rgba(44,181,165,0.05));
-    border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
-    animation: float-slow 6s ease-in-out infinite;
-}
-
-.blob-gold {
-    background: linear-gradient(135deg, rgba(247,201,72,0.35), rgba(247,201,72,0.06));
-    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
-    animation: float 7s ease-in-out infinite reverse;
-}
-
-.blob-blue {
-    background: linear-gradient(135deg, rgba(10,72,96,0.14), rgba(10,72,96,0.03));
-    border-radius: 55% 45% 40% 60% / 40% 60% 40% 60%;
-    animation: float-slow 5s ease-in-out infinite;
-}
-
-.blob-purple {
-    background: linear-gradient(135deg, rgba(142,125,240,0.30), rgba(142,125,240,0.05));
-    border-radius: 50% 50% 42% 58% / 58% 42% 58% 42%;
-    animation: float 6.5s ease-in-out infinite;
-}
+/* Legacy organic-blob block removed — consolidated into the
+   UNIFIED BLOB SYSTEM near the top of this file. */
 
 /* ============================================================
    HEADER
@@ -1072,7 +1079,7 @@ header.is-scrolled::after {
 .hero {
     position: relative;
     padding: 76px 0 90px;
-    background: linear-gradient(180deg, #f2f8f5 0%, var(--color-cream) 45%, var(--color-white) 100%);
+    background: linear-gradient(180deg, var(--color-sage) 0%, var(--color-cream) 100%);
     overflow: hidden;
 }
 
@@ -2462,22 +2469,9 @@ footer {
 }
 
 /* ============================================================
-   PAGE HERO
+   PAGE HERO (background/blob sizing consolidated into the
+   UNIFIED BACKGROUND SYSTEM near the top of this file)
    ============================================================ */
-
-.page-hero {
-    position: relative;
-    padding: 90px 0 80px;
-    background: linear-gradient(180deg, #f2f8f5 0%, var(--color-cream) 45%, var(--color-white) 100%);
-    text-align: center;
-    overflow: hidden;
-}
-
-.page-hero .blob-teal { width: 300px; height: 300px; top: -100px; right: -80px; }
-.page-hero .blob-gold { width: 200px; height: 200px; bottom: -80px; left: -60px; }
-.page-hero .blob-purple { width: 220px; height: 220px; bottom: -70px; left: -50px; }
-
-.page-hero .container { position: relative; z-index: 1; }
 
 .page-hero h1 {
     font-size: 46px;
