@@ -4028,21 +4028,21 @@ footer {
 }
 
 .carousel-viewport {
-    overflow: visible;                 /* important – don’t clip the tail */
+    overflow: visible;
     border-radius: 0;
 }
 
 .carousel-track {
     position: relative;
-    min-height: 440px;                 /* give more room so text doesn’t get cut */
+    min-height: 480px;          /* more height so nothing gets cut */
 }
 
 .carousel-card {
     position: absolute;
     inset: 0;
     background: var(--color-white);
-    border-radius: 28px 28px 28px 28px;
-    padding: 40px 36px 48px;           /* extra bottom padding for the tail */
+    border-radius: 28px;
+    padding: 40px 36px 56px;    /* extra bottom space for the tail + text */
     box-shadow: var(--shadow-card);
     border: 1px solid rgba(10, 72, 96, 0.06);
     opacity: 0;
@@ -4053,21 +4053,21 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    overflow: visible;
 }
 
-/* Tiny speech-bubble tail */
+/* Speech-bubble tail – bottom left */
 .carousel-card::after {
     content: "";
     position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -14px;
+    left: 48px;                 /* sits near the left side */
     width: 0;
     height: 0;
     border-left: 14px solid transparent;
     border-right: 14px solid transparent;
-    border-top: 14px solid #ffffff;
-    filter: drop-shadow(0 4px 4px rgba(10, 72, 96, 0.06));
+    border-top: 16px solid #ffffff;
+    filter: drop-shadow(0 3px 3px rgba(10, 72, 96, 0.07));
 }
 
 .carousel-card.active {
@@ -4103,11 +4103,11 @@ footer {
 
 .carousel-card-desc {
     font-size: 15.5px;
-    line-height: 1.7;
+    line-height: 1.65;
     color: var(--color-ink-soft);
     max-width: 520px;
-    margin: 0 auto 20px;
-    flex-shrink: 0;          /* prevent the description from being squashed */
+    margin: 0 auto 22px;
+    flex-shrink: 0;
 }
 
 .carousel-card-features {
@@ -4116,7 +4116,7 @@ footer {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11px;
     width: 100%;
     max-width: 420px;
     text-align: left;
