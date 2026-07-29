@@ -2425,9 +2425,10 @@ footer {
 
 .footer-container {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+    gap: 28px;
     padding-bottom: 48px;
+    align-items: start;
 }
 
 .footer-brand {
@@ -2437,16 +2438,17 @@ footer {
 }
 
 .footer-brand .logo-img-footer {
-    height: 96px;
-    max-height: 96px;
+    height: 88px;
+    max-height: 88px;
     width: auto;
-    max-width: 260px;
+    max-width: 240px;
     object-fit: contain;
-    margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.08);  /* ← Add subtle background */
-    padding: 8px 12px;                       /* ← Add padding */
-    border-radius: 12px;                     /* ← Rounded corners */
-    border: 1px solid rgba(255, 255, 255, 0.06); 
+    margin-bottom: 12px;
+    /* Light solid background so the coloured logo stays crisp on the dark footer */
+    background: #ffffff;
+    padding: 10px 14px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
 
 .footer-brand .logo-text {
@@ -2459,12 +2461,21 @@ footer {
 .footer-brand p {
     margin-top: 10px;
     font-size: 14px;
-    opacity: 0.7;
+    opacity: 0.85;
     max-width: 220px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
 }
 
 .footer-links {
     display: contents;
+}
+
+@media (max-width: 1100px) {
+    .footer-container {
+        grid-template-columns: 1.15fr 0.9fr 0.9fr 0.9fr 0.9fr;
+        gap: 20px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -2481,6 +2492,11 @@ footer {
     
     .footer-brand p {
         max-width: 100%;
+    }
+
+    .footer-brand .logo-img-footer {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -2523,8 +2539,11 @@ footer {
     padding-left: 4px;
 }
 
-.footer-column:nth-child(3) ul a:hover { color: var(--color-accent); }
-.footer-column:nth-child(4) ul a:hover { color: var(--color-gold); }
+/* Column accent colours on hover (brand is 1st child, then the 4 link columns) */
+.footer-column:nth-child(2) ul a:hover { color: var(--color-teal); }
+.footer-column:nth-child(3) ul a:hover { color: var(--color-gold); }
+.footer-column:nth-child(4) ul a:hover { color: var(--color-accent); }
+.footer-column:nth-child(5) ul a:hover { color: var(--color-gold); }
 
 .footer-bottom {
     padding: 20px 0;
