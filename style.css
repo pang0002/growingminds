@@ -366,10 +366,10 @@ header .logo img,
 .logo-crop {
     display: block;
     height: var(--header-logo-size);
-    width: var(--header-logo-size);
+    width: auto;
     max-height: var(--header-logo-size);
-    max-width: var(--header-logo-size);
-    overflow: hidden;
+    max-width: none;
+    overflow: visible;
     border-radius: 18px;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
@@ -388,8 +388,10 @@ header .logo img,
 }
 
 .logo-img {
-    height: 100%;
-    width: 100%;
+    height: var(--header-logo-size) !important;
+    width: auto !important;
+    max-height: var(--header-logo-size) !important;
+    max-width: none !important;
     object-fit: contain;
     object-position: center;
     display: block;
