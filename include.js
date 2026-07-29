@@ -497,55 +497,54 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 title: "Self-Awareness",
                 icon: "🧠",
-                desc: "Helping children understand their individual learning styles, strengths, and sensory or cognitive boundaries, turning self-doubt into constructive self-knowledge.",
+                desc: "When children understand how they learn — their strengths, preferred styles, and where they need support — self-doubt quietly turns into confidence. We help them build that clear, stigma-free self-knowledge.",
                 features: [
-                    "Identifying individual learning profiles & preferred styles",
-                    "Building emotional and cognitive self-vocabulary",
-                    "Fostering realistic, stigma-free self-acceptance"
+                    "Discover their unique learning profile and preferred styles",
+                    "Build a simple, useful vocabulary for emotions and thinking",
+                    "Develop realistic, positive self-acceptance without labels or shame"
                 ]
             },
             {
                 title: "Self-Management",
                 icon: "🌿",
-                desc: "Equipping children with practical tools to manage emotions, direct focus, handle frustrations, and navigate overwhelming cognitive or environmental inputs.",
+                desc: "Equipping children with practical tools to manage big feelings, stay focused, and handle frustration — so overwhelm doesn’t stop them from learning.",
                 features: [
-                    "Emotion regulation and soothing strategies",
-                    "Focus calibration & task-switching techniques",
-                    "Impulse control and stress tolerance routines"
+                    "Emotion regulation and calming strategies that actually work",
+                    "Focus tools and smooth task-switching techniques",
+                    "Simple routines that build impulse control and stress tolerance"
                 ]
             },
             {
                 title: "Social Connection",
                 icon: "💬",
-                desc: "Nurturing genuine interpersonal empathy, dynamic communication, and relationship-building skills to help children connect authentically with peers and adults.",
+                desc: "Helping children connect authentically — reading social cues, expressing themselves clearly, and building real friendships.",
                 features: [
-                    "Perspective-taking & empathy building",
-                    "Clear verbal and non-verbal expression",
-                    "Collaborative play and conflict resolution"
+                    "Perspective-taking and genuine empathy",
+                    "Clear verbal and non-verbal communication",
+                    "Collaborative play and calm conflict resolution"
                 ]
             },
             {
                 title: "Thinking Skills",
                 icon: "⚙️",
-                desc: "Strengthening core cognitive processes—working memory, flexible thinking, problem-solving, and planning—that drive academic and real-world success.",
+                desc: "Strengthening the core cognitive muscles — working memory, flexible thinking, and problem-solving — that power both school success and everyday confidence.",
                 features: [
-                    "Working memory & information processing",
-                    "Cognitive flexibility & adaptability to change",
-                    "Sequential planning & problem-solving"
+                    "Stronger working memory and information processing",
+                    "Cognitive flexibility when plans change",
+                    "Sequential planning and practical problem-solving"
                 ]
             },
             {
                 title: "Learning Independence",
                 icon: "🚀",
-                desc: "Empowering children to take active ownership of their learning journeys, developing the confidence and initiative needed for lifelong independence.",
+                desc: "Empowering children to take ownership of their learning — asking for help when they need it, setting goals, and building the resilience that lasts a lifetime.",
                 features: [
-                    "Self-advocacy & asking for help effectively",
-                    "Goal setting and self-monitoring progress",
-                    "Building intrinsic motivation and resilience"
+                    "Self-advocacy: knowing how and when to ask for support",
+                    "Goal-setting and simple progress tracking",
+                    "Intrinsic motivation and bounce-back resilience"
                 ]
             }
         ];
-
         let currentIndex = 0;
         let autoTimer = null;
         let isPaused = false;

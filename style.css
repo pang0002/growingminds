@@ -4041,7 +4041,7 @@ footer {
     position: absolute;
     inset: 0;
     background: var(--color-white);
-    border-radius: var(--radius-lg);
+    border-radius: 32px 32px 32px 12px;   /* gentle speech-bubble feel */
     padding: 40px 36px 36px;
     box-shadow: var(--shadow-card);
     border: 1px solid rgba(10, 72, 96, 0.06);
