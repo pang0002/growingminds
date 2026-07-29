@@ -22,11 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.className = 'scroll-progress';
         document.body.prepend(progressBar);
 
-        window.addEventListener('scroll', function () {
+        let ticking = false;
+        function update() {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             progressBar.style.width = progress + '%';
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
         }, { passive: true });
     }
     safeInit(initScrollProgress, 'initScrollProgress');
@@ -45,11 +53,19 @@ document.addEventListener('DOMContentLoaded', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        window.addEventListener('scroll', function () {
+        let ticking = false;
+        function updateVisibility() {
             if (window.scrollY > 400) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');
+            }
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                requestAnimationFrame(updateVisibility);
+                ticking = true;
             }
         }, { passive: true });
     }
@@ -303,14 +319,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Scroll-triggered header shrink
         if (header) {
+            var headerTicking = false;
             var onScroll = function () {
                 if (window.scrollY > 12) {
                     header.classList.add('is-scrolled');
                 } else {
                     header.classList.remove('is-scrolled');
                 }
+                headerTicking = false;
             };
-            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('scroll', function () {
+                if (!headerTicking) {
+                    requestAnimationFrame(onScroll);
+                    headerTicking = true;
+                }
+            }, { passive: true });
             onScroll();
         }
     }
@@ -432,19 +455,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================================
     // PARALLAX EFFECT FOR HERO BLOBS
     // ============================================================
-    function initParallax() {
-        const blobs = document.querySelectorAll('.hero .blob, .page-hero .blob');
-        if (!blobs.length) return;
-
-        window.addEventListener('scroll', function () {
-            const scrollY = window.scrollY;
-            blobs.forEach(function (blob, index) {
-                const speed = 0.03 + (index * 0.01);
-                blob.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-            });
-        }, { passive: true });
-    }
-    safeInit(initParallax, 'initParallax');
+    // Removed: this used to set blob.style.transform on every scroll
+    // event, which directly fought the CSS "float"/"float-slow"
+    // keyframe animations already applied to the same blobs (both
+    // animate the transform property). That conflict — plus firing
+    // on every raw scroll event — was the main cause of visible
+    // stutter while scrolling. The blobs still move gently via their
+    // existing CSS animations, so no JS is needed here.
 
     // ============================================================
     // ACTIVE NAV LINK HIGHLIGHTING

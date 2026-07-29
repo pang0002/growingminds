@@ -2712,7 +2712,7 @@ footer {
 /* Pillars Section Layout */
 .pillars-section {
     padding: 80px 0 90px;
-    background: var(--color-cream);
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 15%, var(--color-cream) 85%, var(--color-white) 100%);
 }
 
 .pillars-grid {
