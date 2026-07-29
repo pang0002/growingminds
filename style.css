@@ -4034,17 +4034,20 @@ footer {
 
 .carousel-track {
     position: relative;
-    min-height: 480px;          /* more height so nothing gets cut */
+    min-height: 500px;               /* enough room for all text */
 }
 
 .carousel-card {
     position: absolute;
     inset: 0;
-    background: var(--color-white);
-    border-radius: 28px;
-    padding: 40px 36px 56px;    /* extra bottom space for the tail + text */
-    box-shadow: var(--shadow-card);
-    border: 1px solid rgba(10, 72, 96, 0.06);
+    background: #ffffff;
+    /* Soft, slightly irregular corners – more playful */
+    border-radius: 36px 32px 32px 28px;
+    padding: 42px 38px 58px;
+    box-shadow: 
+        0 8px 24px rgba(10, 72, 96, 0.07),
+        0 2px 6px rgba(10, 72, 96, 0.04);
+    border: 1px solid rgba(10, 72, 96, 0.05);
     opacity: 0;
     transform: translateX(24px) scale(0.98);
     pointer-events: none;
@@ -4056,18 +4059,30 @@ footer {
     overflow: visible;
 }
 
-/* Speech-bubble tail – bottom left */
 .carousel-card::after {
     content: "";
     position: absolute;
-    bottom: -14px;
-    left: 48px;                 /* sits near the left side */
-    width: 0;
-    height: 0;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-top: 16px solid #ffffff;
-    filter: drop-shadow(0 3px 3px rgba(10, 72, 96, 0.07));
+    bottom: -11px;
+    left: 44px;
+    width: 22px;
+    height: 22px;
+    background: #ffffff;
+    transform: rotate(45deg);
+    border-radius: 4px;
+    box-shadow: 3px 3px 6px rgba(10, 72, 96, 0.06);
+    z-index: -1;
+}
+
+.carousel-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+    border-radius: 0 0 4px 4px;
+    opacity: 0.7;
 }
 
 .carousel-card.active {
