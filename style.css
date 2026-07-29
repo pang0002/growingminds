@@ -2387,8 +2387,8 @@ header.is-scrolled::after {
 
 /* ----- FOOTER ----- */
 footer {
-    background-color: var(--color-primary);
-    color: rgba(255, 255, 255, 0.88);
+    background-color: var(--color-cream); /* Changed to warm cream */
+    color: var(--color-ink-soft);         /* Text changed to dark blue */
     padding-top: 56px;
     font-family: var(--font-body);
 }
@@ -2401,7 +2401,7 @@ footer {
     align-items: start;
 }
 
-/* --- Brand & Logo Fix --- */
+/* --- Brand --- */
 .footer-brand {
     display: flex;
     flex-direction: column;
@@ -2432,7 +2432,7 @@ footer {
     font-family: var(--font-display);
     font-size: 15px;
     font-weight: 600;
-    color: var(--color-gold);
+    color: var(--color-primary); /* Changed to dark blue */
     margin: 0;
     line-height: 1.4;
     max-width: 240px;
@@ -2440,7 +2440,7 @@ footer {
 
 /* --- Standard Link Columns --- */
 .footer-column h4 {
-    color: var(--color-white);
+    color: var(--color-primary); /* Changed to dark blue */
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 16px;
@@ -2470,24 +2470,24 @@ footer {
 
 .footer-column ul a {
     font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-ink-soft); /* Changed to soft dark blue */
     text-decoration: none;
     display: inline-block;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-column ul a:hover {
-    color: var(--color-white);
+    color: var(--color-teal-dark); /* Changed to teal on hover */
     transform: translateX(4px);
 }
 
 /* --- Footer Bottom Bar --- */
 .footer-bottom {
     padding: 20px 0;
-    background: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 72, 96, 0.04); /* Very faint dark blue tint */
+    border-top: 1px solid rgba(10, 72, 96, 0.08); /* Soft dark border */
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-ink-soft); /* Changed to dark blue */
 }
 
 .footer-bottom-container {
@@ -2507,13 +2507,13 @@ footer {
 }
 
 .footer-legal a {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-ink-soft); /* Changed to dark blue */
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-legal a:hover {
-    color: var(--color-gold);
+    color: var(--color-teal-dark); /* Changed to teal on hover */
 }
 
 /* --- Responsive Adjustments --- */
