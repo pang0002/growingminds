@@ -1144,37 +1144,6 @@ header.is-scrolled::after {
     color: var(--color-ink-soft);
 }
 
-.trust-badges {
-    display: flex;
-    gap: 24px;
-    margin-top: 16px;
-    flex-wrap: wrap;
-}
-
-.trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--color-ink-soft);
-}
-
-.trust-badge .badge-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--color-sage);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-}
-
-.trust-badge:nth-child(3n+1) .badge-icon { background: rgba(44, 181, 165, 0.15); }
-.trust-badge:nth-child(3n+2) .badge-icon { background: rgba(142, 125, 240, 0.15); }
-.trust-badge:nth-child(3n+3) .badge-icon { background: rgba(247, 201, 72, 0.20); }
-
 /* ----- REDESIGNED BRAND POSITION - With Interactive Cards ----- */
 .brand-position {
     padding: 100px 0;
@@ -3878,10 +3847,6 @@ footer {
     }
     .pathway-card--wide {
         grid-column: 1;
-    }
-
-    .trust-badges {
-        justify-content: center;
     }
 
     .brand-goal .goal-headline {
