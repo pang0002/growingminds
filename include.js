@@ -482,160 +482,187 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(initActiveNav, 500);
 
     // ============================================================
-    // FRAMEWORK INTERACTIVE TABS & DATA
+    // FRAMEWORK CAROUSEL
     // ============================================================
-    function initFrameworkTabs() {
-        const tabBtns = document.querySelectorAll('.framework-tabs .tab-btn');
-        if (!tabBtns.length) return;
+    function initFrameworkCarousel() {
+        const carousel = document.getElementById('frameworkCarousel');
+        if (!carousel) return;
 
-        // Framework Data Dictionary
+        const track = document.getElementById('carouselTrack');
+        const dotsContainer = document.getElementById('carouselDots');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+
         const frameworkData = [
             {
-                num: "1",
                 title: "Self-Awareness",
-                subtitle: "Understanding Self as a Learner",
                 icon: "🧠",
-                emoji: "💡",
                 desc: "Helping children understand their individual learning styles, strengths, and sensory or cognitive boundaries, turning self-doubt into constructive self-knowledge.",
                 features: [
                     "Identifying individual learning profiles & preferred styles",
                     "Building emotional and cognitive self-vocabulary",
                     "Fostering realistic, stigma-free self-acceptance"
-                ],
-                quote: "He went from saying 'I'm stupid' to 'I just need a visual tool to process this.' That shift changed everything for us.",
-                author: "— Parent of 8-year-old"
+                ]
             },
             {
-                num: "2",
                 title: "Self-Management",
-                subtitle: "Emotional & Executive Regulation",
                 icon: "🌿",
-                emoji: "🧘‍♂️",
                 desc: "Equipping children with practical tools to manage emotions, direct focus, handle frustrations, and navigate overwhelming cognitive or environmental inputs.",
                 features: [
                     "Emotion regulation and soothing strategies",
                     "Focus calibration & task-switching techniques",
                     "Impulse control and stress tolerance routines"
-                ],
-                quote: "She now uses her break card before a meltdown happens. The difference in her everyday confidence is night and day.",
-                author: "— Parent of 6-year-old"
+                ]
             },
             {
-                num: "3",
                 title: "Social Connection",
-                subtitle: "Relational & Communication Skills",
                 icon: "💬",
-                emoji: "🤝",
                 desc: "Nurturing genuine interpersonal empathy, dynamic communication, and relationship-building skills to help children connect authentically with peers and adults.",
                 features: [
                     "Perspective-taking & empathy building",
                     "Clear verbal and non-verbal expression",
                     "Collaborative play and conflict resolution"
-                ],
-                quote: "Watching him make his first real friend at the studio group was a moment our family will never forget.",
-                author: "— Parent of 7-year-old"
+                ]
             },
             {
-                num: "4",
                 title: "Thinking Skills",
-                subtitle: "Cognitive & Executive Functioning",
                 icon: "⚙️",
-                emoji: "🧩",
                 desc: "Strengthening core cognitive processes—working memory, flexible thinking, problem-solving, and planning—that drive academic and real-world success.",
                 features: [
                     "Working memory & information processing",
                     "Cognitive flexibility & adaptability to change",
                     "Sequential planning & problem-solving"
-                ],
-                quote: "Homework time is no longer a battleground because she now knows how to break tasks into bite-sized steps.",
-                author: "— Parent of 10-year-old"
+                ]
             },
             {
-                num: "5",
                 title: "Learning Independence",
-                subtitle: "Autonomy & Lifelong Resilience",
                 icon: "🚀",
-                emoji: "🌟",
                 desc: "Empowering children to take active ownership of their learning journeys, developing the confidence and initiative needed for lifelong independence.",
                 features: [
                     "Self-advocacy & asking for help effectively",
                     "Goal setting and self-monitoring progress",
                     "Building intrinsic motivation and resilience"
-                ],
-                quote: "He packs his own bag and plans his study time now. The self-reliance he developed is priceless.",
-                author: "— Parent of 11-year-old"
+                ]
             }
         ];
 
-        // DOM References
-        const icon = document.getElementById('pillarIcon');
-        const subtitle = document.getElementById('pillarSubtitle');
-        const title = document.getElementById('pillarTitle');
-        const desc = document.getElementById('pillarDesc');
-        const featuresList = document.getElementById('pillarFeatures');
-        const quote = document.getElementById('pillarQuote');
-        const author = document.getElementById('pillarAuthor');
-        const centerEmoji = document.getElementById('centerEmoji');
-        const pillarNum = document.getElementById('pillarNum');
-        const panel = document.getElementById('pillar-panel');
+        let currentIndex = 0;
+        let autoTimer = null;
+        let isPaused = false;
+        const AUTO_MS = 5500;
 
-        function updatePanel(index) {
-            const data = frameworkData[index];
-
-            // Smooth transition effect
-            panel.style.opacity = '0.4';
-            panel.style.transform = 'translateY(8px)';
-
-            setTimeout(function () {
-                icon.textContent = data.icon;
-                subtitle.textContent = data.subtitle;
-                title.textContent = data.title;
-                desc.textContent = data.desc;
-                quote.textContent = '"' + data.quote + '"';
-                author.textContent = data.author;
-                centerEmoji.textContent = data.emoji;
-                pillarNum.textContent = data.num;
-
-                // Populate features
-                featuresList.innerHTML = '';
-                data.features.forEach(function (feat) {
-                    const li = document.createElement('li');
-                    li.textContent = feat;
-                    featuresList.appendChild(li);
-                });
-
-                panel.style.opacity = '1';
-                panel.style.transform = 'translateY(0)';
-            }, 200);
-        }
-
-        tabBtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const index = parseInt(this.getAttribute('data-pillar'), 10);
-
-                tabBtns.forEach(function (b) {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-selected', 'false');
-                });
-
-                this.classList.add('active');
-                this.setAttribute('aria-selected', 'true');
-
-                updatePanel(index);
-            });
+        // Build cards
+        frameworkData.forEach(function (data, i) {
+            const card = document.createElement('div');
+            card.className = 'carousel-card' + (i === 0 ? ' active' : '');
+            card.setAttribute('data-index', i);
+            card.setAttribute('role', 'tabpanel');
+            card.innerHTML =
+                '<div class="carousel-card-icon">' + data.icon + '</div>' +
+                '<h3 class="carousel-card-title">' + data.title + '</h3>' +
+                '<p class="carousel-card-desc">' + data.desc + '</p>' +
+                '<ul class="carousel-card-features">' +
+                    data.features.map(function (f) {
+                        return '<li>' + f + '</li>';
+                    }).join('') +
+                '</ul>';
+            track.appendChild(card);
         });
 
-        // Initialize with first tab active
-        const firstTab = document.querySelector('.framework-tabs .tab-btn[data-pillar="0"]');
-        if (firstTab) {
-            firstTab.classList.add('active');
-            firstTab.setAttribute('aria-selected', 'true');
-            updatePanel(0);
+        // Build dots
+        frameworkData.forEach(function (_, i) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to ' + frameworkData[i].title);
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+            dot.addEventListener('click', function () {
+                goTo(i);
+                restartAuto();
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const cards = track.querySelectorAll('.carousel-card');
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+        function goTo(index) {
+            if (index < 0) index = frameworkData.length - 1;
+            if (index >= frameworkData.length) index = 0;
+            currentIndex = index;
+
+            cards.forEach(function (card, i) {
+                card.classList.toggle('active', i === currentIndex);
+            });
+            dots.forEach(function (dot, i) {
+                dot.classList.toggle('active', i === currentIndex);
+                dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+            });
         }
+
+        function next() { goTo(currentIndex + 1); }
+        function prev() { goTo(currentIndex - 1); }
+
+        function startAuto() {
+            stopAuto();
+            if (isPaused) return;
+            autoTimer = setInterval(function () {
+                if (!isPaused) next();
+            }, AUTO_MS);
+        }
+
+        function stopAuto() {
+            if (autoTimer) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+        }
+
+        function restartAuto() {
+            stopAuto();
+            startAuto();
+        }
+
+        // Arrow clicks
+        if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restartAuto(); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { next(); restartAuto(); });
+
+        // Pause on hover / touch
+        carousel.addEventListener('mouseenter', function () {
+            isPaused = true;
+            stopAuto();
+        });
+        carousel.addEventListener('mouseleave', function () {
+            isPaused = false;
+            startAuto();
+        });
+
+        // Simple swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        track.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+            stopAuto();
+        }, { passive: true });
+        track.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) next();
+                else prev();
+            }
+            isPaused = false;
+            startAuto();
+        }, { passive: true });
+
+        // Init
+        goTo(0);
+        setTimeout(startAuto, 800);
     }
 
-    // Initialize Framework Tabs
-    safeInit(initFrameworkTabs, 'initFrameworkTabs');
+    // Initialize Framework Carousel
+    safeInit(initFrameworkCarousel, 'initFrameworkCarousel');
 
     // ============================================================
     // INTERACTIVE PROCESS TIMELINE - WITH SMOOTH PROGRESS ANIMATION

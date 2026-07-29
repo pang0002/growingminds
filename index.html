@@ -19,8 +19,8 @@
       "alternateName": "Growing Minds Child Development & Learning Studio",
       "description": "Educational psychology-led Child Development & Learning Studio in Bukit Jalil, Kuala Lumpur, offering learning profile assessments, individualised learning support for children with ADHD, autism and learning differences, small group programmes, and parent & school support.",
       "url": "https://growingminds.com.my/",
-      "telephone": "+60178913963",
-      "email": "hallo.growingminds@gmail.com",
+      "telephone": "+60123456789",
+      "email": "hello@growingminds.com.my",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bukit Jalil, Kuala Lumpur",
@@ -34,7 +34,7 @@
       }
     }
     </script>
-    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="style.css?v=6" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
 
@@ -275,70 +275,23 @@
                 <div class="section-divider"></div>
             </div>
 
-            <div class="framework-interactive reveal">
-                <div class="framework-tabs" role="tablist" aria-label="Framework Pillars">
-                    <button class="tab-btn active" data-pillar="0" role="tab" aria-selected="true" aria-controls="pillar-panel">
-                        <span class="tab-num">01</span>
-                        <span class="tab-text">Self-Awareness</span>
-                    </button>
-                    <button class="tab-btn" data-pillar="1" role="tab" aria-selected="false" aria-controls="pillar-panel">
-                        <span class="tab-num">02</span>
-                        <span class="tab-text">Self-Management</span>
-                    </button>
-                    <button class="tab-btn" data-pillar="2" role="tab" aria-selected="false" aria-controls="pillar-panel">
-                        <span class="tab-num">03</span>
-                        <span class="tab-text">Social Connection</span>
-                    </button>
-                    <button class="tab-btn" data-pillar="3" role="tab" aria-selected="false" aria-controls="pillar-panel">
-                        <span class="tab-num">04</span>
-                        <span class="tab-text">Thinking Skills</span>
-                    </button>
-                    <button class="tab-btn" data-pillar="4" role="tab" aria-selected="false" aria-controls="pillar-panel">
-                        <span class="tab-num">05</span>
-                        <span class="tab-text">Learning Independence</span>
-                    </button>
-                </div>
-
-                <div class="framework-panel" id="pillar-panel" role="tabpanel">
-                    <div class="panel-content">
-                        <div class="panel-badge">
-                            <span class="pillar-icon-box" id="pillarIcon">🔍</span>
-                            <span class="pillar-subtitle" id="pillarSubtitle">Understanding Self as a Learner</span>
-                        </div>
-                        
-                        <h3 id="pillarTitle">Self-Awareness</h3>
-                        <p class="pillar-desc" id="pillarDesc">
-                            Helping children understand their strengths, triggers, and personal learning styles so they feel empowered rather than discouraged when facing new challenges.
-                        </p>
-
-                        <div class="pillar-features">
-                            <h4>What We Build Together:</h4>
-                            <ul id="pillarFeatures">
-                                <li>Recognising personal learning strengths & challenge areas</li>
-                                <li>Building internal vocabulary for thoughts and emotions</li>
-                                <li>Developing healthy self-acceptance without stigma</li>
-                            </ul>
-                        </div>
-
-                        <div class="pillar-quote-box">
-                            <span class="quote-mark">“</span>
-                            <p id="pillarQuote">"He went from saying 'I'm stupid' to 'I just need a drawing tool to process this.' That shift changed everything for us."</p>
-                            <span class="quote-author" id="pillarAuthor">— Parent of 8-year-old</span>
-                        </div>
-                    </div>
-
-                    <div class="panel-visual">
-                        <div class="visual-circle-graphic">
-                            <div class="core-node">
-                                <span id="centerEmoji">💡</span>
-                                <small>Pillar <span id="pillarNum">1</span></small>
-                            </div>
-                            <div class="pulse-ring"></div>
-                            <div class="pulse-ring delay"></div>
-                        </div>
+            <div class="framework-carousel reveal" id="frameworkCarousel">
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Cards injected by JS -->
                     </div>
                 </div>
 
+                <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous pillar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next pillar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+
+                <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Framework pillars">
+                    <!-- Dots injected by JS -->
+                </div>
             </div>
 
         </div>
@@ -617,7 +570,7 @@
     <!-- ============================================================ -->
     <!-- SCRIPTS -->
     <!-- ============================================================ -->
-    <script src="include.js?v=5"></script>
+    <script src="include.js?v=6"></script>
 
 </body>
 </html>
