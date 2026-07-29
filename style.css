@@ -114,19 +114,19 @@ body {
 }
 
 /* ============================================================
-   SECTION SPACING - REDUCED
+   SECTION SPACING - REDUCED TOP SPACING
    ============================================================ */
 
 .section-padding {
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 .section-padding-lg {
-    padding: 70px 0;
+    padding: 35px 0;
 }
 
 .section-padding-sm {
-    padding: 30px 0;
+    padding: 15px 0;
 }
 
 /* ============================================================
@@ -136,7 +136,7 @@ body {
 .section-header {
     text-align: center;
     max-width: 720px;
-    margin: 0 auto 32px;
+    margin: 0 auto 16px;
 }
 
 .section-header .section-tag {
@@ -149,7 +149,7 @@ body {
     border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .section-header h2 {
@@ -158,7 +158,7 @@ body {
     letter-spacing: -0.5px;
     line-height: 1.2;
     color: var(--color-primary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .section-header h2 .highlight {
@@ -191,16 +191,16 @@ body {
     height: 2px;
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
     border-radius: 4px;
-    margin: 12px auto 0;
+    margin: 8px auto 0;
 }
 
 /* ============================================================
-   PAGE HERO - COMPACT
+   PAGE HERO - COMPACT TOP SPACING
    ============================================================ */
 
 .page-hero {
     position: relative;
-    padding: 60px 0 40px;
+    padding: 20px 0 40px;
     background: linear-gradient(180deg, 
         var(--color-sage) 0%, 
         var(--color-cream) 60%, 
@@ -235,7 +235,7 @@ body {
     font-weight: 700;
     font-size: 20px;
     color: var(--color-teal-dark);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .page-hero .eyebrow::before {
@@ -258,7 +258,7 @@ body {
     font-size: 38px;
     font-weight: 700;
     color: var(--color-primary);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     letter-spacing: -0.5px;
     line-height: 1.15;
 }
@@ -956,12 +956,12 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
-   HERO SECTION
+   HERO SECTION - COMPACT TOP SPACING
    ============================================================ */
 
 .hero {
     position: relative;
-    padding: 50px 0 70px;
+    padding: 20px 0 50px;
     background: linear-gradient(180deg, 
         var(--color-sage) 0%, 
         var(--color-cream) 50%, 
@@ -998,7 +998,7 @@ header.is-scrolled::after {
     font-size: 44px;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     letter-spacing: -1px;
     color: var(--color-primary);
 }
@@ -1025,7 +1025,7 @@ header.is-scrolled::after {
     font-size: 17px;
     color: var(--color-ink-soft);
     max-width: 480px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     line-height: 1.8;
 }
 
@@ -1122,11 +1122,33 @@ header.is-scrolled::after {
 }
 
 /* ============================================================
+   ALL MAJOR SECTIONS - UNIFIED TOP PADDING
+   ============================================================ */
+
+.brand-position,
+.process-section,
+.services-overview,
+.framework,
+.why-grow,
+.testimonials,
+.resources,
+.cta-section,
+.founder-details,
+.mission-vision,
+.philosophy-hero,
+.pillars-section,
+.service-details,
+.programmes-section,
+.contact-page {
+    padding-top: 20px;
+}
+
+/* ============================================================
    BRAND POSITION
    ============================================================ */
 
 .brand-position {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: var(--color-white);
     position: relative;
     overflow: hidden;
@@ -1138,7 +1160,7 @@ header.is-scrolled::after {
 .brand-goal {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
     padding: 0 16px;
 }
 
@@ -1147,7 +1169,7 @@ header.is-scrolled::after {
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.5px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     color: var(--color-primary);
 }
 
@@ -1404,7 +1426,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .process-section {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: var(--color-white);
     position: relative;
     overflow: hidden;
@@ -1415,7 +1437,7 @@ header.is-scrolled::after {
 .process-timeline {
     position: relative;
     max-width: 900px;
-    margin: 30px auto 40px auto;
+    margin: 20px auto 30px auto;
     padding: 0 20px;
 }
 
@@ -1625,7 +1647,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .services-overview {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: var(--color-white);
     position: relative;
     overflow: hidden;
@@ -1637,7 +1659,7 @@ header.is-scrolled::after {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    margin-top: 30px;
+    margin-top: 20px;
     align-items: start;
 }
 
@@ -1865,7 +1887,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .framework {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: linear-gradient(180deg, 
         var(--color-white) 0%, 
         var(--color-sage) 15%, 
@@ -1879,7 +1901,7 @@ header.is-scrolled::after {
 .framework .blob-blue { width: 300px; height: 300px; top: 30%; right: -100px; opacity: 0.15; }
 
 .framework-interactive {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -2164,7 +2186,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .why-grow {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: var(--color-white);
     text-align: center;
     position: relative;
@@ -2177,7 +2199,7 @@ header.is-scrolled::after {
 
 .why-grow-icon {
     font-size: 38px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     display: inline-block;
     animation: float 3s ease-in-out infinite;
 }
@@ -2188,7 +2210,7 @@ header.is-scrolled::after {
     font-size: 24px;
     color: var(--color-primary);
     line-height: 1.5;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .why-grow blockquote::before {
@@ -2216,7 +2238,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .testimonials {
-    padding: 50px 0;
+    padding: 20px 0 50px;
     background: var(--color-white);
     overflow: hidden;
     position: relative;
@@ -2310,7 +2332,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .resources {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: linear-gradient(180deg, 
         var(--color-white) 0%, 
         var(--color-sage) 15%, 
@@ -2364,7 +2386,7 @@ header.is-scrolled::after {
    ============================================================ */
 
 .cta-section {
-    padding: 60px 0;
+    padding: 20px 0 60px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 60%, #0d4a5a 100%);
     text-align: center;
     position: relative;
@@ -2419,14 +2441,14 @@ header.is-scrolled::after {
 .cta-section h2 {
     color: var(--color-white);
     font-size: 34px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     letter-spacing: -0.5px;
 }
 
 .cta-section p {
     color: rgba(255,255,255,0.8);
     font-size: 17px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     max-width: 540px;
     margin-left: auto;
     margin-right: auto;
@@ -2543,7 +2565,7 @@ footer::before {
    ============================================================ */
 
 .founder-details {
-    padding: 50px 0 30px;
+    padding: 20px 0 30px;
     background: var(--color-white);
 }
 
@@ -2647,7 +2669,7 @@ footer::before {
    ============================================================ */
 
 .mission-vision {
-    padding: 50px 0;
+    padding: 20px 0 50px;
     background: var(--color-white);
 }
 
@@ -2704,20 +2726,20 @@ footer::before {
    ============================================================ */
 
 .philosophy-hero {
-    padding: 50px 0 30px;
+    padding: 20px 0 30px;
     background: var(--color-white);
 }
 
 .philosophy-hero-content {
     max-width: 720px;
-    margin: 0 auto 36px;
+    margin: 0 auto 30px;
     text-align: center;
 }
 
 .philosophy-hero-content h2 {
     font-size: 34px;
     color: var(--color-primary);
-    margin: 10px 0 14px;
+    margin: 8px 0 12px;
     letter-spacing: -0.5px;
 }
 
@@ -2726,7 +2748,7 @@ footer::before {
     font-weight: 500;
     color: var(--color-ink);
     line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .philosophy-hero-content .sub-text {
@@ -2771,7 +2793,7 @@ footer::before {
 
 /* Pillars */
 .pillars-section {
-    padding: 50px 0 60px;
+    padding: 20px 0 60px;
     background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 15%, var(--color-cream) 85%, var(--color-white) 100%);
 }
 
@@ -2779,7 +2801,7 @@ footer::before {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .pillar-card {
@@ -2847,20 +2869,20 @@ footer::before {
    ============================================================ */
 
 .service-details {
-    padding: 50px 0 60px;
+    padding: 20px 0 60px;
     background: var(--color-white);
 }
 
 .assessment-intro {
     text-align: center;
     max-width: 680px;
-    margin: 0 auto 36px;
+    margin: 0 auto 30px;
 }
 
 .assessment-intro h2 {
     font-size: 32px;
     color: var(--color-primary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .assessment-intro .lead-text {
@@ -2991,20 +3013,20 @@ footer::before {
    ============================================================ */
 
 .programmes-section {
-    padding: 30px 0 60px;
+    padding: 20px 0 60px;
     background: var(--color-white);
 }
 
 .programmes-intro {
     max-width: 720px;
-    margin: 0 auto 30px;
+    margin: 0 auto 24px;
     text-align: center;
 }
 
 .programmes-intro h2 {
     font-size: 32px;
     color: var(--color-primary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .programmes-intro p {
@@ -3135,7 +3157,7 @@ footer::before {
    ============================================================ */
 
 .contact-page {
-    padding: 50px 0 60px;
+    padding: 20px 0 60px;
     background: var(--color-white);
 }
 
@@ -3149,21 +3171,21 @@ footer::before {
 .contact-details h2,
 .contact-form h2 {
     font-size: 26px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: var(--color-primary);
 }
 
 .contact-details > p {
     font-size: 14px;
     color: var(--color-ink-soft);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     line-height: 1.7;
 }
 
 .contact-can-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
