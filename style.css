@@ -281,15 +281,12 @@ em {
     animation: float 6.5s ease-in-out infinite;
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
-
+/*--- HEADER ---*/
 header {
     padding: var(--header-padding-y) 0;
     background: rgba(251, 247, 239, 0.95);
     border-bottom: none !important;
-    position: sticky;
+    position: sticky;  
     top: 0;
     z-index: 200;
     backdrop-filter: blur(16px);
@@ -298,8 +295,8 @@ header {
     height: var(--header-height);
     display: flex;
     align-items: center;
+    position: relative;  
 }
-
 /* Decorative gradient line at bottom */
 header::after {
     content: '';
@@ -746,7 +743,7 @@ header.is-scrolled::after {
 
 .scroll-progress {
     position: absolute;
-    bottom: 0;         
+    bottom: 0;             
     left: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold), var(--color-accent));
