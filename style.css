@@ -2386,11 +2386,11 @@ header.is-scrolled::after {
 }
 
 /* ----- FOOTER ----- */
-/* ----- FOOTER ----- */
 footer {
     background-color: var(--color-cream);
     color: var(--color-ink-soft);
-    padding-top: 32px; /* REDUCED: Less empty space at the very top */
+    padding-top: 0px; 
+    padding-bottom: 0px; 
     font-family: var(--font-body);
 }
 
@@ -2398,7 +2398,8 @@ footer {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr 1fr;
     gap: 40px;
-    padding-bottom: 24px; /* REDUCED: Less empty space at the bottom before the copyright bar */
+    padding-top: 50px;   
+    padding-bottom: 50px; 
     align-items: start;
 }
 
