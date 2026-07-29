@@ -83,7 +83,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PROFESSIONAL BACKGROUND SECTION -->
+    <!-- PROFESSIONAL BACKGROUND SECTION (Redesigned as 3 Cards) -->
     <!-- ============================================================ -->
     <section class="section-sage-bg" style="padding:60px 0 80px;">
         <div class="container">
@@ -94,32 +94,41 @@
                 <div class="section-divider"></div>
             </div>
 
-            <div style="max-width: 800px; margin: 40px auto 0;">
-                <div class="reveal" style="background: var(--color-white); border-radius: var(--radius-lg); padding: 40px 44px; box-shadow: var(--shadow-card); border: 1px solid rgba(10, 72, 96, 0.06);">
-                    <!-- List of Credentials -->
-                    <div style="display:flex; flex-direction:column; gap:16px;">
-                        
-                        <div style="display:flex; align-items:flex-start; gap:14px; font-size:15px; color:var(--color-ink);">
-                            <span style="color:var(--color-teal); font-weight:800; font-size:18px;">✓</span>
-                            <span><strong>Master of Education (Psychology)</strong> — Victoria University of Wellington, New Zealand</span>
-                        </div>
-                        
-                        <div style="display:flex; align-items:flex-start; gap:14px; font-size:15px; color:var(--color-ink);">
-                            <span style="color:var(--color-teal); font-weight:800; font-size:18px;">✓</span>
-                            <span>Early Childhood Education Experience in New Zealand</span>
-                        </div>
-                        
-                        <div style="display:flex; align-items:flex-start; gap:14px; font-size:15px; color:var(--color-ink);">
-                            <span style="color:var(--color-teal); font-weight:800; font-size:18px;">✓</span>
-                            <span>Former Early Childhood Brand Manager</span>
-                        </div>
-                        
-                        <div style="display:flex; align-items:flex-start; gap:14px; font-size:15px; color:var(--color-ink);">
-                            <span style="color:var(--color-teal); font-weight:800; font-size:18px;">✓</span>
-                            <span>Experience developing and leading programs for Executive Functioning groups, Learning support programs, and Parent & adult education consults.</span>
-                        </div>
-                    </div>
+            <!-- 3-Column Card Grid -->
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px;">
+                
+                <!-- Card 1: Education -->
+                <div class="reveal" style="background: var(--color-white); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-card); border: 1px solid rgba(10, 72, 96, 0.06); text-align: center;">
+                    <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(44, 181, 165, 0.12); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">🎓</div>
+                    <h4 style="font-size: 18px; color: var(--color-primary); margin-bottom: 8px;">Academic Foundation</h4>
+                    <p style="font-size: 15px; color: var(--color-ink-soft); margin: 0;">
+                        <strong>Master of Education (Psychology)</strong><br />
+                        Victoria University of Wellington, New Zealand
+                    </p>
                 </div>
+
+                <!-- Card 2: International Experience -->
+                <div class="reveal" style="background: var(--color-white); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-card); border: 1px solid rgba(10, 72, 96, 0.06); text-align: center;">
+                    <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(247, 201, 72, 0.16); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">🌏</div>
+                    <h4 style="font-size: 18px; color: var(--color-primary); margin-bottom: 8px;">International Experience</h4>
+                    <p style="font-size: 15px; color: var(--color-ink-soft); margin: 0;">
+                        Early Childhood Education Experience in New Zealand<br />
+                        <span style="font-size: 13px; opacity: 0.8; display: block; margin-top: 4px;">Former Early Childhood Brand Manager</span>
+                    </p>
+                </div>
+
+                <!-- Card 3: Program Leadership -->
+                <div class="reveal" style="background: var(--color-white); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-card); border: 1px solid rgba(10, 72, 96, 0.06); text-align: center;">
+                    <div style="width: 68px; height: 68px; border-radius: 50%; background: rgba(142, 125, 240, 0.12); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">🚀</div>
+                    <h4 style="font-size: 18px; color: var(--color-primary); margin-bottom: 8px;">Program Leadership</h4>
+                    <p style="font-size: 15px; color: var(--color-ink-soft); margin: 0;">
+                        Experience developing and leading:<br />
+                        <span style="display: block; margin-top: 6px; font-size: 13px; opacity: 0.8;">Executive Functioning groups</span>
+                        <span style="display: block; font-size: 13px; opacity: 0.8;">Learning support programs</span>
+                        <span style="display: block; font-size: 13px; opacity: 0.8;">Parent &amp; adult education consults</span>
+                    </p>
+                </div>
+
             </div>
         </div>
     </section>
