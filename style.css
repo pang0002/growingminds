@@ -2439,43 +2439,34 @@ footer {
     align-items: flex-start;
 }
 
-/* Light badge wrapper makes any logo stand out on dark backgrounds */
-.footer-logo-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    padding: 10px 16px;
-    border-radius: 10px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.25s ease;
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 14px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    line-height: 0;
 }
 
-.footer-logo-badge:hover {
+.footer-logo-link:hover {
+    opacity: 0.9;
     transform: translateY(-2px);
 }
 
-.footer-logo-badge .logo-img-footer {
-    height: 42px;
+.logo-img-footer {
+    height: 56px;
     width: auto;
     object-fit: contain;
+    display: block;
+    border-radius: 10px;
 }
 
 .footer-brand .brand-tagline {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-gold);
-    margin: 0 0 8px 0;
-}
-
-.footer-brand .brand-desc {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.75);
     margin: 0;
-    max-width: 270px;
+    line-height: 1.4;
+    max-width: 240px;
 }
 
 /* --- Standard Link Columns --- */
