@@ -342,6 +342,13 @@ header.is-scrolled::after {
     gap: 20px;
 }
 
+header .logo img,
+.site-logo img {
+    height: 70px;
+    max-height: none;
+    width: auto;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -369,30 +376,17 @@ header.is-scrolled::after {
     flex-shrink: 0;
 }
 
-/* Glow ring around logo - more prominent */
+/* Glow ring behind logo - REMOVED */
 .logo-crop::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 23px;
-    background: linear-gradient(135deg, var(--color-teal), var(--color-gold), var(--color-teal));
-    background-size: 300% 300%;
-    opacity: 0;
-    transition: opacity 0.5s var(--ease);
-    z-index: -1;
-    animation: gradientShift 4s ease-in-out infinite;
+    display: none;
 }
 
-.logo a:hover .logo-crop::before {
-    opacity: 1;
-}
-
+/* Remove logo hover transform */
 .logo a:hover .logo-crop {
-    transform: scale(var(--header-logo-hover-scale)) rotate(-2deg);
-    box-shadow: 0 8px 48px rgba(44, 181, 165, 0.35);
+    /* transform removed */
+    box-shadow: none;
 }
 
-/* Logo Image - Larger and properly displayed */
 .logo-img {
     height: 100%;
     width: 100%;
@@ -403,8 +397,9 @@ header.is-scrolled::after {
     padding: 6px;
 }
 
+/* Remove logo image hover scale */
 .logo a:hover .logo-img {
-    transform: scale(1.06);
+    transform: none;
 }
 
 /* Fallback text when image doesn't load */
