@@ -4029,7 +4029,7 @@ footer {
 
 .carousel-viewport {
     overflow: hidden;
-    border-radius: var(--radius-lg);
+    border-radius: 28px;
 }
 
 .carousel-track {
@@ -4041,7 +4041,7 @@ footer {
     position: absolute;
     inset: 0;
     background: var(--color-white);
-    border-radius: 32px 32px 32px 12px;   /* gentle speech-bubble feel */
+    border-radius: 36px 36px 36px 16px;   /* clearer difference */
     padding: 40px 36px 36px;
     box-shadow: var(--shadow-card);
     border: 1px solid rgba(10, 72, 96, 0.06);
