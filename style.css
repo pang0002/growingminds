@@ -342,17 +342,11 @@ header.is-scrolled::after {
     gap: 20px;
 }
 
-header .logo img,
-.site-logo img {
-    height: 70px;
-    max-height: none;
-    width: auto;
-}
-
 .logo {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    margin-right: auto;
 }
 
 .logo a {
