@@ -737,22 +737,6 @@ header.is-scrolled::after {
     opacity: 1;
 }
 
-/* ============================================================
-   SCROLL PROGRESS BAR
-   ============================================================ */
-
-.scroll-progress {
-    position: absolute;
-    bottom: 0;             
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-teal), var(--color-gold), var(--color-accent));
-    z-index: 999;
-    transition: width 0.1s linear;
-    width: 0%;
-    box-shadow: 0 0 20px rgba(44, 181, 165, 0.3);
-}
-
 /* ----- BACK TO TOP BUTTON ----- */
 .back-to-top {
     position: fixed;

@@ -15,31 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================================
-    // SCROLL PROGRESS BAR
-    // ============================================================
-    function initScrollProgress() {
-        const progressBar = document.createElement('div');
-        progressBar.className = 'scroll-progress';
-        document.body.prepend(progressBar);
-
-        let ticking = false;
-        function update() {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progressBar.style.width = progress + '%';
-            ticking = false;
-        }
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                requestAnimationFrame(update);
-                ticking = true;
-            }
-        }, { passive: true });
-    }
-    safeInit(initScrollProgress, 'initScrollProgress');
-
-    // ============================================================
     // BACK TO TOP BUTTON
     // ============================================================
     function initBackToTop() {
