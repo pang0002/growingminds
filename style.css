@@ -2418,7 +2418,9 @@ header.is-scrolled::after {
 
 /* ----- FOOTER ----- */
 footer {
-    background: var(--color-primary-dark);
+    /* Soft gradient using theme primary → primary-dark.
+       Lighter at the top so the logo colours stay clear without a white box. */
+    background: linear-gradient(180deg, #0a4860 0%, #082f40 100%);
     color: rgba(255,255,255,0.85);
     padding-top: 64px;
 }
@@ -2438,17 +2440,18 @@ footer {
 }
 
 .footer-brand .logo-img-footer {
-    height: 88px;
-    max-height: 88px;
+    height: 96px;
+    max-height: 96px;
     width: auto;
     max-width: 240px;
     object-fit: contain;
     margin-bottom: 12px;
-    /* Light solid background so the coloured logo stays crisp on the dark footer */
-    background: #ffffff;
-    padding: 10px 14px;
-    border-radius: 14px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    /* No white / dark box — logo sits directly on the footer */
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .footer-brand .logo-text {
@@ -2539,7 +2542,7 @@ footer {
     padding-left: 4px;
 }
 
-/* Column accent colours on hover (brand is 1st child, then the 4 link columns) */
+/* Column accent colours on hover */
 .footer-column:nth-child(2) ul a:hover { color: var(--color-teal); }
 .footer-column:nth-child(3) ul a:hover { color: var(--color-gold); }
 .footer-column:nth-child(4) ul a:hover { color: var(--color-accent); }
