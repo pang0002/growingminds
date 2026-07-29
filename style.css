@@ -2386,10 +2386,11 @@ header.is-scrolled::after {
 }
 
 /* ----- FOOTER ----- */
+/* ----- FOOTER ----- */
 footer {
-    background-color: var(--color-cream); /* Changed to warm cream */
-    color: var(--color-ink-soft);         /* Text changed to dark blue */
-    padding-top: 56px;
+    background-color: var(--color-cream);
+    color: var(--color-ink-soft);
+    padding-top: 32px; /* REDUCED: Less empty space at the very top */
     font-family: var(--font-body);
 }
 
@@ -2397,11 +2398,11 @@ footer {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr 1fr;
     gap: 40px;
-    padding-bottom: 48px;
+    padding-bottom: 24px; /* REDUCED: Less empty space at the bottom before the copyright bar */
     align-items: start;
 }
 
-/* --- Brand --- */
+/* --- Brand & Logo Fix --- */
 .footer-brand {
     display: flex;
     flex-direction: column;
@@ -2411,7 +2412,7 @@ footer {
 
 .footer-logo-link {
     display: inline-block;
-    margin-bottom: 0; 
+    margin-bottom: 10px;
     transition: opacity 0.25s ease, transform 0.25s ease;
     line-height: 0;
 }
@@ -2421,11 +2422,18 @@ footer {
     transform: translateY(-2px);
 }
 
-.logo-img-footer {
-    height: 120px; 
-    width: auto;
-    object-fit: contain;
-    display: block;
+/* 
+   FORCED ENLARGEMENT
+   - Setting height to 160px to make it huge.
+   - Using !important to override any conflicting CSS rules.
+   - Targeting both possible class names just in case.
+*/
+.logo-img-footer,
+.logo-img {
+    height: 160px !important; 
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
     border-radius: 10px;
 }
 
@@ -2434,7 +2442,7 @@ footer {
     font-size: 20px;
     font-weight: 600;
     color: var(--color-primary);
-    margin-top: 12px;
+    margin-top: 0px; /* Pulled the text closer to the logo */
     line-height: 1.3;
     max-width: 300px;
     text-align: center;
@@ -2442,7 +2450,7 @@ footer {
 
 /* --- Standard Link Columns --- */
 .footer-column h4 {
-    color: var(--color-primary); /* Changed to dark blue */
+    color: var(--color-primary);
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 16px;
@@ -2472,24 +2480,24 @@ footer {
 
 .footer-column ul a {
     font-size: 14.5px;
-    color: var(--color-ink-soft); /* Changed to soft dark blue */
+    color: var(--color-ink-soft);
     text-decoration: none;
     display: inline-block;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-column ul a:hover {
-    color: var(--color-teal-dark); /* Changed to teal on hover */
+    color: var(--color-teal-dark);
     transform: translateX(4px);
 }
 
 /* --- Footer Bottom Bar --- */
 .footer-bottom {
-    padding: 20px 0;
-    background: rgba(10, 72, 96, 0.04); /* Very faint dark blue tint */
-    border-top: 1px solid rgba(10, 72, 96, 0.08); /* Soft dark border */
+    padding: 16px 0;
+    background: rgba(10, 72, 96, 0.04);
+    border-top: 1px solid rgba(10, 72, 96, 0.08);
     font-size: 13px;
-    color: var(--color-ink-soft); /* Changed to dark blue */
+    color: var(--color-ink-soft);
 }
 
 .footer-bottom-container {
@@ -2509,13 +2517,13 @@ footer {
 }
 
 .footer-legal a {
-    color: var(--color-ink-soft); /* Changed to dark blue */
+    color: var(--color-ink-soft);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-legal a:hover {
-    color: var(--color-teal-dark); /* Changed to teal on hover */
+    color: var(--color-teal-dark);
 }
 
 /* --- Responsive Adjustments --- */
