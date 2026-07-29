@@ -990,6 +990,21 @@ header.is-scrolled::after {
     overflow: hidden;
 }
 
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 64px;
+    background: var(--color-white);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,45 C240,95 480,5 720,35 C960,65 1200,95 1440,45 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,45 C240,95 480,5 720,35 C960,65 1200,95 1440,45 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
+}
+
 .hero .blob-teal { width: 420px; height: 420px; top: -140px; right: -120px; }
 .hero .blob-gold { width: 220px; height: 220px; bottom: -60px; left: -60px; }
 
@@ -1169,7 +1184,7 @@ header.is-scrolled::after {
 /* ----- REDESIGNED BRAND POSITION - With Interactive Cards ----- */
 .brand-position {
     padding: 100px 0;
-    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 55%, var(--color-white) 100%);
+    background: var(--color-white);
     position: relative;
     overflow: hidden;
 }
@@ -1933,6 +1948,21 @@ header.is-scrolled::after {
     overflow: hidden;
 }
 
+.framework::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 56px;
+    background: var(--color-white);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,55 C360,10 1080,90 1440,40 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,55 C360,10 1080,90 1440,40 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
+}
+
 .framework-interactive {
     margin-top: 40px;
     display: flex;
@@ -2325,6 +2355,23 @@ header.is-scrolled::after {
     padding: 100px 0;
     background: var(--color-sage);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.resources::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 60px;
+    background: var(--color-primary);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,90 480,0 720,30 C960,60 1200,100 1440,50 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C240,90 480,0 720,30 C960,60 1200,100 1440,50 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
 }
 
 .resources-grid {
@@ -2487,10 +2534,25 @@ footer {
 /* ----- PAGE HERO ----- */
 .page-hero {
     position: relative;
-    padding: 90px 0 64px;
+    padding: 90px 0 80px;
     background: linear-gradient(180deg, #f2f8f5 0%, var(--color-cream) 100%);
     text-align: center;
     overflow: hidden;
+}
+
+.page-hero::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 56px;
+    background: var(--color-white);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C360,5 1080,95 1440,45 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 C360,5 1080,95 1440,45 L1440,100 L0,100 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
 }
 
 .page-hero .blob-teal { width: 300px; height: 300px; top: -100px; right: -80px; }
