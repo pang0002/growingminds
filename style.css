@@ -70,6 +70,10 @@ body {
     background: transparent;
 }
 
+.section-white-bg {
+    padding-top: 20px !important; /* Forces the intro section to be closer to the title */
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -2545,7 +2549,7 @@ footer {
 /* ----- PAGE HERO ----- */
 .page-hero {
     position: relative;
-    padding: 90px 0 80px;
+    padding: 90px 0 40px;
     background: transparent;
     text-align: center;
     overflow: hidden;
@@ -2684,9 +2688,7 @@ footer {
     border-left: 4px solid var(--color-gold);
 }
 
-/* ============================================================
-   ENHANCED PHILOSOPHY SECTION STYLES
-   ============================================================ */
+/*-- PHILOSOPHY --*/
 
 .philosophy-hero {
     padding: 70px 0 40px;
