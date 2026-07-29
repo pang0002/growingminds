@@ -4028,21 +4028,21 @@ footer {
 }
 
 .carousel-viewport {
-    overflow: hidden;
-    border-radius: 28px;
+    overflow: visible;                 /* important – don’t clip the tail */
+    border-radius: 0;
 }
 
 .carousel-track {
     position: relative;
-    min-height: 380px;
+    min-height: 440px;                 /* give more room so text doesn’t get cut */
 }
 
 .carousel-card {
     position: absolute;
     inset: 0;
     background: var(--color-white);
-    border-radius: 36px 36px 36px 16px;   /* clearer difference */
-    padding: 40px 36px 36px;
+    border-radius: 28px 28px 28px 28px;
+    padding: 40px 36px 48px;           /* extra bottom padding for the tail */
     box-shadow: var(--shadow-card);
     border: 1px solid rgba(10, 72, 96, 0.06);
     opacity: 0;
@@ -4053,6 +4053,21 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+/* Tiny speech-bubble tail */
+.carousel-card::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 14px solid #ffffff;
+    filter: drop-shadow(0 4px 4px rgba(10, 72, 96, 0.06));
 }
 
 .carousel-card.active {
@@ -4091,7 +4106,8 @@ footer {
     line-height: 1.7;
     color: var(--color-ink-soft);
     max-width: 520px;
-    margin: 0 auto 24px;
+    margin: 0 auto 20px;
+    flex-shrink: 0;          /* prevent the description from being squashed */
 }
 
 .carousel-card-features {
@@ -4104,6 +4120,7 @@ footer {
     width: 100%;
     max-width: 420px;
     text-align: left;
+    flex-shrink: 0;
 }
 
 .carousel-card-features li {
