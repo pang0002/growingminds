@@ -4038,13 +4038,12 @@ footer {
 }
 
 .carousel-card {
-    position: absolute;
-    inset: 0;
+    border: 4px solid #1a1a1a;
+    border-radius: 40px 32px 40px 32px;
     background: #ffffff;
-    border-radius: 40px 32px 40px 32px; 
     padding: 42px 38px 58px;
-    box-shadow: 0 6px 18px rgba(10, 72, 96, 0.06);
-    border: 4px solid #1a1a1a; 
+    
+    /* Existing animations */
     opacity: 0;
     transform: translateX(24px) scale(0.98);
     pointer-events: none;
@@ -4056,6 +4055,14 @@ footer {
     overflow: visible;
 }
 
+.carousel-card::before {
+    content: "";
+    position: absolute;
+    inset: 8px 8px -8px -8px; /* Shifted down and right */
+    border-radius: 40px 32px 40px 32px;
+    background: rgba(26, 26, 26, 0.08); /* A faint dark gray, or change to teal/gold */
+    z-index: -1;
+}
 .carousel-card::after {
     content: "";
     position: absolute;
@@ -4072,10 +4079,6 @@ footer {
     border-top: none;
     box-shadow: none;
     z-index: -1;
-}
-
-.carousel-card::before {
-    display: none;
 }
 
 .carousel-card.active {
