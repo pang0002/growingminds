@@ -1424,7 +1424,139 @@ header.is-scrolled::after {
 .process-section .blob-gold { width: 280px; height: 280px; top: -60px; right: -100px; opacity: 0.3; }
 .process-section .container { position: relative; z-index: 1; }
 
-/* Horizontal Timeline Bar */
+/* ===== NEW: Process cards — 5-card hover-reveal row ===== */
+.process-cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 44px;
+    align-items: stretch;
+}
+
+.process-card-mini {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 480px;
+    border-radius: var(--radius-lg);
+    padding: 40px 24px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    transition: flex-grow 0.45s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.process-card-mini.bg-sage { background: var(--color-sage); }
+.process-card-mini.bg-lavender { background: rgba(142, 125, 240, 0.16); }
+
+.process-card-mini:hover,
+.process-card-mini:focus-visible {
+    flex-grow: 2.2;
+    box-shadow: var(--shadow-lift);
+}
+
+.pcm-default {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 22px;
+    transition: opacity 0.3s var(--ease);
+}
+
+.pcm-icon {
+    font-size: 46px;
+    line-height: 1;
+}
+
+.pcm-number {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 46px;
+    color: var(--color-ink);
+}
+
+.pcm-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--color-primary);
+}
+
+.pcm-hover {
+    position: absolute;
+    inset: 0;
+    padding: 36px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+}
+
+.pcm-hover-num {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--color-ink);
+    opacity: 0.5;
+}
+
+.pcm-hover h4 {
+    font-family: var(--font-display);
+    color: var(--color-teal-dark);
+    font-size: 19px;
+    margin: 4px 0 2px;
+}
+
+.pcm-hover p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--color-ink);
+}
+
+.process-card-mini:hover .pcm-default,
+.process-card-mini:focus-visible .pcm-default {
+    opacity: 0;
+}
+
+.process-card-mini:hover .pcm-hover,
+.process-card-mini:focus-visible .pcm-hover {
+    opacity: 1;
+}
+
+@media (max-width: 900px) {
+    .process-cards {
+        flex-direction: column;
+    }
+    .process-card-mini {
+        min-height: 0;
+        flex-grow: 0 !important;
+    }
+    .process-card-mini .pcm-default {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+    .process-card-mini .pcm-hover {
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 18px 4px 0;
+        display: none;
+    }
+    .process-card-mini:hover .pcm-hover,
+    .process-card-mini:focus-visible .pcm-hover,
+    .process-card-mini.expanded .pcm-hover {
+        display: flex;
+    }
+}
+
+/* Horizontal Timeline Bar (legacy — kept for reference, unused) */
 .process-timeline {
     position: relative;
     max-width: 900px;
