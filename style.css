@@ -4436,3 +4436,525 @@ footer {
         height: 16px;
     }
 }
+/* ============================================================
+   CONCEPT COMPONENTS
+   Ported from the growing-minds-homepage.html concept design.
+   These are new, reusable classes (not redefinitions of anything
+   above) — drop them into any page's markup to bring in the
+   concept's bolder, more editorial visual ideas: dark ink bands,
+   hand-placed quote chips, flip cards, bordered "door" choices,
+   pathway stages, and a plain-English callout box.
+   All values reference the shared tokens in :root, so they stay
+   in sync with the rest of the site automatically.
+   ============================================================ */
+
+/* ----- PLAIN-ENGLISH CALLOUT -----
+   The little "in plain English" box from the hero. */
+.plainly-box {
+    background: var(--color-paper-deep);
+    border-left: 4px solid var(--color-teal);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 16px 20px;
+    max-width: 480px;
+    font-size: 14.5px;
+    color: var(--color-ink-soft);
+}
+
+.plainly-box b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+}
+
+/* ----- STRATA -----
+   Banded "what you see / what's underneath" hero visual. */
+.strata {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 2px solid var(--color-primary);
+    box-shadow: 8px 8px 0 0 var(--color-gold);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.strata__band {
+    padding: 20px clamp(18px, 2.6vw, 28px);
+    border-bottom: 2px dashed rgba(31, 60, 136, 0.22);
+}
+
+.strata__band:last-child { border-bottom: 0; }
+
+.strata__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.62;
+}
+
+.strata__band p {
+    margin: 6px 0 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.strata__band--top { background: var(--color-paper-deep); }
+.strata__band--mid { background: #FBE9B8; }
+.strata__band--deep { background: var(--color-gold); }
+.strata__band--deep p { font-weight: 700; }
+
+/* ----- DARK BAND -----
+   A generic ink-blue section wrapper. Chain two adjacent sections
+   with --top and --bottom to get the concept's "card stack" look
+   (rounded corners meeting only on the outer edges); use --flat
+   for a single freestanding dark section. */
+.dark-band {
+    background: var(--color-primary);
+    color: var(--color-cream);
+    padding: 70px 0;
+}
+
+.dark-band .eyebrow { color: var(--color-muted-on-dark); }
+.dark-band h2 { color: var(--color-cream); }
+.dark-band p { color: #D5DDF1; }
+.dark-band strong { color: var(--color-cream); }
+
+.dark-band--top { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.dark-band--bottom { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.dark-band--flat { border-radius: var(--radius-lg); }
+
+/* ----- VOICE QUOTE -----
+   Hand-placed italic quote chip, e.g. for "sound familiar?" style
+   sections. Default styling suits a light background; add
+   .voice-quote--dark inside a .dark-band. */
+.voice-quote {
+    background: var(--color-white);
+    border: 1px solid rgba(31, 60, 136, 0.08);
+    border-radius: var(--radius-md);
+    padding: 20px 22px;
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-ink);
+}
+
+.voice-quote--dark {
+    background: rgba(247, 243, 236, 0.06);
+    border: 1px solid rgba(247, 243, 236, 0.16);
+    color: var(--color-cream);
+}
+
+.voice-quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 16px;
+}
+
+.voice-quote-grid .voice-quote:nth-child(3n+1) { transform: rotate(-0.6deg); }
+.voice-quote-grid .voice-quote:nth-child(3n+3) { transform: rotate(0.5deg); }
+
+/* ----- Q&A BOX -----
+   Paired boxes for "who we work with" style question/answer content. */
+.qa-box {
+    background: var(--color-white);
+    color: var(--color-ink);
+    border-radius: var(--radius-md);
+    padding: 26px 28px;
+}
+
+.qa-box--gold { background: var(--color-gold); }
+
+.qa-box__q {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.qa-box__big {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+/* ----- PEEL CARD -----
+   A front/back flip card for "what you see vs what's underneath"
+   content. CSS-only — flips on hover or keyboard focus, no JS
+   required, and stays readable (front stacked above back) for
+   touch devices that can't hover. */
+.peel-card {
+    position: relative;
+    min-height: 210px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--color-primary);
+    background: var(--color-white);
+}
+
+.peel-card__face {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.peel-card__front {
+    background: var(--color-white);
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.62, 0.03, 0.2, 1);
+}
+
+.peel-card__back { background: var(--color-gold); z-index: 1; }
+
+@media (hover: hover) {
+    .peel-card:hover .peel-card__front,
+    .peel-card:focus-within .peel-card__front { transform: translateY(-101%); }
+}
+
+.peel-card__tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.peel-card__line {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+.peel-card__back .peel-card__line { font-size: 16px; font-weight: 600; line-height: 1.35; }
+.peel-card__more { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-primary); }
+
+/* On touch devices (no hover), show a static two-part card instead
+   of relying on the flip, so the "underneath" content is never hidden. */
+@media (hover: none) {
+    .peel-card { min-height: 0; position: static; display: flex; flex-direction: column; }
+    .peel-card__face { position: static; }
+    .peel-card__front { border-bottom: 2px dashed rgba(31,60,136,0.2); }
+}
+
+/* ----- ACTIVITY CHIPS ----- */
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-paper-deep);
+    border: 2px solid var(--color-primary);
+    border-radius: 100px;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-primary);
+}
+
+.chip-row .chip:nth-child(3n+1) { background: var(--color-pale-sun); }
+.chip-row .chip:nth-child(4n+3) { background: var(--color-pale-teal); }
+.chip-row .chip:nth-child(5n+5) { background: var(--color-pale-lavender); }
+
+/* ----- DOOR CARD -----
+   A bordered, hard-shadowed choice card — for "two ways in" or any
+   either/or decision point. */
+.door-card {
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: clamp(26px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--color-paper-deep);
+    box-shadow: 7px 7px 0 0 var(--color-teal);
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.door-card:hover { transform: translate(-3px, -3px); }
+
+.door-card--b { background: var(--color-pale-sun); box-shadow: 7px 7px 0 0 var(--color-gold); }
+
+.door-card__if {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--color-ink-soft);
+}
+
+.door-card h3 { margin: 4px 0 6px; }
+
+.door-card__meta {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    border-top: 2px dashed rgba(31, 60, 136, 0.2);
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+/* ----- PATHWAY STAGE CARD ----- */
+.stage-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stage-card--build {
+    background: var(--color-primary);
+    color: var(--color-cream);
+    box-shadow: 7px 7px 0 0 var(--color-gold);
+    border-color: var(--color-primary);
+}
+
+.stage-card__n {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: var(--color-ink-soft);
+}
+
+.stage-card--build .stage-card__n { color: var(--color-gold); }
+
+.stage-card__n::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.28;
+    border-radius: 2px;
+}
+
+.stage-card h3 { margin-bottom: 8px; }
+.stage-card--build p { color: #D5DDF1; }
+
+.stage-card__meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 2px dashed rgba(31, 60, 136, 0.2);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+}
+
+.stage-card--build .stage-card__meta {
+    border-top-color: rgba(247, 243, 236, 0.28);
+    color: var(--color-muted-on-dark);
+}
+
+/* ----- BLOCK NOTE PILL -----
+   The pulsing "current block open now" announcement pill. */
+.block-note-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-primary);
+    color: var(--color-cream);
+    border-radius: 100px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.block-note-pill .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    flex: none;
+    animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ----- CLUB TAG -----
+   Small category badge for club cards ("Calm" / "Confident" / "Capable"). */
+.club-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 2px solid var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.club-tag--a { background: var(--color-pale-lavender); }
+.club-tag--b { background: var(--color-pale-teal); }
+.club-tag--c { background: var(--color-pale-sun); }
+
+/* ----- SKILL LIST -----
+   The ten-skills-in-five-areas definition list. */
+.skill-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--color-primary);
+}
+
+.skill-list .sgroup {
+    display: block;
+    padding: 20px 0 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-teal-dark);
+    font-family: var(--font-body);
+}
+
+.skill-list .sgroup:first-child { padding-top: 10px; }
+
+.skill-list li {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.16);
+}
+
+.skill-list b {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+}
+
+.skill-list span {
+    font-size: 15px;
+    color: var(--color-ink-soft);
+}
+
+.skill-list span::before {
+    content: "→ ";
+    color: var(--color-teal-dark);
+    font-weight: 700;
+}
+
+@media (max-width: 620px) {
+    .skill-list li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ----- PROOF SLOTS -----
+   Dashed placeholder cards for testimonials / case stories not yet
+   collected — deliberately looks unfinished so it gets filled in. */
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 16px;
+}
+
+.proof-slot {
+    border: 2px dashed rgba(31, 60, 136, 0.32);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(237, 230, 216, 0.45);
+}
+
+.proof-slot__k {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+}
+
+.proof-slot p {
+    margin: 10px 0 0;
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--color-ink-soft);
+}
+
+/* ----- FOUNDER SPOTLIGHT -----
+   A bold, dark condensed founder callout for the homepage — distinct
+   from the full light-themed bio layout on the About page. */
+.founder-spotlight {
+    background: var(--color-primary);
+    color: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(28px, 4vw, 48px);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+}
+
+@media (max-width: 760px) {
+    .founder-spotlight { grid-template-columns: 1fr; text-align: center; }
+}
+
+.founder-spotlight__photo {
+    width: 170px;
+    height: 200px;
+    border-radius: var(--radius-md);
+    border: 2px dashed rgba(247, 243, 236, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted-on-dark);
+    line-height: 1.5;
+    margin: 0 auto;
+}
+
+.founder-spotlight h3 { color: var(--color-cream); margin-bottom: 9px; }
+.founder-spotlight p { color: #D5DDF1; max-width: 52ch; }
+.founder-spotlight a { color: var(--color-gold); font-weight: 700; }
+
+/* ----- CTA CLOSING LINES -----
+   Stacked headline treatment for a closing section, e.g.
+   "The child experiences play. / You see growth. / We understand..." */
+.cta-lines {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(17px, 2.2vw, 23px);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.cta-lines span { display: block; }
+.cta-lines span:nth-child(2) { color: var(--color-gold); }
