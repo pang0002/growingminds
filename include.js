@@ -912,4 +912,152 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Expandable Cards
     safeInit(initExpandableCards, 'initExpandableCards');
 
+    // ============================================================
+    // FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY) - SIMPLE VERSION
+    // ============================================================
+    function initFullScreenScroll() {
+        // Only run on the home page
+        const isHomePage = window.location.pathname === '/' || 
+                          window.location.pathname === '/index.html' ||
+                          window.location.pathname.endsWith('index.html') ||
+                          window.location.pathname === '';
+        
+        if (!isHomePage) return;
+        
+        const body = document.body;
+        body.classList.add('home-page');
+        
+        // Get all sections that should be full-screen
+        const sections = document.querySelectorAll('.section-fullscreen');
+        if (sections.length === 0) return;
+        
+        // Set each section to full viewport height
+        function setFullHeight() {
+            const vh = window.innerHeight;
+            sections.forEach(function(section) {
+                section.style.minHeight = vh + 'px';
+                section.style.height = vh + 'px';
+                section.style.display = 'flex';
+                section.style.alignItems = 'center';
+                section.style.justifyContent = 'center';
+            });
+        }
+        
+        setFullHeight();
+        
+        // Update on resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setFullHeight, 200);
+        });
+        
+        // Add scroll snap to the body/html
+        document.documentElement.style.scrollSnapType = 'y mandatory';
+        document.documentElement.style.overflowY = 'scroll';
+        document.documentElement.style.height = '100vh';
+        document.documentElement.style.height = '100dvh';
+        
+        // Make each section a snap target
+        sections.forEach(function(section) {
+            section.style.scrollSnapAlign = 'start';
+        });
+        
+        // Add scroll indicators
+        sections.forEach(function(section, index) {
+            const isLast = index === sections.length - 1;
+            if (!isLast && !section.querySelector('.scroll-indicator')) {
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                
+                if (section.classList.contains('cta-section') || 
+                    section.classList.contains('dark-band')) {
+                    indicator.classList.add('scroll-indicator--light');
+                }
+                
+                indicator.innerHTML = `
+                    <span>Scroll</span>
+                    <div class="arrow"></div>
+                `;
+                section.appendChild(indicator);
+            }
+        });
+        
+        // Create navigation dots
+        const dotNav = document.createElement('div');
+        dotNav.className = 'section-nav-dots';
+        dotNav.setAttribute('role', 'navigation');
+        dotNav.setAttribute('aria-label', 'Section navigation');
+        
+        sections.forEach(function(section, index) {
+            const link = document.createElement('a');
+            link.href = '#';
+            link.setAttribute('data-index', index);
+            
+            const heading = section.querySelector('h1, h2');
+            const label = heading ? heading.textContent.trim() : 'Section ' + (index + 1);
+            link.setAttribute('aria-label', 'Go to ' + label);
+            
+            if (index === 0) link.classList.add('active');
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetIndex = parseInt(this.getAttribute('data-index'), 10);
+                const targetSection = sections[targetIndex];
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            dotNav.appendChild(link);
+        });
+        
+        document.body.appendChild(dotNav);
+        
+        // Update active dot on scroll
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const index = Array.from(sections).indexOf(entry.target);
+                    const dots = dotNav.querySelectorAll('a');
+                    dots.forEach(function(dot, i) {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        sections.forEach(function(section) {
+            observer.observe(section);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                const currentIndex = Array.from(sections).findIndex(function(s) {
+                    const rect = s.getBoundingClientRect();
+                    return rect.top >= -10 && rect.top < window.innerHeight / 2;
+                });
+                const nextIndex = Math.min(currentIndex + 1, sections.length - 1);
+                if (nextIndex !== currentIndex) {
+                    sections[nextIndex].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                const currentIndex = Array.from(sections).findIndex(function(s) {
+                    const rect = s.getBoundingClientRect();
+                    return rect.top >= -10 && rect.top < window.innerHeight / 2;
+                });
+                const prevIndex = Math.max(currentIndex - 1, 0);
+                if (prevIndex !== currentIndex) {
+                    sections[prevIndex].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    }
+    safeInit(initFullScreenScroll, 'initFullScreenScroll');
+
 });
