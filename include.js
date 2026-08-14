@@ -1019,72 +1019,50 @@ document.addEventListener('DOMContentLoaded', function () {
         
         document.body.appendChild(dotNav);
         
-        // Update active dot on scroll
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const index = Array.from(sections).indexOf(entry.target);
+        // Update active dot on scroll - use the container's scroll event
+        let dotUpdateTicking = false;
+        container.addEventListener('scroll', function() {
+            if (!dotUpdateTicking) {
+                window.requestAnimationFrame(function() {
+                    const scrollTop = container.scrollTop;
+                    const sectionHeight = window.innerHeight;
+                    const currentIndex = Math.round(scrollTop / sectionHeight);
+                    
                     const dots = dotNav.querySelectorAll('a');
                     dots.forEach(function(dot, i) {
-                        dot.classList.toggle('active', i === index);
+                        dot.classList.toggle('active', i === currentIndex);
                     });
-                }
-            });
-        }, {
-            threshold: 0.5,
-            root: container
-        });
-        
-        sections.forEach(function(section) {
-            observer.observe(section);
-        });
+                    
+                    dotUpdateTicking = false;
+                });
+                dotUpdateTicking = true;
+            }
+        }, { passive: true });
         
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 e.preventDefault();
-                const container = document.querySelector('.scroll-container');
-                if (container) {
-                    container.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-                }
+                const scrollTop = container.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const nextIndex = Math.floor(scrollTop / sectionHeight) + 1;
+                const targetY = nextIndex * sectionHeight;
+                container.scrollTo({
+                    top: Math.min(targetY, container.scrollHeight - container.clientHeight),
+                    behavior: 'smooth'
+                });
             } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
                 e.preventDefault();
-                const container = document.querySelector('.scroll-container');
-                if (container) {
-                    container.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-                }
+                const scrollTop = container.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const prevIndex = Math.ceil(scrollTop / sectionHeight) - 1;
+                const targetY = prevIndex * sectionHeight;
+                container.scrollTo({
+                    top: Math.max(0, targetY),
+                    behavior: 'smooth'
+                });
             }
         });
-        
-        // Wheel handling for smoother experience
-        let isScrolling = false;
-        container.addEventListener('wheel', function(e) {
-            if (isScrolling) {
-                e.preventDefault();
-                return;
-            }
-            
-            // Allow natural scroll on touch devices
-            if ('ontouchstart' in window) return;
-            
-            const delta = e.deltaY;
-            if (Math.abs(delta) < 20) return;
-            
-            e.preventDefault();
-            isScrolling = true;
-            
-            const direction = delta > 0 ? 1 : -1;
-            const targetY = Math.round(container.scrollTop / window.innerHeight) * window.innerHeight + (direction * window.innerHeight);
-            
-            container.scrollTo({
-                top: Math.max(0, Math.min(targetY, container.scrollHeight - container.clientHeight)),
-                behavior: 'smooth'
-            });
-            
-            setTimeout(function() {
-                isScrolling = false;
-            }, 800);
-        }, { passive: false });
         
         // Handle resize to maintain fullscreen
         let resizeTimer;
