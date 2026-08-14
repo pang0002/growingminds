@@ -1,4 +1,4 @@
-// include.js - Enhanced with interactions
+// include.js - Enhanced with interactions and full-screen scroll
 document.addEventListener('DOMContentLoaded', function () {
 
     // Runs an init function in isolation — if it throws, the error is
@@ -428,17 +428,6 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initContactForm, 'initContactForm');
 
     // ============================================================
-    // PARALLAX EFFECT FOR HERO BLOBS
-    // ============================================================
-    // Removed: this used to set blob.style.transform on every scroll
-    // event, which directly fought the CSS "float"/"float-slow"
-    // keyframe animations already applied to the same blobs (both
-    // animate the transform property). That conflict — plus firing
-    // on every raw scroll event — was the main cause of visible
-    // stutter while scrolling. The blobs still move gently via their
-    // existing CSS animations, so no JS is needed here.
-
-    // ============================================================
     // ACTIVE NAV LINK HIGHLIGHTING
     // ============================================================
     function initActiveNav() {
@@ -482,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 title: "Self-Management",
                 icon: "🌿",
-                desc: "Equipping children with practical tools to manage big feelings, stay focused, and handle frustration — so overwhelm doesn’t stop them from learning.",
+                desc: "Equipping children with practical tools to manage big feelings, stay focused, and handle frustration — so overwhelm doesn't stop them from learning.",
                 features: [
                     "Emotion regulation and calming strategies that actually work",
                     "Focus tools and smooth task-switching techniques",
@@ -922,5 +911,200 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Expandable Cards
     safeInit(initExpandableCards, 'initExpandableCards');
+
+    // ============================================================
+    // FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY)
+    // ============================================================
+    function initFullScreenScroll() {
+        // Only run on the home page
+        const isHomePage = window.location.pathname === '/' || 
+                          window.location.pathname === '/index.html' ||
+                          window.location.pathname.endsWith('index.html') ||
+                          window.location.pathname === '';
+        
+        if (!isHomePage) return;
+        
+        const body = document.body;
+        body.classList.add('home-page');
+        
+        // Wrap all fullscreen sections in a scroll container
+        const sections = document.querySelectorAll('.section-fullscreen');
+        if (sections.length === 0) return;
+        
+        // Check if already wrapped
+        if (document.querySelector('.scroll-container')) return;
+        
+        // Create scroll container
+        const container = document.createElement('div');
+        container.className = 'scroll-container';
+        container.style.height = '100vh';
+        container.style.height = '100dvh';
+        container.style.overflowY = 'scroll';
+        container.style.scrollSnapType = 'y mandatory';
+        container.style.scrollBehavior = 'smooth';
+        container.style.WebkitOverflowScrolling = 'touch';
+        
+        // Move all sections into the container
+        const parent = sections[0].parentNode;
+        sections.forEach(function(section) {
+            container.appendChild(section);
+        });
+        parent.appendChild(container);
+        
+        // Add scroll indicators to sections that don't have them
+        sections.forEach(function(section, index) {
+            const isLast = index === sections.length - 1;
+            if (!isLast) {
+                // Check if indicator already exists
+                if (!section.querySelector('.scroll-indicator')) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'scroll-indicator';
+                    
+                    // Check if section has dark background
+                    if (section.classList.contains('cta-section') || 
+                        section.classList.contains('dark-band') ||
+                        section.classList.contains('founder-spotlight')) {
+                        indicator.classList.add('scroll-indicator--light');
+                    }
+                    
+                    indicator.innerHTML = `
+                        <span>Scroll</span>
+                        <div class="arrow"></div>
+                    `;
+                    section.appendChild(indicator);
+                }
+            }
+        });
+        
+        // Create navigation dots
+        const dotNav = document.createElement('div');
+        dotNav.className = 'section-nav-dots';
+        dotNav.setAttribute('role', 'navigation');
+        dotNav.setAttribute('aria-label', 'Section navigation');
+        
+        const sectionTitles = [];
+        sections.forEach(function(section) {
+            // Try to get a title from the section
+            const heading = section.querySelector('h1, h2');
+            const title = heading ? heading.textContent.trim() : 'Section';
+            sectionTitles.push(title);
+        });
+        
+        sections.forEach(function(section, index) {
+            const link = document.createElement('a');
+            link.href = '#';
+            link.setAttribute('data-index', index);
+            link.setAttribute('aria-label', 'Go to ' + sectionTitles[index]);
+            
+            const tooltip = document.createElement('span');
+            tooltip.className = 'dot-tooltip';
+            tooltip.textContent = sectionTitles[index].length > 20 ? 
+                sectionTitles[index].substring(0, 18) + '…' : 
+                sectionTitles[index];
+            link.appendChild(tooltip);
+            
+            if (index === 0) link.classList.add('active');
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetIndex = parseInt(this.getAttribute('data-index'), 10);
+                const targetSection = sections[targetIndex];
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            dotNav.appendChild(link);
+        });
+        
+        document.body.appendChild(dotNav);
+        
+        // Update active dot on scroll
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const index = Array.from(sections).indexOf(entry.target);
+                    const dots = dotNav.querySelectorAll('a');
+                    dots.forEach(function(dot, i) {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.5,
+            root: container
+        });
+        
+        sections.forEach(function(section) {
+            observer.observe(section);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                const container = document.querySelector('.scroll-container');
+                if (container) {
+                    container.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                const container = document.querySelector('.scroll-container');
+                if (container) {
+                    container.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+                }
+            }
+        });
+        
+        // Wheel handling for smoother experience
+        let isScrolling = false;
+        container.addEventListener('wheel', function(e) {
+            if (isScrolling) {
+                e.preventDefault();
+                return;
+            }
+            
+            // Allow natural scroll on touch devices
+            if ('ontouchstart' in window) return;
+            
+            const delta = e.deltaY;
+            if (Math.abs(delta) < 20) return;
+            
+            e.preventDefault();
+            isScrolling = true;
+            
+            const direction = delta > 0 ? 1 : -1;
+            const targetY = Math.round(container.scrollTop / window.innerHeight) * window.innerHeight + (direction * window.innerHeight);
+            
+            container.scrollTo({
+                top: Math.max(0, Math.min(targetY, container.scrollHeight - container.clientHeight)),
+                behavior: 'smooth'
+            });
+            
+            setTimeout(function() {
+                isScrolling = false;
+            }, 800);
+        }, { passive: false });
+        
+        // Handle resize to maintain fullscreen
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Ensure sections still fill the viewport
+                sections.forEach(function(section) {
+                    section.style.minHeight = window.innerHeight + 'px';
+                    section.style.height = window.innerHeight + 'px';
+                });
+            }, 200);
+        });
+        
+        // Initial height fix
+        sections.forEach(function(section) {
+            section.style.minHeight = window.innerHeight + 'px';
+            section.style.height = window.innerHeight + 'px';
+        });
+    }
+    safeInit(initFullScreenScroll, 'initFullScreenScroll');
 
 });
