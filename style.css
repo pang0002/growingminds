@@ -4971,6 +4971,7 @@ footer {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     position: relative;
+    width: 100%;
 }
 
 .home-page .section-fullscreen {

@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Runs an init function in isolation — if it throws, the error is
     // logged but every OTHER init() call below it still runs normally.
-    // Without this, a single bug in e.g. the parallax or tabs feature
-    // would silently stop every feature listed after it (including the
-    // expandable cards accordion) from ever being wired up.
     function safeInit(fn, label) {
         try {
             fn();
@@ -68,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 observer.observe(el);
             });
         } else {
-            // Fallback: show all elements immediately
             revealElements.forEach(function (el) {
                 el.classList.add('visible');
             });
@@ -110,9 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let intervalId = null;
         let isPaused = false;
 
-        // Show a specific card
         function showCard(index) {
-            // Update cards
             cards.forEach(function (card, i) {
                 if (i === index) {
                     card.classList.add('active');
@@ -121,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Update dots
             dots.forEach(function (dot, i) {
                 if (i === index) {
                     dot.classList.add('active');
@@ -132,10 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             currentIndex = index;
 
-            // Reset and restart progress bar
             if (rotateBar) {
                 rotateBar.classList.remove('animating');
-                // Force reflow
                 void rotateBar.offsetWidth;
                 rotateBar.style.width = '0%';
                 setTimeout(function () {
@@ -146,18 +137,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Go to next card
         function nextCard() {
             const nextIndex = (currentIndex + 1) % cards.length;
             showCard(nextIndex);
         }
 
-        // Start auto-rotation
         function startAutoRotate() {
             if (intervalId) clearInterval(intervalId);
             isPaused = false;
 
-            // Start progress bar
             if (rotateBar) {
                 rotateBar.classList.remove('animating');
                 void rotateBar.offsetWidth;
@@ -169,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 50);
             }
 
-            // Change card every 4 seconds
             intervalId = setInterval(function () {
                 if (!isPaused) {
                     nextCard();
@@ -177,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 4000);
         }
 
-        // Pause auto-rotation
         function pauseAutoRotate() {
             isPaused = true;
             if (intervalId) {
@@ -189,16 +175,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Resume auto-rotation
         function resumeAutoRotate() {
             if (!isPaused) return;
             isPaused = false;
 
-            // Restart progress bar from current position
             if (rotateBar) {
                 rotateBar.classList.remove('animating');
                 void rotateBar.offsetWidth;
-                // Start from beginning of cycle
                 rotateBar.style.width = '0%';
                 setTimeout(function () {
                     if (!isPaused) {
@@ -207,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 50);
             }
 
-            // Restart interval
             if (intervalId) clearInterval(intervalId);
             intervalId = setInterval(function () {
                 if (!isPaused) {
@@ -216,40 +198,31 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 4000);
         }
 
-        // Set up dot click handlers
         dots.forEach(function (dot, index) {
             dot.addEventListener('click', function () {
                 pauseAutoRotate();
                 showCard(index);
-                // Resume after a delay
                 setTimeout(resumeAutoRotate, 5000);
             });
         });
 
-        // Pause on hover
         const cardContainer = document.querySelector('.brand-interactive');
         if (cardContainer) {
             cardContainer.addEventListener('mouseenter', pauseAutoRotate);
             cardContainer.addEventListener('mouseleave', resumeAutoRotate);
         }
 
-        // Also pause on touch devices
         if (cardContainer) {
             cardContainer.addEventListener('touchstart', function () {
                 pauseAutoRotate();
-                // Resume after touch ends
                 setTimeout(resumeAutoRotate, 5000);
             }, { passive: true });
         }
 
-        // Initialize first card
         showCard(0);
-
-        // Start auto-rotation after a short delay
         setTimeout(startAutoRotate, 800);
     }
 
-    // Call interactive cards after DOM is ready
     safeInit(initInteractiveCards, 'initInteractiveCards');
 
     // ============================================================
@@ -292,7 +265,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Scroll-triggered header shrink
         if (header) {
             var headerTicking = false;
             var onScroll = function () {
@@ -348,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
             safeInit(initHeaderBehavior, 'initHeaderBehavior');
             safeInit(initSmoothScroll, 'initSmoothScroll');
 
-            // Set active nav link after header loads
             setTimeout(function () {
                 var currentPath = window.location.pathname.split('/').pop() || 'index.html';
                 var navLinks = document.querySelectorAll('#site-nav a:not(.btn-nav)');
@@ -385,7 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Show loading state
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
@@ -400,14 +370,12 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (response) {
                 if (response.ok) {
-                    // Show success message
                     const successDiv = document.createElement('div');
                     successDiv.className = 'form-success show';
                     successDiv.innerHTML = '✅ Thank you! Your message has been sent. We\'ll get back to you soon.';
                     form.appendChild(successDiv);
                     form.reset();
 
-                    // Remove success message after 5 seconds
                     setTimeout(function () {
                         successDiv.classList.remove('show');
                         setTimeout(function () { successDiv.remove(); }, 500);
@@ -442,7 +410,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    // Run after header loads
     setTimeout(initActiveNav, 500);
 
     // ============================================================
@@ -514,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let isPaused = false;
         const AUTO_MS = 5500;
 
-        // Build cards
         frameworkData.forEach(function (data, i) {
             const card = document.createElement('div');
             card.className = 'carousel-card' + (i === 0 ? ' active' : '');
@@ -532,7 +498,6 @@ document.addEventListener('DOMContentLoaded', function () {
             track.appendChild(card);
         });
 
-        // Build dots
         frameworkData.forEach(function (_, i) {
             const dot = document.createElement('button');
             dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -586,11 +551,9 @@ document.addEventListener('DOMContentLoaded', function () {
             startAuto();
         }
 
-        // Arrow clicks
         if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restartAuto(); });
         if (nextBtn) nextBtn.addEventListener('click', function () { next(); restartAuto(); });
 
-        // Pause on hover / touch
         carousel.addEventListener('mouseenter', function () {
             isPaused = true;
             stopAuto();
@@ -600,7 +563,6 @@ document.addEventListener('DOMContentLoaded', function () {
             startAuto();
         });
 
-        // Simple swipe support
         let touchStartX = 0;
         let touchEndX = 0;
         track.addEventListener('touchstart', function (e) {
@@ -619,27 +581,23 @@ document.addEventListener('DOMContentLoaded', function () {
             startAuto();
         }, { passive: true });
 
-        // Init
         goTo(0);
         setTimeout(startAuto, 800);
     }
 
-    // Initialize Framework Carousel
     safeInit(initFrameworkCarousel, 'initFrameworkCarousel');
 
     // ============================================================
-    // INTERACTIVE PROCESS TIMELINE - WITH SMOOTH PROGRESS ANIMATION
+    // INTERACTIVE PROCESS TIMELINE
     // ============================================================
     function initProcessTimeline() {
         const stepNodes = document.querySelectorAll('.step-node');
         const card = document.getElementById('processCard');
         const progressBar = document.getElementById('timelineProgress');
 
-        // Tracking state and timer configurations
         let currentIndex = 0;
         let timer = null;
         let progressTimer = null;
-        let progressValue = 0;
         const intervalTime = 5000;
         const processSection = document.getElementById('process');
 
@@ -871,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL - JAVASCRIPT CONTROLLED
+    // FULL-SCREEN SCROLL - SIMPLE & RELIABLE
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -888,10 +846,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const sections = document.querySelectorAll('.section-fullscreen');
         if (sections.length === 0) return;
         
-        let currentSection = 0;
-        let isScrolling = false;
-        let scrollTimeout = null;
-        
         // Set each section to full viewport height
         function setFullHeight() {
             const vh = window.innerHeight;
@@ -902,6 +856,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.style.alignItems = 'center';
                 section.style.justifyContent = 'center';
                 section.style.flexShrink = '0';
+                section.style.width = '100%';
+                section.style.scrollSnapAlign = 'start';
             });
         }
         
@@ -914,11 +870,7 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Lock the body to prevent normal scrolling
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-        
-        // Create a container that holds all sections and handles scrolling
+        // Create a scroll container
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
         container.style.cssText = `
@@ -929,14 +881,13 @@ document.addEventListener('DOMContentLoaded', function () {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             position: relative;
+            width: 100%;
         `;
         
-        // Move all sections into the container
+        // Move sections into container
         const parent = sections[0].parentNode;
         const footer = document.querySelector('footer');
-        const header = document.querySelector('header');
         
-        // Move sections to container
         sections.forEach(function(section) {
             container.appendChild(section);
         });
@@ -947,12 +898,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             parent.appendChild(container);
         }
-        
-        // Make sure sections snap properly
-        sections.forEach(function(section) {
-            section.style.scrollSnapAlign = 'start';
-            section.style.flexShrink = '0';
-        });
         
         // Add scroll indicators
         sections.forEach(function(section, index) {
@@ -1005,7 +950,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         document.body.appendChild(dotNav);
         
-        // Update active dot on scroll using container's scroll event
+        // Update active dot on scroll
         let dotUpdateTicking = false;
         container.addEventListener('scroll', function() {
             if (!dotUpdateTicking) {
@@ -1050,7 +995,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // Handle initial scroll position
+        // Scroll to top on load
         container.scrollTo({ top: 0, behavior: 'instant' });
     }
     safeInit(initFullScreenScroll, 'initFullScreenScroll');
