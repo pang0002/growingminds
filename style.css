@@ -4960,23 +4960,13 @@ footer {
 .cta-lines span:nth-child(2) { color: var(--color-gold); }
 
 /* ============================================================
-   FULL-SCREEN SCROLL - JAVASCRIPT CONTROLLED
+   FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY)
    ============================================================ */
 
-.home-page .fullscreen-scroll-container {
-    height: 100vh;
-    height: 100dvh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-    width: 100%;
-}
-
+/* Apply only to the homepage when .home-page class is on body */
 .home-page .section-fullscreen {
     height: 100vh;
-    height: 100dvh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -4988,27 +4978,31 @@ footer {
     padding: 0;
     margin: 0;
     width: 100%;
-    flex-shrink: 0;
 }
 
+/* Container inside fullscreen sections */
 .home-page .section-fullscreen .container {
     padding: 32px 24px;
     width: 100%;
     max-width: 1200px;
 }
 
-.home-page .section-fullscreen.hero,
-.home-page .section-fullscreen.section-sage-bg,
-.home-page .section-fullscreen.section-white-bg,
-.home-page .section-fullscreen.process-section,
-.home-page .section-fullscreen.framework,
-.home-page .section-fullscreen.mission-vision,
-.home-page .section-fullscreen.programmes-section,
-.home-page .section-fullscreen.why-grow,
-.home-page .section-fullscreen.testimonials,
-.home-page .section-fullscreen.founder-details,
-.home-page .section-fullscreen.resources,
-.home-page .section-fullscreen.cta-section {
+/* Enable scroll snapping on the home page container */
+.home-page.scroll-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Remove padding from sections that are fullscreen */
+.home-page .section-fullscreen.hero {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.section-sage-bg {
     padding: 0;
 }
 
@@ -5016,6 +5010,43 @@ footer {
     padding: 0 !important;
 }
 
+.home-page .section-fullscreen.process-section {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.framework {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.mission-vision {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.programmes-section {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.why-grow {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.testimonials {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.founder-details {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.resources {
+    padding: 0;
+}
+
+.home-page .section-fullscreen.cta-section {
+    padding: 0;
+}
+
+/* Scroll indicator for fullscreen sections */
 .home-page .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -5050,10 +5081,12 @@ footer {
     50% { transform: translateX(-50%) translateY(8px); }
 }
 
+/* Dark variant for scroll indicator on dark backgrounds */
 .home-page .scroll-indicator--light {
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Progress dots for fullscreen navigation */
 .home-page .section-nav-dots {
     position: fixed;
     right: 28px;
@@ -5063,6 +5096,7 @@ footer {
     flex-direction: column;
     gap: 12px;
     z-index: 100;
+    pointer-events: none;
 }
 
 .home-page .section-nav-dots a {
@@ -5073,6 +5107,7 @@ footer {
     background: rgba(31, 60, 136, 0.2);
     border: 2px solid rgba(31, 60, 136, 0.15);
     transition: all 0.3s var(--ease);
+    pointer-events: auto;
     cursor: pointer;
     position: relative;
 }
@@ -5089,6 +5124,28 @@ footer {
     box-shadow: 0 0 0 4px rgba(31, 60, 136, 0.15);
 }
 
+.home-page .section-nav-dots a .dot-tooltip {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+}
+
+.home-page .section-nav-dots a:hover .dot-tooltip {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .home-page .section-fullscreen {
         height: 100vh;
@@ -5117,8 +5174,13 @@ footer {
         bottom: 20px;
         font-size: 10px;
     }
+    
+    .home-page .section-nav-dots a .dot-tooltip {
+        display: none;
+    }
 }
 
+/* Prevent header from overlapping content on small screens */
 @media (max-width: 480px) {
     .home-page .section-fullscreen .container {
         padding: 20px 12px;
