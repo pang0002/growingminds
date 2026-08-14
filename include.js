@@ -1,4 +1,4 @@
-// include.js - Enhanced with interactions
+// include.js - Enhanced with interactions and full-screen scroll
 document.addEventListener('DOMContentLoaded', function () {
 
     // Runs an init function in isolation — if it throws, the error is
@@ -640,12 +640,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let timer = null;
         let progressTimer = null;
         let progressValue = 0;
-        const intervalTime = 5000; // Delay in milliseconds (5 seconds)
-        const processSection = document.getElementById('process'); // Reference for hover detection
+        const intervalTime = 5000;
+        const processSection = document.getElementById('process');
 
         if (!stepNodes.length || !card) return;
 
-        // Preserving EXACT original titles, subtitles, and descriptions
         const processData = [
             {
                 phase: "Phase 01",
@@ -714,11 +713,8 @@ document.addEventListener('DOMContentLoaded', function () {
         function updateStep(index, animateProgress) {
             const data = processData[index];
             if (!data) return;
-
-            // Update current index
             currentIndex = index;
 
-            // Update step nodes
             stepNodes.forEach(function (node, idx) {
                 if (idx === index) {
                     node.classList.add('active');
@@ -727,15 +723,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // If animateProgress is true, we'll animate the bar smoothly
             if (animateProgress !== false) {
-                // Set the progress bar to the exact position for this step
                 const percentage = (index / (processData.length - 1)) * 100;
                 progressBar.style.transition = 'width 0.6s ease-in-out';
                 progressBar.style.width = percentage + '%';
             }
 
-            // Animate card swap
             card.style.opacity = '0.3';
             card.style.transform = 'translateY(6px)';
 
@@ -746,7 +739,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (stepIcon) stepIcon.textContent = data.icon;
                 if (stepDesc) stepDesc.textContent = data.desc;
 
-                // Render takeaway highlights
                 if (highlightsContainer) {
                     highlightsContainer.innerHTML = '';
                     data.highlights.forEach(function (hl) {
@@ -768,26 +760,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 180);
         }
 
-        // Start the progress bar animation (smoothly moves from current to next)
         function startProgressAnimation() {
             stopProgressAnimation();
             
             const startPercent = (currentIndex / (processData.length - 1)) * 100;
             const endPercent = ((currentIndex + 1) / (processData.length - 1)) * 100;
             
-            // Only animate if not at the last step
             if (currentIndex < processData.length - 1) {
                 progressBar.style.transition = 'none';
                 progressBar.style.width = startPercent + '%';
-                
-                // Force reflow
                 void progressBar.offsetWidth;
-                
-                // Start the smooth animation to the next step
                 progressBar.style.transition = 'width ' + (intervalTime / 1000) + 's linear';
                 progressBar.style.width = endPercent + '%';
             } else {
-                // At the last step, just show full progress
                 progressBar.style.transition = 'none';
                 progressBar.style.width = '100%';
             }
@@ -800,31 +785,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Start auto-advancing through steps
         function startAutoSwap() {
-            stopAutoSwap(); // Prevent duplicate running timers
+            stopAutoSwap();
             stopProgressAnimation();
-            
-            // Start progress bar animation
             startProgressAnimation();
             
-            // Set timer to change step
             timer = setInterval(function () {
                 const nextIndex = (currentIndex + 1) % processData.length;
-                updateStep(nextIndex, false); // Don't animate progress bar here, it's already animated
-                
-                // Start the next progress animation
+                updateStep(nextIndex, false);
                 if (nextIndex < processData.length - 1) {
                     startProgressAnimation();
                 } else {
-                    // At the last step, we stay at 100%
                     progressBar.style.transition = 'none';
                     progressBar.style.width = '100%';
                 }
             }, intervalTime);
         }
 
-        // Clear the running timer
         function stopAutoSwap() {
             if (timer) {
                 clearInterval(timer);
@@ -833,23 +810,18 @@ document.addEventListener('DOMContentLoaded', function () {
             stopProgressAnimation();
         }
 
-        // Click handler for step nodes
         stepNodes.forEach(function (node) {
             node.addEventListener('click', function () {
                 const index = parseInt(this.getAttribute('data-step'), 10);
-                
-                // Reset auto-swap timer on manual interaction
                 stopAutoSwap();
-                updateStep(index, true); // Animate progress bar
-                startAutoSwap(); // Restart auto-swap after manual click
+                updateStep(index, true);
+                startAutoSwap();
             });
         });
 
-        // Pause timer when parent hovers mouse over the section to read
         if (processSection) {
             processSection.addEventListener('mouseenter', function() {
                 stopAutoSwap();
-                // Pause the progress bar animation
                 const currentWidth = parseFloat(progressBar.style.width) || 0;
                 progressBar.style.transition = 'none';
                 progressBar.style.width = currentWidth + '%';
@@ -860,24 +832,14 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Initialize with first step
         updateStep(0, true);
-        
-        // Start auto-swap after a short delay
         setTimeout(startAutoSwap, 1000);
     }
 
-    // Initialize Process Timeline
     safeInit(initProcessTimeline, 'initProcessTimeline');
 
     // ============================================================
-    // EXPANDABLE CARDS - ACCORDION BEHAVIOR (ONLY ONE AT A TIME)
-    // Uses event delegation on the shared grid container instead of a
-    // separate listener per card/button. This is deliberately more
-    // robust than per-element listeners: it can't end up with stale
-    // or missing bindings if the DOM changes, and there's exactly one
-    // listener responsible for the accordion behavior — so there's no
-    // possibility of two separate handlers disagreeing with each other.
+    // EXPANDABLE CARDS - ACCORDION BEHAVIOR
     // ============================================================
     function initExpandableCards() {
         const cardsContainer = document.querySelector('.services-grid');
@@ -896,24 +858,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const isCurrentlyExpanded = card.classList.contains('expanded');
 
-            // Close every expanded card in this grid...
             cardsContainer.querySelectorAll('.expandable-card.expanded').forEach(function (c) {
                 c.classList.remove('expanded');
             });
 
-            // ...then re-open only the one that was clicked (unless it
-            // was the one already open, in which case leave it closed).
             if (!isCurrentlyExpanded) {
                 card.classList.add('expanded');
             }
         });
     }
 
-    // Initialize Expandable Cards
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY) - SIMPLE VERSION
+    // FULL-SCREEN SCROLL - JAVASCRIPT CONTROLLED
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -927,9 +885,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const body = document.body;
         body.classList.add('home-page');
         
-        // Get all sections that should be full-screen
         const sections = document.querySelectorAll('.section-fullscreen');
         if (sections.length === 0) return;
+        
+        let currentSection = 0;
+        let isScrolling = false;
+        let scrollTimeout = null;
         
         // Set each section to full viewport height
         function setFullHeight() {
@@ -940,6 +901,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.style.display = 'flex';
                 section.style.alignItems = 'center';
                 section.style.justifyContent = 'center';
+                section.style.flexShrink = '0';
             });
         }
         
@@ -952,15 +914,44 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Add scroll snap to the body/html
-        document.documentElement.style.scrollSnapType = 'y mandatory';
-        document.documentElement.style.overflowY = 'scroll';
-        document.documentElement.style.height = '100vh';
-        document.documentElement.style.height = '100dvh';
+        // Lock the body to prevent normal scrolling
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
         
-        // Make each section a snap target
+        // Create a container that holds all sections and handles scrolling
+        const container = document.createElement('div');
+        container.className = 'fullscreen-scroll-container';
+        container.style.cssText = `
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        `;
+        
+        // Move all sections into the container
+        const parent = sections[0].parentNode;
+        const footer = document.querySelector('footer');
+        const header = document.querySelector('header');
+        
+        // Move sections to container
+        sections.forEach(function(section) {
+            container.appendChild(section);
+        });
+        
+        // Insert container before footer
+        if (footer) {
+            parent.insertBefore(container, footer);
+        } else {
+            parent.appendChild(container);
+        }
+        
+        // Make sure sections snap properly
         sections.forEach(function(section) {
             section.style.scrollSnapAlign = 'start';
+            section.style.flexShrink = '0';
         });
         
         // Add scroll indicators
@@ -1014,49 +1005,53 @@ document.addEventListener('DOMContentLoaded', function () {
         
         document.body.appendChild(dotNav);
         
-        // Update active dot on scroll
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const index = Array.from(sections).indexOf(entry.target);
+        // Update active dot on scroll using container's scroll event
+        let dotUpdateTicking = false;
+        container.addEventListener('scroll', function() {
+            if (!dotUpdateTicking) {
+                window.requestAnimationFrame(function() {
+                    const scrollTop = container.scrollTop;
+                    const sectionHeight = window.innerHeight;
+                    const currentIndex = Math.round(scrollTop / sectionHeight);
+                    
                     const dots = dotNav.querySelectorAll('a');
                     dots.forEach(function(dot, i) {
-                        dot.classList.toggle('active', i === index);
+                        dot.classList.toggle('active', i === currentIndex);
                     });
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
-        
-        sections.forEach(function(section) {
-            observer.observe(section);
-        });
+                    
+                    dotUpdateTicking = false;
+                });
+                dotUpdateTicking = true;
+            }
+        }, { passive: true });
         
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 e.preventDefault();
-                const currentIndex = Array.from(sections).findIndex(function(s) {
-                    const rect = s.getBoundingClientRect();
-                    return rect.top >= -10 && rect.top < window.innerHeight / 2;
+                const scrollTop = container.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const nextIndex = Math.floor(scrollTop / sectionHeight) + 1;
+                const targetY = nextIndex * sectionHeight;
+                container.scrollTo({
+                    top: Math.min(targetY, container.scrollHeight - container.clientHeight),
+                    behavior: 'smooth'
                 });
-                const nextIndex = Math.min(currentIndex + 1, sections.length - 1);
-                if (nextIndex !== currentIndex) {
-                    sections[nextIndex].scrollIntoView({ behavior: 'smooth' });
-                }
             } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
                 e.preventDefault();
-                const currentIndex = Array.from(sections).findIndex(function(s) {
-                    const rect = s.getBoundingClientRect();
-                    return rect.top >= -10 && rect.top < window.innerHeight / 2;
+                const scrollTop = container.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const prevIndex = Math.ceil(scrollTop / sectionHeight) - 1;
+                const targetY = prevIndex * sectionHeight;
+                container.scrollTo({
+                    top: Math.max(0, targetY),
+                    behavior: 'smooth'
                 });
-                const prevIndex = Math.max(currentIndex - 1, 0);
-                if (prevIndex !== currentIndex) {
-                    sections[prevIndex].scrollIntoView({ behavior: 'smooth' });
-                }
             }
         });
+        
+        // Handle initial scroll position
+        container.scrollTo({ top: 0, behavior: 'instant' });
     }
     safeInit(initFullScreenScroll, 'initFullScreenScroll');
 
