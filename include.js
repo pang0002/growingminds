@@ -472,9 +472,9 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 title: "Self-Awareness",
                 icon: "🧠",
-                desc: "When children understand how they learn — their strengths, preferred styles, and where they need support — self-doubt quietly turns into confidence. We help them build that clear, stigma-free self-knowledge.",
+                desc: "When children understand how they learn — their strengths, what they find hard, and where they need support — self-doubt quietly turns into confidence. We help them build that clear, stigma-free self-knowledge.",
                 features: [
-                    "Discover their unique learning profile and preferred styles",
+                    "Discover their unique learning profile and strengths",
                     "Build a simple, useful vocabulary for emotions and thinking",
                     "Develop realistic, positive self-acceptance without labels or shame"
                 ]

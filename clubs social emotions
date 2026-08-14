@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Skills &amp; Emotional Regulation Club for Kids | Kuala Lumpur | Growing Minds</title>
+    <meta name="description" content="Social & Emotions Club: big feelings, real friendships. An eight-week after-school club in Kuala Lumpur for children who fall apart when things go wrong or hover at the edge of the group." />
+    <link rel="canonical" href="https://growingminds.com.my/clubs-social-emotions.html" />
+    <link rel="stylesheet" href="style.css?v=7" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMF1GKD90H"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BMF1GKD90H');
+    </script>
+</head>
+<body>
+
+    <header></header>
+
+    <section class="page-hero">
+        <div class="blob blob-purple"></div>
+        <div class="blob blob-teal"></div>
+        <div class="container reveal">
+            <span class="eyebrow">Calm</span>
+            <h1>Social &amp; Emotions Club</h1>
+            <p>Big feelings. Real friendships.</p>
+        </div>
+    </section>
+
+    <section class="section-white-bg" style="padding:50px 0;">
+        <div class="container">
+            <div class="reveal" style="max-width:760px;margin:0 auto;">
+                <p style="font-size:17px;line-height:1.8;color:var(--color-ink-soft);">
+                    Some children arrive at school already knowing how to join a game. Some don't, and nobody ever quite explains it to them. This is the club where we explain it. Then we practise it, for eight weeks, in a room where getting it wrong is completely fine.
+                </p>
+
+                <h3 style="margin-top:32px;color:var(--color-primary);">Come if your child</h3>
+                <p style="color:var(--color-ink-soft);">Falls apart when something goes wrong, and can't tell you why &middot; hovers at the edge of the group, wanting in &middot; can't lose a game without the afternoon ending &middot; has friends, but they never quite stick &middot; goes quiet, or goes loud, and neither one helps.</p>
+
+                <h3 style="margin-top:28px;color:var(--color-primary);">Eight weeks, eight things to practise</h3>
+                <p style="color:var(--color-ink-soft);">Spotting a feeling before it takes over. Coming back down again. Taking turns when you really don't want to. Walking up to a game that's already started. Disagreeing with someone and still being friends afterwards. Saying sorry and meaning it. Losing. Staying in the room anyway.</p>
+
+                <h3 style="margin-top:28px;color:var(--color-primary);">What it looks like on a Monday</h3>
+                <p style="color:var(--color-ink-soft);">Cooperative games where one person can't win alone. Stories where somebody gets it badly wrong and has to fix it. Drawing what angry looks like. A team build where two children want different things and have to sort it out themselves &mdash; with us close by, not in the middle.</p>
+
+                <h3 style="margin-top:28px;color:var(--color-primary);">What you might notice at home</h3>
+                <p style="color:var(--color-ink-soft);">A "no" that doesn't collapse the whole evening.</p>
+
+                <p style="margin-top:28px;font-size:14px;color:var(--color-ink-soft);font-style:italic;">Ages [4&ndash;6] and [7&ndash;9] &mdash; separate groups, same club &middot; 8 weeks &middot; [day, time] &middot; [RM XXX] &middot; Eight children max</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="blob blob-teal"></div>
+        <div class="blob blob-gold"></div>
+        <div class="container cta-container reveal">
+            <h2>Ready to sign up?</h2>
+            <p>We'll tell you honestly whether this is the right club.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">WhatsApp Us →</a>
+                <a href="clubs.html" class="btn btn-outline-light">See All Clubs</a>
+            </div>
+        </div>
+    </section>
+
+    <footer></footer>
+
+    <script src="include.js?v=7"></script>
+
+</body>
+</html>

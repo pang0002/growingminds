@@ -6,21 +6,22 @@
 }
 
 :root {
-    --color-primary: #0a4860;
-    --color-primary-dark: #082f40;
+    --color-primary: #1F3C88;
+    --color-primary-dark: #142a61;
     --color-teal: #2cb5a5;
     --color-teal-dark: #229488;
     --color-gold: #f7c948;
     --color-gold-dark: #e0ac1f;
-    --color-accent: #8e7df0;
+    --color-accent: #8E7DF0; /* lavender */
     --color-cream: #fbf7ef;
     --color-sage: #eef6f1;
     --color-white: #ffffff;
     --color-ink: #12303f;
     --color-ink-soft: #3c5866;
 
-    --font-display: 'Fraunces', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Poppins', 'Segoe UI', sans-serif;
+    --font-quote: 'Fraunces', Georgia, serif;
+    --font-body: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-accent: 'Caveat', cursive;
 
     --radius-xl: 32px;
@@ -219,9 +220,11 @@ em {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-accent);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 13px;
     color: var(--color-teal-dark);
     margin-bottom: 10px;
 }
