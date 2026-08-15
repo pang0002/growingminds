@@ -525,9 +525,49 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- FOOTER (Loaded from footer.html) -->
+    <!-- FOOTER (static fallback content; include.js will refresh it
+         from footer.html if that fetch succeeds — kept in sync manually) -->
     <!-- ============================================================ -->
-    <footer></footer>
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="images/logo.png" alt="Growing Minds" class="logo-img-footer" />
+                </a>
+                <p class="brand-tagline">Building the skills behind learning</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="schools.html">For Schools</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li><a href="https://wa.me/60178913963" target="_blank">Chat on WhatsApp</a></li>
+                    <li><a href="mailto:hallo.growingminds@gmail.com">Email Us</a></li>
+                    <li><a href="contact.html#location">Our Location</a></li>
+                    <li><a href="tel:+60178913963">+60 17-891 3963</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Growing Minds — Child Development &amp; Learning Studio. Led by an educational psychologist. Kuala Lumpur, Malaysia.</p>
+                <ul class="footer-legal">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <!-- ============================================================ -->
     <!-- SCRIPTS -->
