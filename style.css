@@ -4436,17 +4436,6 @@ footer {
         height: 16px;
     }
 }
-/* ============================================================
-   CONCEPT COMPONENTS
-   Ported from the growing-minds-homepage.html concept design.
-   These are new, reusable classes (not redefinitions of anything
-   above) — drop them into any page's markup to bring in the
-   concept's bolder, more editorial visual ideas: dark ink bands,
-   hand-placed quote chips, flip cards, bordered "door" choices,
-   pathway stages, and a plain-English callout box.
-   All values reference the shared tokens in :root, so they stay
-   in sync with the rest of the site automatically.
-   ============================================================ */
 
 /* ----- PLAIN-ENGLISH CALLOUT -----
    The little "in plain English" box from the hero. */
@@ -4995,6 +4984,18 @@ footer {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+}
+
+body.home-page-locked {
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+}
+
+@supports selector(:has(a)) {
+    html:has(body.home-page-locked) {
+        overflow: hidden;
+    }
 }
 
 /* Remove padding from sections that are fullscreen */
