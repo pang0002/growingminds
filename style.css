@@ -1023,16 +1023,13 @@ header.is-scrolled::after {
 }
 
 /* Enhanced Mission Card - More prominent, bolder */
-.mission, 
-.vision {
-    background: #ffffff;
-    padding: 40px 36px;
+.mission, .vision {
+    background: var(--color-white);
     border-radius: var(--radius-lg);
-    border-left: 6px solid var(--color-teal);
-    box-shadow: 0 12px 40px rgba(31, 60, 136, 0.10);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
+    border-left: 5px solid var(--color-teal);
+    box-shadow: 0 4px 20px rgba(31,60,136,0.06);
+    padding: 28px 32px;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 /* Decorative accent pattern for cards */
