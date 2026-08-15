@@ -631,32 +631,5 @@
     <!-- ============================================================ -->
     <script src="include.js?v=8"></script>
 
-    <!-- ============================================================ -->
-    <!-- FLIP CARD SCRIPT FOR UNDERSTAND FIRST SECTION -->
-    <!-- ============================================================ -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Flip card functionality
-        document.querySelectorAll('.signal-card').forEach(function(card) {
-            const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
-            const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
-            
-            if (frontBtn) {
-                frontBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    card.classList.toggle('is-flipped');
-                });
-            }
-            
-            if (backBtn) {
-                backBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    card.classList.remove('is-flipped');
-                });
-            }
-        });
-    });
-    </script>
-
 </body>
 </html>
