@@ -2915,20 +2915,22 @@ footer {
 }
 
 .mission, .vision {
-    background: var(--color-sage);
-    padding: 32px;
+    background: var(--color-white);
     border-radius: var(--radius-lg);
-    border-left: 4px solid var(--color-teal);
+    border-left: 5px solid var(--color-teal);
+    box-shadow: 0 4px 20px rgba(31, 60, 136, 0.06);
+    padding: 28px 32px;
     transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-.mission:hover, .vision:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 6px 6px 0 0 var(--color-teal);
+/* Keep the gold border for the Clubs card */
+.vision {
+    border-left-color: var(--color-gold);
 }
 
-.vision:hover {
-    box-shadow: 6px 6px 0 0 var(--color-gold);
+.mission:hover, .vision:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(31, 60, 136, 0.12);
 }
 
 .mission h3, .vision h3 {
