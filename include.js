@@ -766,7 +766,12 @@ document.addEventListener('DOMContentLoaded', function () {
         sections.forEach(function(section) {
             container.appendChild(section);
         });
-        if (footer) container.appendChild(footer);
+        if (footer) {
+            container.appendChild(footer);
+            footer.style.scrollSnapAlign = 'start';
+            footer.style.flexShrink = '0';
+            footer.style.width = '100%';
+        }
 
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
