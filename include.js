@@ -882,6 +882,8 @@ document.addEventListener('DOMContentLoaded', function () {
             -webkit-overflow-scrolling: touch;
             position: relative;
             width: 100%;
+            touch-action: none;
+            overscroll-behavior: contain;
         `;
         
         // Move sections into container
@@ -936,65 +938,119 @@ document.addEventListener('DOMContentLoaded', function () {
             
             if (index === 0) link.classList.add('active');
             
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetIndex = parseInt(this.getAttribute('data-index'), 10);
-                const targetSection = sections[targetIndex];
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-            
             dotNav.appendChild(link);
         });
         
         document.body.appendChild(dotNav);
-        
-        // Update active dot on scroll
-        let dotUpdateTicking = false;
-        container.addEventListener('scroll', function() {
-            if (!dotUpdateTicking) {
-                window.requestAnimationFrame(function() {
-                    const scrollTop = container.scrollTop;
-                    const sectionHeight = window.innerHeight;
-                    const currentIndex = Math.round(scrollTop / sectionHeight);
-                    
-                    const dots = dotNav.querySelectorAll('a');
-                    dots.forEach(function(dot, i) {
-                        dot.classList.toggle('active', i === currentIndex);
-                    });
-                    
-                    dotUpdateTicking = false;
-                });
-                dotUpdateTicking = true;
-            }
+
+        // ============================================================
+        // Homepage Scrolling
+        // ============================================================
+        const sectionCount = sections.length;
+        const NAV_LOCK_MS = 800;
+        let currentIndex = 0;
+        let isAnimating = false;
+        let lockTimer = null;
+
+        function sectionHeightPx() {
+            return window.innerHeight;
+        }
+
+        function updateActiveDot(index) {
+            const dots = dotNav.querySelectorAll('a');
+            dots.forEach(function(dot, i) {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function goToSection(index) {
+            const clamped = Math.max(0, Math.min(sectionCount - 1, index));
+            currentIndex = clamped;
+            isAnimating = true;
+
+            container.scrollTo({
+                top: clamped * sectionHeightPx(),
+                behavior: 'smooth'
+            });
+            updateActiveDot(clamped);
+
+            clearTimeout(lockTimer);
+            lockTimer = setTimeout(function() {
+                isAnimating = false;
+            }, NAV_LOCK_MS);
+        }
+
+        // Dot clicks navigate directly but still go through goToSection
+        // so the lock/state stays consistent.
+        dotNav.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToSection(parseInt(this.getAttribute('data-index'), 10));
+            });
+        });
+
+        // Wheel/trackpad — one notch/gesture = one section, ignored while animating
+        container.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (isAnimating) return;
+            if (Math.abs(e.deltaY) < 4) return; // ignore noise
+            goToSection(currentIndex + (e.deltaY > 0 ? 1 : -1));
+        }, { passive: false });
+
+        // Touch swipe — same one-section-per-gesture rule
+        let touchStartY = 0;
+        let touchStartX = 0;
+
+        container.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
         }, { passive: true });
-        
-        // Keyboard navigation
+
+        container.addEventListener('touchmove', function(e) {
+            // We drive scrolling manually, so stop native touch scrolling
+            // from fighting with (or overshooting past) our navigation.
+            e.preventDefault();
+        }, { passive: false });
+
+        container.addEventListener('touchend', function(e) {
+            if (isAnimating) return;
+            const touchEndY = e.changedTouches[0].clientY;
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaY = touchStartY - touchEndY;
+            const deltaX = touchStartX - touchEndX;
+
+            if (Math.abs(deltaY) < Math.abs(deltaX)) return; // horizontal swipe, ignore
+            const SWIPE_THRESHOLD = 40;
+            if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
+
+            goToSection(currentIndex + (deltaY > 0 ? 1 : -1));
+        }, { passive: true });
+
+        // Keyboard navigation — same one-section-per-press rule
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 e.preventDefault();
-                const scrollTop = container.scrollTop;
-                const sectionHeight = window.innerHeight;
-                const nextIndex = Math.floor(scrollTop / sectionHeight) + 1;
-                const targetY = nextIndex * sectionHeight;
-                container.scrollTo({
-                    top: Math.min(targetY, container.scrollHeight - container.clientHeight),
-                    behavior: 'smooth'
-                });
+                if (isAnimating) return;
+                goToSection(currentIndex + 1);
             } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
                 e.preventDefault();
-                const scrollTop = container.scrollTop;
-                const sectionHeight = window.innerHeight;
-                const prevIndex = Math.ceil(scrollTop / sectionHeight) - 1;
-                const targetY = prevIndex * sectionHeight;
-                container.scrollTo({
-                    top: Math.max(0, targetY),
-                    behavior: 'smooth'
-                });
+                if (isAnimating) return;
+                goToSection(currentIndex - 1);
             }
         });
-        
+
+        // Keep currentIndex/dots in sync if the user drags the scrollbar directly.
+        let scrollSyncTimer;
+        container.addEventListener('scroll', function() {
+            clearTimeout(scrollSyncTimer);
+            scrollSyncTimer = setTimeout(function() {
+                if (isAnimating) return;
+                const idx = Math.round(container.scrollTop / sectionHeightPx());
+                currentIndex = Math.max(0, Math.min(sectionCount - 1, idx));
+                updateActiveDot(currentIndex);
+            }, 120);
+        }, { passive: true });
+
         // Scroll to top on load
         container.scrollTo({ top: 0, behavior: 'instant' });
     }
