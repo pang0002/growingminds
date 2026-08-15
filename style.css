@@ -1193,17 +1193,107 @@ header.is-scrolled::after {
     }
 }
 
+/* Signal cards grid — replaces the old inline 3-col style so it can respond on mobile */
+.signal-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+    .signal-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Flip cards: "what you see" (front) vs "what's underneath" (back) as two faces
+   of the same card — this makes the reveal feel like literally turning the
+   card over, rather than an accordion pushing the page around. */
 .signal-card {
     cursor: pointer;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    perspective: 1400px;
+    display: block;
 }
 
 .signal-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
 }
 
+.signal-card-inner {
+    position: relative;
+    display: grid;
+    grid-template-areas: "stack";
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.signal-card.revealed .signal-card-inner {
+    transform: rotateY(180deg);
+}
+
+.signal-card-face {
+    grid-area: stack;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
+    transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.signal-card-front {
+    background: var(--color-white);
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.signal-card:not(.revealed):hover .signal-card-front {
+    border-color: var(--color-primary);
+    box-shadow: 6px 6px 0 0 var(--color-teal);
+    transform: translate(-2px, -2px);
+}
+
+.signal-card-back {
+    background: var(--color-sage);
+    border: 2px solid rgba(23, 120, 109, 0.25);
+    box-shadow: var(--shadow-card);
+    transform: rotateY(180deg);
+}
+
+.signal-card.revealed:hover .signal-card-back {
+    border-color: var(--color-teal-dark);
+    box-shadow: 6px 6px 0 0 var(--color-gold);
+    transform: rotateY(180deg) translate(-2px, -2px);
+}
+
+.signal-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.signal-icon-teal { background: rgba(44, 181, 165, 0.14); }
+.signal-icon-gold { background: rgba(247, 201, 72, 0.22); }
+.signal-icon-lavender { background: rgba(142, 125, 240, 0.16); }
+
 .signal-label-see {
+    display: block;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -1212,6 +1302,7 @@ header.is-scrolled::after {
 }
 
 .signal-label-underneath {
+    display: block;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -1219,9 +1310,16 @@ header.is-scrolled::after {
     color: var(--color-teal-dark);
 }
 
-.signal-divider {
-    border-top: 1px dashed rgba(10, 72, 96, 0.2);
-    margin-bottom: 18px;
+.signal-tag {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--color-white);
+    color: var(--color-teal-dark);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(23, 120, 109, 0.28);
 }
 
 .signal-reveal-btn {
@@ -1246,23 +1344,6 @@ header.is-scrolled::after {
 .signal-reveal-icon {
     display: inline-block;
     transition: transform 0.3s var(--ease);
-}
-
-.signal-card-hidden {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), margin-top 0.4s var(--ease);
-}
-
-.signal-card.revealed .signal-card-hidden {
-    max-height: 260px;
-    opacity: 1;
-    margin-top: 18px;
-}
-
-.signal-card.revealed .signal-reveal-icon {
-    transform: rotate(90deg);
 }
 
 /* HERO TAGLINE

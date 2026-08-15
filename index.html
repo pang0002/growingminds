@@ -129,53 +129,86 @@
                 <p>Most support in Malaysia works on the behaviour. We work on what's underneath it — which is why the change tends to hold.</p>
                 <div class="section-divider"></div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;">
+            <div class="signal-cards-grid">
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who "doesn't listen"</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">He can't hold the instruction long enough to follow it. <em style="color:var(--color-ink-soft);">Working memory · attention</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon signal-icon-teal" aria-hidden="true">👂</span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:19px;">A child who "doesn't listen"</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:14.5px;">He can't hold the instruction long enough to follow it.</p>
+                                <span class="signal-tag">Working memory · attention</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who gives up easily</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">He's overwhelmed, not lazy. Nobody has shown him where to start. <em style="color:var(--color-ink-soft);">Planning · confidence</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon signal-icon-gold" aria-hidden="true">🎯</span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:19px;">A child who gives up easily</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:14.5px;">He's overwhelmed, not lazy. Nobody has shown him where to start.</p>
+                                <span class="signal-tag">Planning · confidence</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who struggles with friends</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">She's missing a skill — reading the room, thinking flexibly, or naming what she feels. <em style="color:var(--color-ink-soft);">Social understanding · language</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon signal-icon-lavender" aria-hidden="true">🤝</span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:19px;">A child who struggles with friends</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:14.5px;">She's missing a skill — reading the room, thinking flexibly, or naming what she feels.</p>
+                                <span class="signal-tag">Social understanding · language</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 

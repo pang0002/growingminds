@@ -703,20 +703,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            const btn = card.querySelector('.signal-reveal-btn');
-            const btnText = card.querySelector('.signal-reveal-btn-text');
-            if (!btn) return;
+            const buttons = card.querySelectorAll('.signal-reveal-btn');
+            if (!buttons.length) return;
 
             function toggle() {
-                const isRevealed = card.classList.toggle('revealed');
-                if (btnText) {
-                    btnText.textContent = isRevealed ? "Hide" : "See what's underneath";
-                }
+                card.classList.toggle('revealed');
             }
 
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                toggle();
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    toggle();
+                });
             });
 
             card.addEventListener('click', function () {
