@@ -119,7 +119,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- UNDERSTAND FIRST - FULL SCREEN -->
+    <!-- UNDERSTAND FIRST - FULL SCREEN (IMPROVED WITH FLIP CARDS) -->
     <!-- ============================================================ -->
     <section class="section-white-bg section-fullscreen" style="padding:0 !important;">
         <div class="container" style="display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100dvh;padding:40px 24px;">
@@ -129,53 +129,103 @@
                 <p>Most support in Malaysia works on the behaviour. We work on what's underneath it — which is why the change tends to hold.</p>
                 <div class="section-divider"></div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;">
+            <div class="signal-cards-grid">
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who "doesn't listen"</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">He can't hold the instruction long enough to follow it. <em style="color:var(--color-ink-soft);">Working memory · attention</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 9c-6.5 0-10.5 5.5-10.5 12.5S11 34 17 34c3.4 0 5.8-2.1 5.8-5 0-2.6-1.9-3.9-4.1-3.9-2 0-3.1-1.6-2.3-3.5 1-2.3 3.9-2.6 5.9-1" style="fill:none;stroke:var(--color-primary);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;"/>
+                                        <rect x="27" y="7" width="9" height="9" rx="2.5" transform="rotate(18 31.5 11.5)" style="fill:var(--color-teal);"/>
+                                    </svg>
+                                </span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:23px;">A child who "doesn't listen"</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:17.5px;line-height:1.55;">He can't hold the instruction long enough to follow it.</p>
+                                <span class="signal-tag">Working memory · attention</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who gives up easily</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">He's overwhelmed, not lazy. Nobody has shown him where to start. <em style="color:var(--color-ink-soft);">Planning · confidence</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 8v28" style="fill:none;stroke:var(--color-primary);stroke-width:2.4;stroke-linecap:round;"/>
+                                        <path d="M11 10c6-3.5 9 2.5 15-1 -1.5 3.5-1.5 6 0 9.5 -6 3.5-9-2.5-15 1z" style="fill:none;stroke:var(--color-primary);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;"/>
+                                        <rect x="6" y="30" width="9" height="9" rx="2.5" transform="rotate(-12 10.5 34.5)" style="fill:var(--color-gold);"/>
+                                    </svg>
+                                </span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:23px;">A child who gives up easily</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:17.5px;line-height:1.55;">He's overwhelmed, not lazy. Nobody has shown him where to start.</p>
+                                <span class="signal-tag">Planning · confidence</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="assessment-card signal-card reveal-stagger">
-                    <div>
-                        <span class="signal-label-see">What you see</span>
-                        <h3 style="margin-top:8px;font-size:19px;">A child who struggles with friends</h3>
-                    </div>
-                    <button class="signal-reveal-btn" type="button">
-                        <span class="signal-reveal-btn-text">See what's underneath</span>
-                        <span class="signal-reveal-icon">→</span>
-                    </button>
-                    <div class="signal-card-hidden">
-                        <div class="signal-divider"></div>
-                        <span class="signal-label-underneath">What's underneath</span>
-                        <p style="margin-top:8px;font-size:14.5px;">She's missing a skill — reading the room, thinking flexibly, or naming what she feels. <em style="color:var(--color-ink-soft);">Social understanding · language</em></p>
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="16" cy="21" r="10.5" style="fill:none;stroke:var(--color-primary);stroke-width:2.4;"/>
+                                        <circle cx="28" cy="21" r="10.5" style="fill:none;stroke:var(--color-primary);stroke-width:2.4;"/>
+                                        <rect x="29" y="6" width="8" height="8" rx="2.5" transform="rotate(15 33 10)" style="fill:var(--color-accent);"/>
+                                    </svg>
+                                </span>
+                                <span class="signal-label-see">What you see</span>
+                                <h3 style="margin-top:8px;font-size:23px;">A child who struggles with friends</h3>
+                            </div>
+                            <button class="signal-reveal-btn" type="button">
+                                <span class="signal-reveal-btn-text">See what's underneath</span>
+                                <span class="signal-reveal-icon">→</span>
+                            </button>
+                        </div>
+                        <div class="signal-card-face signal-card-back">
+                            <div>
+                                <span class="signal-label-underneath">What's underneath</span>
+                                <p style="margin-top:10px;font-size:17.5px;line-height:1.55;">She's missing a skill — reading the room, thinking flexibly, or naming what she feels.</p>
+                                <span class="signal-tag">Social understanding · language</span>
+                            </div>
+                            <button class="signal-reveal-btn signal-reveal-btn-back" type="button">
+                                <span class="signal-reveal-icon signal-reveal-icon-back">←</span>
+                                <span>Back</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -580,6 +630,33 @@
     <!-- SCRIPTS -->
     <!-- ============================================================ -->
     <script src="include.js?v=8"></script>
+
+    <!-- ============================================================ -->
+    <!-- FLIP CARD SCRIPT FOR UNDERSTAND FIRST SECTION -->
+    <!-- ============================================================ -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Flip card functionality
+        document.querySelectorAll('.signal-card').forEach(function(card) {
+            const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
+            const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
+            
+            if (frontBtn) {
+                frontBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    card.classList.toggle('is-flipped');
+                });
+            }
+            
+            if (backBtn) {
+                backBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    card.classList.remove('is-flipped');
+                });
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>

@@ -667,30 +667,59 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // SIGNAL CARDS (click to reveal "what's underneath")
+    // SIGNAL CARDS - FLIP CARD BEHAVIOR (UPDATED)
     // ============================================================
     function initSignalCards() {
         const cards = document.querySelectorAll('.signal-card');
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            const buttons = card.querySelectorAll('.signal-reveal-btn');
-            if (!buttons.length) return;
-
-            function toggle() {
-                card.classList.toggle('revealed');
+            // Find the flip buttons inside this card
+            const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
+            const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
+            
+            // Function to flip to the back (reveal the underneath)
+            function flipToBack(e) {
+                if (e) e.stopPropagation();
+                card.classList.add('is-flipped');
             }
-
-            buttons.forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    toggle();
+            
+            // Function to flip to the front (go back to "what you see")
+            function flipToFront(e) {
+                if (e) e.stopPropagation();
+                card.classList.remove('is-flipped');
+            }
+            
+            // Add click handlers if buttons exist
+            if (frontBtn) {
+                frontBtn.addEventListener('click', flipToBack);
+            }
+            
+            if (backBtn) {
+                backBtn.addEventListener('click', flipToFront);
+            }
+            
+            // Optional: clicking on the card itself can also flip it
+            // (only on the front face, to avoid accidental flips from the back)
+            const frontFace = card.querySelector('.signal-card-front');
+            if (frontFace) {
+                frontFace.addEventListener('click', function(e) {
+                    // Only flip if the click wasn't on the button (already handled)
+                    if (!e.target.closest('.signal-reveal-btn')) {
+                        card.classList.add('is-flipped');
+                    }
                 });
-            });
-
-            card.addEventListener('click', function () {
-                toggle();
-            });
+            }
+            
+            // Clicking on the back face (but not the back button) goes back to front
+            const backFace = card.querySelector('.signal-card-back');
+            if (backFace) {
+                backFace.addEventListener('click', function(e) {
+                    if (!e.target.closest('.signal-reveal-btn-back')) {
+                        card.classList.remove('is-flipped');
+                    }
+                });
+            }
         });
     }
 
