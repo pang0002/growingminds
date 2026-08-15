@@ -696,6 +696,38 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
+    // SIGNAL CARDS (click to reveal "what's underneath")
+    // ============================================================
+    function initSignalCards() {
+        const cards = document.querySelectorAll('.signal-card');
+        if (!cards.length) return;
+
+        cards.forEach(function (card) {
+            const btn = card.querySelector('.signal-reveal-btn');
+            const btnText = card.querySelector('.signal-reveal-btn-text');
+            if (!btn) return;
+
+            function toggle() {
+                const isRevealed = card.classList.toggle('revealed');
+                if (btnText) {
+                    btnText.textContent = isRevealed ? "Hide" : "See what's underneath";
+                }
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggle();
+            });
+
+            card.addEventListener('click', function () {
+                toggle();
+            });
+        });
+    }
+
+    safeInit(initSignalCards, 'initSignalCards');
+
+    // ============================================================
     // FULL-SCREEN SCROLL
     // ============================================================
     function initFullScreenScroll() {
@@ -766,12 +798,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sections.forEach(function(section) {
             container.appendChild(section);
         });
-        if (footer) {
-            container.appendChild(footer);
-            footer.style.scrollSnapAlign = 'start';
-            footer.style.flexShrink = '0';
-            footer.style.width = '100%';
-        }
+        if (footer) container.appendChild(footer);
 
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);

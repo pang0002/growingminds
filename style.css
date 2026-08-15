@@ -1193,6 +1193,78 @@ header.is-scrolled::after {
     }
 }
 
+.signal-card {
+    cursor: pointer;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.signal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.signal-label-see {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+}
+
+.signal-label-underneath {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-teal-dark);
+}
+
+.signal-divider {
+    border-top: 1px dashed rgba(10, 72, 96, 0.2);
+    margin-bottom: 18px;
+}
+
+.signal-reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 18px;
+    padding: 0;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-teal-dark);
+    cursor: pointer;
+}
+
+.signal-reveal-btn:hover {
+    text-decoration: underline;
+}
+
+.signal-reveal-icon {
+    display: inline-block;
+    transition: transform 0.3s var(--ease);
+}
+
+.signal-card-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), margin-top 0.4s var(--ease);
+}
+
+.signal-card.revealed .signal-card-hidden {
+    max-height: 260px;
+    opacity: 1;
+    margin-top: 18px;
+}
+
+.signal-card.revealed .signal-reveal-icon {
+    transform: rotate(90deg);
+}
+
 /* HERO TAGLINE
 
 /* Main tagline headline */
