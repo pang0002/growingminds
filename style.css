@@ -1221,7 +1221,7 @@ header.is-scrolled::after {
     display: block;
 }
 
-.signal-card:hover {
+.assessment-card.signal-card:hover {
     transform: none;
     border-color: transparent;
     box-shadow: none;
@@ -1259,9 +1259,9 @@ header.is-scrolled::after {
 }
 
 .signal-card:not(.revealed):hover .signal-card-front {
-    border-color: var(--color-primary);
-    box-shadow: 6px 6px 0 0 var(--color-teal);
-    transform: translate(-2px, -2px);
+    border-color: rgba(31, 60, 136, 0.18);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
 }
 
 .signal-card-back {
@@ -1272,25 +1272,25 @@ header.is-scrolled::after {
 }
 
 .signal-card.revealed:hover .signal-card-back {
-    border-color: var(--color-teal-dark);
-    box-shadow: 6px 6px 0 0 var(--color-gold);
-    transform: rotateY(180deg) translate(-2px, -2px);
+    border-color: rgba(23, 120, 109, 0.4);
+    box-shadow: var(--shadow-hover);
+    transform: rotateY(180deg) translateY(-4px);
 }
 
 .signal-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 19px;
-    margin-bottom: 12px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
 }
 
-.signal-icon-teal { background: rgba(44, 181, 165, 0.14); }
-.signal-icon-gold { background: rgba(247, 201, 72, 0.22); }
-.signal-icon-lavender { background: rgba(142, 125, 240, 0.16); }
+.signal-icon svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
 
 .signal-label-see {
     display: block;
