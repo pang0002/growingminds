@@ -1615,25 +1615,48 @@ header.is-scrolled::after {
 .process-cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
-    margin-top: 32px;
+    gap: 24px;
+    margin-top: 40px;
 }
 
 .process-card-mini {
+    position: relative;
     border-radius: var(--radius-lg);
-    padding: 22px 20px;
+    padding: 30px 24px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    border-top: 5px solid transparent;
+    box-shadow: 0 3px 14px rgba(31, 60, 136, 0.05);
     transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-.process-card-mini.bg-sage { background: var(--color-sage); }
-.process-card-mini.bg-lavender { background: rgba(142, 125, 240, 0.16); }
+.process-card-mini.bg-sage {
+    background: var(--color-sage);
+    border-top-color: var(--color-teal);
+}
+
+.process-card-mini.bg-lavender {
+    background: rgba(142, 125, 240, 0.16);
+    border-top-color: var(--color-accent);
+}
 
 .process-card-mini:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
+}
+
+.process-card-mini:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 44px;
+    right: -25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.28;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .pcm-top {
@@ -1647,14 +1670,14 @@ header.is-scrolled::after {
     font-family: var(--font-quote);
     font-style: italic;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 32px;
     color: var(--color-ink);
     opacity: 0.5;
 }
 
 .pcm-icon-wrap {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
 }
 
@@ -1666,15 +1689,15 @@ header.is-scrolled::after {
 .pcm-label {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 19px;
+    font-size: 20px;
     color: var(--color-primary);
     margin: 0;
 }
 
 .pcm-desc {
     font-family: var(--font-body);
-    font-size: 13.5px;
-    line-height: 1.55;
+    font-size: 14.5px;
+    line-height: 1.6;
     color: var(--color-ink-soft);
     margin: 2px 0 0;
 }
@@ -1682,6 +1705,10 @@ header.is-scrolled::after {
 @media (max-width: 900px) {
     .process-cards {
         grid-template-columns: repeat(2, 1fr);
+        row-gap: 34px;
+    }
+    .process-card-mini:not(:last-child)::after {
+        display: none;
     }
 }
 
