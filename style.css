@@ -1085,6 +1085,60 @@ header.is-scrolled::after {
     margin: 0 auto;
 }
 
+.hero-insight-card {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border: 3px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hard-sun);
+    overflow: hidden;
+}
+
+.hero-insight-tier {
+    padding: 26px 30px;
+    background: var(--color-paper-deep);
+    border-bottom: 1px dashed rgba(31, 60, 136, 0.18);
+}
+
+.hero-insight-tier--mid {
+    background: var(--color-pale-sun);
+}
+
+.hero-insight-tier--reveal {
+    background: var(--color-gold);
+    border-bottom: none;
+}
+
+.hero-insight-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin-bottom: 9px;
+}
+
+.hero-insight-tier--reveal .hero-insight-label {
+    color: var(--color-primary-dark);
+    opacity: 0.7;
+}
+
+.hero-insight-line {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.hero-insight-line--bold {
+    font-weight: 700;
+    font-size: 18px;
+}
+
 /* HERO TAGLINE
 
 /* Main tagline headline */
