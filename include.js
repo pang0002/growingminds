@@ -829,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL - SIMPLE & RELIABLE
+    // FULL-SCREEN SCROLL
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -944,13 +944,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(dotNav);
 
         // ============================================================
-        // Homepage Scrolling
+        // Homepage Scrolling - IMPROVED VERSION
         // ============================================================
         const sectionCount = sections.length;
-        const NAV_LOCK_MS = 800;
+        const NAV_LOCK_MS = 1000; // Increased from 800ms
         let currentIndex = 0;
         let isAnimating = false;
         let lockTimer = null;
+        let lastScrollTime = 0;
+        let scrollTimeout = null;
 
         function sectionHeightPx() {
             return window.innerHeight;
@@ -963,25 +965,61 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // Track scroll position and sync dots
+        function syncScrollPosition() {
+            const scrollTop = container.scrollTop;
+            const sectionHeight = sectionHeightPx();
+            const index = Math.round(scrollTop / sectionHeight);
+            const clamped = Math.max(0, Math.min(sectionCount - 1, index));
+            if (clamped !== currentIndex && !isAnimating) {
+                currentIndex = clamped;
+                updateActiveDot(currentIndex);
+            }
+        }
+
+        // Use scroll event to update dots (debounced)
+        container.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(syncScrollPosition, 100);
+        }, { passive: true });
+
         function goToSection(index) {
             const clamped = Math.max(0, Math.min(sectionCount - 1, index));
+            
+            // Don't navigate if already at target
+            if (clamped === currentIndex) return;
+            
+            // Prevent rapid fire
+            if (isAnimating) return;
+            
+            const now = Date.now();
+            if (now - lastScrollTime < NAV_LOCK_MS) return;
+            lastScrollTime = now;
+            
+            // Check if we're already near the target section
+            const currentScrollTop = container.scrollTop;
+            const targetScrollTop = clamped * sectionHeightPx();
+            if (Math.abs(currentScrollTop - targetScrollTop) < 20) return;
+            
             currentIndex = clamped;
             isAnimating = true;
 
             container.scrollTo({
-                top: clamped * sectionHeightPx(),
+                top: targetScrollTop,
                 behavior: 'smooth'
             });
             updateActiveDot(clamped);
 
+            // Set a longer lock duration to prevent multiple scroll events
             clearTimeout(lockTimer);
             lockTimer = setTimeout(function() {
                 isAnimating = false;
+                // Ensure we're at the right position
+                syncScrollPosition();
             }, NAV_LOCK_MS);
         }
 
-        // Dot clicks navigate directly but still go through goToSection
-        // so the lock/state stays consistent.
+        // Dot clicks navigate directly
         dotNav.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -989,44 +1027,81 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Wheel/trackpad — one notch/gesture = one section, ignored while animating
+        // IMPROVED: Wheel/trackpad — with debouncing
+        let wheelTimeout = null;
+        let wheelDirection = 0;
+        
         container.addEventListener('wheel', function(e) {
             e.preventDefault();
+            
+            // Debounce wheel events
+            if (wheelTimeout) return;
             if (isAnimating) return;
-            if (Math.abs(e.deltaY) < 4) return; // ignore noise
-            goToSection(currentIndex + (e.deltaY > 0 ? 1 : -1));
+            
+            const delta = e.deltaY;
+            if (Math.abs(delta) < 10) return;
+            
+            // Store direction
+            const direction = delta > 0 ? 1 : -1;
+            
+            // If user changes direction rapidly, ignore
+            if (wheelDirection && wheelDirection !== direction) {
+                wheelDirection = direction;
+                return;
+            }
+            wheelDirection = direction;
+            
+            // Set timeout to allow next wheel event
+            wheelTimeout = setTimeout(function() {
+                wheelTimeout = null;
+                wheelDirection = 0;
+            }, NAV_LOCK_MS);
+            
+            goToSection(currentIndex + direction);
+            
         }, { passive: false });
 
-        // Touch swipe — same one-section-per-gesture rule
+        // IMPROVED: Touch swipe — with better detection
         let touchStartY = 0;
         let touchStartX = 0;
+        let touchStartTime = 0;
 
         container.addEventListener('touchstart', function(e) {
             touchStartY = e.touches[0].clientY;
             touchStartX = e.touches[0].clientX;
+            touchStartTime = Date.now();
         }, { passive: true });
 
         container.addEventListener('touchmove', function(e) {
-            // We drive scrolling manually, so stop native touch scrolling
-            // from fighting with (or overshooting past) our navigation.
             e.preventDefault();
         }, { passive: false });
 
         container.addEventListener('touchend', function(e) {
             if (isAnimating) return;
+            
             const touchEndY = e.changedTouches[0].clientY;
             const touchEndX = e.changedTouches[0].clientX;
+            const touchEndTime = Date.now();
+            
             const deltaY = touchStartY - touchEndY;
             const deltaX = touchStartX - touchEndX;
-
-            if (Math.abs(deltaY) < Math.abs(deltaX)) return; // horizontal swipe, ignore
+            const deltaTime = touchEndTime - touchStartTime;
+            
+            // Ignore if gesture was too slow (it's probably just a scroll)
+            if (deltaTime > 500) return;
+            
+            // Ignore horizontal swipes
+            if (Math.abs(deltaY) < Math.abs(deltaX)) return;
+            
             const SWIPE_THRESHOLD = 40;
             if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
-
-            goToSection(currentIndex + (deltaY > 0 ? 1 : -1));
+            
+            const direction = deltaY > 0 ? 1 : -1;
+            goToSection(currentIndex + direction);
+            
         }, { passive: true });
 
-        // Keyboard navigation — same one-section-per-press rule
+        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 e.preventDefault();
@@ -1039,20 +1114,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Keep currentIndex/dots in sync if the user drags the scrollbar directly.
-        let scrollSyncTimer;
-        container.addEventListener('scroll', function() {
-            clearTimeout(scrollSyncTimer);
-            scrollSyncTimer = setTimeout(function() {
-                if (isAnimating) return;
-                const idx = Math.round(container.scrollTop / sectionHeightPx());
-                currentIndex = Math.max(0, Math.min(sectionCount - 1, idx));
-                updateActiveDot(currentIndex);
-            }, 120);
-        }, { passive: true });
-
         // Scroll to top on load
         container.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Ensure we start at the right position
+        setTimeout(function() {
+            container.scrollTo({ top: 0, behavior: 'instant' });
+            currentIndex = 0;
+            updateActiveDot(0);
+        }, 100);
     }
     safeInit(initFullScreenScroll, 'initFullScreenScroll');
 
