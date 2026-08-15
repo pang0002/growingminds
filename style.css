@@ -1211,7 +1211,7 @@ header.is-scrolled::after {
 /* Flip cards: "what you see" (front) vs "what's underneath" (back) as two faces
    of the same card — this makes the reveal feel like literally turning the
    card over, rather than an accordion pushing the page around. */
-.signal-card {
+.assessment-card.signal-card {
     cursor: pointer;
     background: transparent;
     box-shadow: none;
@@ -1244,11 +1244,11 @@ header.is-scrolled::after {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: var(--radius-lg);
-    padding: 32px 28px;
+    padding: 44px 38px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 260px;
+    min-height: 340px;
     transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
@@ -1281,9 +1281,9 @@ header.is-scrolled::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    margin-bottom: 14px;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 18px;
 }
 
 .signal-icon svg {
@@ -1294,7 +1294,7 @@ header.is-scrolled::after {
 
 .signal-label-see {
     display: block;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -1303,7 +1303,7 @@ header.is-scrolled::after {
 
 .signal-label-underneath {
     display: block;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -1312,12 +1312,12 @@ header.is-scrolled::after {
 
 .signal-tag {
     display: inline-block;
-    margin-top: 14px;
+    margin-top: 20px;
     background: var(--color-white);
     color: var(--color-teal-dark);
-    font-size: 12.5px;
+    font-size: 14.5px;
     font-weight: 600;
-    padding: 6px 12px;
+    padding: 9px 16px;
     border-radius: 20px;
     border: 1px solid rgba(23, 120, 109, 0.28);
 }
@@ -1331,7 +1331,7 @@ header.is-scrolled::after {
     background: none;
     border: none;
     font-family: inherit;
-    font-size: 13.5px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--color-teal-dark);
     cursor: pointer;
