@@ -1005,6 +1005,228 @@ header.is-scrolled::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F3C88' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10v6M2 10l10-5 10 5-10 5z'/%3E%3Cpath d='M6 12v5c0 1.5 2 3 6 3s6-1.5 6-3v-5'/%3E%3C/svg%3E");
 }
 
+/* ============================================================
+   IMPROVED TWO WAYS IN SECTION
+   ============================================================ */
+
+.mission-vision {
+    padding: 70px 0;
+    background: linear-gradient(180deg, var(--color-cream) 0%, #f0ebe2 100%);
+    position: relative;
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Enhanced Mission Card - More prominent, bolder */
+.mission, 
+.vision {
+    background: #ffffff;
+    padding: 40px 36px;
+    border-radius: var(--radius-lg);
+    border-left: 6px solid var(--color-teal);
+    box-shadow: 0 12px 40px rgba(31, 60, 136, 0.10);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative accent pattern for cards */
+.mission::before,
+.vision::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+.mission::before {
+    background: var(--color-teal);
+}
+
+.vision::before {
+    background: var(--color-gold);
+}
+
+/* Hover effects - lift with shadow */
+.mission:hover, 
+.vision:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(31, 60, 136, 0.18);
+}
+
+.vision {
+    border-left-color: var(--color-gold);
+}
+
+/* Card Headers - Bigger, bolder */
+.mission h3, 
+.vision h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Icon before headings */
+.mission h3::before {
+    content: '🔍';
+    font-size: 28px;
+}
+
+.vision h3::before {
+    content: '🚀';
+    font-size: 28px;
+}
+
+/* Highlighted "keyword" badges - Like the example */
+.keyword-highlight {
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    font-weight: 800;
+    padding: 2px 12px 2px 8px;
+    border-radius: 4px;
+    font-size: inherit;
+}
+
+.mission .keyword-highlight {
+    background: var(--color-teal);
+    color: white;
+}
+
+/* Card body text - more readable */
+.mission p, 
+.vision p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin-bottom: 14px;
+}
+
+/* Strong emphasis on key phrases */
+.mission p strong,
+.vision p strong {
+    color: var(--color-primary);
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* Badge for "Start with" callout - like the example's colored boxes */
+.start-badge {
+    display: inline-block;
+    background: var(--color-teal);
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 16px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.vision .start-badge {
+    background: var(--color-gold);
+    color: var(--color-primary);
+}
+
+/* Buttons inside cards - more prominent */
+.mission .btn,
+.vision .btn {
+    margin-top: 8px;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 50px;
+}
+
+.mission .btn {
+    background: var(--color-teal);
+    border-color: var(--color-teal-dark);
+    box-shadow: 0 4px 0 0 var(--color-teal-dark);
+    color: white;
+}
+
+.mission .btn:hover {
+    background: var(--color-teal-dark);
+    box-shadow: 0 6px 0 0 var(--color-teal-dark);
+    transform: translateY(-2px);
+}
+
+.vision .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 0 0 var(--color-primary);
+}
+
+.vision .btn-primary:hover {
+    background: #ffd869;
+    box-shadow: 0 6px 0 0 var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Feature highlight boxes - like example's bullet points */
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0 16px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(44, 181, 165, 0.06);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-teal);
+}
+
+.vision .feature-item {
+    background: rgba(247, 201, 72, 0.08);
+    border-left-color: var(--color-gold);
+}
+
+.feature-item .icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.feature-item .text {
+    font-size: 13px;
+    color: var(--color-ink);
+    line-height: 1.4;
+}
+
+.feature-item .text strong {
+    color: var(--color-primary);
+    display: block;
+    font-size: 14px;
+}
+
+/* Divider between sections */
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-gold), var(--color-accent));
+    border-radius: 4px;
+    margin: 16px auto 0;
+}
+
 /* ----- HERO ----- */
 .hero {
     position: relative;
@@ -3966,6 +4188,24 @@ footer {
     .contact-form {
         padding: 28px;
     }
+
+    /* Responsive for Two Ways In */
+    .mv-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .mission, .vision {
+        padding: 28px 24px;
+    }
+
+    .mission h3, .vision h3 {
+        font-size: 20px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ============================================================
@@ -4022,7 +4262,6 @@ footer {
     .brand-grid,
     .about-container,
     .founder-grid,
-    .mv-grid,
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 40px;
