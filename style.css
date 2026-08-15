@@ -4186,8 +4186,8 @@ footer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
-    max-width: 1160px;
-    margin: 48px auto 0;
+    max-width: 1280px;
+    margin: 56px auto 0;
 }
 
 .framework-pillar {
@@ -4196,23 +4196,23 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0 18px;
+    padding: 0 20px;
 }
 
 .framework-pillar:not(:last-child)::after {
     content: "";
     position: absolute;
-    top: 38px;
+    top: 52px;
     right: 0;
     width: 1px;
-    height: 68px;
+    height: 92px;
     background: rgba(31, 60, 136, 0.12);
 }
 
 .framework-pillar-icon {
-    width: 72px;
-    height: 72px;
-    margin-bottom: 22px;
+    width: 104px;
+    height: 104px;
+    margin-bottom: 26px;
     flex-shrink: 0;
 }
 
@@ -4222,27 +4222,27 @@ footer {
 }
 
 .framework-pillar h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 12px;
     color: var(--color-primary);
 }
 
 .framework-pillar p {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--color-ink-soft);
-    max-width: 190px;
+    max-width: 220px;
     margin: 0 auto;
 }
 
 /* Responsive: 5-across on desktop, 2x2+1 on tablet, single column on mobile */
 @media (max-width: 900px) {
     .framework-pillars {
-        grid-template-columns: repeat(2, minmax(0, 220px));
+        grid-template-columns: repeat(2, minmax(0, 260px));
         justify-content: center;
         column-gap: 48px;
-        row-gap: 48px;
-        max-width: 560px;
+        row-gap: 52px;
+        max-width: 620px;
     }
 
     .framework-pillar:not(:last-child)::after {
@@ -4254,15 +4254,15 @@ footer {
     }
 
     .framework-pillar p {
-        max-width: 210px;
+        max-width: 240px;
     }
 }
 
 @media (max-width: 480px) {
     .framework-pillars {
         grid-template-columns: 1fr;
-        max-width: 280px;
-        row-gap: 44px;
+        max-width: 300px;
+        row-gap: 48px;
     }
 
     .framework-pillar:nth-child(5) {
@@ -4270,13 +4270,17 @@ footer {
     }
 
     .framework-pillar-icon {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 18px;
+        width: 88px;
+        height: 88px;
+        margin-bottom: 20px;
     }
 
     .framework-pillar h3 {
-        font-size: 17px;
+        font-size: 20px;
+    }
+
+    .framework-pillar p {
+        font-size: 15px;
     }
 }
 
