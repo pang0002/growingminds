@@ -754,6 +754,19 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const body = document.body;
         body.classList.add('home-page');
+
+        // On mobile, skip the custom swipe/wheel-hijacking full-screen
+        // experience entirely. It forces every section to exactly one
+        // screen height with overflow hidden, which clips content that's
+        // taller than the viewport (very common on narrow phones), and
+        // it blocks native touch scrolling (touch-action: none +
+        // touchmove preventDefault). Below this width, sections just
+        // flow normally down the page like any other site.
+        const isMobileViewport = window.innerWidth <= 768;
+        if (isMobileViewport) {
+            body.classList.add('home-page-flow');
+            return;
+        }
         
         const sections = document.querySelectorAll('.section-fullscreen');
         if (sections.length === 0) return;

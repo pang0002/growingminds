@@ -80,6 +80,15 @@ body {
     overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+    /* background-attachment:fixed forces a repaint of the background on
+       every scroll frame and is notoriously janky (or silently ignored)
+       on mobile Safari. Switching to scroll fixes both. */
+    body {
+        background-attachment: scroll, scroll, scroll, scroll;
+    }
+}
+
 .section-white-bg,
 .section-sage-bg {
     background: transparent;
@@ -286,6 +295,23 @@ em {
     filter: blur(2px);
     opacity: 0.55;
     pointer-events: none;
+    max-width: 60vw;
+    max-height: 60vw;
+}
+
+@media (max-width: 768px) {
+    /* Floating/pulse animations and blur filters are decorative only,
+       but they still cost paint + GPU time on every frame. Weaker
+       mobile devices feel this as scroll jank and battery drain far
+       more than desktop does, so ease off below tablet width. */
+    .floating,
+    .floating-slow,
+    .blob-teal,
+    .blob-gold,
+    .blob-blue,
+    .blob-purple {
+        animation: none;
+    }
 }
 
 .blob-teal {
@@ -5317,6 +5343,33 @@ body.home-page-locked {
     }
     
     .home-page .section-nav-dots a .dot-tooltip {
+        display: none;
+    }
+
+    /* home-page-flow: applied by include.js on mobile viewports instead
+       of the desktop swipe/scroll-snap experience. Sections must NOT be
+       locked to exactly one screen height with hidden overflow here,
+       or any section whose content runs longer than one phone screen
+       (grids, testimonials, footer notes, etc.) gets silently cut off
+       with no way to reach the rest of it. */
+    .home-page.home-page-flow .section-fullscreen {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: visible;
+        align-items: center;
+        padding: 48px 0;
+        scroll-snap-align: none;
+    }
+
+    .home-page.home-page-flow .section-fullscreen .container {
+        padding: 24px 16px;
+    }
+
+    /* These are desktop-only navigation aids for the swipe experience;
+       include.js never creates them on mobile, but hide defensively. */
+    .home-page.home-page-flow .section-nav-dots,
+    .home-page.home-page-flow .scroll-indicator {
         display: none;
     }
 }
