@@ -5503,11 +5503,11 @@ body.home-page-locked {
 
 .club-check-item {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
+    align-items: center;
+    gap: 16px;
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 18px 20px;
+    padding: 18px 22px;
     box-shadow: var(--shadow-card);
     border: 2px solid transparent;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
@@ -5521,18 +5521,26 @@ body.home-page-locked {
 
 .club-check-icon {
     flex-shrink: 0;
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: var(--club-accent, var(--color-teal));
     color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    font-weight: 700;
-    margin-top: 1px;
+    box-shadow: 0 4px 12px rgba(31, 60, 136, 0.16);
 }
+
+.club-check-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Cycle the checkmark badge through the palette for variety */
+.club-checklist .club-check-item:nth-child(3n+1) .club-check-icon { background: var(--club-accent, var(--color-teal)); }
+.club-checklist .club-check-item:nth-child(3n+2) .club-check-icon { background: var(--color-gold-dark); }
+.club-checklist .club-check-item:nth-child(3n+3) .club-check-icon { background: var(--color-accent); }
 
 .club-check-item p {
     margin: 0;
@@ -5556,12 +5564,15 @@ body.home-page-locked {
 .club-practise-chip {
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 22px 16px;
+    padding: 24px 16px 20px;
     text-align: center;
     box-shadow: var(--shadow-card);
     border: 2px solid transparent;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 }
+
+.club-practise-chip:nth-child(odd) { background: var(--color-sage); }
+.club-practise-chip:nth-child(even) { background: rgba(142, 125, 240, 0.14); }
 
 .club-practise-chip:hover {
     transform: translateY(-5px);
@@ -5569,18 +5580,29 @@ body.home-page-locked {
     box-shadow: 0 16px 36px rgba(31, 60, 136, 0.14);
 }
 
+.practise-icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .club-practise-chip .num {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     margin: 0 auto 12px;
     border-radius: 50%;
-    background: var(--club-accent, var(--color-gold));
+    background: var(--color-white);
     color: var(--color-primary);
     font-weight: 800;
-    font-size: 14px;
+    font-size: 12.5px;
+    box-shadow: 0 2px 8px rgba(31, 60, 136, 0.12);
 }
 
 .club-practise-chip p {
@@ -5589,6 +5611,16 @@ body.home-page-locked {
     line-height: 1.55;
     color: var(--color-ink);
 }
+
+/* Per-position icon set (cycles through 8 generic skill icons) */
+.club-practise-chip:nth-child(1) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Ccircle cx='13' cy='13' r='8' stroke='%231F3C88' stroke-width='2.2'/%3E%3Cline x1='19' y1='19' x2='27' y2='27' stroke='%231F3C88' stroke-width='2.4' stroke-linecap='round'/%3E%3Crect x='22' y='2' width='7' height='7' rx='2' fill='%232CB5A5' transform='rotate(15 25.5 5.5)'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(2) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Ccircle cx='15' cy='17' r='11' stroke='%231F3C88' stroke-width='2.2'/%3E%3Cpath d='M15 10L18 17L15 24L12 17Z' fill='%231F3C88'/%3E%3Crect x='24' y='2' width='7' height='7' rx='2' fill='%23F7C948' transform='rotate(15 27.5 5.5)'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(3) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Crect x='4' y='16' width='10' height='10' rx='2' stroke='%231F3C88' stroke-width='2.2'/%3E%3Crect x='18' y='4' width='10' height='10' rx='2' stroke='%231F3C88' stroke-width='2.2'/%3E%3Crect x='15' y='15' width='6' height='6' rx='1.5' fill='%238E7DF0'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(4) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Cpath d='M6 26L25 7' stroke='%231F3C88' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M13 7H25V19' stroke='%231F3C88' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='2' y='24' width='6' height='6' rx='1.5' fill='%232CB5A5' transform='rotate(-12 5 27)'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(5) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Cpath d='M15 28V16' stroke='%231F3C88' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M15 16c0-5 4.5-7.5 9-7.5-1 5.5-4.5 9-9 7.5Z' fill='%232CB5A5'/%3E%3Cpath d='M15 19c0-4.5-3.5-6.5-7.5-6.5 1 4.5 3.5 6.5 7.5 6.5Z' fill='%23F7C948'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(6) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Ccircle cx='15' cy='15' r='11' stroke='%231F3C88' stroke-width='2.2'/%3E%3Cpath d='M15 8v7l5 3' stroke='%231F3C88' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='22' y='2' width='7' height='7' rx='2' fill='%238E7DF0' transform='rotate(15 25.5 5.5)'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(7) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Cpath d='M15 4l3 7 7 .8-5.3 4.6 1.6 7.1L15 19.8 8.7 23.5l1.6-7.1L5 11.8l7-.8 3-7Z' fill='%232CB5A5' stroke='%231F3C88' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.club-practise-chip:nth-child(8) .practise-icon { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none'%3E%3Cpath d='M8 6v24' stroke='%231F3C88' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M8 8c5-3 8 2 13-1-1 3-1 5 0 8-5 3-8-2-13 1Z' stroke='%231F3C88' stroke-width='2' stroke-linejoin='round'/%3E%3Crect x='3' y='25' width='7' height='7' rx='2' fill='%23F7C948' transform='rotate(-12 6.5 28.5)'/%3E%3C/svg%3E"); }
 
 @media (max-width: 860px) {
     .club-practise-grid { grid-template-columns: repeat(2, 1fr); }
