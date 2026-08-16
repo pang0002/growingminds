@@ -1056,15 +1056,6 @@ header.is-scrolled::after {
 .hero .blob-teal { width: 420px; height: 420px; top: -140px; right: -120px; }
 .hero .blob-gold { width: 220px; height: 220px; bottom: -60px; left: -60px; }
 
-.hero .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 130px);
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .hero-container {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
@@ -1239,28 +1230,6 @@ header.is-scrolled::after {
 @media (max-width: 560px) {
     .quotes-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero .container {
-        min-height: calc(100vh - 80px);
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .hero {
-        padding: 30px 0 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero .container {
-        min-height: calc(100vh - 70px);
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .hero {
-        padding: 20px 0 30px;
     }
 }
 
@@ -3016,7 +2985,7 @@ footer {
 /* ----- PAGE HERO ----- */
 .page-hero {
     position: relative;
-    padding: 40px 0 30px;
+    padding: 40px 0 40px;
     background: transparent;
     text-align: center;
     overflow: hidden;
@@ -3026,16 +2995,7 @@ footer {
 .page-hero .blob-gold { width: 200px; height: 200px; bottom: -80px; left: -60px; }
 .page-hero .blob-purple { width: 220px; height: 220px; bottom: -70px; left: -50px; }
 
-.page-hero .container { 
-    position: relative; 
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 130px);
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+.page-hero .container { position: relative; z-index: 1; }
 
 .page-hero h1 {
     font-size: clamp(1.9rem, 4vw, 2.9rem);
@@ -3046,28 +3006,6 @@ footer {
 .page-hero p {
     font-size: 18px;
     color: var(--color-ink-soft);
-}
-
-@media (max-width: 768px) {
-    .page-hero .container {
-        min-height: calc(100vh - 80px);
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .page-hero {
-        padding: 30px 0 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-hero .container {
-        min-height: calc(100vh - 70px);
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .page-hero {
-        padding: 20px 0 15px;
-    }
 }
 
 /* ----- ABOUT PAGE ----- */
@@ -4457,33 +4395,6 @@ footer {
     .assessment-intro h2 {
         font-size: 28px;
     }
-
-    /* home-page-flow: applied by include.js on mobile viewports instead
-       of the desktop swipe/scroll-snap experience. Sections must NOT be
-       locked to exactly one screen height with hidden overflow here,
-       or any section whose content runs longer than one phone screen
-       (grids, testimonials, footer notes, etc.) gets silently cut off
-       with no way to reach the rest of it. */
-    .home-page.home-page-flow .section-fullscreen {
-        height: auto;
-        min-height: 100vh;
-        min-height: 100dvh;
-        overflow: visible;
-        align-items: center;
-        padding: 20px 0;
-        scroll-snap-align: none;
-    }
-
-    .home-page.home-page-flow .section-fullscreen .container {
-        padding: 24px 16px;
-    }
-
-    /* These are desktop-only navigation aids for the swipe experience;
-       include.js never creates them on mobile, but hide defensively. */
-    .home-page.home-page-flow .section-nav-dots,
-    .home-page.home-page-flow .scroll-indicator {
-        display: none;
-    }
 }
 
 /* Small Mobile */
@@ -4584,14 +4495,6 @@ footer {
     
     .step-info p {
         font-size: 12px;
-    }
-
-    .home-page.home-page-flow .section-fullscreen {
-        padding: 15px 0;
-    }
-
-    .home-page.home-page-flow .section-fullscreen .container {
-        padding: 16px 12px;
     }
 }
 
@@ -5443,19 +5346,13 @@ body.home-page-locked {
         display: none;
     }
 
-    /* home-page-flow: applied by include.js on mobile viewports instead
-       of the desktop swipe/scroll-snap experience. Sections must NOT be
-       locked to exactly one screen height with hidden overflow here,
-       or any section whose content runs longer than one phone screen
-       (grids, testimonials, footer notes, etc.) gets silently cut off
-       with no way to reach the rest of it. */
     .home-page.home-page-flow .section-fullscreen {
         height: auto;
         min-height: 100vh;
         min-height: 100dvh;
         overflow: visible;
         align-items: center;
-        padding: 20px 0;
+        padding: 2px 0;
         scroll-snap-align: none;
     }
 
@@ -5475,14 +5372,6 @@ body.home-page-locked {
 @media (max-width: 480px) {
     .home-page .section-fullscreen .container {
         padding: 20px 12px;
-    }
-
-    .home-page.home-page-flow .section-fullscreen {
-        padding: 15px 0;
-    }
-
-    .home-page.home-page-flow .section-fullscreen .container {
-        padding: 16px 12px;
     }
 }
 
