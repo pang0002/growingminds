@@ -67,14 +67,23 @@
             gap: 14px;
         }
 
-        .iv-check-icon { flex-shrink: 0; width: 32px; height: 32px; margin-top: 1px; }
+        .iv-check-icon { flex-shrink: 0; width: 34px; height: 34px; margin-top: 1px; }
 
         .iv-check-item p {
             margin: 0;
-            font-size: 14.5px;
+            font-size: 16.5px;
             line-height: 1.6;
             color: var(--color-ink);
         }
+
+        /* Scoped bump for this page only — pills, assessment-card headings, process cards */
+        .assessment-card h3 { font-size: 24px; }
+        .assessment-card .pill { font-size: 15px; padding: 9px 16px; }
+        .iv-note { font-size: 16px; line-height: 1.7; }
+
+        .process-cards--six .pcm-label { font-size: 21px; }
+        .process-cards--six h4 { font-size: 18.5px; }
+        .process-cards--six p { font-size: 15.5px; }
 
         /* --- How It Works: force 3-column process card grid on desktop --- */
         .process-cards--six {
@@ -95,7 +104,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px 24px;
-            font-size: 15px;
+            font-size: 16.5px;
             color: var(--color-ink-soft);
             background: var(--color-sage);
             padding: 14px 28px;
@@ -106,8 +115,8 @@
             max-width: 640px;
             margin: 14px auto 0;
             text-align: center;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 15.5px;
+            line-height: 1.75;
             color: var(--color-ink-soft);
         }
     </style>
@@ -216,7 +225,7 @@
                             <span class="pill">Social Understanding</span>
                             <span class="pill">Learning Skills &amp; Confidence</span>
                         </div>
-                        <p style="font-size:14.5px;line-height:1.7;color:var(--color-ink-soft);margin-top:20px;">The mix depends on what your child's profile shows — most children work on two or three of these at a time, not all five.</p>
+                        <p class="iv-note" style="color:var(--color-ink-soft);margin-top:20px;">The mix depends on what your child's profile shows — most children work on two or three of these at a time, not all five.</p>
                     </div>
                 </div>
             </div>
