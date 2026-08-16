@@ -1048,7 +1048,7 @@ header.is-scrolled::after {
 /* ----- HERO ----- */
 .hero {
     position: relative;
-    padding: 40px 0 50px;
+    padding: 76px 0 90px;
     background: transparent;
     overflow: hidden;
 }
@@ -2985,7 +2985,7 @@ footer {
 /* ----- PAGE HERO ----- */
 .page-hero {
     position: relative;
-    padding: 40px 0 40px;
+    padding: 90px 0 40px;
     background: transparent;
     text-align: center;
     overflow: hidden;
@@ -5174,7 +5174,7 @@ body.home-page-locked {
 }
 
 .home-page .section-fullscreen.section-white-bg {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .home-page .section-fullscreen.process-section {
@@ -5346,13 +5346,19 @@ body.home-page-locked {
         display: none;
     }
 
+    /* home-page-flow: applied by include.js on mobile viewports instead
+       of the desktop swipe/scroll-snap experience. Sections must NOT be
+       locked to exactly one screen height with hidden overflow here,
+       or any section whose content runs longer than one phone screen
+       (grids, testimonials, footer notes, etc.) gets silently cut off
+       with no way to reach the rest of it. */
     .home-page.home-page-flow .section-fullscreen {
         height: auto;
         min-height: 100vh;
         min-height: 100dvh;
         overflow: visible;
         align-items: center;
-        padding: 24px 0;
+        padding: 48px 0;
         scroll-snap-align: none;
     }
 
