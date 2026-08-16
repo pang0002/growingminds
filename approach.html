@@ -19,7 +19,7 @@
     </script>
 
     <style>
-        /* Upgraded Page-Specific Styling */
+        /* Clean & Balanced Page Styling */
         .approach-mv-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -38,37 +38,24 @@
             border-radius: var(--radius-lg);
             border: 2px solid rgba(31, 60, 136, 0.08);
             box-shadow: var(--shadow-card);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .approach-mv-grid .mission {
-            border-left: 6px solid var(--color-teal);
-        }
-
-        .approach-mv-grid .vision {
-            border-left: 6px solid var(--color-gold);
-        }
+        .approach-mv-grid .mission { border-left: 6px solid var(--color-teal); }
+        .approach-mv-grid .vision { border-left: 6px solid var(--color-gold); }
 
         .approach-mv-grid .mission:hover,
         .approach-mv-grid .vision:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(31, 60, 136, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(31, 60, 136, 0.1);
         }
 
+        /* Skills Grid - Balanced 3 columns */
         .approach-skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             margin-top: 30px;
-        }
-
-        @media (min-width: 1024px) {
-            .approach-skills-grid .skill-card:nth-child(4),
-            .approach-skills-grid .skill-card:nth-child(5) {
-                grid-column: span 1.5;
-            }
         }
 
         .approach-skills-grid .skill-card {
@@ -81,26 +68,18 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-card);
             border: 2px solid transparent;
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .approach-skills-grid .skill-card:hover {
             border-color: var(--color-primary);
-            box-shadow: 6px 6px 0 0 var(--color-teal);
-            transform: translate(-2px, -2px);
-        }
-
-        .approach-skills-grid .skill-card .icon-wrap {
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
+            box-shadow: 4px 4px 0 0 var(--color-teal);
+            transform: translateY(-2px);
         }
 
         .approach-skills-grid .skill-card h3 {
             font-size: 18px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--color-primary);
         }
 
@@ -111,11 +90,15 @@
             margin: 0;
         }
 
+        /* Pillars Grid - 2x2 Layout for better readability */
         .approach-pillars-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
             margin-top: 30px;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .approach-pillars-grid .pillar-card {
@@ -123,42 +106,37 @@
             flex-direction: column;
             align-items: flex-start;
             text-align: left;
-            padding: 32px 24px;
+            padding: 36px 32px;
             background: var(--color-white);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-card);
             border: 2px solid rgba(31, 60, 136, 0.08);
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .approach-pillars-grid .pillar-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
 
-        .pillar-teal { border-left: 5px solid var(--color-teal) !important; }
-        .pillar-gold { border-left: 5px solid var(--color-gold) !important; }
-        .pillar-purple { border-left: 5px solid var(--color-accent) !important; }
-
-        .approach-pillars-grid .pillar-card .pillar-icon-wrap {
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
-        }
+        .pillar-teal { border-left: 6px solid var(--color-teal) !important; }
+        .pillar-gold { border-left: 6px solid var(--color-gold) !important; }
+        .pillar-purple { border-left: 6px solid var(--color-accent) !important; }
 
         .approach-pillars-grid .pillar-card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--color-primary);
         }
 
         .approach-pillars-grid .pillar-card p {
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6;
+            color: var(--color-ink-soft);
             margin: 0;
         }
 
+        /* Core Values Grid */
         .approach-values-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -176,26 +154,17 @@
             border-radius: var(--radius-lg);
             border: 1px solid rgba(31, 60, 136, 0.08);
             box-shadow: var(--shadow-card);
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .approach-values-grid .value-card:hover {
-            transform: translate(-3px, -3px);
-            border-color: var(--color-primary);
-            box-shadow: 6px 6px 0 0 var(--color-accent);
-        }
-
-        .approach-values-grid .value-card .icon-wrap {
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0 0 var(--color-accent);
         }
 
         .approach-values-grid .value-card h4 {
             font-size: 18px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--color-primary);
         }
 
@@ -207,31 +176,16 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .approach-skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .approach-skills-grid .skill-card:nth-child(4),
-            .approach-skills-grid .skill-card:nth-child(5) {
-                grid-column: span 1;
-            }
-            .approach-pillars-grid {
+            .approach-skills-grid,
+            .approach-values-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .approach-mv-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .approach-skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .approach-pillars-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .approach-mv-grid,
+            .approach-skills-grid,
+            .approach-pillars-grid,
             .approach-values-grid {
                 grid-template-columns: 1fr;
             }
@@ -266,7 +220,7 @@
                     <p style="font-size:19px;line-height:1.8;color:var(--color-ink);margin-bottom:20px;">
                         The labels arrive <strong>long before</strong> anyone has actually looked at how the child in front of them learns.
                     </p>
-                    <div style="background:rgba(255,255,255,0.6); padding:24px 28px; border-radius:var(--radius-md); margin-top:16px;">
+                    <div style="background:rgba(255,255,255,0.7); padding:24px 28px; border-radius:var(--radius-md); margin-top:16px;">
                         <p style="font-size:22px;line-height:1.5;color:var(--color-primary);font-family:var(--font-display);font-weight:600;margin-bottom:6px;">
                             We think that's backwards.
                         </p>
@@ -289,23 +243,11 @@
             </div>
             <div class="approach-mv-grid">
                 <div class="mission reveal-left">
-                    <div style="margin-bottom:16px;">
-                        <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <path d="M22 28l6 6 14-14" stroke="#2CB5A5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 style="font-size:22px; margin-bottom: 10px;">Our Mission</h3>
+                    <h3 style="font-size:22px; margin-bottom: 12px; color: var(--color-primary);">Our Mission</h3>
                     <p style="font-size:15px;line-height:1.7; color: var(--color-ink-soft);">To help families understand how their children learn and to nurture the skills behind confident, independent and lifelong learning.</p>
                 </div>
                 <div class="vision reveal-right">
-                    <div style="margin-bottom:16px;">
-                        <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <path d="M20 34l8 8 16-16" stroke="#F7C948" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 style="font-size:22px; margin-bottom: 10px;">Our Vision</h3>
+                    <h3 style="font-size:22px; margin-bottom: 12px; color: var(--color-primary);">Our Vision</h3>
                     <p style="font-size:15px;line-height:1.7; color: var(--color-ink-soft);">To become Malaysia's leading Child Development &amp; Learning Studio, partnering with families and schools to help every child flourish through personalised, evidence-informed support.</p>
                 </div>
             </div>
@@ -323,64 +265,23 @@
             </div>
 
             <div class="approach-skills-grid">
-                <!-- Self-Awareness -->
                 <div class="skill-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="52" height="52" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <circle cx="32" cy="24" r="9" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M17 48c0-7 7-11 15-11s15 4 15 11" stroke="#1F3C88" stroke-width="2.5"/>
-                        </svg>
-                    </div>
                     <h3>Self-Awareness</h3>
                     <p>Helping children develop self-awareness and personal insight.</p>
                 </div>
-
-                <!-- Self-Management -->
                 <div class="skill-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="52" height="52" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <circle cx="32" cy="24" r="9" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M26 40l4 4 8-8" stroke="#2CB5A5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
                     <h3>Self-Management</h3>
                     <p>Building foundational tools for self-development and regulation.</p>
                 </div>
-
-                <!-- Learning Independence -->
                 <div class="skill-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="52" height="52" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <rect x="25" y="28" width="14" height="16" rx="2" stroke="#1F3C88" stroke-width="2.5"/>
-                        </svg>
-                    </div>
                     <h3>Learning Independence</h3>
                     <p>Fostering self-reliance in educational environments.</p>
                 </div>
-
-                <!-- Thinking Skills -->
                 <div class="skill-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="52" height="52" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <circle cx="32" cy="22" r="11" stroke="#1F3C88" stroke-width="2.5"/>
-                        </svg>
-                    </div>
                     <h3>Thinking Skills</h3>
                     <p>Connecting cognitive strategies directly to brain development.</p>
                 </div>
-
-                <!-- Social Connection -->
                 <div class="skill-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="52" height="52" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <circle cx="22" cy="24" r="8" stroke="#1F3C88" stroke-width="2.5"/>
-                        </svg>
-                    </div>
                     <h3>Social Connection</h3>
                     <p>Nurturing healthy peer relationships and social development.</p>
                 </div>
@@ -400,41 +301,18 @@
 
             <div class="approach-pillars-grid">
                 <div class="pillar-card pillar-teal reveal-stagger">
-                    <div class="pillar-icon-wrap">
-                        <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                            <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h3>Understand First</h3>
                     <p>Discover each child's unique learning profile, strengths, and challenges before designing support.</p>
                 </div>
-
                 <div class="pillar-card pillar-gold reveal-stagger">
-                    <div class="pillar-icon-wrap">
-                        <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                            <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h3>Target Core Skills</h3>
                     <p>Build essential cognitive, social, and emotional foundations that sustain long-term success.</p>
                 </div>
-
                 <div class="pillar-card pillar-purple reveal-stagger">
-                    <div class="pillar-icon-wrap">
-                        <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                            <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h3>Partner with Families</h3>
                     <p>Collaborate with parents and teachers to create consistent, seamless support across home and school.</p>
                 </div>
-
                 <div class="pillar-card pillar-gold reveal-stagger">
-                    <div class="pillar-icon-wrap">
-                        <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                            <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h3>Build for Life</h3>
                     <p>Move past quick fixes to foster lasting self-confidence, adaptability, and independent learning habits.</p>
                 </div>
@@ -453,31 +331,14 @@
 
             <div class="approach-values-grid">
                 <div class="value-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h4>Evidence-Informed</h4>
                     <p>Every strategy is grounded in educational psychology and backed by research.</p>
                 </div>
-
                 <div class="value-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h4>Holistic &amp; Individualised</h4>
                     <p>We look at the whole child and create a plan that's uniquely theirs.</p>
                 </div>
-
                 <div class="value-card reveal-stagger">
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                        </svg>
-                    </div>
                     <h4>Family Partnership</h4>
                     <p>We work alongside parents and educators to ensure consistent support.</p>
                 </div>
