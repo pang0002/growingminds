@@ -773,22 +773,26 @@ document.addEventListener('DOMContentLoaded', function () {
         
         function setFullHeight() {
             const vh = window.innerHeight;
-            // The header is taken out of normal flow (position: fixed,
-            // set below) so it always overlays on top instead of pushing
-            // section boxes around. To keep each section's own content
-            // fully clear of that overlay, give every section top padding
-            // equal to the header's height AND add that same amount to
-            // the box's own height. Because sizing is border-box, the
-            // padding would otherwise eat into the usable vh of content
-            // space (that's what caused clipping) — adding it back to
-            // height keeps a full, un-shrunk vh available for the
-            // centered content, just shifted below the header.
+            // The header is fixed (out of flow, set below) and overlays
+            // on top, so the space actually visible under it is
+            // (vh - headerHeight), not the full vh. Sections should
+            // center their content within THAT visible space — not the
+            // full vh — or content ends up sitting lower than the real
+            // visual center (too much empty space up top).
+            //
+            // But some sections (the hero) have more content than that
+            // visible space can hold on a shorter window. So: set a
+            // min-height matching the visible area (via min-height: vh
+            // with padding-top: headerHeight, border-box), and leave
+            // height as auto so a section only grows taller than that
+            // floor if its own content genuinely needs the room —
+            // nothing gets clipped, and shorter sections still center
+            // exactly in the visible viewport.
             const header = document.querySelector('header');
             const headerHeight = header ? header.offsetHeight : 0;
-            const sectionHeight = vh + headerHeight;
             sections.forEach(function(section) {
-                section.style.minHeight = sectionHeight + 'px';
-                section.style.height = sectionHeight + 'px';
+                section.style.minHeight = vh + 'px';
+                section.style.height = 'auto';
                 // !important: some sections have a stylesheet rule
                 // forcing padding: 0 !important, which would otherwise
                 // silently cancel this and reintroduce the header overlap
