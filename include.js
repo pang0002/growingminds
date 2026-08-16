@@ -31,12 +31,18 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(btn);
 
         btn.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const scrollEl = getHomeScrollEl();
+            if (scrollEl) {
+                scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         });
 
         let ticking = false;
         function updateVisibility() {
-            const y = window.scrollY;
+            const scrollEl = getHomeScrollEl();
+            const y = scrollEl ? scrollEl.scrollTop : window.scrollY;
             if (y > 400) {
                 btn.classList.add('visible');
             } else {
@@ -51,6 +57,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         window.addEventListener('scroll', onScroll, { passive: true });
+        // The homepage's scroll container is created later in this same
+        // init pass, so bind to it on the next tick once it exists.
+        setTimeout(function () {
+            const scrollEl = getHomeScrollEl();
+            if (scrollEl) {
+                scrollEl.addEventListener('scroll', onScroll, { passive: true });
+            }
+        }, 0);
     }
     safeInit(initBackToTop, 'initBackToTop');
 
@@ -279,7 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (header) {
             var headerTicking = false;
             var onScroll = function () {
-                var y = window.scrollY;
+                var scrollEl = getHomeScrollEl();
+                var y = scrollEl ? scrollEl.scrollTop : window.scrollY;
                 if (y > 12) {
                     header.classList.add('is-scrolled');
                 } else {
@@ -294,6 +309,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
             window.addEventListener('scroll', onScrollThrottled, { passive: true });
+            // Bind to the homepage scroll container too, once it exists.
+            setTimeout(function () {
+                var homeScrollEl = getHomeScrollEl();
+                if (homeScrollEl) {
+                    homeScrollEl.addEventListener('scroll', onScrollThrottled, { passive: true });
+                }
+            }, 0);
             onScroll();
         }
     }
@@ -309,12 +331,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 var target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
-                    var headerHeight = document.querySelector('header')?.offsetHeight || 80;
-                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    var scrollEl = getHomeScrollEl();
+                    if (scrollEl && scrollEl.contains(target)) {
+                        // Target lives inside the homepage's single scroll
+                        // container — let it scroll that container into view.
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        var headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
@@ -667,37 +696,66 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // SIGNAL CARDS (click to reveal "what's underneath")
+    // SIGNAL CARDS - FLIP CARD BEHAVIOR
     // ============================================================
     function initSignalCards() {
         const cards = document.querySelectorAll('.signal-card');
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            const buttons = card.querySelectorAll('.signal-reveal-btn');
-            if (!buttons.length) return;
-
-            function toggle() {
-                card.classList.toggle('revealed');
+            // Find the flip buttons inside this card
+            const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
+            const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
+            
+            // Function to flip to the back (reveal the underneath)
+            function flipToBack(e) {
+                if (e) e.stopPropagation();
+                card.classList.add('revealed');
             }
-
-            buttons.forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    toggle();
+            
+            // Function to flip to the front (go back to "what you see")
+            function flipToFront(e) {
+                if (e) e.stopPropagation();
+                card.classList.remove('revealed');
+            }
+            
+            // Add click handlers if buttons exist
+            if (frontBtn) {
+                frontBtn.addEventListener('click', flipToBack);
+            }
+            
+            if (backBtn) {
+                backBtn.addEventListener('click', flipToFront);
+            }
+            
+            // Optional: clicking on the card itself can also flip it
+            // (only on the front face, to avoid accidental flips from the back)
+            const frontFace = card.querySelector('.signal-card-front');
+            if (frontFace) {
+                frontFace.addEventListener('click', function(e) {
+                    // Only flip if the click wasn't on the button (already handled)
+                    if (!e.target.closest('.signal-reveal-btn')) {
+                        card.classList.add('revealed');
+                    }
                 });
-            });
-
-            card.addEventListener('click', function () {
-                toggle();
-            });
+            }
+            
+            // Clicking on the back face (but not the back button) goes back to front
+            const backFace = card.querySelector('.signal-card-back');
+            if (backFace) {
+                backFace.addEventListener('click', function(e) {
+                    if (!e.target.closest('.signal-reveal-btn-back')) {
+                        card.classList.remove('revealed');
+                    }
+                });
+            }
         });
     }
 
     safeInit(initSignalCards, 'initSignalCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL - UPDATED VERSION
+    // FULL-SCREEN SCROLL - WITH FOOTER REACHABLE
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -725,6 +783,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.style.justifyContent = 'center';
                 section.style.flexShrink = '0';
                 section.style.width = '100%';
+                section.style.scrollSnapAlign = 'start';
             });
         }
         
@@ -737,27 +796,52 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Wrap sections in a container (just for organization, not for scrolling)
-        const parent = sections[0].parentNode;
-        
+        // Create a scroll container
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
         container.style.cssText = `
-            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
             position: relative;
+            width: 100%;
+            overscroll-behavior: contain;
         `;
 
+        const parent = sections[0].parentNode;
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+
+        // Anchor marks where the container should sit in the page
         const anchor = document.createComment('home-scroll-container');
-        parent.insertBefore(anchor, sections[0]);
-        
+        parent.insertBefore(anchor, header || sections[0]);
+
+        // Move header and sections into container
+        if (header) container.appendChild(header);
         sections.forEach(function(section) {
             container.appendChild(section);
         });
-        
+
+        // Insert container
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
 
-        // Add scroll indicators
+        // Keep footer OUTSIDE the container so it scrolls normally
+        if (footer) {
+            // If footer is inside container, remove it first
+            if (container.contains(footer)) {
+                container.removeChild(footer);
+            }
+            // Insert footer AFTER the container
+            parent.insertBefore(footer, container.nextSibling);
+        }
+
+        body.classList.add('home-page-locked');
+        
+        // Add scroll indicators (skip the last section since footer is after it)
         sections.forEach(function(section, index) {
             const isVeryLast = index === sections.length - 1;
             if (!isVeryLast && !section.querySelector('.scroll-indicator')) {
@@ -800,10 +884,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(dotNav);
 
         // ============================================================
-        // SCROLL HANDLING - Using window scroll with snap behavior
+        // Homepage Scrolling - Using Container
         // ============================================================
         const sectionCount = sections.length;
-        const NAV_LOCK_MS = 800;
+        const NAV_LOCK_MS = 1000;
         let currentIndex = 0;
         let isAnimating = false;
         let lockTimer = null;
@@ -812,14 +896,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function getStops() {
             const stops = [];
-            const headerHeight = document.querySelector('header')?.offsetHeight || 0;
             sections.forEach(function(section) {
-                const rect = section.getBoundingClientRect();
-                const top = rect.top + window.pageYOffset - headerHeight;
-                stops.push(top);
+                stops.push(section.offsetTop);
             });
-            // Add a stop for the footer (bottom of page)
-            stops.push(document.body.scrollHeight - window.innerHeight);
+            // Add a final stop for the bottom of the container (footer area)
+            // This allows scrolling past the last section to see the footer
+            stops.push(Math.max(0, container.scrollHeight - container.clientHeight + 200));
             return stops;
         }
 
@@ -833,11 +915,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function syncScrollPosition() {
             const stops = getStops();
-            const scrollY = window.pageYOffset;
+            const scrollTop = container.scrollTop;
             let nearest = 0;
             let nearestDist = Infinity;
             stops.forEach(function(stopTop, i) {
-                const dist = Math.abs(scrollY - stopTop);
+                const dist = Math.abs(scrollTop - stopTop);
                 if (dist < nearestDist) {
                     nearestDist = dist;
                     nearest = i;
@@ -849,8 +931,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Debounced scroll sync
-        window.addEventListener('scroll', function() {
+        // Use scroll event to update dots (debounced)
+        container.addEventListener('scroll', function() {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(syncScrollPosition, 100);
         }, { passive: true });
@@ -867,13 +949,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (now - lastScrollTime < NAV_LOCK_MS) return;
             lastScrollTime = now;
             
+            const currentScrollTop = container.scrollTop;
             const targetScrollTop = stops[clamped];
-            if (Math.abs(window.pageYOffset - targetScrollTop) < 20) return;
+            if (Math.abs(currentScrollTop - targetScrollTop) < 20) return;
             
             currentIndex = clamped;
             isAnimating = true;
 
-            window.scrollTo({
+            container.scrollTo({
                 top: targetScrollTop,
                 behavior: 'smooth'
             });
@@ -886,7 +969,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, NAV_LOCK_MS);
         }
 
-        // Dot clicks
+        // Dot clicks navigate directly
         dotNav.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -894,11 +977,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Wheel navigation
         let wheelTimeout = null;
         let wheelDirection = 0;
         
-        window.addEventListener('wheel', function(e) {
+        container.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            
             if (wheelTimeout) return;
             if (isAnimating) return;
             
@@ -920,27 +1004,36 @@ document.addEventListener('DOMContentLoaded', function () {
             
             goToSection(currentIndex + direction);
             
-        }, { passive: true });
+        }, { passive: false });
 
         // Touch swipe
         let touchStartY = 0;
+        let touchStartX = 0;
         let touchStartTime = 0;
 
-        document.addEventListener('touchstart', function(e) {
+        container.addEventListener('touchstart', function(e) {
             touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
             touchStartTime = Date.now();
         }, { passive: true });
 
-        document.addEventListener('touchend', function(e) {
+        container.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        container.addEventListener('touchend', function(e) {
             if (isAnimating) return;
             
             const touchEndY = e.changedTouches[0].clientY;
+            const touchEndX = e.changedTouches[0].clientX;
             const touchEndTime = Date.now();
             
             const deltaY = touchStartY - touchEndY;
+            const deltaX = touchStartX - touchEndX;
             const deltaTime = touchEndTime - touchStartTime;
             
             if (deltaTime > 500) return;
+            if (Math.abs(deltaY) < Math.abs(deltaX)) return;
             
             const SWIPE_THRESHOLD = 40;
             if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
@@ -963,11 +1056,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Start at top
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        // Scroll to top on load
+        container.scrollTo({ top: 0, behavior: 'instant' });
         
+        // Ensure we start at the right position
         setTimeout(function() {
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            container.scrollTo({ top: 0, behavior: 'instant' });
             currentIndex = 0;
             updateActiveDot(0);
         }, 100);
