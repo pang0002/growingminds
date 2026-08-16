@@ -57,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         window.addEventListener('scroll', onScroll, { passive: true });
-        // The homepage's scroll container is created later in this same
-        // init pass, so bind to it on the next tick once it exists.
         setTimeout(function () {
             const scrollEl = getHomeScrollEl();
             if (scrollEl) {
@@ -116,64 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     safeInit(initRippleEffect, 'initRippleEffect');
-
-    // ============================================================
-    // CARD HOVER EFFECTS
-    // ============================================================
-    function initCardEffects() {
-        // Hover-lift cards
-        document.querySelectorAll('.hover-lift').forEach(function(card) {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-6px) scale(1.01)';
-                this.style.boxShadow = '0 20px 40px rgba(31, 60, 136, 0.12)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            });
-        });
-
-        // Credential chips hover effect
-        document.querySelectorAll('.credential-chip').forEach(function(chip) {
-            chip.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-                this.style.background = 'var(--color-gold)';
-                this.style.borderColor = 'var(--color-primary)';
-            });
-            chip.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.background = '';
-                this.style.borderColor = '';
-            });
-        });
-
-        // Quick link cards
-        document.querySelectorAll('.quick-link-card').forEach(function(card) {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px)';
-                this.style.boxShadow = '0 12px 32px rgba(31, 60, 136, 0.10)';
-                this.style.borderColor = 'var(--color-primary)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-                this.style.borderColor = '';
-            });
-        });
-
-        // Credential cards hover effect
-        document.querySelectorAll('.credential-card').forEach(function(card) {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-6px)';
-                this.style.boxShadow = '0 16px 48px rgba(31, 60, 136, 0.10)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            });
-        });
-    }
-    safeInit(initCardEffects, 'initCardEffects');
 
     // ============================================================
     // INTERACTIVE CARDS - Auto-rotating card display
@@ -367,7 +307,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
             window.addEventListener('scroll', onScrollThrottled, { passive: true });
-            // Bind to the homepage scroll container too, once it exists.
             setTimeout(function () {
                 var homeScrollEl = getHomeScrollEl();
                 if (homeScrollEl) {
@@ -391,8 +330,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     e.preventDefault();
                     var scrollEl = getHomeScrollEl();
                     if (scrollEl && scrollEl.contains(target)) {
-                        // Target lives inside the homepage's single scroll
-                        // container — let it scroll that container into view.
                         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     } else {
                         var headerHeight = document.querySelector('header')?.offsetHeight || 80;
@@ -761,23 +698,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            // Find the flip buttons inside this card
             const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
             const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
             
-            // Function to flip to the back (reveal the underneath)
             function flipToBack(e) {
                 if (e) e.stopPropagation();
                 card.classList.add('revealed');
             }
             
-            // Function to flip to the front (go back to "what you see")
             function flipToFront(e) {
                 if (e) e.stopPropagation();
                 card.classList.remove('revealed');
             }
             
-            // Add click handlers if buttons exist
             if (frontBtn) {
                 frontBtn.addEventListener('click', flipToBack);
             }
@@ -786,19 +719,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 backBtn.addEventListener('click', flipToFront);
             }
             
-            // Optional: clicking on the card itself can also flip it
-            // (only on the front face, to avoid accidental flips from the back)
             const frontFace = card.querySelector('.signal-card-front');
             if (frontFace) {
                 frontFace.addEventListener('click', function(e) {
-                    // Only flip if the click wasn't on the button (already handled)
                     if (!e.target.closest('.signal-reveal-btn')) {
                         card.classList.add('revealed');
                     }
                 });
             }
             
-            // Clicking on the back face (but not the back button) goes back to front
             const backFace = card.querySelector('.signal-card-back');
             if (backFace) {
                 backFace.addEventListener('click', function(e) {
@@ -816,7 +745,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // FULL-SCREEN SCROLL
     // ============================================================
     function initFullScreenScroll() {
-        // Only run on the home page
         const isHomePage = window.location.pathname === '/' || 
                           window.location.pathname === '/index.html' ||
                           window.location.pathname.endsWith('index.html') ||
@@ -830,7 +758,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const sections = document.querySelectorAll('.section-fullscreen');
         if (sections.length === 0) return;
         
-        // Set each section to full viewport height
         function setFullHeight() {
             const vh = window.innerHeight;
             sections.forEach(function(section) {
@@ -847,14 +774,12 @@ document.addEventListener('DOMContentLoaded', function () {
         
         setFullHeight();
         
-        // Update on resize
         let resizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Create a scroll container
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
         container.style.cssText = `
@@ -874,8 +799,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const header = document.querySelector('header');
         const footer = document.querySelector('footer');
 
-        // Anchor marks where the container should sit in the page, since
-        // header/sections/footer are all about to be moved out of `parent`.
         const anchor = document.createComment('home-scroll-container');
         parent.insertBefore(anchor, header || sections[0]);
 
@@ -885,13 +808,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         if (footer) {
             container.appendChild(footer);
-            // The container uses scroll-snap-type: y mandatory, and every
-            // .section-fullscreen gets scroll-snap-align: start above. The
-            // footer was never given one, so with "mandatory" snapping the
-            // browser had no valid point to rest on there and kept pulling
-            // the view back to the last section on normal wheel/touch/key
-            // scrolling (only a manual scrollbar drag could bypass that
-            // snap-back). Marking it as a snap point fixes normal scrolling.
             footer.style.scrollSnapAlign = 'start';
             footer.style.scrollSnapStop = 'always';
         }
@@ -920,8 +836,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // Create navigation dots (one per content section; footer, if
-        // present, is reached by scrolling one step past the last dot)
         const dotNav = document.createElement('div');
         dotNav.className = 'section-nav-dots';
         dotNav.setAttribute('role', 'navigation');
@@ -943,9 +857,6 @@ document.addEventListener('DOMContentLoaded', function () {
         
         document.body.appendChild(dotNav);
 
-        // ============================================================
-        // Homepage Scrolling
-        // ============================================================
         const sectionCount = sections.length;
         const NAV_LOCK_MS = 1000;
         let currentIndex = 0;
@@ -966,9 +877,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function updateActiveDot(index) {
-            // Dots only exist for content sections; while viewing the
-            // footer (an index beyond the last section) keep the last
-            // dot highlighted.
             const dotIndex = Math.min(index, sectionCount - 1);
             const dots = dotNav.querySelectorAll('a');
             dots.forEach(function(dot, i) {
@@ -976,8 +884,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Track scroll position and sync dots (e.g. when the user drags
-        // the scrollbar directly instead of using wheel/touch/keyboard)
         function syncScrollPosition() {
             const stops = getStops();
             const scrollTop = container.scrollTop;
@@ -996,7 +902,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Use scroll event to update dots (debounced)
         container.addEventListener('scroll', function() {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(syncScrollPosition, 100);
@@ -1007,10 +912,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const maxIndex = stops.length - 1;
             const clamped = Math.max(0, Math.min(maxIndex, index));
             
-            // Don't navigate if already at target
             if (clamped === currentIndex) return;
-            
-            // Prevent rapid fire
             if (isAnimating) return;
             
             const now = Date.now();
@@ -1030,16 +932,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             updateActiveDot(clamped);
 
-            // Set a longer lock duration to prevent multiple scroll events
             clearTimeout(lockTimer);
             lockTimer = setTimeout(function() {
                 isAnimating = false;
-                // Ensure we're at the right position
                 syncScrollPosition();
             }, NAV_LOCK_MS);
         }
 
-        // Dot clicks navigate directly
         dotNav.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1053,24 +952,20 @@ document.addEventListener('DOMContentLoaded', function () {
         container.addEventListener('wheel', function(e) {
             e.preventDefault();
             
-            // Debounce wheel events
             if (wheelTimeout) return;
             if (isAnimating) return;
             
             const delta = e.deltaY;
             if (Math.abs(delta) < 10) return;
             
-            // Store direction
             const direction = delta > 0 ? 1 : -1;
             
-            // If user changes direction rapidly, ignore
             if (wheelDirection && wheelDirection !== direction) {
                 wheelDirection = direction;
                 return;
             }
             wheelDirection = direction;
             
-            // Set timeout to allow next wheel event
             wheelTimeout = setTimeout(function() {
                 wheelTimeout = null;
                 wheelDirection = 0;
@@ -1080,8 +975,6 @@ document.addEventListener('DOMContentLoaded', function () {
             
         }, { passive: false });
 
-        // Touch swipe — same one-section-per-gesture rule, same
-        // bubbling-through-container reasoning as the wheel handler.
         let touchStartY = 0;
         let touchStartX = 0;
         let touchStartTime = 0;
@@ -1107,10 +1000,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const deltaX = touchStartX - touchEndX;
             const deltaTime = touchEndTime - touchStartTime;
             
-            // Ignore if gesture was too slow (it's probably just a scroll)
             if (deltaTime > 500) return;
-            
-            // Ignore horizontal swipes
             if (Math.abs(deltaY) < Math.abs(deltaX)) return;
             
             const SWIPE_THRESHOLD = 40;
@@ -1121,7 +1011,6 @@ document.addEventListener('DOMContentLoaded', function () {
             
         }, { passive: true });
 
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 e.preventDefault();
@@ -1134,10 +1023,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Scroll to top on load
         container.scrollTo({ top: 0, behavior: 'instant' });
         
-        // Ensure we start at the right position
         setTimeout(function() {
             container.scrollTo({ top: 0, behavior: 'instant' });
             currentIndex = 0;
