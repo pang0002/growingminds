@@ -755,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initSignalCards, 'initSignalCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL - WITH FOOTER REACHABLE
+    // FULL-SCREEN SCROLL
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -796,11 +796,6 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Get the parent element
-        const parent = sections[0].parentNode;
-        const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
-        
         // Create a scroll container
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
@@ -813,59 +808,32 @@ document.addEventListener('DOMContentLoaded', function () {
             -webkit-overflow-scrolling: touch;
             position: relative;
             width: 100%;
+            touch-action: none;
             overscroll-behavior: contain;
-            z-index: 1;
         `;
 
-        // Anchor marks where the container should sit in the page
+        const parent = sections[0].parentNode;
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+
+        // Anchor marks where the container should sit in the page, since
+        // header/sections/footer are all about to be moved out of `parent`.
         const anchor = document.createComment('home-scroll-container');
         parent.insertBefore(anchor, header || sections[0]);
 
-        // Move header and sections into container
         if (header) container.appendChild(header);
         sections.forEach(function(section) {
             container.appendChild(section);
         });
+        if (footer) container.appendChild(footer);
 
-        // Insert container
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
 
-        // ============================================================
-        // CRITICAL: Handle footer properly
-        // ============================================================
-        // If footer exists, make sure it's AFTER the container
-        // and visible with proper styling
-        if (footer) {
-            // Remove footer from wherever it is
-            if (footer.parentNode) {
-                footer.parentNode.removeChild(footer);
-            }
-            // Insert footer AFTER the container with proper styling
-            parent.insertBefore(footer, container.nextSibling);
-            
-            // Ensure footer is visible and has proper styling
-            footer.style.display = 'block';
-            footer.style.position = 'relative';
-            footer.style.zIndex = '10';
-            footer.style.clear = 'both';
-            footer.style.width = '100%';
-            
-            // Add a spacer div to ensure footer is reachable
-            const spacer = document.createElement('div');
-            spacer.style.cssText = `
-                height: 1px;
-                width: 100%;
-                clear: both;
-            `;
-            parent.insertBefore(spacer, footer);
-        }
-
         body.classList.add('home-page-locked');
         
-        // Add scroll indicators (skip the last section since footer is after it)
         sections.forEach(function(section, index) {
-            const isVeryLast = index === sections.length - 1;
+            const isVeryLast = index === sections.length - 1 && !footer;
             if (!isVeryLast && !section.querySelector('.scroll-indicator')) {
                 const indicator = document.createElement('div');
                 indicator.className = 'scroll-indicator';
@@ -883,7 +851,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // Create navigation dots
+        // Create navigation dots (one per content section; footer, if
+        // present, is reached by scrolling one step past the last dot)
         const dotNav = document.createElement('div');
         dotNav.className = 'section-nav-dots';
         dotNav.setAttribute('role', 'navigation');
@@ -906,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(dotNav);
 
         // ============================================================
-        // Homepage Scrolling - Using Container
+        // Homepage Scrolling
         // ============================================================
         const sectionCount = sections.length;
         const NAV_LOCK_MS = 1000;
@@ -921,14 +890,16 @@ document.addEventListener('DOMContentLoaded', function () {
             sections.forEach(function(section) {
                 stops.push(section.offsetTop);
             });
-            // Add a final stop for the bottom of the container
-            // This allows scrolling past the last section to see the footer
-            const maxScroll = Math.max(0, container.scrollHeight - container.clientHeight);
-            stops.push(maxScroll + 100);
+            if (footer) {
+                stops.push(Math.max(0, container.scrollHeight - container.clientHeight));
+            }
             return stops;
         }
 
         function updateActiveDot(index) {
+            // Dots only exist for content sections; while viewing the
+            // footer (an index beyond the last section) keep the last
+            // dot highlighted.
             const dotIndex = Math.min(index, sectionCount - 1);
             const dots = dotNav.querySelectorAll('a');
             dots.forEach(function(dot, i) {
@@ -936,6 +907,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // Track scroll position and sync dots (e.g. when the user drags
+        // the scrollbar directly instead of using wheel/touch/keyboard)
         function syncScrollPosition() {
             const stops = getStops();
             const scrollTop = container.scrollTop;
@@ -965,7 +938,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const maxIndex = stops.length - 1;
             const clamped = Math.max(0, Math.min(maxIndex, index));
             
+            // Don't navigate if already at target
             if (clamped === currentIndex) return;
+            
+            // Prevent rapid fire
             if (isAnimating) return;
             
             const now = Date.now();
@@ -985,9 +961,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             updateActiveDot(clamped);
 
+            // Set a longer lock duration to prevent multiple scroll events
             clearTimeout(lockTimer);
             lockTimer = setTimeout(function() {
                 isAnimating = false;
+                // Ensure we're at the right position
                 syncScrollPosition();
             }, NAV_LOCK_MS);
         }
@@ -1006,20 +984,24 @@ document.addEventListener('DOMContentLoaded', function () {
         container.addEventListener('wheel', function(e) {
             e.preventDefault();
             
+            // Debounce wheel events
             if (wheelTimeout) return;
             if (isAnimating) return;
             
             const delta = e.deltaY;
             if (Math.abs(delta) < 10) return;
             
+            // Store direction
             const direction = delta > 0 ? 1 : -1;
             
+            // If user changes direction rapidly, ignore
             if (wheelDirection && wheelDirection !== direction) {
                 wheelDirection = direction;
                 return;
             }
             wheelDirection = direction;
             
+            // Set timeout to allow next wheel event
             wheelTimeout = setTimeout(function() {
                 wheelTimeout = null;
                 wheelDirection = 0;
@@ -1029,7 +1011,8 @@ document.addEventListener('DOMContentLoaded', function () {
             
         }, { passive: false });
 
-        // Touch swipe
+        // Touch swipe — same one-section-per-gesture rule, same
+        // bubbling-through-container reasoning as the wheel handler.
         let touchStartY = 0;
         let touchStartX = 0;
         let touchStartTime = 0;
@@ -1055,7 +1038,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const deltaX = touchStartX - touchEndX;
             const deltaTime = touchEndTime - touchStartTime;
             
+            // Ignore if gesture was too slow (it's probably just a scroll)
             if (deltaTime > 500) return;
+            
+            // Ignore horizontal swipes
             if (Math.abs(deltaY) < Math.abs(deltaX)) return;
             
             const SWIPE_THRESHOLD = 40;
