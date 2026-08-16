@@ -21,41 +21,6 @@
     <style>
         /* ===== Page-specific styling — Learning Profile page ===== */
 
-        /* --- Diagnosis vs Learning Profile: left/right split card --- */
-        .hero-insight-card--split {
-            display: flex;
-            align-items: stretch;
-            max-width: 640px;
-            width: 100%;
-            margin: 28px auto 0;
-        }
-
-        .hero-insight-card--split .hero-insight-tier {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            border-bottom: none;
-        }
-
-        .hero-insight-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            flex-shrink: 0;
-            background: var(--color-white);
-            color: var(--color-primary);
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        @media (max-width: 560px) {
-            .hero-insight-card--split { flex-direction: column; max-width: 380px; }
-            .hero-insight-divider { width: 100%; height: 30px; transform: rotate(90deg); }
-        }
-
         .lp-lead {
             font-family: var(--font-display);
             font-weight: 600;
@@ -160,8 +125,7 @@
             cursor: pointer;
         }
 
-        .flip-card.is-flipped .flip-card-inner,
-        .flip-card:hover .flip-card-inner {
+        .flip-card.is-flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
 
@@ -180,6 +144,14 @@
             justify-content: space-between;
             background: var(--color-white);
             border: 2px solid rgba(31, 60, 136, 0.10);
+        }
+
+        .flip-icon {
+            margin-bottom: 6px;
+        }
+
+        .flip-front h3 {
+            margin-bottom: 0;
         }
 
         .flip-front .flip-hint {
@@ -257,12 +229,11 @@
         <div class="container reveal">
             <span class="eyebrow">Discovery &amp; Diagnosis</span>
             <h1>The Learning Profile</h1>
-            <div class="hero-insight-card hero-insight-card--split floating-slow">
+            <div class="hero-insight-card floating-slow" style="max-width:480px;margin:28px auto 0;">
                 <div class="hero-insight-tier">
                     <span class="hero-insight-label">Diagnosis</span>
                     <p class="hero-insight-line">What your child has.</p>
                 </div>
-                <div class="hero-insight-divider">→</div>
                 <div class="hero-insight-tier hero-insight-tier--reveal">
                     <span class="hero-insight-label">Learning Profile</span>
                     <p class="hero-insight-line hero-insight-line--bold">What your child needs.</p>
@@ -341,10 +312,22 @@
                 </div>
             </div>
 
-            <div class="reveal lp-faq" style="max-width:960px;margin:64px auto 0;">
+            <div class="section-header reveal" style="margin-top:56px;">
+                <span class="section-tag">Common Questions</span>
+                <h2>A few things parents ask first</h2>
+            </div>
+
+            <div class="reveal lp-faq" style="max-width:960px;margin:36px auto 0;">
                 <div class="flip-card" tabindex="0">
                     <div class="flip-card-inner">
                         <div class="flip-face flip-front">
+                            <div class="flip-icon">
+                                <svg viewBox="0 0 40 40" width="30" height="30" fill="none">
+                                    <path d="M20 6a10 10 0 00-6 18c1.2 1 2 2.3 2 3.8V29h8v-1.2c0-1.5.8-2.8 2-3.8A10 10 0 0020 6z" stroke="var(--color-primary)" stroke-width="2.2" stroke-linejoin="round"/>
+                                    <path d="M17 33h6M18 36h4" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/>
+                                    <rect x="24" y="4" width="7" height="7" rx="2" fill="var(--color-teal)" transform="rotate(15 27.5 7.5)"/>
+                                </svg>
+                            </div>
                             <h3>Is this an IQ test?</h3>
                             <span class="flip-hint">Tap to reveal ↻</span>
                         </div>
@@ -357,6 +340,14 @@
                 <div class="flip-card" tabindex="0">
                     <div class="flip-card-inner">
                         <div class="flip-face flip-front">
+                            <div class="flip-icon">
+                                <svg viewBox="0 0 40 40" width="30" height="30" fill="none">
+                                    <path d="M20 10L4 17l16 7 16-7-16-7z" stroke="var(--color-primary)" stroke-width="2.2" stroke-linejoin="round"/>
+                                    <path d="M11 20.5V28c0 2.2 4 4 9 4s9-1.8 9-4v-7.5" stroke="var(--color-primary)" stroke-width="2.2" fill="none"/>
+                                    <path d="M34 17v8" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/>
+                                    <rect x="30" y="4" width="7" height="7" rx="2" fill="var(--color-gold)" transform="rotate(15 33.5 7.5)"/>
+                                </svg>
+                            </div>
                             <h3>Can the school use it?</h3>
                             <span class="flip-hint">Tap to reveal ↻</span>
                         </div>
@@ -369,6 +360,13 @@
                 <div class="flip-card" tabindex="0">
                     <div class="flip-card-inner">
                         <div class="flip-face flip-front">
+                            <div class="flip-icon">
+                                <svg viewBox="0 0 40 40" width="30" height="30" fill="none">
+                                    <circle cx="17" cy="17" r="10" stroke="var(--color-primary)" stroke-width="2.2"/>
+                                    <path d="M24.5 24.5L33 33" stroke="var(--color-primary)" stroke-width="2.4" stroke-linecap="round"/>
+                                    <rect x="26" y="3" width="7" height="7" rx="2" fill="var(--color-accent)" transform="rotate(15 29.5 6.5)"/>
+                                </svg>
+                            </div>
                             <h3>What we look at</h3>
                             <span class="flip-hint">Tap to reveal ↻</span>
                         </div>
@@ -381,7 +379,7 @@
             </div>
 
             <script>
-                // Flip-card FAQ: click/tap toggles flip (hover already flips on desktop)
+                // Flip-card FAQ: click/tap to flip (works the same on desktop and mobile)
                 document.querySelectorAll('.flip-card').forEach(function (card) {
                     card.addEventListener('click', function () {
                         card.classList.toggle('is-flipped');
@@ -414,7 +412,7 @@
             <h2>Ready to understand your child better?</h2>
             <p>Book a free 20-minute call to get started.</p>
             <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-primary btn-ripple">Contact Us →</a>
+                <a href="contact.html" class="btn btn-primary btn-ripple">Book a Free 20-Minute Call →</a>
             </div>
         </div>
     </section>
