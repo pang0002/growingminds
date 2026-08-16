@@ -6,15 +6,15 @@
 }
 
 :root {
-    /* Brand system — reconciled with the Growing Minds homepage concept */
-    --color-primary: #1F3C88;      /* Blue — the grounding colour: text, headings, borders */
+    /* Brand system â€” reconciled with the Growing Minds homepage concept */
+    --color-primary: #1F3C88;      /* Blue â€” the grounding colour: text, headings, borders */
     --color-primary-dark: #142a61;
-    --color-teal: #2cb5a5;         /* Teal — secondary accent */
-    --color-teal-dark: #17786D;    /* Deep teal — for accent TEXT (readable on off-white) */
-    --color-gold: #f7c948;         /* Sunflower — highlights, hard shadows, primary buttons */
+    --color-teal: #2cb5a5;         /* Teal â€” secondary accent */
+    --color-teal-dark: #17786D;    /* Deep teal â€” for accent TEXT (readable on off-white) */
+    --color-gold: #f7c948;         /* Sunflower â€” highlights, hard shadows, primary buttons */
     --color-gold-dark: #e0ac1f;
-    --color-accent: #8E7DF0;       /* Lavender — third accent */
-    --color-cream: #F7F3EC;        /* Off-white — page background */
+    --color-accent: #8E7DF0;       /* Lavender â€” third accent */
+    --color-cream: #F7F3EC;        /* Off-white â€” page background */
     --color-sage: #DCF2EF;         /* Pale teal tint */
     --color-white: #ffffff;
     --color-ink: #1F3C88;          /* Body text / headings share the grounding blue */
@@ -28,7 +28,7 @@
     --color-muted-on-dark: #B3C2E6;
 
     --font-display: 'Poppins', 'Segoe UI', sans-serif;      /* Headlines, wordmark, club names */
-    --font-quote: 'Fraunces', Georgia, serif;                 /* Parent quotes + tagline — always italic */
+    --font-quote: 'Fraunces', Georgia, serif;                 /* Parent quotes + tagline â€” always italic */
     --font-body: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* All body text */
     --font-accent: 'Fraunces', Georgia, serif;                /* Alias kept for backward compatibility */
 
@@ -37,13 +37,13 @@
     --radius-md: 20px;
     --radius-sm: 12px;
 
-    /* Soft shadows — ambient depth for large surfaces */
+    /* Soft shadows â€” ambient depth for large surfaces */
     --shadow-soft: 0 20px 50px rgba(31, 60, 136, 0.10);
     --shadow-lift: 0 16px 40px rgba(31, 60, 136, 0.16);
     --shadow-card: 0 10px 30px rgba(31, 60, 136, 0.08);
     --shadow-hover: 0 20px 60px rgba(31, 60, 136, 0.18);
 
-    /* Hard / flat offset shadows — the "sticker" accent from the concept design.
+    /* Hard / flat offset shadows â€” the "sticker" accent from the concept design.
        Used sparingly, on buttons and a few hero-weight elements, not everywhere. */
     --shadow-hard-sun: 4px 4px 0 0 var(--color-gold);
     --shadow-hard-teal: 4px 4px 0 0 var(--color-teal);
@@ -78,15 +78,6 @@ body {
     background-attachment: fixed, fixed, fixed, fixed;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     overflow-x: hidden;
-}
-
-@media (max-width: 768px) {
-    /* background-attachment:fixed forces a repaint of the background on
-       every scroll frame and is notoriously janky (or silently ignored)
-       on mobile Safari. Switching to scroll fixes both. */
-    body {
-        background-attachment: scroll, scroll, scroll, scroll;
-    }
 }
 
 .section-white-bg,
@@ -241,9 +232,9 @@ em {
 }
 
 /* ----- EYEBROW / TAG LABELS -----
-   Carries the "sun" mark from the logo as a recurring small motif —
+   Carries the "sun" mark from the logo as a recurring small motif â€”
    a cheap, consistent way to build brand recognition across every
-   section tag on the site (per brand system §1.3). */
+   section tag on the site (per brand system Â§1.3). */
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -295,23 +286,6 @@ em {
     filter: blur(2px);
     opacity: 0.55;
     pointer-events: none;
-    max-width: 60vw;
-    max-height: 60vw;
-}
-
-@media (max-width: 768px) {
-    /* Floating/pulse animations and blur filters are decorative only,
-       but they still cost paint + GPU time on every frame. Weaker
-       mobile devices feel this as scroll jank and battery drain far
-       more than desktop does, so ease off below tablet width. */
-    .floating,
-    .floating-slow,
-    .blob-teal,
-    .blob-gold,
-    .blob-blue,
-    .blob-purple {
-        animation: none;
-    }
 }
 
 .blob-teal {
@@ -830,7 +804,7 @@ header.is-scrolled::after {
 
 /* ----- BUTTONS -----
    Sticker treatment borrowed from the concept design: a solid ink border,
-   a flat (non-blurred) offset shadow, and a lift on hover/press — instead
+   a flat (non-blurred) offset shadow, and a lift on hover/press â€” instead
    of the previous glow-and-scale hover. Kept subtle enough to still sit
    comfortably in the fuller, multi-page site. */
 .btn {
@@ -1252,7 +1226,7 @@ header.is-scrolled::after {
 }
 
 /* Flip cards: "what you see" (front) vs "what's underneath" (back) as two faces
-   of the same card — this makes the reveal feel like literally turning the
+   of the same card â€” this makes the reveal feel like literally turning the
    card over, rather than an accordion pushing the page around. */
 .assessment-card.signal-card {
     cursor: pointer;
@@ -1743,7 +1717,7 @@ header.is-scrolled::after {
 .process-section .blob-gold { width: 280px; height: 280px; top: -60px; right: -100px; opacity: 0.3; }
 .process-section .container { position: relative; z-index: 1; }
 
-/* ===== Process cards — always-visible content, 5-card row ===== */
+/* ===== Process cards â€” always-visible content, 5-card row ===== */
 .process-cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -1864,7 +1838,7 @@ header.is-scrolled::after {
     }
 }
 
-/* Horizontal Timeline Bar (legacy — kept for reference, unused) */
+/* Horizontal Timeline Bar (legacy â€” kept for reference, unused) */
 .process-timeline {
     position: relative;
     max-width: 900px;
@@ -2071,7 +2045,7 @@ header.is-scrolled::after {
 
 /* ----- SERVICES ----- */
 /* ============================================================
-   SERVICES OVERVIEW — 4 EXPANDABLE CARDS
+   SERVICES OVERVIEW â€” 4 EXPANDABLE CARDS
    ============================================================ */
 .services-overview {
     padding: 90px 0;
@@ -2515,7 +2489,7 @@ header.is-scrolled::after {
 }
 
 .pillar-features li::before {
-    content: "✓";
+    content: "âœ“";
     color: var(--color-teal);
     font-weight: 800;
 }
@@ -3044,7 +3018,7 @@ footer {
     margin-bottom: 16px;
 }
 
-/* Founder pull-quote — formalises the inline style previously hand-rolled
+/* Founder pull-quote â€” formalises the inline style previously hand-rolled
    on the About page so it can be reused consistently. */
 .founder-quote {
     font-family: var(--font-quote);
@@ -3061,7 +3035,7 @@ footer {
 .founder-bio p { margin: 0 0 18px; }
 .founder-bio p:last-of-type { margin-bottom: 0; }
 
-/* Two-tone line icon used inside the founder photo placeholder —
+/* Two-tone line icon used inside the founder photo placeholder â€”
    navy outline + a single brand-colour accent, matching the site's
    icon language (see .eyebrow::before). */
 .founder-avatar-icon {
@@ -3932,7 +3906,7 @@ footer {
 }
 
 .contact-can-list li::before {
-    content: "✓";
+    content: "âœ“";
     position: absolute;
     left: 0;
     top: 0;
@@ -4238,7 +4212,7 @@ footer {
     }
 
     /* Nav dropdown becomes a static, always-visible indented sublist
-       on mobile — there's no hover on touch devices, and the slide-out
+       on mobile â€” there's no hover on touch devices, and the slide-out
        panel already has room to show it inline. */
     .nav-dropdown .nav-caret {
         display: none;
@@ -4745,7 +4719,7 @@ footer {
 
 /* ----- PEEL CARD -----
    A front/back flip card for "what you see vs what's underneath"
-   content. CSS-only — flips on hover or keyboard focus, no JS
+   content. CSS-only â€” flips on hover or keyboard focus, no JS
    required, and stays readable (front stacked above back) for
    touch devices that can't hover. */
 .peel-card {
@@ -4831,7 +4805,7 @@ footer {
 .chip-row .chip:nth-child(5n+5) { background: var(--color-pale-lavender); }
 
 /* ----- DOOR CARD -----
-   A bordered, hard-shadowed choice card — for "two ways in" or any
+   A bordered, hard-shadowed choice card â€” for "two ways in" or any
    either/or decision point. */
 .door-card {
     border: 2px solid var(--color-primary);
@@ -5015,7 +4989,7 @@ footer {
 }
 
 .skill-list span::before {
-    content: "→ ";
+    content: "â†’ ";
     color: var(--color-teal-dark);
     font-weight: 700;
 }
@@ -5026,7 +5000,7 @@ footer {
 
 /* ----- PROOF SLOTS -----
    Dashed placeholder cards for testimonials / case stories not yet
-   collected — deliberately looks unfinished so it gets filled in. */
+   collected â€” deliberately looks unfinished so it gets filled in. */
 .proof-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
@@ -5061,7 +5035,7 @@ footer {
 }
 
 /* ----- FOUNDER SPOTLIGHT -----
-   A bold, dark condensed founder callout for the homepage — distinct
+   A bold, dark condensed founder callout for the homepage â€” distinct
    from the full light-themed bio layout on the About page. */
 .founder-spotlight {
     background: var(--color-primary);
@@ -5343,33 +5317,6 @@ body.home-page-locked {
     }
     
     .home-page .section-nav-dots a .dot-tooltip {
-        display: none;
-    }
-
-    /* home-page-flow: applied by include.js on mobile viewports instead
-       of the desktop swipe/scroll-snap experience. Sections must NOT be
-       locked to exactly one screen height with hidden overflow here,
-       or any section whose content runs longer than one phone screen
-       (grids, testimonials, footer notes, etc.) gets silently cut off
-       with no way to reach the rest of it. */
-    .home-page.home-page-flow .section-fullscreen {
-        height: auto;
-        min-height: 100vh;
-        min-height: 100dvh;
-        overflow: visible;
-        align-items: center;
-        padding: 48px 0;
-        scroll-snap-align: none;
-    }
-
-    .home-page.home-page-flow .section-fullscreen .container {
-        padding: 24px 16px;
-    }
-
-    /* These are desktop-only navigation aids for the swipe experience;
-       include.js never creates them on mobile, but hide defensively. */
-    .home-page.home-page-flow .section-nav-dots,
-    .home-page.home-page-flow .scroll-indicator {
         display: none;
     }
 }
