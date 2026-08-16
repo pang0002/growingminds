@@ -773,9 +773,20 @@ document.addEventListener('DOMContentLoaded', function () {
         
         function setFullHeight() {
             const vh = window.innerHeight;
+            // The header is sticky and lives inside this same scroll
+            // container, pinned on top of whichever section is snapped
+            // to view. If sections are sized to the full viewport height,
+            // their vertically-centered content ends up centered in a box
+            // taller than the space actually visible below the header —
+            // pushing content up behind it. Subtract the header's own
+            // height so each section's usable area matches what's really
+            // visible under the sticky header.
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const sectionHeight = Math.max(vh - headerHeight, 0);
             sections.forEach(function(section) {
-                section.style.minHeight = vh + 'px';
-                section.style.height = vh + 'px';
+                section.style.minHeight = sectionHeight + 'px';
+                section.style.height = sectionHeight + 'px';
                 section.style.display = 'flex';
                 section.style.alignItems = 'center';
                 section.style.justifyContent = 'center';
