@@ -36,6 +36,48 @@
             color: var(--color-ink-soft);
         }
 
+        .lp-hero-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 56px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .lp-hero-copy {
+            flex: 1 1 420px;
+            max-width: 480px;
+        }
+
+        .lp-hero-card {
+            flex: 1 1 400px;
+            max-width: 440px;
+            margin: 0;
+        }
+
+        .lp-hero-card .hero-insight-label {
+            font-size: 12.5px;
+        }
+
+        .lp-hero-card .hero-insight-line {
+            font-size: 21px;
+        }
+
+        .lp-hero-card .hero-insight-line--bold {
+            font-size: 22px;
+        }
+
+        @media (max-width: 860px) {
+            .lp-hero-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 32px;
+            }
+            .lp-hero-copy { text-align: center; max-width: 560px; }
+            .lp-hero-card { max-width: 460px; width: 100%; }
+        }
+
         .lp-receive-grid {
             display: flex;
             flex-wrap: wrap;
@@ -70,15 +112,20 @@
         .lp-receive-card:nth-child(5) { --card-accent: var(--color-gold); }
 
         .lp-receive-card .lp-icon {
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 30px;
-            margin: 0 auto 16px;
+            margin: 0 auto 18px;
             transition: transform 0.4s var(--ease-bounce);
+        }
+
+        .lp-receive-card .lp-icon svg {
+            width: 42px;
+            height: 42px;
         }
 
         .lp-receive-card:hover .lp-icon {
@@ -92,14 +139,14 @@
         .lp-receive-card:nth-child(5) .lp-icon { background: var(--color-pale-sun); }
 
         .lp-receive-card h4 {
-            font-size: 17.5px;
+            font-size: 19.5px;
             color: var(--color-primary);
-            margin-bottom: 8px;
+            margin-bottom: 9px;
         }
 
         .lp-receive-card p {
-            font-size: 14.5px;
-            line-height: 1.6;
+            font-size: 15.5px;
+            line-height: 1.65;
             color: var(--color-ink-soft);
             margin: 0;
         }
@@ -112,7 +159,7 @@
 
         .flip-card {
             perspective: 1200px;
-            height: 260px;
+            height: 280px;
         }
 
         .flip-card-inner {
@@ -134,7 +181,7 @@
             inset: 0;
             backface-visibility: hidden;
             border-radius: var(--radius-lg);
-            padding: 28px 26px;
+            padding: 30px 28px;
             box-shadow: var(--shadow-card);
         }
 
@@ -147,7 +194,12 @@
         }
 
         .flip-icon {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .flip-icon svg {
+            width: 42px;
+            height: 42px;
         }
 
         .flip-front h3 {
@@ -155,7 +207,7 @@
         }
 
         .flip-front .flip-hint {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -169,22 +221,22 @@
         }
 
         .flip-back p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.7;
             color: var(--color-muted-on-dark);
             margin: 0;
         }
 
         .lp-faq h3 {
-            font-size: 19px;
+            font-size: 21px;
             color: var(--color-primary);
             margin-bottom: 0;
         }
 
         .flip-back h3 {
             color: var(--color-white);
-            font-size: 17px;
-            margin-bottom: 10px;
+            font-size: 19px;
+            margin-bottom: 12px;
         }
 
         @media (max-width: 900px) {
@@ -229,14 +281,20 @@
         <div class="container reveal">
             <span class="eyebrow">Discovery &amp; Diagnosis</span>
             <h1>The Learning Profile</h1>
-            <div class="hero-insight-card floating-slow" style="max-width:480px;margin:28px auto 0;">
-                <div class="hero-insight-tier">
-                    <span class="hero-insight-label">Diagnosis</span>
-                    <p class="hero-insight-line">What your child has.</p>
+            <div class="lp-hero-row">
+                <div class="lp-hero-copy">
+                    <p class="lp-lead">Most parents arrive knowing something isn't working. Very few arrive knowing why.</p>
+                    <p class="lp-sub">A Learning Profile is a structured look at how your child learns — attention, memory, reasoning, language, emotional regulation and social understanding — carried out by an educational psychologist.</p>
                 </div>
-                <div class="hero-insight-tier hero-insight-tier--reveal">
-                    <span class="hero-insight-label">Learning Profile</span>
-                    <p class="hero-insight-line hero-insight-line--bold">What your child needs.</p>
+                <div class="hero-insight-card floating-slow lp-hero-card">
+                    <div class="hero-insight-tier">
+                        <span class="hero-insight-label">Diagnosis</span>
+                        <p class="hero-insight-line">What your child has.</p>
+                    </div>
+                    <div class="hero-insight-tier hero-insight-tier--reveal">
+                        <span class="hero-insight-label">Learning Profile</span>
+                        <p class="hero-insight-line hero-insight-line--bold">What your child needs.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -244,12 +302,7 @@
 
     <section class="service-details">
         <div class="container">
-            <div class="reveal" style="max-width:700px;margin:0 auto;text-align:center;">
-                <p class="lp-lead">Most parents arrive knowing something isn't working. Very few arrive knowing why.</p>
-                <p class="lp-sub">A Learning Profile is a structured look at how your child learns — attention, memory, reasoning, language, emotional regulation and social understanding — carried out by an educational psychologist.</p>
-            </div>
-
-            <div class="section-header reveal" style="margin-top:56px;">
+            <div class="section-header reveal" style="margin-top:0;">
                 <span class="section-tag">What You Receive</span>
                 <h2>A plan you can actually use</h2>
             </div>
