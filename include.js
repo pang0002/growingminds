@@ -118,6 +118,64 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initRippleEffect, 'initRippleEffect');
 
     // ============================================================
+    // CARD HOVER EFFECTS
+    // ============================================================
+    function initCardEffects() {
+        // Hover-lift cards
+        document.querySelectorAll('.hover-lift').forEach(function(card) {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-6px) scale(1.01)';
+                this.style.boxShadow = '0 20px 40px rgba(31, 60, 136, 0.12)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Credential chips hover effect
+        document.querySelectorAll('.credential-chip').forEach(function(chip) {
+            chip.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.background = 'var(--color-gold)';
+                this.style.borderColor = 'var(--color-primary)';
+            });
+            chip.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.background = '';
+                this.style.borderColor = '';
+            });
+        });
+
+        // Quick link cards
+        document.querySelectorAll('.quick-link-card').forEach(function(card) {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.boxShadow = '0 12px 32px rgba(31, 60, 136, 0.10)';
+                this.style.borderColor = 'var(--color-primary)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+                this.style.borderColor = '';
+            });
+        });
+
+        // Credential cards hover effect
+        document.querySelectorAll('.credential-card').forEach(function(card) {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-6px)';
+                this.style.boxShadow = '0 16px 48px rgba(31, 60, 136, 0.10)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    }
+    safeInit(initCardEffects, 'initCardEffects');
+
+    // ============================================================
     // INTERACTIVE CARDS - Auto-rotating card display
     // ============================================================
     function initInteractiveCards() {
