@@ -35,6 +35,25 @@
     }
     </script>
     <link rel="stylesheet" href="style.css?v=11" />
+    <!-- Mobile-only override: style.css's ".home-page .section-fullscreen" rule
+         still applies even when include.js adds "home-page-flow" to opt out of
+         the fullscreen/scroll-snap behaviour on phones, because the body keeps
+         both classes at once. Left unfixed, each section is forced to exactly
+         one screen tall with its content vertically centered — so once a
+         section's content (e.g. the hero card + heading + paragraph) is taller
+         than one screen, centering pushes the top of it above the visible
+         viewport, behind the header. This scopes a correction to this page
+         only, without editing style.css. -->
+    <style>
+        @media (max-width: 768px) {
+            .home-page.home-page-flow .section-fullscreen {
+                height: auto !important;
+                min-height: 0 !important;
+                display: block !important;
+                align-items: stretch !important;
+            }
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
 
