@@ -825,7 +825,18 @@ document.addEventListener('DOMContentLoaded', function () {
         sections.forEach(function(section) {
             container.appendChild(section);
         });
-        if (footer) container.appendChild(footer);
+        if (footer) {
+            container.appendChild(footer);
+            // The container uses scroll-snap-type: y mandatory, and every
+            // .section-fullscreen gets scroll-snap-align: start above. The
+            // footer was never given one, so with "mandatory" snapping the
+            // browser had no valid point to rest on there and kept pulling
+            // the view back to the last section on normal wheel/touch/key
+            // scrolling (only a manual scrollbar drag could bypass that
+            // snap-back). Marking it as a snap point fixes normal scrolling.
+            footer.style.scrollSnapAlign = 'start';
+            footer.style.scrollSnapStop = 'always';
+        }
 
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
