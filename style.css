@@ -5443,3 +5443,218 @@ body.home-page-locked {
 .reveal-stagger:nth-child(4) { transition-delay: 0.35s; }
 .reveal-stagger:nth-child(5) { transition-delay: 0.45s; }
 .reveal-stagger:nth-child(6) { transition-delay: 0.55s; }
+/* ============================================================
+   CLUB SUB-PAGES (Social & Emotions / Ready to Learn / Ready for Life)
+   Shared markup across the three club pages, themed per page via the
+   --club-accent custom property set inline on <body>.
+   ============================================================ */
+
+.club-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.club-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-white);
+    border: 2px solid rgba(31, 60, 136, 0.12);
+    padding: 7px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(31, 60, 136, 0.06);
+}
+
+.club-hook {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+}
+
+.club-section-head {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 36px;
+}
+
+.club-section-head h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-top: 2px;
+}
+
+/* --- Come if your child: icon checklist --- */
+.club-checklist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.club-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.club-check-item:hover {
+    transform: translate(-3px, -3px);
+    border-color: var(--club-accent, var(--color-teal));
+    box-shadow: 6px 6px 0 0 var(--club-accent, var(--color-teal));
+}
+
+.club-check-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--club-accent, var(--color-teal));
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.club-check-item p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--color-ink);
+}
+
+@media (max-width: 700px) {
+    .club-checklist { grid-template-columns: 1fr; }
+}
+
+/* --- Eight weeks, eight things to practise --- */
+.club-practise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.club-practise-chip {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 22px 16px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.club-practise-chip:hover {
+    transform: translateY(-5px);
+    border-color: var(--club-accent, var(--color-gold));
+    box-shadow: 0 16px 36px rgba(31, 60, 136, 0.14);
+}
+
+.club-practise-chip .num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--club-accent, var(--color-gold));
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.club-practise-chip p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-ink);
+}
+
+@media (max-width: 860px) {
+    .club-practise-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .club-practise-grid { grid-template-columns: 1fr; }
+}
+
+/* --- What it looks like on a [day]: example list --- */
+.club-example-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 760px;
+    margin: 8px auto 0;
+}
+
+.club-example-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-card);
+}
+
+.club-example-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 7px;
+    background: var(--club-accent, var(--color-accent));
+}
+
+.club-example-item p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-ink);
+}
+
+/* --- What you might notice at home: pull-quote --- */
+.club-pullquote {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.eyebrow-quote {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--club-accent, var(--color-teal-dark));
+    margin-bottom: 12px;
+}
+
+.club-pullquote blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.5;
+    color: var(--color-primary);
+}
