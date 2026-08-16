@@ -3330,6 +3330,82 @@ footer {
 .pill-grid .pill:nth-child(3n+2) { background: rgba(247, 201, 72, 0.14); border-color: rgba(224, 172, 31, 0.32); }
 .pill-grid .pill:nth-child(3n+3) { background: rgba(142, 125, 240, 0.10); border-color: rgba(142, 125, 240, 0.30); }
 
+/* ===== Nobody Sits At A Desk ===== */
+.desk-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.desk-content h2 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    margin-bottom: 22px;
+}
+
+.desk-content p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+    margin-bottom: 18px;
+}
+
+.desk-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-teal-dark);
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+    margin-top: 26px !important;
+}
+
+.desk-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-content: flex-start;
+}
+
+.activity-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--color-primary);
+    padding: 12px 22px;
+    border-radius: 50px;
+    border: 2px solid var(--color-primary);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.activity-pill span {
+    font-size: 17px;
+}
+
+.activity-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(31, 60, 136, 0.12);
+}
+
+.desk-pills .activity-pill:nth-child(3n+1) { background: rgba(247, 201, 72, 0.22); }
+.desk-pills .activity-pill:nth-child(3n+2) { background: rgba(44, 181, 165, 0.14); }
+.desk-pills .activity-pill:nth-child(3n+3) { background: rgba(142, 125, 240, 0.14); }
+
+@media (max-width: 900px) {
+    .desk-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .desk-pills {
+        justify-content: flex-start;
+    }
+}
+
 /* Vertical Step Timeline */
 .step-timeline {
     list-style: none;
