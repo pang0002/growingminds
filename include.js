@@ -773,20 +773,28 @@ document.addEventListener('DOMContentLoaded', function () {
         
         function setFullHeight() {
             const vh = window.innerHeight;
-            // The header is sticky and lives inside this same scroll
-            // container, pinned on top of whichever section is snapped
-            // to view. If sections are sized to the full viewport height,
-            // their vertically-centered content ends up centered in a box
-            // taller than the space actually visible below the header —
-            // pushing content up behind it. Subtract the header's own
-            // height so each section's usable area matches what's really
-            // visible under the sticky header.
+            // The header is taken out of normal flow (position: fixed,
+            // set below) so it always overlays on top instead of pushing
+            // section boxes around. To keep each section's own content
+            // fully clear of that overlay, give every section top padding
+            // equal to the header's height AND add that same amount to
+            // the box's own height. Because sizing is border-box, the
+            // padding would otherwise eat into the usable vh of content
+            // space (that's what caused clipping) — adding it back to
+            // height keeps a full, un-shrunk vh available for the
+            // centered content, just shifted below the header.
             const header = document.querySelector('header');
             const headerHeight = header ? header.offsetHeight : 0;
-            const sectionHeight = Math.max(vh - headerHeight, 0);
+            const sectionHeight = vh + headerHeight;
             sections.forEach(function(section) {
                 section.style.minHeight = sectionHeight + 'px';
                 section.style.height = sectionHeight + 'px';
+                // !important: some sections have a stylesheet rule
+                // forcing padding: 0 !important, which would otherwise
+                // silently cancel this and reintroduce the header overlap
+                // just for that section.
+                section.style.setProperty('padding-top', headerHeight + 'px', 'important');
+                section.style.boxSizing = 'border-box';
                 section.style.display = 'flex';
                 section.style.alignItems = 'center';
                 section.style.justifyContent = 'center';
@@ -826,7 +834,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const anchor = document.createComment('home-scroll-container');
         parent.insertBefore(anchor, header || sections[0]);
 
-        if (header) container.appendChild(header);
+        if (header) {
+            container.appendChild(header);
+            // Take the header out of normal flow so it never pushes or
+            // shrinks the sections below it — it just floats on top.
+            // (setFullHeight() compensates by giving every section its
+            // own top padding equal to the header's height.)
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.left = '0';
+            header.style.width = '100%';
+        }
         sections.forEach(function(section) {
             container.appendChild(section);
         });

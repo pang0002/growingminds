@@ -5174,7 +5174,7 @@ body.home-page-locked {
 }
 
 .home-page .section-fullscreen.section-white-bg {
-    padding: 0 !important;
+    padding: 0;
 }
 
 .home-page .section-fullscreen.process-section {
