@@ -213,15 +213,20 @@
             top: 46px;
             left: 6%;
             right: 6%;
-            height: 2px;
-            background: repeating-linear-gradient(
+            height: 3px;
+            background: linear-gradient(
                 to right,
-                var(--color-teal) 0,
-                var(--color-teal) 8px,
-                transparent 8px,
-                transparent 16px
+                var(--color-teal) 0%,
+                var(--color-teal) 22%,
+                var(--color-gold) 22%,
+                var(--color-gold) 47%,
+                var(--color-accent) 47%,
+                var(--color-accent) 72%,
+                var(--color-gold) 72%,
+                var(--color-gold) 100%
             );
-            opacity: 0.5;
+            border-radius: 4px;
+            opacity: 0.4;
             z-index: 0;
         }
 
@@ -332,6 +337,69 @@
             max-width: 260px;
         }
 
+        /* --- Icon interactivity: every icon family gets a consistent
+               pop/bounce on hover, tying the page together --- */
+        .approach-mv-grid .mv-icon,
+        .approach-pillars-grid .pillar-icon-wrap svg,
+        .approach-values-grid .icon-wrap svg,
+        .approach-skills-grid .icon-wrap svg {
+            transition: transform 0.4s var(--ease-bounce);
+        }
+
+        .approach-mv-grid .mission:hover .mv-icon,
+        .approach-mv-grid .vision:hover .mv-icon {
+            transform: translateY(-4px) scale(1.08) rotate(-6deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .approach-pillars-grid .pillar-card:hover .pillar-icon-wrap svg {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .approach-values-grid .value-card:hover .icon-wrap svg {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .approach-skills-grid .skill-card:hover .icon-wrap svg {
+            transform: scale(1.1) rotate(4deg);
+        }
+
+        /* --- Guiding principles: colour-code the step badge per pillar --- */
+        .pillar-teal .pillar-step { background: var(--color-teal); border-color: var(--color-teal); color: var(--color-white); transition: transform 0.3s var(--ease-bounce); }
+        .pillar-gold .pillar-step { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-primary); transition: transform 0.3s var(--ease-bounce); }
+        .pillar-purple .pillar-step { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-white); transition: transform 0.3s var(--ease-bounce); }
+
+        .approach-pillars-grid .pillar-card:hover .pillar-step {
+            transform: scale(1.15);
+        }
+
+        /* --- Pull quote: the mark responds on hover --- */
+        .approach-pullquote blockquote::before {
+            transition: transform 0.3s var(--ease);
+            display: inline-block;
+        }
+        .approach-pullquote blockquote:hover::before {
+            transform: scale(1.15) rotate(-4deg);
+        }
+
+        /* --- Hero: gold highlight treatment, matching the homepage hero --- */
+        .page-hero h1 .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        .page-hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--color-gold);
+            opacity: 0.4;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .approach-skills-grid {
@@ -395,35 +463,10 @@
         <div class="blob blob-purple"></div>
         <div class="container reveal">
             <span class="eyebrow">Understanding before intervening</span>
-            <h1>Understand first.</h1>
+            <h1>Understand <span class="highlight">first.</span></h1>
             <p style="font-size:20px;color:var(--color-ink-soft);max-width:600px;margin:0 auto;">
                 Building the skills behind learning, confidence and independence
             </p>
-        </div>
-    </section>
-
-    <!-- ===== THE PROBLEM ===== -->
-    <section class="section-white-bg" style="padding:40px 0 60px;">
-        <div class="container">
-            <div class="reveal" style="max-width:760px;margin:0 auto;">
-                <div style="background:var(--color-sage);padding:36px 40px;border-radius:var(--radius-lg);border-left:5px solid var(--color-teal);">
-                    <p style="font-size:18px;line-height:1.8;color:var(--color-ink);margin-bottom:10px;">
-                        Children get sorted early. Bright or slow, easy or difficult, trying hard or not trying at all.
-                    </p>
-                    <p style="font-size:18px;line-height:1.8;color:var(--color-ink);margin-bottom:10px;">
-                        The labels arrive <strong>long before</strong> anyone has actually looked at how the child in front of them learns.
-                    </p>
-                    <p style="font-size:20px;line-height:1.7;color:var(--color-primary);font-family:var(--font-display);font-weight:600;margin-top:4px;">
-                        We think that's backwards.
-                    </p>
-                    <p style="font-size:16px;line-height:1.7;color:var(--color-ink-soft);margin-top:10px;">
-                        It's expensive — in confidence, in wasted years, in children who decide by the age of eight that they're the stupid one.
-                    </p>
-                    <p style="font-size:16px;line-height:1.7;color:var(--color-primary);font-family:var(--font-display);font-weight:600;margin-top:14px;">
-                        So we start by understanding.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -439,8 +482,10 @@
                 <div class="mission reveal-left">
                     <div class="mv-icon">
                         <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <path d="M22 28l6 6 14-14" stroke="#2CB5A5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="32" cy="32" r="26" fill="var(--color-sage)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <path d="M32 14 L38 30 L32 34 L26 30 Z" fill="var(--color-teal)"/>
+                            <path d="M32 50 L26 34 L32 30 L38 34 Z" fill="var(--color-gold)"/>
+                            <circle cx="32" cy="32" r="4" fill="var(--color-primary)"/>
                         </svg>
                     </div>
                     <h3>Our Mission</h3>
@@ -449,8 +494,9 @@
                 <div class="vision reveal-right">
                     <div class="mv-icon">
                         <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
-                            <circle cx="32" cy="32" r="28" stroke="#1F3C88" stroke-width="2"/>
-                            <path d="M20 34l8 8 16-16" stroke="#F7C948" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 32C8 32 18 16 32 16C46 16 56 32 56 32C56 32 46 48 32 48C18 48 8 32 8 32Z" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <circle cx="32" cy="32" r="10" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="2"/>
+                            <circle cx="35" cy="28" r="3" fill="var(--color-white)"/>
                         </svg>
                     </div>
                     <h3>Our Vision</h3>
@@ -580,11 +626,12 @@
                     <div class="pillar-card pillar-teal reveal-stagger" style="background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border:2px solid rgba(31,60,136,0.08);border-top:5px solid var(--color-teal);transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease);">
                         <span class="pillar-step">1</span>
                         <div class="pillar-icon-wrap">
-                            <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                                <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="18" cy="17" r="5" stroke="#1F3C88" stroke-width="2"/>
-                                <path d="M10 30c0-4.5 4-7 8-7s8 2.5 8 7" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="22" cy="22" r="18" stroke="#2CB5A5" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/>
+                            <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+                                <circle cx="26" cy="26" r="14" fill="var(--color-sage)" stroke="var(--color-primary)" stroke-width="3"/>
+                                <path d="M20 27c1.6-1.6 5.4-1.6 7 0" stroke="var(--color-primary)" stroke-width="2.4" stroke-linecap="round"/>
+                                <circle cx="22" cy="23" r="1.8" fill="var(--color-primary)"/>
+                                <circle cx="30" cy="23" r="1.8" fill="var(--color-primary)"/>
+                                <line x1="36" y1="36" x2="48" y2="48" stroke="var(--color-teal)" stroke-width="4.5" stroke-linecap="round"/>
                             </svg>
                         </div>
                         <h3>Understand First</h3>
@@ -595,11 +642,10 @@
                     <div class="pillar-card pillar-gold reveal-stagger" style="background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border:2px solid rgba(31,60,136,0.08);border-top:5px solid var(--color-gold);transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease);">
                         <span class="pillar-step">2</span>
                         <div class="pillar-icon-wrap">
-                            <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                                <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="22" cy="22" r="10" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="22" cy="22" r="4" fill="#2CB5A5" stroke="#1F3C88" stroke-width="1.5"/>
-                                <circle cx="22" cy="22" r="18" stroke="#F7C948" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/>
+                            <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+                                <circle cx="32" cy="32" r="22" fill="var(--color-pale-sun)" stroke="var(--color-primary)" stroke-width="3"/>
+                                <circle cx="32" cy="32" r="13" fill="var(--color-white)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                                <circle cx="32" cy="32" r="5" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2"/>
                             </svg>
                         </div>
                         <h3>Target Core Skills</h3>
@@ -610,12 +656,11 @@
                     <div class="pillar-card pillar-purple reveal-stagger" style="background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border:2px solid rgba(31,60,136,0.08);border-top:5px solid var(--color-accent);transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease);">
                         <span class="pillar-step">3</span>
                         <div class="pillar-icon-wrap">
-                            <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                                <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="16" cy="16" r="5" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="28" cy="16" r="5" stroke="#1F3C88" stroke-width="2"/>
-                                <path d="M10 34c0-4 4-6 12-6s12 2 12 6" stroke="#1F3C88" stroke-width="2"/>
-                                <circle cx="22" cy="22" r="18" stroke="#8E7DF0" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/>
+                            <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+                                <circle cx="24" cy="22" r="8" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                                <circle cx="40" cy="22" r="8" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="2.5" opacity="0.85"/>
+                                <path d="M12 48c0-8 6-13 12-13s12 5 12 13" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M28 48c0-8 6-13 12-13s12 5 12 13" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round" opacity="0.85"/>
                             </svg>
                         </div>
                         <h3>Partner with Families</h3>
@@ -626,17 +671,11 @@
                     <div class="pillar-card pillar-gold reveal-stagger" style="background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);border:2px solid rgba(31,60,136,0.08);border-top:5px solid var(--color-gold);transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease);">
                         <span class="pillar-step">4</span>
                         <div class="pillar-icon-wrap">
-                            <svg viewBox="0 0 44 44" width="40" height="40" fill="none">
-                                <circle cx="22" cy="22" r="18" stroke="#1F3C88" stroke-width="2"/>
-                                <path d="M22 10v4" stroke="#1F3C88" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M22 30v4" stroke="#1F3C88" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M14 14l3 3" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M27 27l3 3" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M10 22h4" stroke="#1F3C88" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M30 22h4" stroke="#1F3C88" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M14 30l3-3" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M27 14l3-3" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                                <circle cx="22" cy="22" r="18" stroke="#F7C948" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/>
+                            <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+                                <path d="M32 50V26" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M32 26c0-10-10-14-10-14s-2 12 10 14Z" fill="var(--color-teal)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M32 34c0-10 10-14 10-14s2 12-10 14Z" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                                <ellipse cx="32" cy="52" rx="14" ry="3" fill="var(--color-paper-deep)"/>
                             </svg>
                         </div>
                         <h3>Build for Life</h3>
@@ -663,10 +702,13 @@
                 <div class="value-card reveal-stagger">
                     <div class="icon-wrap">
                         <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <rect x="22" y="18" width="20" height="28" rx="2" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M26 24h12" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M26 30h12" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M26 36h8" stroke="#1F3C88" stroke-width="2" stroke-linecap="round"/>
+                            <rect x="18" y="14" width="28" height="36" rx="3" fill="var(--color-white)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <rect x="24" y="10" width="16" height="8" rx="2" fill="var(--color-teal)" stroke="var(--color-primary)" stroke-width="2"/>
+                            <path d="M24 27h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M24 33h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M24 39h8" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="43" cy="43" r="9" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2"/>
+                            <path d="M39.5 43l2.2 2.2 4.3-4.4" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h4>Evidence-Informed</h4>
@@ -677,8 +719,9 @@
                 <div class="value-card reveal-stagger">
                     <div class="icon-wrap">
                         <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <circle cx="32" cy="22" r="8" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M18 46c0-6 6-9 14-9s14 3 14 9" stroke="#1F3C88" stroke-width="2.5"/>
+                            <circle cx="32" cy="22" r="10" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <path d="M16 50c0-9 7-14 16-14s16 5 16 14" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <circle cx="32" cy="35" r="5" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2"/>
                         </svg>
                     </div>
                     <h4>Holistic &amp; Individualised</h4>
@@ -689,11 +732,11 @@
                 <div class="value-card reveal-stagger">
                     <div class="icon-wrap">
                         <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
-                            <circle cx="22" cy="24" r="7" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M12 44c0-5 4-8 10-8" stroke="#1F3C88" stroke-width="2.5"/>
-                            <circle cx="42" cy="24" r="7" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M32 44c0-5 4-8 10-8" stroke="#1F3C88" stroke-width="2.5"/>
-                            <path d="M32 48l-4 5 8 0z" fill="#8E7DF0" opacity="0.3" stroke="#8E7DF0" stroke-width="1.5"/>
+                            <circle cx="22" cy="24" r="7" fill="var(--color-pale-teal)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <circle cx="42" cy="24" r="7" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <path d="M12 46c0-6 5-9 10-9s10 3 10 9" fill="var(--color-pale-teal)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M32 46c0-6 5-9 10-9s10 3 10 9" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M32 44l-4 5 8 0z" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="1.5" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h4>Family Partnership</h4>
