@@ -782,6 +782,17 @@
          from footer.html if that fetch succeeds — kept in sync manually) -->
     <!-- ============================================================ -->
     <footer>
+        <style>
+            .footer-container { padding-top: 36px; padding-bottom: 36px; gap: 32px; }
+            .logo-img-footer { height: 84px !important; }
+            .footer-brand .brand-tagline { margin-top: 2px; }
+            .footer-bottom { padding: 14px 0; }
+            @media (max-width: 576px) {
+                .footer-container { padding-top: 28px; padding-bottom: 24px; gap: 22px; }
+                .logo-img-footer { height: 68px !important; }
+                .footer-brand .brand-tagline { font-size: 17px; }
+            }
+        </style>
         <div class="container footer-container">
             <div class="footer-brand">
                 <a href="index.html" class="footer-logo-link">

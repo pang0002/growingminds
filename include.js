@@ -800,32 +800,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.style.setProperty('padding-top', headerHeight + 'px', 'important');
                 section.style.boxSizing = 'border-box';
                 section.style.display = 'flex';
-                section.style.flexDirection = 'column';
-                section.style.alignItems = 'stretch';
-                section.style.justifyContent = 'flex-start';
+                section.style.alignItems = 'center';
+                section.style.justifyContent = 'center';
                 section.style.flexShrink = '0';
                 section.style.width = '100%';
                 section.style.scrollSnapAlign = 'start';
-
-                // The section's own centering only worked reliably when the
-                // section was a plain flex row around a single, non-flex
-                // child. Several sections' .container also declares its own
-                // display:flex/justify-content inline, which changes how it
-                // participates as a flex item and was landing content lower
-                // than the true visual center. Fix this at the source: give
-                // the inner .container an explicit height equal to the
-                // actually-visible area (viewport minus the fixed header)
-                // and let IT do the centering directly, rather than relying
-                // on the outer section to center a child whose own layout
-                // mode varies section to section.
-                const inner = section.querySelector(':scope > .container');
-                if (inner) {
-                    inner.style.setProperty('min-height', 'calc(100vh - ' + headerHeight + 'px)', 'important');
-                    inner.style.setProperty('display', 'flex', 'important');
-                    inner.style.setProperty('flex-direction', 'column', 'important');
-                    inner.style.setProperty('justify-content', 'center', 'important');
-                    inner.style.setProperty('box-sizing', 'border-box', 'important');
-                }
             });
         }
         

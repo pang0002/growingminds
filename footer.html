@@ -1,4 +1,38 @@
 <footer>
+    <!-- Spacing overrides only — the base look (colours, fonts, layout)
+         still comes entirely from style.css. This just tightens values
+         that were making the footer feel oversized, especially the
+         160px-tall logo and the generous container padding/gaps,
+         without editing the shared stylesheet. -->
+    <style>
+        .footer-container {
+            padding-top: 36px;
+            padding-bottom: 36px;
+            gap: 32px;
+        }
+        .logo-img-footer {
+            height: 84px !important;
+        }
+        .footer-brand .brand-tagline {
+            margin-top: 2px;
+        }
+        .footer-bottom {
+            padding: 14px 0;
+        }
+        @media (max-width: 576px) {
+            .footer-container {
+                padding-top: 28px;
+                padding-bottom: 24px;
+                gap: 22px;
+            }
+            .logo-img-footer {
+                height: 68px !important;
+            }
+            .footer-brand .brand-tagline {
+                font-size: 17px;
+            }
+        }
+    </style>
     <div class="container footer-container">
         <!-- Column 1: Brand -->
         <div class="footer-brand">
