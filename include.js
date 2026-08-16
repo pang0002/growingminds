@@ -796,6 +796,11 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
+        // Get the parent element
+        const parent = sections[0].parentNode;
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        
         // Create a scroll container
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
@@ -809,11 +814,8 @@ document.addEventListener('DOMContentLoaded', function () {
             position: relative;
             width: 100%;
             overscroll-behavior: contain;
+            z-index: 1;
         `;
-
-        const parent = sections[0].parentNode;
-        const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
 
         // Anchor marks where the container should sit in the page
         const anchor = document.createComment('home-scroll-container');
@@ -829,14 +831,34 @@ document.addEventListener('DOMContentLoaded', function () {
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
 
-        // Keep footer OUTSIDE the container so it scrolls normally
+        // ============================================================
+        // CRITICAL: Handle footer properly
+        // ============================================================
+        // If footer exists, make sure it's AFTER the container
+        // and visible with proper styling
         if (footer) {
-            // If footer is inside container, remove it first
-            if (container.contains(footer)) {
-                container.removeChild(footer);
+            // Remove footer from wherever it is
+            if (footer.parentNode) {
+                footer.parentNode.removeChild(footer);
             }
-            // Insert footer AFTER the container
+            // Insert footer AFTER the container with proper styling
             parent.insertBefore(footer, container.nextSibling);
+            
+            // Ensure footer is visible and has proper styling
+            footer.style.display = 'block';
+            footer.style.position = 'relative';
+            footer.style.zIndex = '10';
+            footer.style.clear = 'both';
+            footer.style.width = '100%';
+            
+            // Add a spacer div to ensure footer is reachable
+            const spacer = document.createElement('div');
+            spacer.style.cssText = `
+                height: 1px;
+                width: 100%;
+                clear: both;
+            `;
+            parent.insertBefore(spacer, footer);
         }
 
         body.classList.add('home-page-locked');
@@ -899,9 +921,10 @@ document.addEventListener('DOMContentLoaded', function () {
             sections.forEach(function(section) {
                 stops.push(section.offsetTop);
             });
-            // Add a final stop for the bottom of the container (footer area)
+            // Add a final stop for the bottom of the container
             // This allows scrolling past the last section to see the footer
-            stops.push(Math.max(0, container.scrollHeight - container.clientHeight + 200));
+            const maxScroll = Math.max(0, container.scrollHeight - container.clientHeight);
+            stops.push(maxScroll + 100);
             return stops;
         }
 
