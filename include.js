@@ -31,18 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(btn);
 
         btn.addEventListener('click', function () {
-            const scrollEl = getHomeScrollEl();
-            if (scrollEl) {
-                scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         let ticking = false;
         function updateVisibility() {
-            const scrollEl = getHomeScrollEl();
-            const y = scrollEl ? scrollEl.scrollTop : window.scrollY;
+            const y = window.scrollY;
             if (y > 400) {
                 btn.classList.add('visible');
             } else {
@@ -57,14 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         window.addEventListener('scroll', onScroll, { passive: true });
-        // The homepage's scroll container is created later in this same
-        // init pass, so bind to it on the next tick once it exists.
-        setTimeout(function () {
-            const scrollEl = getHomeScrollEl();
-            if (scrollEl) {
-                scrollEl.addEventListener('scroll', onScroll, { passive: true });
-            }
-        }, 0);
     }
     safeInit(initBackToTop, 'initBackToTop');
 
@@ -293,8 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (header) {
             var headerTicking = false;
             var onScroll = function () {
-                var scrollEl = getHomeScrollEl();
-                var y = scrollEl ? scrollEl.scrollTop : window.scrollY;
+                var y = window.scrollY;
                 if (y > 12) {
                     header.classList.add('is-scrolled');
                 } else {
@@ -309,13 +294,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
             window.addEventListener('scroll', onScrollThrottled, { passive: true });
-            // Bind to the homepage scroll container too, once it exists.
-            setTimeout(function () {
-                var homeScrollEl = getHomeScrollEl();
-                if (homeScrollEl) {
-                    homeScrollEl.addEventListener('scroll', onScrollThrottled, { passive: true });
-                }
-            }, 0);
             onScroll();
         }
     }
@@ -331,19 +309,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 var target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
-                    var scrollEl = getHomeScrollEl();
-                    if (scrollEl && scrollEl.contains(target)) {
-                        // Target lives inside the homepage's single scroll
-                        // container — let it scroll that container into view.
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                        var headerHeight = document.querySelector('header')?.offsetHeight || 80;
-                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                    var headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
@@ -696,66 +667,37 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
-    // SIGNAL CARDS - FLIP CARD BEHAVIOR
+    // SIGNAL CARDS (click to reveal "what's underneath")
     // ============================================================
     function initSignalCards() {
         const cards = document.querySelectorAll('.signal-card');
         if (!cards.length) return;
 
         cards.forEach(function (card) {
-            // Find the flip buttons inside this card
-            const frontBtn = card.querySelector('.signal-card-front .signal-reveal-btn');
-            const backBtn = card.querySelector('.signal-card-back .signal-reveal-btn-back');
-            
-            // Function to flip to the back (reveal the underneath)
-            function flipToBack(e) {
-                if (e) e.stopPropagation();
-                card.classList.add('revealed');
+            const buttons = card.querySelectorAll('.signal-reveal-btn');
+            if (!buttons.length) return;
+
+            function toggle() {
+                card.classList.toggle('revealed');
             }
-            
-            // Function to flip to the front (go back to "what you see")
-            function flipToFront(e) {
-                if (e) e.stopPropagation();
-                card.classList.remove('revealed');
-            }
-            
-            // Add click handlers if buttons exist
-            if (frontBtn) {
-                frontBtn.addEventListener('click', flipToBack);
-            }
-            
-            if (backBtn) {
-                backBtn.addEventListener('click', flipToFront);
-            }
-            
-            // Optional: clicking on the card itself can also flip it
-            // (only on the front face, to avoid accidental flips from the back)
-            const frontFace = card.querySelector('.signal-card-front');
-            if (frontFace) {
-                frontFace.addEventListener('click', function(e) {
-                    // Only flip if the click wasn't on the button (already handled)
-                    if (!e.target.closest('.signal-reveal-btn')) {
-                        card.classList.add('revealed');
-                    }
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    toggle();
                 });
-            }
-            
-            // Clicking on the back face (but not the back button) goes back to front
-            const backFace = card.querySelector('.signal-card-back');
-            if (backFace) {
-                backFace.addEventListener('click', function(e) {
-                    if (!e.target.closest('.signal-reveal-btn-back')) {
-                        card.classList.remove('revealed');
-                    }
-                });
-            }
+            });
+
+            card.addEventListener('click', function () {
+                toggle();
+            });
         });
     }
 
     safeInit(initSignalCards, 'initSignalCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL
+    // FULL-SCREEN SCROLL - UPDATED VERSION
     // ============================================================
     function initFullScreenScroll() {
         // Only run on the home page
@@ -783,7 +725,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.style.justifyContent = 'center';
                 section.style.flexShrink = '0';
                 section.style.width = '100%';
-                section.style.scrollSnapAlign = 'start';
             });
         }
         
@@ -796,44 +737,29 @@ document.addEventListener('DOMContentLoaded', function () {
             resizeTimer = setTimeout(setFullHeight, 200);
         });
         
-        // Create a scroll container
+        // Wrap sections in a container (just for organization, not for scrolling)
+        const parent = sections[0].parentNode;
+        
         const container = document.createElement('div');
         container.className = 'fullscreen-scroll-container';
         container.style.cssText = `
-            height: 100vh;
-            height: 100dvh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            position: relative;
             width: 100%;
-            touch-action: none;
-            overscroll-behavior: contain;
+            position: relative;
         `;
 
-        const parent = sections[0].parentNode;
-        const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
-
-        // Anchor marks where the container should sit in the page, since
-        // header/sections/footer are all about to be moved out of `parent`.
         const anchor = document.createComment('home-scroll-container');
-        parent.insertBefore(anchor, header || sections[0]);
-
-        if (header) container.appendChild(header);
+        parent.insertBefore(anchor, sections[0]);
+        
         sections.forEach(function(section) {
             container.appendChild(section);
         });
-        if (footer) container.appendChild(footer);
-
+        
         parent.insertBefore(container, anchor);
         parent.removeChild(anchor);
 
-        body.classList.add('home-page-locked');
-        
+        // Add scroll indicators
         sections.forEach(function(section, index) {
-            const isVeryLast = index === sections.length - 1 && !footer;
+            const isVeryLast = index === sections.length - 1;
             if (!isVeryLast && !section.querySelector('.scroll-indicator')) {
                 const indicator = document.createElement('div');
                 indicator.className = 'scroll-indicator';
@@ -851,8 +777,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // Create navigation dots (one per content section; footer, if
-        // present, is reached by scrolling one step past the last dot)
+        // Create navigation dots
         const dotNav = document.createElement('div');
         dotNav.className = 'section-nav-dots';
         dotNav.setAttribute('role', 'navigation');
@@ -875,10 +800,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(dotNav);
 
         // ============================================================
-        // Homepage Scrolling
+        // SCROLL HANDLING - Using window scroll with snap behavior
         // ============================================================
         const sectionCount = sections.length;
-        const NAV_LOCK_MS = 1000;
+        const NAV_LOCK_MS = 800;
         let currentIndex = 0;
         let isAnimating = false;
         let lockTimer = null;
@@ -887,19 +812,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function getStops() {
             const stops = [];
+            const headerHeight = document.querySelector('header')?.offsetHeight || 0;
             sections.forEach(function(section) {
-                stops.push(section.offsetTop);
+                const rect = section.getBoundingClientRect();
+                const top = rect.top + window.pageYOffset - headerHeight;
+                stops.push(top);
             });
-            if (footer) {
-                stops.push(Math.max(0, container.scrollHeight - container.clientHeight));
-            }
+            // Add a stop for the footer (bottom of page)
+            stops.push(document.body.scrollHeight - window.innerHeight);
             return stops;
         }
 
         function updateActiveDot(index) {
-            // Dots only exist for content sections; while viewing the
-            // footer (an index beyond the last section) keep the last
-            // dot highlighted.
             const dotIndex = Math.min(index, sectionCount - 1);
             const dots = dotNav.querySelectorAll('a');
             dots.forEach(function(dot, i) {
@@ -907,15 +831,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Track scroll position and sync dots (e.g. when the user drags
-        // the scrollbar directly instead of using wheel/touch/keyboard)
         function syncScrollPosition() {
             const stops = getStops();
-            const scrollTop = container.scrollTop;
+            const scrollY = window.pageYOffset;
             let nearest = 0;
             let nearestDist = Infinity;
             stops.forEach(function(stopTop, i) {
-                const dist = Math.abs(scrollTop - stopTop);
+                const dist = Math.abs(scrollY - stopTop);
                 if (dist < nearestDist) {
                     nearestDist = dist;
                     nearest = i;
@@ -927,8 +849,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Use scroll event to update dots (debounced)
-        container.addEventListener('scroll', function() {
+        // Debounced scroll sync
+        window.addEventListener('scroll', function() {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(syncScrollPosition, 100);
         }, { passive: true });
@@ -938,39 +860,33 @@ document.addEventListener('DOMContentLoaded', function () {
             const maxIndex = stops.length - 1;
             const clamped = Math.max(0, Math.min(maxIndex, index));
             
-            // Don't navigate if already at target
             if (clamped === currentIndex) return;
-            
-            // Prevent rapid fire
             if (isAnimating) return;
             
             const now = Date.now();
             if (now - lastScrollTime < NAV_LOCK_MS) return;
             lastScrollTime = now;
             
-            const currentScrollTop = container.scrollTop;
             const targetScrollTop = stops[clamped];
-            if (Math.abs(currentScrollTop - targetScrollTop) < 20) return;
+            if (Math.abs(window.pageYOffset - targetScrollTop) < 20) return;
             
             currentIndex = clamped;
             isAnimating = true;
 
-            container.scrollTo({
+            window.scrollTo({
                 top: targetScrollTop,
                 behavior: 'smooth'
             });
             updateActiveDot(clamped);
 
-            // Set a longer lock duration to prevent multiple scroll events
             clearTimeout(lockTimer);
             lockTimer = setTimeout(function() {
                 isAnimating = false;
-                // Ensure we're at the right position
                 syncScrollPosition();
             }, NAV_LOCK_MS);
         }
 
-        // Dot clicks navigate directly
+        // Dot clicks
         dotNav.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -978,30 +894,25 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // Wheel navigation
         let wheelTimeout = null;
         let wheelDirection = 0;
         
-        container.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            
-            // Debounce wheel events
+        window.addEventListener('wheel', function(e) {
             if (wheelTimeout) return;
             if (isAnimating) return;
             
             const delta = e.deltaY;
             if (Math.abs(delta) < 10) return;
             
-            // Store direction
             const direction = delta > 0 ? 1 : -1;
             
-            // If user changes direction rapidly, ignore
             if (wheelDirection && wheelDirection !== direction) {
                 wheelDirection = direction;
                 return;
             }
             wheelDirection = direction;
             
-            // Set timeout to allow next wheel event
             wheelTimeout = setTimeout(function() {
                 wheelTimeout = null;
                 wheelDirection = 0;
@@ -1009,40 +920,27 @@ document.addEventListener('DOMContentLoaded', function () {
             
             goToSection(currentIndex + direction);
             
-        }, { passive: false });
+        }, { passive: true });
 
-        // Touch swipe — same one-section-per-gesture rule, same
-        // bubbling-through-container reasoning as the wheel handler.
+        // Touch swipe
         let touchStartY = 0;
-        let touchStartX = 0;
         let touchStartTime = 0;
 
-        container.addEventListener('touchstart', function(e) {
+        document.addEventListener('touchstart', function(e) {
             touchStartY = e.touches[0].clientY;
-            touchStartX = e.touches[0].clientX;
             touchStartTime = Date.now();
         }, { passive: true });
 
-        container.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-
-        container.addEventListener('touchend', function(e) {
+        document.addEventListener('touchend', function(e) {
             if (isAnimating) return;
             
             const touchEndY = e.changedTouches[0].clientY;
-            const touchEndX = e.changedTouches[0].clientX;
             const touchEndTime = Date.now();
             
             const deltaY = touchStartY - touchEndY;
-            const deltaX = touchStartX - touchEndX;
             const deltaTime = touchEndTime - touchStartTime;
             
-            // Ignore if gesture was too slow (it's probably just a scroll)
             if (deltaTime > 500) return;
-            
-            // Ignore horizontal swipes
-            if (Math.abs(deltaY) < Math.abs(deltaX)) return;
             
             const SWIPE_THRESHOLD = 40;
             if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
@@ -1065,12 +963,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Scroll to top on load
-        container.scrollTo({ top: 0, behavior: 'instant' });
+        // Start at top
+        window.scrollTo({ top: 0, behavior: 'instant' });
         
-        // Ensure we start at the right position
         setTimeout(function() {
-            container.scrollTo({ top: 0, behavior: 'instant' });
+            window.scrollTo({ top: 0, behavior: 'instant' });
             currentIndex = 0;
             updateActiveDot(0);
         }, 100);
