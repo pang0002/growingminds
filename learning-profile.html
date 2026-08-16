@@ -17,6 +17,122 @@
     gtag('js', new Date());
     gtag('config', 'G-BMF1GKD90H');
     </script>
+
+    <style>
+        /* ===== Page-specific styling — Learning Profile page ===== */
+
+        .lp-lead {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(20px, 2.4vw, 24px);
+            line-height: 1.5;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+        }
+
+        .lp-sub {
+            font-size: 17.5px;
+            line-height: 1.8;
+            color: var(--color-ink-soft);
+        }
+
+        .lp-receive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        .lp-receive-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .lp-receive-card:hover {
+            transform: translate(-3px, -3px);
+            border-color: var(--color-primary);
+            box-shadow: 6px 6px 0 0 var(--color-teal);
+        }
+
+        .lp-receive-card .lp-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 16px;
+            transition: transform 0.4s var(--ease-bounce);
+        }
+
+        .lp-receive-card:hover .lp-icon {
+            transform: scale(1.1) rotate(-6deg);
+        }
+
+        .lp-receive-card:nth-child(1) .lp-icon { background: var(--color-pale-teal); }
+        .lp-receive-card:nth-child(2) .lp-icon { background: var(--color-pale-sun); }
+        .lp-receive-card:nth-child(3) .lp-icon { background: var(--color-pale-lavender); }
+        .lp-receive-card:nth-child(4) .lp-icon { background: var(--color-sage); }
+        .lp-receive-card:nth-child(5) .lp-icon { background: var(--color-pale-sun); }
+
+        .lp-receive-card h4 {
+            font-size: 17.5px;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .lp-receive-card p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--color-ink-soft);
+            margin: 0;
+        }
+
+        .lp-faq h3 {
+            font-size: 19px;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .lp-faq p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--color-ink-soft);
+        }
+
+        .lp-meta {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 24px;
+            font-size: 15px;
+            color: var(--color-ink-soft);
+            background: var(--color-sage);
+            padding: 14px 28px;
+            border-radius: 100px;
+        }
+
+        @media (max-width: 900px) {
+            .lp-receive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .lp-receive-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -28,60 +144,112 @@
         <div class="container reveal">
             <span class="eyebrow">Discovery &amp; Diagnosis</span>
             <h1>The Learning Profile</h1>
-            <p>A diagnosis tells you what your child has. A Learning Profile tells you what your child needs.</p>
+            <div class="hero-insight-card floating-slow" style="max-width:480px;margin:28px auto 0;">
+                <div class="hero-insight-tier">
+                    <span class="hero-insight-label">A diagnosis tells you</span>
+                    <p class="hero-insight-line">What your child has.</p>
+                </div>
+                <div class="hero-insight-tier hero-insight-tier--reveal">
+                    <span class="hero-insight-label">A Learning Profile tells you</span>
+                    <p class="hero-insight-line hero-insight-line--bold">What your child needs.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="service-details">
         <div class="container">
-            <div class="reveal" style="max-width:780px;margin:0 auto;">
-                <p style="font-size:17px;line-height:1.8;color:var(--color-ink-soft);">
-                    Most parents arrive knowing something isn't working. Very few arrive knowing why.
-                </p>
-                <p style="font-size:17px;line-height:1.8;color:var(--color-ink-soft);margin-top:14px;">
-                    A Learning Profile is a structured assessment of how your child learns &mdash; attention, memory, reasoning, language, emotional regulation, social understanding and learning behaviour &mdash; set against what school and home are actually asking of them. It's carried out by an educational psychologist.
-                </p>
+            <div class="reveal" style="max-width:700px;margin:0 auto;text-align:center;">
+                <p class="lp-lead">Most parents arrive knowing something isn't working. Very few arrive knowing why.</p>
+                <p class="lp-sub">A Learning Profile is a structured look at how your child learns — attention, memory, reasoning, language, emotional regulation and social understanding — carried out by an educational psychologist.</p>
             </div>
 
-            <div class="assessment-grid" style="margin-top:40px;">
-                <div class="assessment-card reveal-left">
-                    <h3>What You Receive</h3>
-                    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;margin-top:12px;">
-                        <li style="display:flex;gap:10px;font-size:14.5px;color:var(--color-ink);"><span>📝</span> A written Learning Profile, in plain language, that you can keep and share</li>
-                        <li style="display:flex;gap:10px;font-size:14.5px;color:var(--color-ink);"><span>💪</span> A clear account of your child's strengths &mdash; which matter as much as the difficulties, because they're what any plan gets built on</li>
-                        <li style="display:flex;gap:10px;font-size:14.5px;color:var(--color-ink);"><span>🏠</span> Specific recommendations for home &mdash; what to change, on which evening, and what to say</li>
-                        <li style="display:flex;gap:10px;font-size:14.5px;color:var(--color-ink);"><span>🏫</span> Specific recommendations for school, written so a teacher can act on them</li>
-                        <li style="display:flex;gap:10px;font-size:14.5px;color:var(--color-ink);"><span>🤝</span> A feedback session to talk it through, and a channel for the questions that surface a week later</li>
-                    </ul>
-                </div>
+            <div class="section-header reveal" style="margin-top:56px;">
+                <span class="section-tag">What You Receive</span>
+                <h2>A plan you can actually use</h2>
+            </div>
 
-                <div class="assessment-card reveal-right">
-                    <h3>What It Isn't</h3>
-                    <p class="card-subtext" style="margin-top:10px;"><strong style="color:var(--color-primary);">Not a diagnosis.</strong> We don't diagnose ADHD, autism or any other condition &mdash; in Malaysia that sits with paediatricians and doctors. If we think you should see one, we'll say so and help you get there.</p>
-                    <p class="card-subtext" style="margin-top:14px;"><strong style="color:var(--color-primary);">Not just a score.</strong> Cognitive assessment is usually part of it, but a number on its own isn't the deliverable.</p>
+            <div class="lp-receive-grid">
+                <div class="lp-receive-card reveal-stagger">
+                    <div class="lp-icon">
+                        <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
+                            <rect x="16" y="10" width="28" height="38" rx="3" fill="var(--color-white)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <path d="M22 22h16M22 28h16M22 34h10" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M38 42l8-8 4 4-8 8-5 1z" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>Written Profile</h4>
+                    <p>In plain language, yours to keep and share.</p>
+                </div>
+                <div class="lp-receive-card reveal-stagger">
+                    <div class="lp-icon">
+                        <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
+                            <circle cx="32" cy="26" r="16" fill="var(--color-pale-sun)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                            <path d="M32 18l3.4 7 7.6.8-5.8 5 1.7 7.4L32 34.4 25.1 38.2 26.8 30.8 21 25.8l7.6-.8Z" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="1.6" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>Your Child's Strengths</h4>
+                    <p>What any plan gets built on — not just the difficulties.</p>
+                </div>
+                <div class="lp-receive-card reveal-stagger">
+                    <div class="lp-icon">
+                        <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
+                            <path d="M12 30L32 14l20 16" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 28v20a2 2 0 002 2h24a2 2 0 002-2V28" fill="var(--color-pale-teal)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <rect x="27" y="36" width="10" height="14" rx="1.5" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4>For Home</h4>
+                    <p>What to change, and what to say.</p>
+                </div>
+                <div class="lp-receive-card reveal-stagger">
+                    <div class="lp-icon">
+                        <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
+                            <path d="M32 12L8 24l24 12 24-12-24-12Z" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M16 30v10c0 3.5 7 7 16 7s16-3.5 16-7V30" stroke="var(--color-primary)" stroke-width="2.5" fill="none"/>
+                            <path d="M52 26v14" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>For School</h4>
+                    <p>Written so a teacher can act on it.</p>
+                </div>
+                <div class="lp-receive-card reveal-stagger">
+                    <div class="lp-icon">
+                        <svg viewBox="0 0 64 64" width="34" height="34" fill="none">
+                            <path d="M10 20a6 6 0 016-6h20a6 6 0 016 6v10a6 6 0 01-6 6H22l-8 7v-7h-1a6 6 0 01-6-6V20z" fill="var(--color-pale-sun)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <circle cx="20" cy="23" r="2" fill="var(--color-primary)"/>
+                            <circle cx="28" cy="23" r="2" fill="var(--color-primary)"/>
+                            <circle cx="36" cy="23" r="2" fill="var(--color-primary)"/>
+                        </svg>
+                    </div>
+                    <h4>Feedback Session</h4>
+                    <p>To talk it through, plus a channel for questions after.</p>
                 </div>
             </div>
 
-            <div class="reveal" style="max-width:780px;margin:36px auto 0;display:flex;flex-direction:column;gap:18px;">
+            <div class="reveal lp-faq" style="max-width:720px;margin:64px auto 0;display:flex;flex-direction:column;gap:26px;">
                 <div>
-                    <h3 style="color:var(--color-primary);margin-bottom:6px;">Is this an IQ test?</h3>
-                    <p style="color:var(--color-ink-soft);">Cognitive assessment is usually part of it. You'll get the scores &mdash; and, more usefully, what the pattern between them means for your child at school. If you need a cognitive assessment on its own, we do that too &mdash; see <a href="cognitive-assessment.html" class="link-underlined" style="color:var(--color-primary);font-weight:700;">Cognitive Assessment</a>.</p>
+                    <h3>Is this an IQ test?</h3>
+                    <p>Cognitive assessment is usually part of it — you'll get the scores, and what the pattern between them means for your child at school. We can also run a cognitive assessment on its own, if that's all you need.</p>
                 </div>
                 <div>
-                    <h3 style="color:var(--color-primary);margin-bottom:6px;">Can the school use it?</h3>
-                    <p style="color:var(--color-ink-soft);">Yes. The recommendations are written for teachers as well as parents, and we can join a school meeting if that would help.</p>
+                    <h3>Can the school use it?</h3>
+                    <p>Yes. The recommendations are written for teachers as well as parents, and we can join a school meeting if that would help.</p>
                 </div>
                 <div>
-                    <h3 style="color:var(--color-primary);margin-bottom:6px;">What we look at</h3>
-                    <p style="color:var(--color-ink-soft);">[Full skills breakdown &mdash; the detailed version of the ten skills.]</p>
+                    <h3>What we look at</h3>
+                    <p>[Full skills breakdown — the detailed version of the ten skills.]</p>
                 </div>
             </div>
 
-            <p style="text-align:center;margin-top:32px;font-size:15px;color:var(--color-ink-soft);">
-                <strong style="color:var(--color-primary);">Timeline:</strong> [X] weeks &middot; <strong style="color:var(--color-primary);">Investment:</strong> [RM X,XXX&ndash;X,XXX], agreed before we begin
-            </p>
+            <div style="text-align:center;margin-top:40px;">
+                <span class="lp-meta">
+                    <span><strong style="color:var(--color-primary);">Timeline:</strong> [X] weeks</span>
+                    <span><strong style="color:var(--color-primary);">Investment:</strong> [RM X,XXX–X,XXX]</span>
+                </span>
+            </div>
 
-            <div class="assessment-cta" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:24px;">
+            <div class="assessment-cta" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px;">
                 <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">WhatsApp Us →</a>
             </div>
         </div>
