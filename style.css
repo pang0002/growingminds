@@ -5060,3 +5060,221 @@ body.home-page-locked {
 .reveal-stagger:nth-child(4) { transition-delay: 0.35s; }
 .reveal-stagger:nth-child(5) { transition-delay: 0.45s; }
 .reveal-stagger:nth-child(6) { transition-delay: 0.55s; }
+/* ============================================================
+   CLUB DETAIL PAGE (clubs-*.html)
+   Uses --club-accent custom property set per-page (e.g. on <body>)
+   to theme the numbers/icons/borders without duplicating CSS.
+   ============================================================ */
+
+.club-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.club-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--color-white);
+    border: 1.5px solid rgba(31, 60, 136, 0.12);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-card);
+}
+
+.club-hook {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+}
+
+.club-section-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 32px;
+}
+
+.club-section-head h2 {
+    margin-bottom: 6px;
+}
+
+.club-section-head p {
+    color: var(--color-ink-soft);
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Come if your child - checklist grid */
+.club-checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.club-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-card);
+}
+
+.club-check-icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--club-accent, var(--color-primary));
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.club-check-item p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--color-ink);
+}
+
+/* Eight things to practise - numbered chip grid */
+.club-practise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.club-practise-chip {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    border-top: 4px solid var(--club-accent, var(--color-primary));
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.club-practise-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(31,60,136,0.12);
+}
+
+.club-practise-chip .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--club-accent, var(--color-primary));
+    display: block;
+    margin-bottom: 8px;
+}
+
+.club-practise-chip p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+}
+
+/* What it looks like on a [day] - example list */
+.club-example-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.club-example-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-card);
+}
+
+.club-example-dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--club-accent, var(--color-primary));
+    margin-top: 8px;
+}
+
+.club-example-item p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-ink);
+}
+
+/* What you might notice at home - pull quote */
+.club-pullquote {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.club-pullquote .eyebrow-quote {
+    display: block;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.club-pullquote blockquote {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(20px, 2.6vw, 26px);
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .club-checklist {
+        grid-template-columns: 1fr;
+    }
+    .club-practise-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-practise-grid {
+        grid-template-columns: 1fr;
+    }
+    .club-hero-badges {
+        gap: 8px;
+    }
+    .club-badge-pill {
+        font-size: 12px;
+        padding: 7px 14px;
+    }
+}
