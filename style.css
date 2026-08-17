@@ -2842,6 +2842,135 @@ header.is-scrolled::after {
     box-shadow: 0 1px 0 0 var(--color-gold-dark);
 }
 
+/* ============================================================
+   WHO WE WORK WITH - HOMEPAGE SECTION
+   ============================================================ */
+
+.who-we-work {
+    padding: 80px 0;
+    background: transparent;
+}
+
+.who-we-work .container {
+    max-width: 900px;
+}
+
+.who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.who-item {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-card);
+    border-top: 5px solid var(--color-teal);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.who-item:last-child {
+    grid-column: 1 / -1;
+    border-top-color: var(--color-gold);
+    background: var(--color-cream);
+}
+
+.who-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.who-item h3 {
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.who-item p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin-bottom: 12px;
+}
+
+.who-item p:last-child {
+    margin-bottom: 0;
+}
+
+.who-item .who-highlight {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.who-footer-note {
+    margin-top: 20px;
+    padding: 20px 32px;
+    background: var(--color-sage);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-teal);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+}
+
+.who-footer-note strong {
+    color: var(--color-primary);
+}
+
+.who-footer-note a {
+    color: var(--color-teal-dark);
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.who-footer-note a:hover {
+    color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .who-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .who-item:last-child {
+        grid-column: auto;
+    }
+
+    .who-item {
+        padding: 28px 24px;
+    }
+
+    .who-footer-note {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .who-item {
+        padding: 22px 18px;
+    }
+
+    .who-item h3 {
+        font-size: 18px;
+    }
+
+    .who-item p {
+        font-size: 14px;
+    }
+
+    .who-footer-note {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+}
+
 /* ----- FOOTER ----- */
 footer {
     background-color: var(--color-cream);

@@ -53,6 +53,101 @@
                 align-items: stretch !important;
             }
         }
+
+        /* WHO WE WORK WITH section styles */
+        .who-we-work {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .who-we-work .container {
+            max-width: 900px;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .who-item {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            box-shadow: var(--shadow-card);
+            border-top: 5px solid var(--color-teal);
+            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+        }
+
+        .who-item:last-child {
+            grid-column: 1 / -1;
+            border-top-color: var(--color-gold);
+            background: var(--color-cream);
+        }
+
+        .who-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .who-item h3 {
+            font-size: 20px;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .who-item p {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: var(--color-ink-soft);
+            margin-bottom: 12px;
+        }
+
+        .who-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .who-item .who-highlight {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .who-footer-note {
+            margin-top: 20px;
+            padding: 20px 32px;
+            background: var(--color-sage);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-teal);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-ink-soft);
+        }
+
+        .who-footer-note strong {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .who-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .who-item:last-child {
+                grid-column: auto;
+            }
+
+            .who-item {
+                padding: 28px 24px;
+            }
+
+            .who-footer-note {
+                padding: 16px 20px;
+                font-size: 14px;
+            }
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
@@ -134,6 +229,43 @@
                 <div class="quote-card reveal-stagger" style="--quote-accent: var(--color-accent);">"Nothing's wrong. I'd just like her to be ready — for school, and for the rest of it."</div>
             </div>
             <p class="reveal" style="text-align:center;margin-top:36px;font-size:19px;font-weight:700;color:var(--color-primary);">If you recognised one of those, <span style="color:var(--color-teal-dark);">you're in the right place.</span></p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- WHO WE WORK WITH - NEW SECTION BEFORE UNDERSTAND FIRST -->
+    <!-- ============================================================ -->
+    <section class="who-we-work section-fullscreen" style="padding:0;">
+        <div class="blob blob-purple" style="width:260px;height:260px;bottom:-40px;right:-80px;opacity:0.2;"></div>
+        <div class="container" style="display:flex;flex-direction:column;justify-content:center;padding:40px 24px;">
+            <div class="section-header reveal">
+                <span class="section-tag">Who we work with</span>
+                <h2>Do you need a diagnosis?</h2>
+                <p style="font-size:17px;max-width:640px;margin:8px auto 0;color:var(--color-ink-soft);">No. Many of the children we see don't have one and never need one. Others arrive with one already and want to know what to actually do with it. What we look at is how your child learns, not what label they carry.</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="who-grid reveal">
+                <!-- Item 1 -->
+                <div class="who-item">
+                    <h3>Do you work with children who have ADHD, autism or a learning difficulty?</h3>
+                    <p>Yes — and with many children who have none of those.</p>
+                    <p>We don't diagnose; in Malaysia that sits with paediatricians and doctors. If we think you should see one, we'll say so and help you get there.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="who-item" style="border-top-color: var(--color-accent);">
+                    <h3>What age range do you work with?</h3>
+                    <p>Children aged <strong style="color:var(--color-primary);">[4–12]</strong> in mainstream, inclusive and international schools.</p>
+                    <p>Plenty of the children in our clubs aren't struggling at all — their parents simply want them to arrive at eleven able to organise themselves, handle a setback, and speak up for what they need.</p>
+                </div>
+
+                <!-- Footer Note - spans full width -->
+                <div class="who-footer-note">
+                    <strong>📍 Kuala Lumpur · Bukit Jalil</strong><br />
+                    We see children from international schools, inclusive schools, and mainstream schools across KL. If you're not sure whether we're the right fit, <a href="contact.html" style="color:var(--color-teal-dark);font-weight:700;text-decoration:underline;">book a free 20-minute call</a> and we'll tell you honestly.
+                </div>
+            </div>
         </div>
     </section>
 
