@@ -6,7 +6,7 @@
     <title>Ready for Life Club for Children | Kuala Lumpur | Growing Minds</title>
     <meta name="description" content="Ready for Life Club: practical independence, critical thinking, and real-world problem solving for bright kids in Kuala Lumpur." />
     <link rel="canonical" href="https://growingminds.com.my/clubs-ready-for-life.html" />
-    <link rel="stylesheet" href="style.css?v=15" />
+    <link rel="stylesheet" href="style.css?v=18" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
 
@@ -22,194 +22,154 @@
 
     <header></header>
 
-    <!-- HERO SECTION WITH BLOBS & INSIGHT CARD -->
-    <section class="hero">
+    <!-- HERO — single centered column, no floating card -->
+    <section class="page-hero">
         <div class="blob blob-gold"></div>
         <div class="blob blob-purple"></div>
-        <div class="container hero-container">
-            <div class="hero-content reveal">
-                <span class="eyebrow">Capable</span>
-                <h1 class="hero-tagline-main">Ready for Life Club</h1>
-                <p class="hero-tagline-description">Resourceful. Independent. Ready for anything.</p>
-                <div class="club-hero-badges" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">👥 Ages [8–10] &amp; [11–13]</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">📅 8 weeks</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">🕐 [day, time]</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">💳 [RM XXX]</span>
-                    <span class="section-tag" style="background: var(--color-gold); border-color: var(--color-primary); color: var(--color-primary);">🔒 8 children max</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">Reserve a Spot →</a>
-                </div>
-            </div>
+        <div class="container reveal club-hero-simple">
+            <span class="club-vibe-badge"><svg viewBox="0 0 24 24" fill="none"><g stroke="#8E7DF0" stroke-width="2.4" stroke-linecap="round"><path d="M12 1.6v3.2"/><path d="M19.4 4.6l-2.2 2.2"/><path d="M22.4 12h-3.2"/><path d="M4.6 4.6l2.2 2.2"/></g><circle cx="12" cy="13" r="5" fill="#F7C948"/></svg>Capable</span>
 
-            <!-- INSIGHT STACK CARD -->
-            <div class="hero-visual reveal-right">
-                <div class="hero-insight-card glow-on-hover">
-                    <div class="hero-insight-tier">
-                        <span class="hero-insight-label">The Gap</span>
-                        <p class="hero-insight-line">"Academically sharp, but helpless when plans change or real life happens."</p>
+            <h1>Ready for Life Club</h1>
+
+            <p class="hero-tagline-description">Resourceful. Independent. Ready for anything.</p>
+
+            <div class="club-meta-bar">
+                <div class="club-meta-item"><svg class="club-meta-icon" viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="9" r="3" stroke="var(--color-primary)" stroke-width="2"/><circle cx="16" cy="10" r="2.4" stroke="var(--color-primary)" stroke-width="2"/><path d="M2.5 20c.6-4 3-6 6-6s5.4 2 6 6" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/><path d="M14.5 15c2.4.3 4 2 4.5 5" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/></svg><span>Ages [8–10] &amp; [11–13]</span></div>
+                <span class="club-meta-divider"></span>
+                <div class="club-meta-item"><svg class="club-meta-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="2.5" stroke="var(--color-primary)" stroke-width="2"/><path d="M3 9.5h18" stroke="var(--color-primary)" stroke-width="2"/><path d="M7.5 2.5v4M16.5 2.5v4" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="14" r="1.2" fill="var(--color-primary)"/><circle cx="12" cy="14" r="1.2" fill="var(--color-primary)"/><circle cx="16" cy="14" r="1.2" fill="var(--color-primary)"/></svg><span>8 Weeks</span></div>
+                <span class="club-meta-divider"></span>
+                <div class="club-meta-item"><svg class="club-meta-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--color-primary)" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>[Day, Time]</span></div>
+                <span class="club-meta-divider"></span>
+                <div class="club-meta-item"><svg class="club-meta-icon" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5" stroke="var(--color-primary)" stroke-width="2"/><path d="M2.5 9.5h19" stroke="var(--color-primary)" stroke-width="2"/><path d="M6 14.5h5" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/></svg><span>[RM XXX]</span></div>
+                <span class="club-meta-divider"></span>
+                <div class="club-meta-item"><svg class="club-meta-icon" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="11" width="15" height="10" rx="2.5" stroke="var(--color-primary)" stroke-width="2"/><path d="M7.5 11V7.5a4.5 4.5 0 019 0V11" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="15.8" r="1.4" fill="var(--color-primary)"/></svg><span>Max 8 Children</span></div>
+            </div>
+            <p class="club-meta-note">Ages [8–10] and [11–13] run as separate groups, same club.</p>
+
+            <div class="hero-buttons" style="justify-content:center;">
+                <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">Reserve a Spot →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-white-bg" style="padding:10px 0 20px;">
+        <div class="container">
+            <p class="reveal club-hook">
+                Some children can ace the test but freeze the moment a plan changes or something actually breaks. This is the club where we build the practical skills school doesn't test — then practise them, for eight weeks, on problems with no clean answer at the back of the book.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE SHORT VERSION — three separated cards (Challenge / Reality / Approach) -->
+    <section class="section-sage-bg" style="padding:44px 0 54px;">
+        <div class="container">
+            <div class="club-insight-grid reveal">
+                <div class="club-insight-tile" style="--tile-accent: var(--color-gold-dark);">
+                    <div class="club-insight-tile-icon">
+                        <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="18" r="12" stroke="var(--color-primary)" stroke-width="2.4"/><path d="M15 34c1.5-6 4.5-9 7-9s5.5 3 7 9" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/><circle cx="18" cy="17" r="1.6" fill="var(--color-primary)"/><circle cx="26" cy="17" r="1.6" fill="var(--color-primary)"/><path d="M18 24c1.5-1 6.5-1 8 0" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg>
                     </div>
-                    <div class="hero-insight-tier hero-insight-tier--mid">
-                        <span class="hero-insight-label">The Goal</span>
-                        <p class="hero-insight-line">Moving from over-reliance on parents to confident self-sufficiency.</p>
+                    <span class="club-insight-tile-label">The Gap</span>
+                    <p>"Academically sharp, but helpless when plans change or real life happens."</p>
+                </div>
+
+                <div class="club-insight-tile" style="--tile-accent: var(--color-teal-dark);">
+                    <div class="club-insight-tile-icon">
+                        <svg viewBox="0 0 44 44" fill="none"><rect x="9" y="9" width="26" height="26" rx="6" stroke="var(--color-primary)" stroke-width="2.4"/><path d="M15 22h14M22 15v14" stroke="var(--color-teal)" stroke-width="2.4" stroke-linecap="round"/></svg>
                     </div>
-                    <div class="hero-insight-tier hero-insight-tier--reveal">
-                        <span class="hero-insight-label">Our Approach</span>
-                        <p class="hero-insight-line hero-insight-line--bold">Hands-on challenges, budget logic, tool safety &amp; decision-making.</p>
+                    <span class="club-insight-tile-label">The Goal</span>
+                    <p>Moving from over-reliance on parents to confident self-sufficiency.</p>
+                </div>
+
+                <div class="club-insight-tile is-approach" style="--tile-accent: var(--color-gold-dark);">
+                    <div class="club-insight-tile-icon">
+                        <svg viewBox="0 0 44 44" fill="none"><path d="M10 20a6 6 0 016-6h20a6 6 0 016 6v10a6 6 0 01-6 6H22l-8 7v-7h-1a6 6 0 01-6-6V20z" fill="var(--color-pale-sun)" stroke="var(--color-primary)" stroke-width="2.4" stroke-linejoin="round"/><circle cx="20" cy="23" r="2" fill="var(--color-primary)"/><circle cx="28" cy="23" r="2" fill="var(--color-primary)"/></svg>
                     </div>
+                    <span class="club-insight-tile-label">Our Approach</span>
+                    <p>Hands-on challenges, budget logic, tool safety &amp; decision-making.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ASSESSMENT CARDS -->
-    <section class="brand-position" style="padding: 60px 0;">
-        <div class="blob blob-teal"></div>
+    <!-- COME IF YOUR CHILD -->
+    <section class="section-white-bg" style="padding:56px 0;">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="club-section-head reveal">
                 <span class="section-tag">Is this the right fit?</span>
                 <h2>Come if your child…</h2>
-                <div class="section-divider"></div>
             </div>
-
-            <div class="signal-cards-grid">
-                <div class="assessment-card signal-card reveal-stagger">
-                    <div class="signal-card-inner">
-                        <div class="signal-card-face signal-card-front">
-                            <div>
-                                <span class="signal-label-see">Sign #1</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Relies on adults for basic problem solving</h3>
-                            </div>
-                            <span class="signal-tag">Resourcefulness</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="assessment-card signal-card reveal-stagger">
-                    <div class="signal-card-inner">
-                        <div class="signal-card-face signal-card-front">
-                            <div>
-                                <span class="signal-label-see">Sign #2</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Freezes or panics when things don't go to plan</h3>
-                            </div>
-                            <span class="signal-tag">Adaptability</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="assessment-card signal-card reveal-stagger">
-                    <div class="signal-card-inner">
-                        <div class="signal-card-face signal-card-front">
-                            <div>
-                                <span class="signal-label-see">Sign #3</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Wants more freedom but lacks the core skills</h3>
-                            </div>
-                            <span class="signal-tag">Independence</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="club-reason-list">
+                <div class="club-reason-item reveal-stagger"><span class="club-reason-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Relies on adults for basic problem solving</p></div>
+                <div class="club-reason-item reveal-stagger"><span class="club-reason-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Freezes or panics when things don't go to plan</p></div>
+                <div class="club-reason-item reveal-stagger"><span class="club-reason-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Wants more freedom but lacks the core skills</p></div>
+                <div class="club-reason-item reveal-stagger"><span class="club-reason-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Struggles to estimate cost, time, or risk</p></div>
+                <div class="club-reason-item reveal-stagger"><span class="club-reason-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Rarely takes the lead when something needs fixing</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 8-WEEK ARC -->
-    <section class="process-section">
-        <div class="blob blob-gold"></div>
+    <!-- EIGHT THINGS TO PRACTISE -->
+    <section class="section-sage-bg" style="padding:56px 0;">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">The Eight-Week Arc</span>
+            <div class="club-section-head reveal">
+                <span class="section-tag">The eight-week arc</span>
                 <h2>Eight weeks, eight practical life tools</h2>
-                <div class="section-divider"></div>
             </div>
-
-            <div class="process-cards">
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">01</span>
-                    <p>Basic tool handling &amp; practical safety</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">02</span>
-                    <p>Budgeting &amp; real-world value estimation</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">03</span>
-                    <p>Navigating unexpected plan changes</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">04</span>
-                    <p>Simple meal prep &amp; kitchen confidence</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">05</span>
-                    <p>Understanding basic household fixes</p>
-                </div>
-            </div>
-
-            <div class="process-cards" style="margin-top: 20px; justify-content: center;">
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">06</span>
-                    <p>Evaluating risk vs. reward</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">07</span>
-                    <p>Communicating clearly under pressure</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">08</span>
-                    <p>The final practical challenge</p>
-                </div>
+            <div class="club-practise-grid">
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">1</span></div><p>Basic tool handling &amp; practical safety</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">2</span></div><p>Budgeting &amp; real-world value estimation</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">3</span></div><p>Navigating unexpected plan changes</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">4</span></div><p>Simple meal prep &amp; kitchen confidence</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">5</span></div><p>Understanding basic household fixes</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">6</span></div><p>Evaluating risk vs. reward</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">7</span></div><p>Communicating clearly under pressure</p></div>
+                <div class="club-practise-chip reveal-stagger"><div class="club-practise-chip-top"><span class="practise-icon" aria-hidden="true"></span><span class="num">8</span></div><p>The final practical challenge</p></div>
             </div>
         </div>
     </section>
 
-    <!-- TYPICAL SESSION & QUOTE -->
-    <section class="services-overview">
+    <!-- WHAT IT LOOKS LIKE -->
+    <section class="section-white-bg" style="padding:56px 0;">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">A Typical Session</span>
+            <div class="club-section-head reveal">
+                <span class="section-tag">A typical session</span>
                 <h2>What it looks like in practice</h2>
             </div>
-
-            <div class="quotes-grid reveal">
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-gold);">
-                    <p>Real-world simulations with constrained materials and time budgets.</p>
-                </div>
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-teal);">
-                    <p>Hands-on repair challenges using everyday tools and equipment.</p>
-                </div>
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-purple);">
-                    <p>Collaborative scenario solving without step-by-step adult intervention.</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 60px; text-align: center;" class="reveal">
-                <div class="hero-insight-card" style="margin: 0 auto; max-width: 650px;">
-                    <div class="hero-insight-tier hero-insight-tier--reveal">
-                        <span class="hero-insight-label">What you might notice at home</span>
-                        <p class="hero-insight-line hero-insight-line--bold">"Fewer 'Mum, how do I...?' moments and more initiative."</p>
-                    </div>
-                </div>
+            <div class="club-example-list">
+                <div class="club-example-item reveal-stagger"><span class="club-example-dot">1</span><p>Real-world simulations with constrained materials and time budgets.</p></div>
+                <div class="club-example-item reveal-stagger"><span class="club-example-dot">2</span><p>Hands-on repair challenges using everyday tools and equipment.</p></div>
+                <div class="club-example-item reveal-stagger"><span class="club-example-dot">3</span><p>Collaborative scenario solving without step-by-step adult intervention.</p></div>
+                <div class="club-example-item reveal-stagger"><span class="club-example-dot">4</span><p>A budget challenge where the plan changes halfway through.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- CALL TO ACTION -->
-    <section class="cta-section" style="padding: 80px 0; position: relative; text-align: center;">
+    <!-- WHAT YOU MIGHT NOTICE AT HOME -->
+    <section class="section-sage-bg" style="padding:60px 0;">
+        <div class="container">
+            <div class="club-pullquote reveal">
+                <span class="eyebrow-quote">What you might notice at home</span>
+                <blockquote>Fewer "Mum, how do I...?" moments and more initiative.</blockquote>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
         <div class="blob blob-gold"></div>
         <div class="blob blob-teal"></div>
         <div class="container cta-container reveal">
             <h2>Ready to sign up?</h2>
-            <p style="margin-bottom: 24px; color: var(--color-ink-soft);">We'll tell you honestly whether this is the right club.</p>
-            <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center;">
+            <p>We'll tell you honestly whether this is the right club.</p>
+            <div class="cta-buttons">
                 <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">WhatsApp Us →</a>
-                <a href="index.html#weekend-clubs" class="btn btn-outline">See All Clubs</a>
+                <a href="index.html#weekend-clubs" class="btn btn-outline-light">See All Clubs</a>
             </div>
         </div>
     </section>
 
     <footer></footer>
 
-    <script src="include.js?v=15"></script>
+    <script src="include.js?v=18"></script>
+
 </body>
 </html>
