@@ -5629,6 +5629,55 @@ body.home-page-locked {
     .club-checklist .club-check-item:last-child:nth-child(odd) { grid-column: auto; justify-content: flex-start; background: var(--color-white); }
 }
 
+/* --- Compact list variant: icon + text, divider rows, no cards --- */
+.club-reason-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 8px auto 0;
+}
+
+.club-reason-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 4px;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+.club-reason-item:first-child {
+    border-top: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+.club-reason-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.club-reason-icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* Cycle the checkmark badge through the palette for variety */
+.club-reason-list .club-reason-item:nth-child(3n+1) .club-reason-icon { background: var(--club-accent, var(--color-teal)); }
+.club-reason-list .club-reason-item:nth-child(3n+2) .club-reason-icon { background: var(--color-gold-dark); }
+.club-reason-list .club-reason-item:nth-child(3n+3) .club-reason-icon { background: var(--color-accent); }
+
+.club-reason-item p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-ink);
+    font-weight: 500;
+}
+
 /* --- Eight weeks, eight things to practise --- */
 .club-practise-grid {
     display: grid;
