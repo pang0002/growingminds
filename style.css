@@ -2876,7 +2876,6 @@ header.is-scrolled::after {
 
 .who-item:last-child {
     border-top-color: var(--color-accent);
-    background: var(--color-cream);
 }
 
 .who-item:hover {
@@ -2897,6 +2896,9 @@ header.is-scrolled::after {
     line-height: 1.8;
     color: var(--color-ink-soft);
     margin-bottom: 14px;
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
 }
 
 .who-item p:last-child {
