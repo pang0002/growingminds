@@ -53,10 +53,10 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Header specific variables - Enlarged but balanced */
-    --header-height: 120px;
-    --header-padding-y: 16px;
-    --header-logo-size: 90px;
+    /* Header specific variables - ENLARGED */
+    --header-height: 140px;
+    --header-padding-y: 20px;
+    --header-logo-size: 110px;
     --header-logo-hover-scale: 1.05;
 }
 
@@ -350,7 +350,7 @@ em {
     animation: float 6.5s ease-in-out infinite;
 }
 
-/*--- HEADER ---*/
+/*--- HEADER - ENLARGED ---*/
 header {
     padding: var(--header-padding-y) 0;
     background: rgba(247, 243, 236, 0.85);
@@ -379,19 +379,6 @@ header::before {
     opacity: 0.6;
 }
 
-/* Decorative gradient line at bottom */
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--color-gold), var(--color-teal), transparent);
-    opacity: 0;
-    transition: opacity 0.5s var(--ease);
-}
-
 header::after {
     display: none;
 }
@@ -399,28 +386,28 @@ header::after {
 /* Scrolled state - slightly smaller */
 header.is-scrolled {
     box-shadow: 0 8px 40px rgba(31, 60, 136, 0.10);
-    padding: 10px 0;
+    padding: 12px 0;
     background: rgba(247, 243, 236, 0.98);
     border-bottom-color: transparent !important;
-    --header-logo-size: 72px;
-    --header-height: 96px;
+    --header-logo-size: 85px;
+    --header-height: 115px;
 }
 
 header.is-scrolled::after {
     opacity: 0.6;
 }
 
-/* Header Container */
+/* Header Container - more breathing room */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 60px;
     max-width: 1560px;
     margin: 0 auto;
-    gap: 32px;
+    gap: 48px;
 }
 
 .logo {
@@ -450,17 +437,6 @@ header.is-scrolled::after {
     flex-shrink: 0;
 }
 
-/* Glow ring behind logo - REMOVED */
-.logo-crop::before {
-    display: none;
-}
-
-/* Remove logo hover transform */
-.logo a:hover .logo-crop {
-    /* transform removed */
-    box-shadow: none;
-}
-
 .logo-img {
     height: var(--header-logo-size) !important;
     width: auto !important;
@@ -473,11 +449,6 @@ header.is-scrolled::after {
     padding: 6px;
 }
 
-/* Remove logo image hover scale */
-.logo a:hover .logo-img {
-    transform: none;
-}
-
 /* Wordmark text beside the logo icon */
 .logo-text {
     display: flex;
@@ -485,17 +456,13 @@ header.is-scrolled::after {
     justify-content: center;
     line-height: 1.15;
     white-space: nowrap;
-    /* The icon's sunburst flourish sits above the "gm" letters, pushing
-       their visual center lower than the icon box's geometric center.
-       Nudge the text down slightly so it optically aligns with the
-       letters rather than the whole icon (sunburst included). */
     transform: translateY(8px);
 }
 
 .logo-name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 30px;
+    font-size: 38px;
     letter-spacing: 0.1px;
     color: var(--color-primary);
 }
@@ -504,7 +471,7 @@ header.is-scrolled::after {
     margin-top: 4px;
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--color-ink-soft);
@@ -516,11 +483,11 @@ header.is-scrolled .logo-text {
 }
 
 header.is-scrolled .logo-name {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 header.is-scrolled .logo-tagline {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 /* Fallback text when image doesn't load */
@@ -566,7 +533,7 @@ header.is-scrolled .logo-tagline {
 }
 
 /* ============================================================
-   NAVIGATION
+   NAVIGATION - ENLARGED
    ============================================================ */
 
 #site-nav {
@@ -579,7 +546,7 @@ header.is-scrolled .logo-tagline {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin: 0;
     padding: 0;
     flex-wrap: nowrap;
@@ -591,17 +558,17 @@ header.is-scrolled .logo-tagline {
 }
 
 #site-nav a {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: var(--color-ink-soft);
     transition: all 0.3s var(--ease);
     position: relative;
-    padding: 10px 18px;
-    letter-spacing: 0.2px;
-    border-radius: 8px;
+    padding: 14px 24px;
+    letter-spacing: 0.3px;
+    border-radius: 10px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     white-space: nowrap;
 }
 
@@ -631,7 +598,7 @@ header.is-scrolled .logo-tagline {
 /* Active link state */
 #site-nav a:not(.btn-nav).active {
     color: var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
     background: rgba(44, 181, 165, 0.08);
 }
 
@@ -646,7 +613,7 @@ header.is-scrolled .logo-tagline {
 }
 
 /* ============================================================
-   NAV DROPDOWN MENU - CLEAN VERTICAL LAYOUT
+   NAV DROPDOWN MENU - ENLARGED
    ============================================================ */
 
 .nav-dropdown {
@@ -655,9 +622,9 @@ header.is-scrolled .logo-tagline {
 
 .nav-caret {
     display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-left: 5px;
+    width: 7px;
+    height: 7px;
+    margin-left: 6px;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: rotate(45deg) translateY(-2px);
@@ -670,17 +637,17 @@ header.is-scrolled .logo-tagline {
     transform: rotate(225deg) translateY(1px);
 }
 
-/* Dropdown Container */
+/* Dropdown Container - ENLARGED */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     left: 0;
-    min-width: 240px;
+    min-width: 280px;
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 12px 32px rgba(31, 60, 136, 0.12);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(31, 60, 136, 0.14);
     border: 1px solid rgba(31, 60, 136, 0.08);
-    padding: 8px;
+    padding: 10px;
     list-style: none;
     margin: 0;
     opacity: 0;
@@ -688,11 +655,9 @@ header.is-scrolled .logo-tagline {
     transform: translateY(-8px);
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
     z-index: 100;
-
-    /* FORCE VERTICAL STACKING */
     display: flex !important;
     flex-direction: column !important;
-    gap: 2px;
+    gap: 3px;
 }
 
 /* Hover & Focus state */
@@ -711,14 +676,14 @@ header.is-scrolled .logo-tagline {
     list-style: none;
 }
 
-/* Dropdown Link Styles */
+/* Dropdown Link Styles - ENLARGED */
 .dropdown-menu a {
     display: block;
     width: 100%;
-    font-size: 15px !important;
-    font-weight: 500 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
     color: var(--color-ink-soft, #51649D) !important;
-    padding: 10px 16px !important;
+    padding: 14px 22px !important;
     border-radius: 8px;
     white-space: normal;
     line-height: 1.4;
@@ -738,15 +703,15 @@ header.is-scrolled .logo-tagline {
     display: none !important;
 }
 
-/* Navigation Button */
+/* Navigation Button - ENLARGED */
 #site-nav a.btn-nav {
     background: var(--color-gold);
     color: var(--color-primary) !important;
-    padding: 12px 32px;
-    border: 2px solid var(--color-primary);
+    padding: 16px 42px;
+    border: 2.5px solid var(--color-primary);
     border-radius: 50px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 19px;
     transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
     position: relative;
     letter-spacing: 0.2px;
@@ -755,7 +720,7 @@ header.is-scrolled .logo-tagline {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-left: 4px;
+    margin-left: 16px;
     box-shadow: 0 3px 0 0 var(--color-primary);
     white-space: nowrap;
 }
@@ -770,6 +735,18 @@ header.is-scrolled .logo-tagline {
 .btn-nav:active {
     transform: translateY(1px);
     box-shadow: 0 1px 0 0 var(--color-primary);
+}
+
+/* Scrolled state nav adjustments */
+header.is-scrolled #site-nav a {
+    font-size: 18px;
+    padding: 11px 18px;
+}
+
+header.is-scrolled #site-nav a.btn-nav {
+    font-size: 17px;
+    padding: 14px 34px;
+    margin-left: 12px;
 }
 
 /* ============================================================
@@ -4279,7 +4256,7 @@ header.is-scrolled .logo-tagline {
 }
 
 /* ============================================================
-   RESPONSIVE HEADER
+   RESPONSIVE HEADER - ENLARGED
    ============================================================ */
 
 /* Desktop - laptop widths: trim horizontal breathing room so the
@@ -4287,43 +4264,85 @@ header.is-scrolled .logo-tagline {
    breakpoint kicks in and shrinks font sizes */
 @media (max-width: 1450px) {
     .header-container {
-        padding: 0 32px;
-        gap: 24px;
+        padding: 0 40px;
+        gap: 32px;
     }
 
     #site-nav ul {
         gap: 4px;
     }
 
+    #site-nav a {
+        padding: 12px 18px;
+        font-size: 18px;
+    }
+
+    #site-nav a.btn-nav {
+        padding: 14px 34px;
+        font-size: 17px;
+        margin-left: 12px;
+    }
+}
+
+/* Desktop - Large screens */
+@media (max-width: 1300px) {
+    .header-container {
+        padding: 0 32px;
+        gap: 24px;
+    }
+
+    #site-nav a {
+        padding: 10px 16px;
+        font-size: 17px;
+    }
+
+    #site-nav a.btn-nav {
+        padding: 12px 28px;
+        font-size: 16px;
+        margin-left: 10px;
+    }
+
+    .logo-name {
+        font-size: 30px;
+    }
+
+    .logo-tagline {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --header-height: 110px;
+        --header-logo-size: 85px;
+    }
+
+    .header-container {
+        padding: 0 28px;
+        gap: 20px;
+    }
+    
+    #site-nav ul {
+        gap: 2px;
+    }
+    
     #site-nav a {
         padding: 8px 14px;
         font-size: 16px;
     }
 
     #site-nav a.btn-nav {
-        padding: 10px 26px;
+        padding: 10px 24px;
         font-size: 15px;
-    }
-}
-
-/* Desktop - Large screens */
-@media (max-width: 1200px) {
-    .header-container {
-        padding: 0 28px;
-    }
-    
-    #site-nav ul {
-        gap: 4px;
-    }
-    
-    #site-nav a {
-        padding: 6px 12px;
-        font-size: 15px;
+        margin-left: 8px;
     }
 
-    #site-nav a.btn-nav {
-        padding: 8px 20px;
-        font-size: 14px;
+    .logo-name {
+        font-size: 26px;
+    }
+
+    .logo-tagline {
+        font-size: 12px;
     }
 
     .logo-text-next {
@@ -4333,13 +4352,36 @@ header.is-scrolled .logo-tagline {
     .logo-text {
         display: none !important;
     }
+
+    header.is-scrolled {
+        --header-height: 90px;
+        --header-logo-size: 70px;
+    }
+
+    header.is-scrolled .logo-name {
+        font-size: 22px;
+    }
+
+    header.is-scrolled .logo-tagline {
+        font-size: 11px;
+    }
+
+    header.is-scrolled #site-nav a {
+        font-size: 15px;
+        padding: 7px 12px;
+    }
+
+    header.is-scrolled #site-nav a.btn-nav {
+        font-size: 14px;
+        padding: 9px 20px;
+    }
 }
 
 /* Desktop - Medium */
 @media (max-width: 992px) {
     :root {
-        --header-logo-size: 60px;
-        --header-height: 80px;
+        --header-logo-size: 72px;
+        --header-height: 90px;
     }
 
     .header-container {
@@ -4347,18 +4389,38 @@ header.is-scrolled .logo-tagline {
         gap: 16px;
     }
     
-    #site-nav ul {
-        gap: 2px;
-    }
-    
     #site-nav a {
-        padding: 6px 10px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 15px;
     }
     
     #site-nav a.btn-nav {
-        padding: 8px 16px;
+        padding: 10px 22px;
+        font-size: 14px;
+        margin-left: 6px;
+    }
+
+    .logo-name {
+        font-size: 24px;
+    }
+
+    .logo-tagline {
+        font-size: 11px;
+    }
+
+    header.is-scrolled {
+        --header-height: 78px;
+        --header-logo-size: 60px;
+    }
+
+    header.is-scrolled #site-nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    header.is-scrolled #site-nav a.btn-nav {
         font-size: 13px;
+        padding: 8px 18px;
     }
 
     /* Other responsive adjustments */
@@ -4414,9 +4476,9 @@ header.is-scrolled .logo-tagline {
 /* Tablet and Mobile Navigation */
 @media (max-width: 768px) {
     :root {
-        --header-height: 68px;
-        --header-padding-y: 8px;
-        --header-logo-size: 48px;
+        --header-height: 76px;
+        --header-padding-y: 10px;
+        --header-logo-size: 56px;
     }
 
     header {
@@ -4425,16 +4487,34 @@ header.is-scrolled .logo-tagline {
     }
 
     header.is-scrolled {
-        --header-logo-size: 40px;
-        --header-height: 60px;
+        --header-logo-size: 46px;
+        --header-height: 66px;
+        padding: 8px 0;
     }
 
     .header-container {
         padding: 0 16px;
+        gap: 12px;
     }
 
     .logo-crop {
         border-radius: 12px;
+    }
+
+    .logo-name {
+        font-size: 22px;
+    }
+
+    .logo-tagline {
+        font-size: 10px;
+    }
+
+    header.is-scrolled .logo-name {
+        font-size: 18px;
+    }
+
+    header.is-scrolled .logo-tagline {
+        font-size: 9px;
     }
 
     /* Mobile Navigation Slide-in */
@@ -4443,13 +4523,13 @@ header.is-scrolled .logo-tagline {
         top: 0;
         right: 0;
         height: 100vh;
-        width: min(340px, 85vw);
+        width: min(360px, 85vw);
         background: var(--color-white);
-        box-shadow: -10px 0 40px rgba(31, 60, 136,0.15);
+        box-shadow: -10px 0 40px rgba(31, 60, 136, 0.15);
         transform: translateX(100%);
         transition: transform 0.4s var(--ease);
         z-index: 205;
-        padding: 80px 32px 40px;
+        padding: 85px 32px 40px;
         overflow-y: auto;
         display: block;
     }
@@ -4470,8 +4550,8 @@ header.is-scrolled .logo-tagline {
     }
 
     #site-nav a {
-        font-size: 18px;
-        padding: 14px 16px;
+        font-size: 20px;
+        padding: 16px 20px;
         width: 100%;
         border-radius: 10px;
         justify-content: flex-start;
@@ -4490,12 +4570,13 @@ header.is-scrolled .logo-tagline {
     }
 
     #site-nav a.btn-nav {
-        margin-top: 12px;
-        padding: 16px 32px;
-        font-size: 16px;
+        margin-top: 16px;
+        padding: 18px 40px;
+        font-size: 18px;
         width: 100%;
         justify-content: center;
         border-radius: 12px;
+        margin-left: 0;
     }
 
     /* Nav dropdown becomes a static, always-visible indented sublist
@@ -4514,32 +4595,32 @@ header.is-scrolled .logo-tagline {
         border: none;
         background: rgba(44, 181, 165, 0.04);
         margin: 2px 0 8px;
-        padding: 4px;
+        padding: 6px;
         display: flex !important;
         flex-direction: column !important;
         gap: 2px;
     }
 
     .dropdown-menu a {
-        font-size: 15.5px;
-        padding: 11px 16px 11px 28px;
+        font-size: 18px !important;
+        padding: 14px 20px 14px 34px !important;
         color: var(--color-ink-soft);
     }
 
     .nav-toggle {
         display: flex;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
 
     .nav-toggle span {
-        width: 20px;
+        width: 22px;
         height: 2.5px;
     }
 
     .nav-toggle[aria-expanded="true"] span:nth-child(1),
     .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-        width: 22px;
+        width: 24px;
     }
 
     .nav-scrim.is-visible {
@@ -4656,46 +4737,65 @@ header.is-scrolled .logo-tagline {
 /* Small Mobile */
 @media (max-width: 480px) {
     :root {
-        --header-height: 60px;
-        --header-padding-y: 6px;
-        --header-logo-size: 42px;
+        --header-height: 66px;
+        --header-padding-y: 8px;
+        --header-logo-size: 46px;
     }
 
     header.is-scrolled {
-        --header-logo-size: 36px;
-        --header-height: 54px;
+        --header-logo-size: 38px;
+        --header-height: 58px;
+        padding: 6px 0;
     }
 
     .header-container {
         padding: 0 12px;
+        gap: 8px;
     }
 
     .logo-crop {
         border-radius: 10px;
     }
 
-    .logo a:hover .logo-crop {
-        transform: scale(1.04) rotate(-1deg);
+    .logo-name {
+        font-size: 18px;
+    }
+
+    .logo-tagline {
+        font-size: 9px;
+    }
+
+    header.is-scrolled .logo-name {
+        font-size: 15px;
+    }
+
+    header.is-scrolled .logo-tagline {
+        font-size: 8px;
     }
 
     #site-nav {
         width: min(300px, 90vw);
-        padding: 70px 20px 30px;
+        padding: 72px 20px 30px;
     }
 
     #site-nav a {
-        font-size: 16px;
-        padding: 12px 14px;
+        font-size: 18px;
+        padding: 14px 16px;
     }
 
     #site-nav a.btn-nav {
-        padding: 14px 24px;
-        font-size: 14px;
+        padding: 16px 30px;
+        font-size: 16px;
+    }
+
+    .dropdown-menu a {
+        font-size: 17px !important;
+        padding: 12px 16px 12px 28px !important;
     }
 
     .nav-toggle {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
         gap: 4px;
     }
@@ -5371,23 +5471,19 @@ header.is-scrolled .logo-tagline {
 .cta-lines span:nth-child(2) { color: var(--color-gold); }
 
 /* ============================================================
-   FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY)
+   FULL-SCREEN SCROLL SECTIONS (HOME PAGE ONLY) - DISABLED
    ============================================================ */
 
-/* Apply only to the homepage when .home-page class is on body */
+/* Sections flow normally — the full-screen scroll experience is disabled */
 .home-page .section-fullscreen {
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-snap-align: start;
+    height: auto;
+    min-height: 0;
+    display: block;
+    align-items: stretch;
+    scroll-snap-align: none;
     position: relative;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+    overflow: visible;
+    padding: 60px 0;
     width: 100%;
 }
 
@@ -5398,306 +5494,34 @@ header.is-scrolled .logo-tagline {
     max-width: 1200px;
 }
 
-/* Enable scroll snapping on the home page container */
-.home-page.scroll-container {
-    height: 100vh;
-    height: 100dvh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+/* Remove dot navigation and scroll indicators */
+.section-nav-dots,
+.scroll-indicator {
+    display: none !important;
 }
 
+/* Reset body overflow */
 body.home-page-locked {
-    overflow: hidden;
-    height: 100vh;
-    height: 100dvh;
+    overflow: visible;
+    height: auto;
 }
 
-@supports selector(:has(a)) {
-    html:has(body.home-page-locked) {
-        overflow: hidden;
-    }
-}
-
-/* Remove padding from sections that are fullscreen */
-.home-page .section-fullscreen.hero {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.section-sage-bg {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.section-white-bg {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.process-section {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.framework {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.mission-vision {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.programmes-section {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.why-grow {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.testimonials {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.founder-details {
-    padding: 0;
-}
-
-.home-page .section-fullscreen.resources {
-    padding: 0;
-}
-
+/* Remove padding overrides */
+.home-page .section-fullscreen.hero,
+.home-page .section-fullscreen.section-sage-bg,
+.home-page .section-fullscreen.section-white-bg,
+.home-page .section-fullscreen.process-section,
+.home-page .section-fullscreen.framework,
+.home-page .section-fullscreen.mission-vision,
+.home-page .section-fullscreen.programmes-section,
+.home-page .section-fullscreen.why-grow,
+.home-page .section-fullscreen.testimonials,
+.home-page .section-fullscreen.founder-details,
+.home-page .section-fullscreen.resources,
 .home-page .section-fullscreen.cta-section {
-    padding: 0;
+    padding: 60px 0;
 }
 
-/* Scroll indicator for fullscreen sections */
-.home-page .scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-ink-soft);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.6;
-    animation: bounce-down 2s ease-in-out infinite;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.home-page .scroll-indicator .arrow {
-    width: 20px;
-    height: 20px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg);
-    opacity: 0.5;
-}
-
-@keyframes bounce-down {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-}
-
-/* Dark variant for scroll indicator on dark backgrounds */
-.home-page .scroll-indicator--light {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* Progress dots for fullscreen navigation */
-.home-page .section-nav-dots {
-    position: fixed;
-    right: 28px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.home-page .section-nav-dots a {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(31, 60, 136, 0.2);
-    border: 2px solid rgba(31, 60, 136, 0.15);
-    transition: all 0.3s var(--ease);
-    pointer-events: auto;
-    cursor: pointer;
-    position: relative;
-}
-
-.home-page .section-nav-dots a:hover {
-    transform: scale(1.2);
-    background: var(--color-teal);
-}
-
-.home-page .section-nav-dots a.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    transform: scale(1.15);
-    box-shadow: 0 0 0 4px rgba(31, 60, 136, 0.15);
-}
-
-.home-page .section-nav-dots a .dot-tooltip {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s var(--ease);
-}
-
-.home-page .section-nav-dots a:hover .dot-tooltip {
-    opacity: 1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .home-page .section-fullscreen {
-        height: 100vh;
-        height: 100dvh;
-        min-height: 100vh;
-        min-height: 100dvh;
-        padding: 0;
-        align-items: center;
-    }
-    
-    .home-page .section-fullscreen .container {
-        padding: 24px 16px;
-    }
-    
-    .home-page .section-nav-dots {
-        right: 12px;
-        gap: 10px;
-    }
-    
-    .home-page .section-nav-dots a {
-        width: 10px;
-        height: 10px;
-    }
-    
-    .home-page .scroll-indicator {
-        bottom: 20px;
-        font-size: 10px;
-    }
-    
-    .home-page .section-nav-dots a .dot-tooltip {
-        display: none;
-    }
-
-    /* home-page-flow: applied by include.js on mobile viewports instead
-       of the desktop swipe/scroll-snap experience. Sections size to
-       their own content here too — no min-height floor — so short
-       sections don't carry large empty margins, matching the desktop
-       fix. overflow stays visible so nothing gets clipped regardless
-       of how tall a section's content runs. */
-    .home-page.home-page-flow .section-fullscreen {
-        height: auto;
-        min-height: 0;
-        overflow: visible;
-        align-items: center;
-        padding: 48px 0;
-        scroll-snap-align: none;
-    }
-
-    .home-page.home-page-flow .section-fullscreen .container {
-        padding: 24px 16px;
-    }
-
-    /* These are desktop-only navigation aids for the swipe experience;
-       include.js never creates them on mobile, but hide defensively. */
-    .home-page.home-page-flow .section-nav-dots,
-    .home-page.home-page-flow .scroll-indicator {
-        display: none;
-    }
-}
-
-/* Prevent header from overlapping content on small screens */
-@media (max-width: 480px) {
-    .home-page .section-fullscreen .container {
-        padding: 20px 12px;
-    }
-}
-
-/* Enhanced Animations */
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(2deg); }
-}
-
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(44, 181, 165, 0.2); }
-    50% { box-shadow: 0 0 0 15px rgba(44, 181, 165, 0); }
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* Gradient text utility */
-.gradient-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-teal));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Hover lift effect */
-.hover-lift {
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(31, 60, 136, 0.12);
-}
-
-/* Card glow on hover */
-.card-glow {
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.card-glow::after {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, var(--color-teal), var(--color-gold), var(--color-accent));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-}
-
-.card-glow:hover::after {
-    opacity: 0.3;
-}
-
-/* Smooth reveal animations with delay */
-.reveal-stagger:nth-child(1) { transition-delay: 0.05s; }
-.reveal-stagger:nth-child(2) { transition-delay: 0.15s; }
-.reveal-stagger:nth-child(3) { transition-delay: 0.25s; }
-.reveal-stagger:nth-child(4) { transition-delay: 0.35s; }
-.reveal-stagger:nth-child(5) { transition-delay: 0.45s; }
-.reveal-stagger:nth-child(6) { transition-delay: 0.55s; }
 /* ============================================================
    CLUB SUB-PAGES (Social & Emotions / Ready to Learn / Ready for Life)
    Shared markup across the three club pages, themed per page via the
