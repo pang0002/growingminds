@@ -423,7 +423,7 @@ header.is-scrolled::after {
     align-items: center;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
-    gap: 16px;
+    gap: 18px;
 }
 
 .logo-crop {
@@ -474,33 +474,42 @@ header.is-scrolled::after {
     justify-content: center;
     line-height: 1.15;
     white-space: nowrap;
+    /* The icon's sunburst flourish sits above the "gm" letters, pushing
+       their visual center lower than the icon box's geometric center.
+       Nudge the text down slightly so it optically aligns with the
+       letters rather than the whole icon (sunburst included). */
+    transform: translateY(9px);
 }
 
 .logo-name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 0.2px;
+    font-size: 29px;
+    letter-spacing: 0.1px;
     color: var(--color-primary);
 }
 
 .logo-tagline {
-    margin-top: 4px;
+    margin-top: 5px;
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.11em;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-ink-soft);
 }
 
 /* Scale wordmark down slightly with the logo when scrolled */
+header.is-scrolled .logo-text {
+    transform: translateY(5px);
+}
+
 header.is-scrolled .logo-name {
-    font-size: 19px;
+    font-size: 21px;
 }
 
 header.is-scrolled .logo-tagline {
-    font-size: 9.5px;
+    font-size: 10.5px;
 }
 
 /* Fallback text when image doesn't load */
