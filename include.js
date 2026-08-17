@@ -1,4 +1,4 @@
-// include.js - Enhanced with interactions and full-screen scroll
+// include.js - Enhanced with interactions (full-screen scroll disabled)
 document.addEventListener('DOMContentLoaded', function () {
 
     // Runs an init function in isolation — if it throws, the error is
@@ -742,7 +742,7 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initSignalCards, 'initSignalCards');
 
     // ============================================================
-    // FULL-SCREEN SCROLL
+    // FULL-SCREEN SCROLL - DISABLED (fixes header overlap on mobile)
     // ============================================================
     function initFullScreenScroll() {
         const isHomePage = window.location.pathname === '/' || 
@@ -754,327 +754,62 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const body = document.body;
         body.classList.add('home-page');
-
-        // On mobile, skip the custom swipe/wheel-hijacking full-screen
-        // experience entirely. It forces every section to exactly one
-        // screen height with overflow hidden, which clips content that's
-        // taller than the viewport (very common on narrow phones), and
-        // it blocks native touch scrolling (touch-action: none +
-        // touchmove preventDefault). Below this width, sections just
-        // flow normally down the page like any other site.
-        const isMobileViewport = window.innerWidth <= 768;
-        if (isMobileViewport) {
-            body.classList.add('home-page-flow');
-            return;
+        
+        // DISABLE the full-screen scroll experience entirely.
+        // This fixes the header being pulled out of flow and overlapping content.
+        // Sections will now flow naturally down the page.
+        body.classList.add('home-page-flow');
+        
+        // Remove any existing full-screen container if it was created
+        const container = document.querySelector('.fullscreen-scroll-container');
+        if (container) {
+            // Move sections back to their original parent
+            const parent = container.parentNode;
+            while (container.firstChild) {
+                parent.insertBefore(container.firstChild, container);
+            }
+            container.remove();
         }
         
-        const sections = document.querySelectorAll('.section-fullscreen');
-        if (sections.length === 0) return;
-        
-        function setFullHeight() {
-            const vh = window.innerHeight;
-            // The header is fixed (out of flow, set below) and overlays
-            // on top, so the space actually visible under it is
-            // (vh - headerHeight), not the full vh. Sections should
-            // center their content within THAT visible space — not the
-            // full vh — or content ends up sitting lower than the real
-            // visual center (too much empty space up top).
-            //
-            // Every section gets a min-height floor of the full viewport,
-            // so scroll-snap always lands on a section that fills the
-            // whole screen — the next section never bleeds into view.
-            // height stays auto so a section only grows taller than that
-            // floor if its own content genuinely needs the room (nothing
-            // gets clipped); shorter sections just center within the
-            // full-screen box.
-            const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 0;
-            sections.forEach(function(section) {
-                section.style.minHeight = vh + 'px';
-                section.style.height = 'auto';
-                // !important: some sections have a stylesheet rule
-                // forcing padding: 0 !important, which would otherwise
-                // silently cancel this and reintroduce the header overlap
-                // just for that section.
-                section.style.setProperty('padding-top', headerHeight + 'px', 'important');
-                section.style.boxSizing = 'border-box';
-                section.style.display = 'flex';
-                section.style.alignItems = 'center';
-                section.style.justifyContent = 'center';
-                section.style.flexShrink = '0';
-                section.style.width = '100%';
-                section.style.scrollSnapAlign = 'start';
-            });
-        }
-        
-        setFullHeight();
-        
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(setFullHeight, 200);
+        // Reset any sections that might have inline styles
+        document.querySelectorAll('.section-fullscreen').forEach(function(section) {
+            section.style.minHeight = '';
+            section.style.height = '';
+            section.style.paddingTop = '';
+            section.style.display = '';
+            section.style.alignItems = '';
+            section.style.justifyContent = '';
+            section.style.flexShrink = '';
+            section.style.width = '';
+            section.style.scrollSnapAlign = '';
         });
         
-        const container = document.createElement('div');
-        container.className = 'fullscreen-scroll-container';
-        container.style.cssText = `
-            height: 100vh;
-            height: 100dvh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            position: relative;
-            width: 100%;
-            touch-action: none;
-            overscroll-behavior: contain;
-        `;
-
-        const parent = sections[0].parentNode;
+        // Reset header
         const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
-
-        const anchor = document.createComment('home-scroll-container');
-        parent.insertBefore(anchor, header || sections[0]);
-
         if (header) {
-            container.appendChild(header);
-            // Take the header out of normal flow so it never pushes or
-            // shrinks the sections below it — it just floats on top.
-            // (setFullHeight() compensates by giving every section its
-            // own top padding equal to the header's height.)
-            header.style.position = 'fixed';
-            header.style.top = '0';
-            header.style.left = '0';
-            header.style.width = '100%';
+            header.style.position = '';
+            header.style.top = '';
+            header.style.left = '';
+            header.style.width = '';
+            header.style.zIndex = '';
         }
-        sections.forEach(function(section) {
-            container.appendChild(section);
-        });
-        if (footer) {
-            container.appendChild(footer);
-            footer.style.scrollSnapAlign = 'start';
-            footer.style.scrollSnapStop = 'always';
-        }
-
-        parent.insertBefore(container, anchor);
-        parent.removeChild(anchor);
-
-        body.classList.add('home-page-locked');
         
-        sections.forEach(function(section, index) {
-            const isVeryLast = index === sections.length - 1 && !footer;
-            if (!isVeryLast && !section.querySelector('.scroll-indicator')) {
-                const indicator = document.createElement('div');
-                indicator.className = 'scroll-indicator';
-                
-                if (section.classList.contains('cta-section') || 
-                    section.classList.contains('dark-band')) {
-                    indicator.classList.add('scroll-indicator--light');
-                }
-                
-                indicator.innerHTML = `
-                    <span>Scroll</span>
-                    <div class="arrow"></div>
-                `;
-                section.appendChild(indicator);
-            }
+        // Remove dot navigation if it exists
+        const dotNav = document.querySelector('.section-nav-dots');
+        if (dotNav) dotNav.remove();
+        
+        // Remove scroll indicators
+        document.querySelectorAll('.scroll-indicator').forEach(function(el) {
+            el.remove();
         });
         
-        const dotNav = document.createElement('div');
-        dotNav.className = 'section-nav-dots';
-        dotNav.setAttribute('role', 'navigation');
-        dotNav.setAttribute('aria-label', 'Section navigation');
+        // Restore normal body overflow
+        body.classList.remove('home-page-locked');
+        body.style.overflow = '';
         
-        sections.forEach(function(section, index) {
-            const link = document.createElement('a');
-            link.href = '#';
-            link.setAttribute('data-index', index);
-            
-            const heading = section.querySelector('h1, h2');
-            const label = heading ? heading.textContent.trim() : 'Section ' + (index + 1);
-            link.setAttribute('aria-label', 'Go to ' + label);
-            
-            if (index === 0) link.classList.add('active');
-            
-            dotNav.appendChild(link);
-        });
-        
-        document.body.appendChild(dotNav);
-
-        const sectionCount = sections.length;
-        const NAV_LOCK_MS = 1000;
-        let currentIndex = 0;
-        let isAnimating = false;
-        let lockTimer = null;
-        let lastScrollTime = 0;
-        let scrollTimeout = null;
-
-        function getStops() {
-            const stops = [];
-            sections.forEach(function(section) {
-                stops.push(section.offsetTop);
-            });
-            if (footer) {
-                stops.push(Math.max(0, container.scrollHeight - container.clientHeight));
-            }
-            return stops;
-        }
-
-        function updateActiveDot(index) {
-            const dotIndex = Math.min(index, sectionCount - 1);
-            const dots = dotNav.querySelectorAll('a');
-            dots.forEach(function(dot, i) {
-                dot.classList.toggle('active', i === dotIndex);
-            });
-        }
-
-        function syncScrollPosition() {
-            const stops = getStops();
-            const scrollTop = container.scrollTop;
-            let nearest = 0;
-            let nearestDist = Infinity;
-            stops.forEach(function(stopTop, i) {
-                const dist = Math.abs(scrollTop - stopTop);
-                if (dist < nearestDist) {
-                    nearestDist = dist;
-                    nearest = i;
-                }
-            });
-            if (nearest !== currentIndex && !isAnimating) {
-                currentIndex = nearest;
-                updateActiveDot(currentIndex);
-            }
-        }
-
-        container.addEventListener('scroll', function() {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(syncScrollPosition, 100);
-        }, { passive: true });
-
-        function goToSection(index) {
-            const stops = getStops();
-            const maxIndex = stops.length - 1;
-            const clamped = Math.max(0, Math.min(maxIndex, index));
-            
-            if (clamped === currentIndex) return;
-            if (isAnimating) return;
-            
-            const now = Date.now();
-            if (now - lastScrollTime < NAV_LOCK_MS) return;
-            lastScrollTime = now;
-            
-            const currentScrollTop = container.scrollTop;
-            const targetScrollTop = stops[clamped];
-            if (Math.abs(currentScrollTop - targetScrollTop) < 20) return;
-            
-            currentIndex = clamped;
-            isAnimating = true;
-
-            container.scrollTo({
-                top: targetScrollTop,
-                behavior: 'smooth'
-            });
-            updateActiveDot(clamped);
-
-            clearTimeout(lockTimer);
-            lockTimer = setTimeout(function() {
-                isAnimating = false;
-                syncScrollPosition();
-            }, NAV_LOCK_MS);
-        }
-
-        dotNav.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                goToSection(parseInt(this.getAttribute('data-index'), 10));
-            });
-        });
-
-        let wheelTimeout = null;
-        let wheelDirection = 0;
-        
-        container.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            
-            if (wheelTimeout) return;
-            if (isAnimating) return;
-            
-            const delta = e.deltaY;
-            if (Math.abs(delta) < 10) return;
-            
-            const direction = delta > 0 ? 1 : -1;
-            
-            if (wheelDirection && wheelDirection !== direction) {
-                wheelDirection = direction;
-                return;
-            }
-            wheelDirection = direction;
-            
-            wheelTimeout = setTimeout(function() {
-                wheelTimeout = null;
-                wheelDirection = 0;
-            }, NAV_LOCK_MS);
-            
-            goToSection(currentIndex + direction);
-            
-        }, { passive: false });
-
-        let touchStartY = 0;
-        let touchStartX = 0;
-        let touchStartTime = 0;
-
-        container.addEventListener('touchstart', function(e) {
-            touchStartY = e.touches[0].clientY;
-            touchStartX = e.touches[0].clientX;
-            touchStartTime = Date.now();
-        }, { passive: true });
-
-        container.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-
-        container.addEventListener('touchend', function(e) {
-            if (isAnimating) return;
-            
-            const touchEndY = e.changedTouches[0].clientY;
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndTime = Date.now();
-            
-            const deltaY = touchStartY - touchEndY;
-            const deltaX = touchStartX - touchEndX;
-            const deltaTime = touchEndTime - touchStartTime;
-            
-            if (deltaTime > 500) return;
-            if (Math.abs(deltaY) < Math.abs(deltaX)) return;
-            
-            const SWIPE_THRESHOLD = 40;
-            if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
-            
-            const direction = deltaY > 0 ? 1 : -1;
-            goToSection(currentIndex + direction);
-            
-        }, { passive: true });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-                e.preventDefault();
-                if (isAnimating) return;
-                goToSection(currentIndex + 1);
-            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-                e.preventDefault();
-                if (isAnimating) return;
-                goToSection(currentIndex - 1);
-            }
-        });
-
-        container.scrollTo({ top: 0, behavior: 'instant' });
-        
-        setTimeout(function() {
-            container.scrollTo({ top: 0, behavior: 'instant' });
-            currentIndex = 0;
-            updateActiveDot(0);
-        }, 100);
+        // Re-enable native scrolling on the body
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
     }
     safeInit(initFullScreenScroll, 'initFullScreenScroll');
 
