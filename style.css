@@ -5690,3 +5690,87 @@ body.home-page-locked {
     line-height: 1.5;
     color: var(--color-primary);
 }
+/* Club Page — Flip Cards ("Is This The Right Fit?" section)
+   Namespaced as club-signal-* to avoid colliding with the existing
+   click-to-reveal .signal-card system used on index.html. */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.club-signal-card {
+    perspective: 1000px;
+    height: 360px;
+}
+
+.club-signal-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s var(--ease);
+    transform-style: preserve-3d;
+}
+
+.club-signal-card:hover .club-signal-card-inner {
+    transform: rotateY(180deg);
+}
+
+.club-signal-card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.club-signal-card-front {
+    background: var(--color-white);
+    border: 1px solid rgba(31, 60, 136, 0.08);
+    box-shadow: var(--shadow-card);
+    transform: rotateY(0deg);
+}
+
+.club-signal-card-back {
+    background: rgba(31, 60, 136, 0.04);
+    border: 1px solid rgba(31, 60, 136, 0.12);
+    box-shadow: var(--shadow-card);
+    transform: rotateY(180deg);
+}
+
+.club-signal-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-soft);
+}
+
+.club-signal-tagline {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-teal-dark);
+    margin: 4px 0 12px 0;
+}
+
+.club-signal-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+}
+
+.club-signal-hint {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
