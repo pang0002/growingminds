@@ -257,6 +257,18 @@ em {
     margin-bottom: 10px;
 }
 
+/* Larger variant for standalone club vibe badges (Calm/Confident/Capable) */
+.eyebrow-lg {
+    gap: 12px;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.eyebrow-lg::before {
+    width: 28px;
+    height: 28px;
+}
+
 .eyebrow::before {
     content: "";
     width: 18px;
