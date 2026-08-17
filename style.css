@@ -5475,22 +5475,90 @@ body.home-page-locked {
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 19px;
+    line-height: 1.85;
     color: var(--color-ink-soft);
 }
 
 .club-section-head {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 36px;
+    max-width: 720px;
+    margin: 0 auto 40px;
 }
 
 .club-section-head h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.9rem, 3.4vw, 2.5rem);
     letter-spacing: -0.02em;
-    line-height: 1.25;
-    margin-top: 2px;
+    line-height: 1.2;
+    margin-top: 6px;
+}
+
+/* --- Three-up insight cards (Challenge / Reality / Approach) --- */
+.club-insight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.club-insight-tile {
+    position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 30px 26px 26px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.club-insight-tile::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--tile-accent, var(--color-teal));
+}
+
+.club-insight-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(31, 60, 136, 0.14);
+}
+
+.club-insight-tile.is-approach {
+    background: var(--color-cream);
+    border-color: var(--color-gold);
+}
+
+.club-insight-tile-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+}
+
+.club-insight-tile-icon svg { width: 100%; height: 100%; }
+
+.club-insight-tile-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tile-accent, var(--color-teal-dark));
+    margin-bottom: 10px;
+}
+
+.club-insight-tile p {
+    margin: 0;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+@media (max-width: 860px) {
+    .club-insight-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
 
 /* --- Come if your child: icon checklist --- */
@@ -5507,10 +5575,16 @@ body.home-page-locked {
     gap: 16px;
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 18px 22px;
+    padding: 20px 24px;
     box-shadow: var(--shadow-card);
     border: 2px solid transparent;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.club-checklist .club-check-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-content: center;
+    background: var(--color-cream);
 }
 
 .club-check-item:hover {
@@ -5521,8 +5595,8 @@ body.home-page-locked {
 
 .club-check-icon {
     flex-shrink: 0;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: var(--club-accent, var(--color-teal));
     color: var(--color-white);
@@ -5533,8 +5607,8 @@ body.home-page-locked {
 }
 
 .club-check-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
 }
 
 /* Cycle the checkmark badge through the palette for variety */
@@ -5544,47 +5618,56 @@ body.home-page-locked {
 
 .club-check-item p {
     margin: 0;
-    font-size: 15.5px;
+    font-size: 17px;
     line-height: 1.6;
     color: var(--color-ink);
+    font-weight: 500;
 }
 
 @media (max-width: 700px) {
     .club-checklist { grid-template-columns: 1fr; }
+    .club-checklist .club-check-item:last-child:nth-child(odd) { grid-column: auto; justify-content: flex-start; background: var(--color-white); }
 }
 
 /* --- Eight weeks, eight things to practise --- */
 .club-practise-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 18px;
     margin-top: 8px;
 }
 
 .club-practise-chip {
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 24px 16px 20px;
-    text-align: center;
+    padding: 26px 18px 22px;
+    text-align: left;
     box-shadow: var(--shadow-card);
-    border: 2px solid transparent;
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    border-left: 4px solid var(--chip-accent, var(--color-teal));
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
-.club-practise-chip:nth-child(odd) { background: var(--color-sage); }
-.club-practise-chip:nth-child(even) { background: rgba(142, 125, 240, 0.14); }
+.club-practise-chip:nth-child(3n+1) { --chip-accent: var(--color-teal); }
+.club-practise-chip:nth-child(3n+2) { --chip-accent: var(--color-gold-dark); }
+.club-practise-chip:nth-child(3n+3) { --chip-accent: var(--color-accent); }
 
 .club-practise-chip:hover {
     transform: translateY(-5px);
-    border-color: var(--club-accent, var(--color-gold));
     box-shadow: 0 16px 36px rgba(31, 60, 136, 0.14);
+}
+
+.club-practise-chip-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
 }
 
 .practise-icon {
     display: block;
-    width: 36px;
-    height: 36px;
-    margin: 0 auto 8px;
+    width: 34px;
+    height: 34px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -5594,20 +5677,18 @@ body.home-page-locked {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
-    margin: 0 auto 12px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: var(--color-white);
+    background: var(--color-cream);
     color: var(--color-primary);
     font-weight: 800;
-    font-size: 12.5px;
-    box-shadow: 0 2px 8px rgba(31, 60, 136, 0.12);
+    font-size: 12px;
 }
 
 .club-practise-chip p {
     margin: 0;
-    font-size: 14px;
+    font-size: 15.5px;
     line-height: 1.55;
     color: var(--color-ink);
 }
@@ -5635,61 +5716,83 @@ body.home-page-locked {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    max-width: 760px;
+    max-width: 780px;
     margin: 8px auto 0;
 }
 
 .club-example-item {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
+    align-items: center;
+    gap: 16px;
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 16px 20px;
+    padding: 18px 24px;
     box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--club-accent, var(--color-accent));
 }
 
 .club-example-dot {
     flex-shrink: 0;
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--club-accent, var(--color-accent));
+    color: var(--color-white);
+    font-weight: 800;
+    font-size: 13px;
 }
 
 .club-example-item p {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 16.5px;
+    line-height: 1.6;
     color: var(--color-ink);
 }
 
 /* --- What you might notice at home: pull-quote --- */
 .club-pullquote {
-    max-width: 640px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 44px 40px;
+    border: 2px solid var(--color-paper-deep);
+    position: relative;
+}
+
+.club-pullquote::before {
+    content: "\201C";
+    display: block;
+    font-family: var(--font-display);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--club-accent, var(--color-gold));
+    margin-bottom: 4px;
 }
 
 .eyebrow-quote {
     display: block;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--club-accent, var(--color-teal-dark));
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .club-pullquote blockquote {
     margin: 0;
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(22px, 3vw, 28px);
-    line-height: 1.5;
+    font-size: clamp(24px, 3.6vw, 32px);
+    line-height: 1.45;
     color: var(--color-primary);
 }
+
 /* Unique Club Page Hero Refinements */
 .club-hero-grid {
     display: grid;
@@ -5702,20 +5805,51 @@ body.home-page-locked {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 12px 20px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(8px);
     border: 1.5px solid var(--color-paper-deep);
     border-radius: 16px;
-    padding: 12px 20px;
-    margin: 24px 0 28px;
+    padding: 12px 24px;
+    margin: 24px auto 8px;
     width: fit-content;
+}
+
+/* Simple, single-column club hero (no floating side card) */
+.club-hero-simple {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 44px 0 50px;
+}
+
+.club-hero-simple .club-hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.club-hero-simple h1 {
+    font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+    .club-hero-simple h1 { white-space: normal; }
+}
+
+.club-hero-simple .hero-tagline-description {
+    font-size: 19px;
 }
 .club-meta-item {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-primary);
 }
