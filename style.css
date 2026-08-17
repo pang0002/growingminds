@@ -5690,6 +5690,99 @@ body.home-page-locked {
     line-height: 1.5;
     color: var(--color-primary);
 }
+/* Unique Club Page Hero Refinements */
+.club-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+    padding: 40px 0 60px;
+}
+.club-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid var(--color-paper-deep);
+    border-radius: 16px;
+    padding: 12px 20px;
+    margin: 24px 0 28px;
+    width: fit-content;
+}
+.club-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+.club-meta-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-ink-soft);
+    opacity: 0.4;
+}
+.club-spot-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-pale-sun);
+    color: var(--color-primary);
+    border: 1px solid var(--color-gold);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 100px;
+}
+/* Streamlined Right-Side Insight Card */
+.club-insight-card {
+    background: #FFFFFF;
+    border: 2px solid var(--color-primary);
+    border-radius: 24px;
+    box-shadow: 6px 6px 0px var(--color-gold);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.club-insight-block {
+    position: relative;
+    padding-left: 16px;
+    border-left: 3px solid var(--color-teal);
+}
+.club-insight-block.highlight {
+    border-left-color: var(--color-gold-dark);
+    background: var(--color-cream);
+    padding: 12px 16px;
+    border-radius: 0 12px 12px 0;
+}
+.club-insight-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    margin-bottom: 4px;
+    display: block;
+}
+.club-insight-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+    margin: 0;
+}
+@media (max-width: 900px) {
+    .club-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
 /* Club Page — Flip Cards ("Is This The Right Fit?" section)
    Namespaced as club-signal-* to avoid colliding with the existing
    click-to-reveal .signal-card system used on index.html. */
