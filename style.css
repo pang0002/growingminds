@@ -53,10 +53,10 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Header specific variables - COMPACT size consistent across all pages */
-    --header-height: 84px;
-    --header-padding-y: 12px;
-    --header-logo-size: 64px;
+    /* Header specific variables - Enlarged but balanced */
+    --header-height: 120px;
+    --header-padding-y: 16px;
+    --header-logo-size: 90px;
     --header-logo-hover-scale: 1.05;
 }
 
@@ -399,11 +399,11 @@ header::after {
 /* Scrolled state - slightly smaller */
 header.is-scrolled {
     box-shadow: 0 8px 40px rgba(31, 60, 136, 0.10);
-    padding: 8px 0;
+    padding: 10px 0;
     background: rgba(247, 243, 236, 0.98);
     border-bottom-color: transparent !important;
-    --header-logo-size: 52px;
-    --header-height: 70px;
+    --header-logo-size: 72px;
+    --header-height: 96px;
 }
 
 header.is-scrolled::after {
@@ -417,7 +417,7 @@ header.is-scrolled::after {
     align-items: center;
     position: relative;
     width: 100%;
-    padding: 0 48px;
+    padding: 0 40px;
     max-width: 1560px;
     margin: 0 auto;
     gap: 32px;
@@ -434,7 +434,7 @@ header.is-scrolled::after {
     align-items: center;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
-    gap: 14px;
+    gap: 16px;
 }
 
 .logo-crop {
@@ -444,7 +444,7 @@ header.is-scrolled::after {
     max-height: var(--header-logo-size);
     max-width: none;
     overflow: visible;
-    border-radius: 14px;
+    border-radius: 16px;
     transition: all 0.4s var(--ease-bounce);
     position: relative;
     flex-shrink: 0;
@@ -470,7 +470,7 @@ header.is-scrolled::after {
     object-position: center;
     display: block;
     transition: transform 0.5s var(--ease-bounce);
-    padding: 4px;
+    padding: 6px;
 }
 
 /* Remove logo image hover scale */
@@ -495,7 +495,7 @@ header.is-scrolled::after {
 .logo-name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 26px;
+    font-size: 30px;
     letter-spacing: 0.1px;
     color: var(--color-primary);
 }
@@ -504,7 +504,7 @@ header.is-scrolled::after {
     margin-top: 4px;
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--color-ink-soft);
@@ -512,15 +512,15 @@ header.is-scrolled::after {
 
 /* Scale wordmark down slightly with the logo when scrolled */
 header.is-scrolled .logo-text {
-    transform: translateY(4px);
+    transform: translateY(5px);
 }
 
 header.is-scrolled .logo-name {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 header.is-scrolled .logo-tagline {
-    font-size: 10px;
+    font-size: 11px;
 }
 
 /* Fallback text when image doesn't load */
@@ -591,12 +591,12 @@ header.is-scrolled .logo-tagline {
 }
 
 #site-nav a {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--color-ink-soft);
     transition: all 0.3s var(--ease);
     position: relative;
-    padding: 8px 16px;
+    padding: 10px 18px;
     letter-spacing: 0.2px;
     border-radius: 8px;
     display: inline-flex;
@@ -610,7 +610,7 @@ header.is-scrolled .logo-tagline {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 2px;
+    bottom: 3px;
     width: 0;
     height: 2.5px;
     background: var(--color-teal);
@@ -657,7 +657,7 @@ header.is-scrolled .logo-tagline {
     display: inline-block;
     width: 6px;
     height: 6px;
-    margin-left: 4px;
+    margin-left: 5px;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: rotate(45deg) translateY(-2px);
@@ -675,12 +675,12 @@ header.is-scrolled .logo-tagline {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    min-width: 220px;
+    min-width: 240px;
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 12px 32px rgba(31, 60, 136, 0.12);
     border: 1px solid rgba(31, 60, 136, 0.08);
-    padding: 6px;
+    padding: 8px;
     list-style: none;
     margin: 0;
     opacity: 0;
@@ -715,7 +715,7 @@ header.is-scrolled .logo-tagline {
 .dropdown-menu a {
     display: block;
     width: 100%;
-    font-size: 14px !important;
+    font-size: 15px !important;
     font-weight: 500 !important;
     color: var(--color-ink-soft, #51649D) !important;
     padding: 10px 16px !important;
@@ -742,11 +742,11 @@ header.is-scrolled .logo-tagline {
 #site-nav a.btn-nav {
     background: var(--color-gold);
     color: var(--color-primary) !important;
-    padding: 10px 28px;
+    padding: 12px 32px;
     border: 2px solid var(--color-primary);
     border-radius: 50px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
     position: relative;
     letter-spacing: 0.2px;
@@ -4296,20 +4296,20 @@ header.is-scrolled .logo-tagline {
     }
 
     #site-nav a {
-        padding: 8px 12px;
-        font-size: 15px;
+        padding: 8px 14px;
+        font-size: 16px;
     }
 
     #site-nav a.btn-nav {
-        padding: 10px 22px;
-        font-size: 14px;
+        padding: 10px 26px;
+        font-size: 15px;
     }
 }
 
 /* Desktop - Large screens */
 @media (max-width: 1200px) {
     .header-container {
-        padding: 0 24px;
+        padding: 0 28px;
     }
     
     #site-nav ul {
@@ -4318,12 +4318,12 @@ header.is-scrolled .logo-tagline {
     
     #site-nav a {
         padding: 6px 12px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     #site-nav a.btn-nav {
         padding: 8px 20px;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .logo-text-next {
@@ -4338,8 +4338,8 @@ header.is-scrolled .logo-tagline {
 /* Desktop - Medium */
 @media (max-width: 992px) {
     :root {
-        --header-logo-size: 56px;
-        --header-height: 76px;
+        --header-logo-size: 60px;
+        --header-height: 80px;
     }
 
     .header-container {
@@ -4353,12 +4353,12 @@ header.is-scrolled .logo-tagline {
     
     #site-nav a {
         padding: 6px 10px;
-        font-size: 13px;
+        font-size: 14px;
     }
     
     #site-nav a.btn-nav {
         padding: 8px 16px;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     /* Other responsive adjustments */
