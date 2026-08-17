@@ -6167,3 +6167,250 @@ body.home-page-locked {
     font-weight: 600;
     color: var(--color-primary);
 }
+
+/* ============================================================
+   CAREERS PAGE - APPLICATION FORM
+   ============================================================ */
+
+.careers-form-section {
+    padding: 60px 0 90px;
+    background: transparent;
+}
+
+.careers-form-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 50px 56px;
+    box-shadow: var(--shadow-card);
+    border-top: 6px solid var(--color-teal);
+}
+
+.careers-form-wrapper h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.careers-form-wrapper .form-intro {
+    font-size: 16px;
+    color: var(--color-ink-soft);
+    margin-bottom: 32px;
+    line-height: 1.7;
+}
+
+.careers-form-wrapper .form-group {
+    margin-bottom: 24px;
+}
+
+.careers-form-wrapper .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+.careers-form-wrapper .form-group label .required {
+    color: #e74c3c;
+    margin-left: 2px;
+}
+
+.careers-form-wrapper .form-group .hint {
+    display: block;
+    font-size: 12.5px;
+    color: var(--color-ink-soft);
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.75;
+}
+
+.careers-form-wrapper .form-group input,
+.careers-form-wrapper .form-group select,
+.careers-form-wrapper .form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid rgba(31, 60, 136, 0.14);
+    background: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.careers-form-wrapper .form-group input:focus,
+.careers-form-wrapper .form-group select:focus,
+.careers-form-wrapper .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 4px rgba(44, 181, 165, 0.12);
+    background: var(--color-white);
+}
+
+.careers-form-wrapper .form-group input::placeholder,
+.careers-form-wrapper .form-group textarea::placeholder {
+    color: rgba(81, 100, 157, 0.4);
+}
+
+.careers-form-wrapper .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* File upload styling */
+.careers-form-wrapper .file-upload-wrapper {
+    position: relative;
+}
+
+.careers-form-wrapper .file-upload-wrapper input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.careers-form-wrapper .file-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border: 2px dashed rgba(31, 60, 136, 0.2);
+    border-radius: var(--radius-sm);
+    background: var(--color-cream);
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    position: relative;
+}
+
+.careers-form-wrapper .file-upload-label:hover {
+    border-color: var(--color-teal);
+    background: rgba(44, 181, 165, 0.04);
+}
+
+.careers-form-wrapper .file-upload-label .upload-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.careers-form-wrapper .file-upload-label .upload-text {
+    font-size: 14px;
+    color: var(--color-ink-soft);
+}
+
+.careers-form-wrapper .file-upload-label .upload-text strong {
+    color: var(--color-primary);
+}
+
+.careers-form-wrapper .file-upload-label .file-name {
+    font-size: 14px;
+    color: var(--color-teal-dark);
+    font-weight: 600;
+    display: none;
+}
+
+.careers-form-wrapper .file-upload-label .file-name.show {
+    display: block;
+}
+
+.careers-form-wrapper .file-upload-label .upload-text.hide {
+    display: none;
+}
+
+/* Form row (2 columns) */
+.careers-form-wrapper .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Submit button */
+.careers-form-wrapper .submit-wrap {
+    margin-top: 12px;
+}
+
+.careers-form-wrapper .submit-wrap .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 40px;
+    font-size: 17px;
+}
+
+/* Success message */
+.careers-form-wrapper .form-success {
+    display: none;
+    background: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    margin-top: 24px;
+    color: #155724;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.careers-form-wrapper .form-success.show {
+    display: block;
+    animation: fadeInUp 0.5s var(--ease);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .careers-form-wrapper {
+        padding: 32px 24px;
+    }
+
+    .careers-form-wrapper h2 {
+        font-size: 24px;
+    }
+
+    .careers-form-wrapper .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .careers-form-wrapper .file-upload-label {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+    .careers-form-wrapper .file-upload-label .upload-icon {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .careers-form-wrapper {
+        padding: 24px 16px;
+    }
+
+    .careers-form-wrapper h2 {
+        font-size: 20px;
+    }
+
+    .careers-form-wrapper .form-group input,
+    .careers-form-wrapper .form-group select,
+    .careers-form-wrapper .form-group textarea {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .careers-form-wrapper .submit-wrap .btn {
+        font-size: 15px;
+        padding: 14px 28px;
+    }
+}
