@@ -53,10 +53,10 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Header specific variables - Reduced for better fit */
-    --header-height: 96px;
+    /* Header specific variables - COMPACT size consistent across all pages */
+    --header-height: 84px;
     --header-padding-y: 12px;
-    --header-logo-size: 72px;
+    --header-logo-size: 64px;
     --header-logo-hover-scale: 1.05;
 }
 
@@ -402,8 +402,8 @@ header.is-scrolled {
     padding: 8px 0;
     background: rgba(247, 243, 236, 0.98);
     border-bottom-color: transparent !important;
-    --header-logo-size: 60px;
-    --header-height: 76px;
+    --header-logo-size: 52px;
+    --header-height: 70px;
 }
 
 header.is-scrolled::after {
@@ -4288,7 +4288,7 @@ header.is-scrolled .logo-tagline {
 @media (max-width: 1450px) {
     .header-container {
         padding: 0 32px;
-        gap: 28px;
+        gap: 24px;
     }
 
     #site-nav ul {
@@ -4297,6 +4297,7 @@ header.is-scrolled .logo-tagline {
 
     #site-nav a {
         padding: 8px 12px;
+        font-size: 15px;
     }
 
     #site-nav a.btn-nav {
@@ -4308,7 +4309,7 @@ header.is-scrolled .logo-tagline {
 /* Desktop - Large screens */
 @media (max-width: 1200px) {
     .header-container {
-        padding: 0 32px;
+        padding: 0 24px;
     }
     
     #site-nav ul {
@@ -4318,6 +4319,11 @@ header.is-scrolled .logo-tagline {
     #site-nav a {
         padding: 6px 12px;
         font-size: 14px;
+    }
+
+    #site-nav a.btn-nav {
+        padding: 8px 20px;
+        font-size: 13px;
     }
 
     .logo-text-next {
@@ -4337,7 +4343,8 @@ header.is-scrolled .logo-tagline {
     }
 
     .header-container {
-        padding: 0 24px;
+        padding: 0 20px;
+        gap: 16px;
     }
     
     #site-nav ul {
@@ -4350,7 +4357,7 @@ header.is-scrolled .logo-tagline {
     }
     
     #site-nav a.btn-nav {
-        padding: 8px 18px;
+        padding: 8px 16px;
         font-size: 12px;
     }
 
