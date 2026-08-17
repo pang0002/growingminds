@@ -772,22 +772,25 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sections.length === 0) return;
         
         function setFullHeight() {
-            // Each section is sized to its own content, not locked to a
-            // fixed viewport height — short sections (e.g. "Who we work
-            // with") no longer carry large empty margins, and tall
-            // sections (grids, longer copy) simply grow instead of
-            // getting clipped. The scroll-snap experience is preserved
-            // via scroll-snap-align on each section; the snap points
-            // just land at content-height boundaries instead of
-            // uniform screen-height boundaries.
-            //
+            const vh = window.innerHeight;
             // The header is fixed (out of flow, set below) and overlays
-            // on top, so each section still needs top padding equal to
-            // the header's height or its content starts underneath it.
+            // on top, so the space actually visible under it is
+            // (vh - headerHeight), not the full vh. Sections should
+            // center their content within THAT visible space — not the
+            // full vh — or content ends up sitting lower than the real
+            // visual center (too much empty space up top).
+            //
+            // Every section gets a min-height floor of the full viewport,
+            // so scroll-snap always lands on a section that fills the
+            // whole screen — the next section never bleeds into view.
+            // height stays auto so a section only grows taller than that
+            // floor if its own content genuinely needs the room (nothing
+            // gets clipped); shorter sections just center within the
+            // full-screen box.
             const header = document.querySelector('header');
             const headerHeight = header ? header.offsetHeight : 0;
             sections.forEach(function(section) {
-                section.style.minHeight = 'auto';
+                section.style.minHeight = vh + 'px';
                 section.style.height = 'auto';
                 // !important: some sections have a stylesheet rule
                 // forcing padding: 0 !important, which would otherwise

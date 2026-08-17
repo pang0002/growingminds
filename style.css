@@ -5252,8 +5252,10 @@ footer {
 
 /* Apply only to the homepage when .home-page class is on body */
 .home-page .section-fullscreen {
-    height: auto;
-    min-height: 0;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5445,8 +5447,10 @@ body.home-page-locked {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .home-page .section-fullscreen {
-        height: auto;
-        min-height: 0;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100vh;
+        min-height: 100dvh;
         padding: 0;
         align-items: center;
     }
