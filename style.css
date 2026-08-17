@@ -5861,8 +5861,15 @@ body.home-page-locked {
     border: 1.5px solid var(--color-paper-deep);
     border-radius: 16px;
     padding: 12px 24px;
-    margin: 24px auto 8px;
+    margin: 22px auto 6px;
     width: fit-content;
+}
+
+.club-meta-note {
+    font-size: 13px;
+    color: var(--color-ink-soft);
+    text-align: center;
+    margin: 0 auto 24px;
 }
 
 /* Simple, single-column club hero (no floating side card) */
@@ -5909,6 +5916,13 @@ body.home-page-locked {
     background-color: var(--color-ink-soft);
     opacity: 0.4;
 }
+.club-meta-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    vertical-align: -3px;
+}
+
 .club-spot-tag {
     display: inline-flex;
     align-items: center;
