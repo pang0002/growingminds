@@ -3026,45 +3026,45 @@ header.is-scrolled .logo-tagline {
 
 .footer-action-strip {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 32px;
-    padding-bottom: 36px;
+    gap: 48px;
+    padding-bottom: 40px;
     border-bottom: 1px solid rgba(31, 60, 136, 0.12);
 }
 
 /* Brand Section */
 .footer-brand {
-    max-width: 240px;
+    max-width: 280px;
 }
 
 .footer-logo-img {
-    height: 64px;
+    height: 84px;
     width: auto;
     object-fit: contain;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .footer-tagline {
-    font-size: 15px;
+    font-size: 17px;
     color: var(--color-ink-soft);
     opacity: 0.8;
-    margin: 6px 0 14px;
+    margin: 6px 0 16px;
     line-height: 1.4;
 }
 
 .footer-socials {
     display: flex;
-    gap: 12px;
+    gap: 14px;
 }
 
 .footer-social-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: rgba(31, 60, 136, 0.08);
     color: var(--color-primary);
@@ -3072,8 +3072,8 @@ header.is-scrolled .logo-tagline {
 }
 
 .footer-social-icon svg {
-    width: 21px;
-    height: 21px;
+    width: 24px;
+    height: 24px;
 }
 
 .footer-social-icon:hover {
@@ -3085,19 +3085,19 @@ header.is-scrolled .logo-tagline {
 /* Info Columns (plain, no card styling) */
 .footer-cards-container {
     display: flex;
-    gap: 48px;
+    gap: 56px;
     flex-grow: 1;
     justify-content: space-between;
-    max-width: 720px;
+    max-width: 900px;
     margin-left: auto;
 }
 
 .footer-card {
     display: flex;
     flex-direction: column;
-    flex: 0 1 200px;
+    flex: 1 1 220px;
     min-width: 0;
-    padding-left: 24px;
+    padding-left: 28px;
     border-left: 2px solid rgba(31, 60, 136, 0.1);
 }
 
@@ -3107,29 +3107,29 @@ header.is-scrolled .logo-tagline {
 }
 
 .footer-card-label {
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--color-primary);
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .footer-card-value {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--color-ink-soft);
     text-decoration: none;
     overflow-wrap: anywhere;
     word-break: break-word;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .footer-card-sub {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     opacity: 0.75;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 .footer-card-sub a {
