@@ -5899,6 +5899,8 @@ body.home-page-locked {
 
 .club-hero-simple .hero-tagline-description {
     font-size: 19px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .club-meta-item {
     display: inline-flex;
