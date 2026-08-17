@@ -72,8 +72,7 @@
         }
 
         .who-item:last-child {
-            border-top-color: var(--color-gold);
-            background: var(--color-cream);
+            border-top-color: var(--color-accent);
         }
 
         .who-item:hover {
@@ -152,6 +151,167 @@
             }
 
             .who-item .age-highlight {
+                font-size: 15px;
+            }
+        }
+
+        /* HOW IT FITS TOGETHER - UNDERSTAND / BUILD / PRACTISE */
+        .fits-together {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .fits-together .container {
+            max-width: 1100px;
+        }
+
+        .fits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+            align-items: stretch;
+        }
+
+        .fits-item {
+            display: flex;
+            flex-direction: column;
+            border-radius: var(--radius-lg);
+            padding: 32px 30px;
+            text-decoration: none;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+        }
+
+        .fits-item-light {
+            background: var(--color-white);
+            border: 2px solid rgba(31,60,136,0.14);
+            box-shadow: var(--shadow-card);
+        }
+
+        .fits-item-dark {
+            background: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            box-shadow: 6px 6px 0 0 var(--color-gold);
+        }
+
+        .fits-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .fits-item-dark:hover {
+            box-shadow: 8px 8px 0 0 var(--color-gold);
+        }
+
+        .fits-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .fits-label span:first-child {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-ink-soft);
+            white-space: nowrap;
+        }
+
+        .fits-item-dark .fits-label span:first-child {
+            color: var(--color-gold);
+        }
+
+        .fits-label-line {
+            flex: 1;
+            height: 2px;
+            background: rgba(31,60,136,0.18);
+        }
+
+        .fits-item-dark .fits-label-line {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .fits-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+            line-height: 1.25;
+        }
+
+        .fits-item-dark h3 {
+            color: var(--color-white);
+        }
+
+        .fits-item p {
+            font-size: 16.5px;
+            line-height: 1.7;
+            color: var(--color-ink-soft);
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+
+        .fits-item-dark p {
+            color: rgba(255,255,255,0.88);
+        }
+
+        .fits-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 18px;
+            border-top: 2px dashed rgba(31,60,136,0.2);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--color-primary);
+        }
+
+        .fits-item-dark .fits-footer {
+            border-top-color: rgba(255,255,255,0.25);
+            color: var(--color-white);
+        }
+
+        .fits-arrow {
+            transition: transform 0.2s var(--ease);
+        }
+
+        .fits-item:hover .fits-arrow {
+            transform: translateX(4px);
+        }
+
+        .fits-note {
+            text-align: center;
+            max-width: 760px;
+            margin: 36px auto 0;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--color-ink-soft);
+        }
+
+        .fits-note strong {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 900px) {
+            .fits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fits-item {
+                padding: 26px 22px;
+            }
+
+            .fits-item h3 {
+                font-size: 20px;
+            }
+
+            .fits-item p {
                 font-size: 15px;
             }
         }
@@ -538,6 +698,75 @@
                     </span>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- HOW IT FITS TOGETHER - UNDERSTAND / BUILD / PRACTISE -->
+    <!-- ============================================================ -->
+    <section class="fits-together section-fullscreen" style="padding:0;">
+        <div class="container" style="display:flex;flex-direction:column;justify-content:center;padding:44px 24px;">
+
+            <div class="section-header reveal" style="margin-bottom:20px;">
+                <span class="section-tag">☀️ How it fits together</span>
+                <h2 style="font-size:clamp(2rem, 3.6vw, 2.8rem);">
+                    <span style="color:var(--color-primary);">Understand</span> →
+                    <span style="color:var(--color-primary);">Build</span> →
+                    <span style="color:var(--color-teal-dark);">Practise</span>
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="fits-grid reveal">
+
+                <!-- UNDERSTAND -->
+                <a class="fits-item fits-item-light" href="#doors">
+                    <div class="fits-label">
+                        <span>Understand</span>
+                        <span class="fits-label-line"></span>
+                    </div>
+                    <h3>The Learning Profile</h3>
+                    <p>We work out how your child learns and what's actually getting in the way. You get it in writing, with specific things to do at home and at school.</p>
+                    <div class="fits-footer">
+                        <span>[X] weeks · from [RM X,XXX]</span>
+                        <span class="fits-arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- BUILD -->
+                <a class="fits-item fits-item-dark" href="#doors">
+                    <div class="fits-label">
+                        <span>Build</span>
+                        <span class="fits-label-line"></span>
+                    </div>
+                    <h3>Individual Support</h3>
+                    <p>One to one, on the specific skills the profile identified — emotional regulation, attention and planning, communication, confidence. Goals agreed with you, reviewed every [4–6] sessions, and designed to finish.</p>
+                    <div class="fits-footer">
+                        <span>[Weekly] · [RM XXX] a session</span>
+                        <span class="fits-arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- PRACTISE -->
+                <a class="fits-item fits-item-light" href="#weekend-clubs">
+                    <div class="fits-label">
+                        <span>Practise</span>
+                        <span class="fits-label-line"></span>
+                    </div>
+                    <h3>Clubs</h3>
+                    <p>Small groups where those skills get used with other children, in real situations rather than with an adult. Eight weeks, once a week.</p>
+                    <div class="fits-footer">
+                        <span>8 weeks · [RM XXX]</span>
+                        <span class="fits-arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <p class="fits-note reveal">
+                <strong>Not everyone does all three.</strong> Some families take the profile and go. Some children come straight into a club. Some do a term of one-to-one and never need a group. We'll tell you which one you need — including if the answer is none of them.
+            </p>
+
         </div>
     </section>
 
