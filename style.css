@@ -5443,10 +5443,9 @@ body.home-page-locked {
 .reveal-stagger:nth-child(4) { transition-delay: 0.35s; }
 .reveal-stagger:nth-child(5) { transition-delay: 0.45s; }
 .reveal-stagger:nth-child(6) { transition-delay: 0.55s; }
+
 /* ============================================================
-   CLUB SUB-PAGES (Social & Emotions / Ready to Learn / Ready for Life)
-   Shared markup across the three club pages, themed per page via the
-   --club-accent custom property set inline on <body>.
+   CLUB SUB-PAGES
    ============================================================ */
 
 .club-hero-badges {
@@ -5454,7 +5453,7 @@ body.home-page-locked {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-top: 22px;
+    margin-top: 24px;
 }
 
 .club-badge-pill {

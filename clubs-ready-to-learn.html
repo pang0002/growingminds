@@ -22,103 +22,192 @@
 
     <header></header>
 
-    <section class="page-hero">
+    <!-- HERO SECTION WITH FLOATING BLOBS & INSIGHT CARD -->
+    <section class="hero">
         <div class="blob blob-gold"></div>
         <div class="blob blob-teal"></div>
-        <div class="container reveal">
-            <span class="eyebrow">Confident</span>
-            <h1>Ready to Learn Club</h1>
-            <p>Start it. Stick with it. Finish it.</p>
-            <div class="club-hero-badges">
-                <span class="club-badge-pill">👥 Ages [5–7] &amp; [8–10]</span>
-                <span class="club-badge-pill">📅 8 weeks</span>
-                <span class="club-badge-pill">🕐 [day, time]</span>
-                <span class="club-badge-pill">💳 [RM XXX]</span>
-                <span class="club-badge-pill">🔒 8 children max</span>
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <span class="eyebrow">Confident</span>
+                <h1 class="hero-tagline-main">Ready to Learn Club</h1>
+                <p class="hero-tagline-description">Start it. Stick with it. Finish it.</p>
+                <div class="club-hero-badges" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
+                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">👥 Ages [5–7] &amp; [8–10]</span>
+                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">📅 8 weeks</span>
+                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">🕐 [day, time]</span>
+                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">💳 [RM XXX]</span>
+                    <span class="section-tag" style="background: var(--color-gold); border-color: var(--color-primary); color: var(--color-primary);">🔒 8 children max</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">Reserve a Spot →</a>
+                </div>
+            </div>
+
+            <!-- INSIGHT STACK CARD LIKE INDEX HERO -->
+            <div class="hero-visual reveal-right">
+                <div class="hero-insight-card glow-on-hover">
+                    <div class="hero-insight-tier">
+                        <span class="hero-insight-label">The Problem</span>
+                        <p class="hero-insight-line">"He's bright, but he just won't start or finish."</p>
+                    </div>
+                    <div class="hero-insight-tier hero-insight-tier--mid">
+                        <span class="hero-insight-label">The Reality</span>
+                        <p class="hero-insight-line">It's not about trying harder—it's execution skills school rarely teaches.</p>
+                    </div>
+                    <div class="hero-insight-tier hero-insight-tier--reveal">
+                        <span class="hero-insight-label">Our Approach</span>
+                        <p class="hero-insight-line hero-insight-line--bold">We teach focus using Lego, cardboard, cooking &amp; stopwatches.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section-white-bg" style="padding:50px 0 20px;">
+    <!-- INTERACTIVE "IS THIS THE RIGHT FIT?" FLIP CARDS -->
+    <section class="brand-position" style="padding: 60px 0;">
+        <div class="blob blob-purple"></div>
         <div class="container">
-            <p class="reveal club-hook">
-                You've heard it from the teacher and you've seen it at the kitchen table. He's bright. He's just not getting it done. That's almost never about trying harder — it's a set of skills school assumes children already have and mostly doesn't teach. We teach them, with Lego, cardboard, cooking and a stopwatch, because that's how they stick.
-            </p>
-        </div>
-    </section>
-
-    <!-- COME IF YOUR CHILD -->
-    <section class="section-sage-bg" style="padding:50px 0;">
-        <div class="container">
-            <div class="club-section-head reveal">
+            <div class="section-header reveal">
                 <span class="section-tag">Is this the right fit?</span>
                 <h2>Come if your child…</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="club-checklist">
-                <div class="club-check-item reveal-stagger"><span class="club-check-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Is bright, and can't get started</p></div>
-                <div class="club-check-item reveal-stagger"><span class="club-check-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Forgets the instruction about thirty seconds after you give it</p></div>
-                <div class="club-check-item reveal-stagger"><span class="club-check-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Loses things constantly</p></div>
-                <div class="club-check-item reveal-stagger"><span class="club-check-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Gives up the moment it gets hard</p></div>
-                <div class="club-check-item reveal-stagger" style="grid-column:1 / -1;"><span class="club-check-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Starts everything and finishes very little</p></div>
+
+            <div class="signal-cards-grid">
+                <!-- Card 1 -->
+                <div class="assessment-card signal-card reveal-stagger">
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-label-see">Sign #1</span>
+                                <h3 style="margin-top: 10px; font-size: 20px;">Is bright, but can't get started</h3>
+                            </div>
+                            <span class="signal-tag">Focus &amp; Activation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="assessment-card signal-card reveal-stagger">
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-label-see">Sign #2</span>
+                                <h3 style="margin-top: 10px; font-size: 20px;">Forgets instructions within 30 seconds</h3>
+                            </div>
+                            <span class="signal-tag">Working Memory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="assessment-card signal-card reveal-stagger">
+                    <div class="signal-card-inner">
+                        <div class="signal-card-face signal-card-front">
+                            <div>
+                                <span class="signal-label-see">Sign #3</span>
+                                <h3 style="margin-top: 10px; font-size: 20px;">Loses things constantly &amp; gives up easily</h3>
+                            </div>
+                            <span class="signal-tag">Organization &amp; Persistence</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- EIGHT THINGS TO PRACTISE -->
-    <section class="section-white-bg" style="padding:50px 0;">
+    <!-- 8-WEEK ARC: INDEX PROCESS TIMELINE STYLE -->
+    <section class="process-section">
+        <div class="blob blob-gold"></div>
         <div class="container">
-            <div class="club-section-head reveal">
-                <span class="section-tag">The eight-week arc</span>
+            <div class="section-header reveal">
+                <span class="section-tag">The Eight-Week Arc</span>
                 <h2>Eight weeks, eight things to practise</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="club-practise-grid">
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">1</span><p>Holding two steps, then three</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">2</span><p>Making a plan before touching anything</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">3</span><p>Starting without being told</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">4</span><p>Staying with something genuinely boring</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">5</span><p>Catching your own mistake</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">6</span><p>Knowing where your stuff is</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">7</span><p>Working out how long something will take</p></div>
-                <div class="club-practise-chip reveal-stagger"><span class="practise-icon" aria-hidden="true"></span><span class="num">8</span><p>Finishing</p></div>
+
+            <div class="process-cards">
+                <div class="process-card-mini bg-sage reveal-stagger">
+                    <span class="pcm-number">01</span>
+                    <p>Holding two steps, then three</p>
+                </div>
+                <div class="process-card-mini bg-lavender reveal-stagger">
+                    <span class="pcm-number">02</span>
+                    <p>Making a plan before touching anything</p>
+                </div>
+                <div class="process-card-mini bg-sage reveal-stagger">
+                    <span class="pcm-number">03</span>
+                    <p>Starting without being told</p>
+                </div>
+                <div class="process-card-mini bg-lavender reveal-stagger">
+                    <span class="pcm-number">04</span>
+                    <p>Staying with something genuinely boring</p>
+                </div>
+                <div class="process-card-mini bg-sage reveal-stagger">
+                    <span class="pcm-number">05</span>
+                    <p>Catching your own mistake</p>
+                </div>
+            </div>
+
+            <div class="process-cards" style="margin-top: 20px; justify-content: center;">
+                <div class="process-card-mini bg-lavender reveal-stagger">
+                    <span class="pcm-number">06</span>
+                    <p>Knowing where your stuff is</p>
+                </div>
+                <div class="process-card-mini bg-sage reveal-stagger">
+                    <span class="pcm-number">07</span>
+                    <p>Working out how long something takes</p>
+                </div>
+                <div class="process-card-mini bg-lavender reveal-stagger">
+                    <span class="pcm-number">08</span>
+                    <p>Finishing</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- WHAT IT LOOKS LIKE -->
-    <section class="section-sage-bg" style="padding:50px 0;">
+    <!-- TYPICAL SESSION & QUOTE -->
+    <section class="services-overview">
         <div class="container">
-            <div class="club-section-head reveal">
-                <span class="section-tag">A typical session</span>
+            <div class="section-header reveal">
+                <span class="section-tag">A Typical Session</span>
                 <h2>What it looks like on a Wednesday</h2>
             </div>
-            <div class="club-example-list">
-                <div class="club-example-item reveal-stagger"><span class="club-example-dot"></span><p>A build with a written brief and a deadline.</p></div>
-                <div class="club-example-item reveal-stagger"><span class="club-example-dot"></span><p>A recipe with steps deliberately out of order.</p></div>
-                <div class="club-example-item reveal-stagger"><span class="club-example-dot"></span><p>A task where we hand out the instructions once, out loud, and don't repeat them.</p></div>
-                <div class="club-example-item reveal-stagger"><span class="club-example-dot"></span><p>A challenge designed to go wrong in week five so everyone gets to practise starting again.</p></div>
+
+            <div class="quotes-grid reveal">
+                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-teal);">
+                    <p>A build with a written brief and a deadline.</p>
+                </div>
+                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-gold);">
+                    <p>A recipe with steps deliberately out of order.</p>
+                </div>
+                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-accent);">
+                    <p>Tasks with instructions given once out loud, without repeating.</p>
+                </div>
+            </div>
+
+            <!-- QUOTE BANNER -->
+            <div style="margin-top: 60px; text-align: center;" class="reveal">
+                <div class="hero-insight-card" style="margin: 0 auto; max-width: 650px;">
+                    <div class="hero-insight-tier hero-insight-tier--reveal">
+                        <span class="hero-insight-label">What you might notice at home</span>
+                        <p class="hero-insight-line hero-insight-line--bold">"Homework that starts without a negotiation."</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- WHAT YOU MIGHT NOTICE AT HOME -->
-    <section class="section-white-bg" style="padding:60px 0;">
-        <div class="container">
-            <div class="club-pullquote reveal">
-                <span class="eyebrow-quote">What you might notice at home</span>
-                <blockquote>Homework that starts without a negotiation.</blockquote>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
+    <!-- CALL TO ACTION -->
+    <section class="cta-section" style="padding: 80px 0; position: relative; text-align: center;">
         <div class="blob blob-teal"></div>
         <div class="blob blob-gold"></div>
         <div class="container cta-container reveal">
             <h2>Ready to sign up?</h2>
-            <p>We'll tell you honestly whether this is the right club.</p>
-            <div class="cta-buttons">
+            <p style="margin-bottom: 24px; color: var(--color-ink-soft);">We'll tell you honestly whether this is the right club.</p>
+            <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center;">
                 <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">WhatsApp Us →</a>
-                <a href="index.html#weekend-clubs" class="btn btn-outline-light">See All Clubs</a>
+                <a href="index.html#weekend-clubs" class="btn btn-outline">See All Clubs</a>
             </div>
         </div>
     </section>
@@ -126,6 +215,5 @@
     <footer></footer>
 
     <script src="include.js?v=15"></script>
-
 </body>
 </html>
