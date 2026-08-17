@@ -3,107 +3,120 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social &amp; Emotional Connections Club | Kuala Lumpur | Growing Minds</title>
-    <meta name="description" content="Social & Emotional Connections Club: building emotional regulation, friendship dynamics, and self-advocacy in Kuala Lumpur." />
-    <link rel="canonical" href="https://growingminds.com.my/clubs-social-emotions.html" />
-    <link rel="stylesheet" href="style.css?v=15" />
+    <title>Social &amp; Emotional Connections Club | Growing Minds</title>
+    <link rel="stylesheet" href="style.css?v=16" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMF1GKD90H"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BMF1GKD90H');
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
 </head>
-<body style="--club-accent: var(--color-purple);">
+<body style="--club-accent: var(--color-accent);">
 
     <header></header>
 
-    <!-- HERO SECTION WITH BLOBS & INSIGHT CARD -->
-    <section class="hero">
-        <div class="blob blob-purple"></div>
-        <div class="blob blob-teal"></div>
-        <div class="container hero-container">
-            <div class="hero-content reveal">
-                <span class="eyebrow">Connected</span>
-                <h1 class="hero-tagline-main">Social &amp; Emotional Connections</h1>
-                <p class="hero-tagline-description">Understand feelings. Build friendships. Advocate for self.</p>
-                <div class="club-hero-badges" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">👥 Ages [6–8] &amp; [9–12]</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">📅 8 weeks</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">🕐 [day, time]</span>
-                    <span class="section-tag" style="background: var(--color-sage); border-color: var(--color-teal-dark); color: var(--color-teal-dark);">💳 [RM XXX]</span>
-                    <span class="section-tag" style="background: var(--color-gold); border-color: var(--color-primary); color: var(--color-primary);">🔒 8 children max</span>
+    <main class="container">
+        <!-- NEW REDESIGNED CLUB HERO -->
+        <section class="club-hero-grid">
+            <div class="hero-content">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                    <span class="eyebrow" style="margin:0;">✨ Connected</span>
+                    <span class="club-spot-tag">🔒 Max 8 Children</span>
                 </div>
+
+                <h1 class="hero-tagline-main" style="font-size: 42px; line-height: 1.15; margin-bottom: 16px;">
+                    Social &amp; Emotional Connections
+                </h1>
+                
+                <p class="hero-tagline-description" style="font-size: 18px; color: var(--color-ink-soft);">
+                    Understand feelings. Build friendships. Advocate for self.
+                </p>
+
+                <!-- CONSOLIDATED META BAR (Replaces scattered pills) -->
+                <div class="club-meta-bar">
+                    <div class="club-meta-item">
+                        <span>👥 Ages [6–8] &amp; [9–12]</span>
+                    </div>
+                    <span class="club-meta-divider"></span>
+                    <div class="club-meta-item">
+                        <span>📅 8 Weeks</span>
+                    </div>
+                    <span class="club-meta-divider"></span>
+                    <div class="club-meta-item">
+                        <span>🕐 [Day, Time]</span>
+                    </div>
+                    <span class="club-meta-divider"></span>
+                    <div class="club-meta-item">
+                        <span>💳 [RM XXX]</span>
+                    </div>
+                </div>
+
                 <div class="hero-buttons">
-                    <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">Reserve a Spot →</a>
+                    <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">
+                        Reserve a Spot →
+                    </a>
                 </div>
             </div>
 
-            <!-- INSIGHT STACK CARD -->
-            <div class="hero-visual reveal-right">
-                <div class="hero-insight-card glow-on-hover">
-                    <div class="hero-insight-tier">
-                        <span class="hero-insight-label">The Challenge</span>
-                        <p class="hero-insight-line">"Struggles with big feelings, social cues, or standing up for themselves."</p>
+            <!-- CLEANER, MODERNIZED INSIGHT CARD -->
+            <div class="hero-visual">
+                <div class="club-insight-card">
+                    <div class="club-insight-block">
+                        <span class="club-insight-label">The Challenge</span>
+                        <p class="club-insight-text">"Struggles with big feelings, reading social cues, or standing up for themselves."</p>
                     </div>
-                    <div class="hero-insight-tier hero-insight-tier--mid">
-                        <span class="hero-insight-label">The Reality</span>
-                        <p class="hero-insight-line">Social awareness and self-regulation require safe, structured practice.</p>
+
+                    <div class="club-insight-block">
+                        <span class="club-insight-label">The Reality</span>
+                        <p class="club-insight-text">Social awareness and emotional self-regulation require safe, structured practice.</p>
                     </div>
-                    <div class="hero-insight-tier hero-insight-tier--reveal">
-                        <span class="hero-insight-label">Our Approach</span>
-                        <p class="hero-insight-line hero-insight-line--bold">Guided roleplay, collaborative games, and real-time reflection.</p>
+
+                    <div class="club-insight-block highlight">
+                        <span class="club-insight-label">Our Approach</span>
+                        <p class="club-insight-text">Guided roleplay, collaborative games, and real-time coaching.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- ASSESSMENT CARDS -->
+    <!-- IS THIS THE RIGHT FIT? SECTION -->
     <section class="brand-position" style="padding: 60px 0;">
-        <div class="blob blob-gold"></div>
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Is this the right fit?</span>
-                <h2>Come if your child…</h2>
+            <div class="section-header reveal" style="text-align: center;">
+                <span class="section-tag">Is This The Right Fit?</span>
+                <h2 style="font-size: 32px; margin-top: 8px;">Come if your child…</h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="signal-cards-grid">
-                <div class="assessment-card signal-card reveal-stagger">
+                <div class="assessment-card signal-card">
                     <div class="signal-card-inner">
                         <div class="signal-card-face signal-card-front">
                             <div>
                                 <span class="signal-label-see">Sign #1</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Finds it hard to navigate group dynamics</h3>
+                                <h3 style="margin-top: 10px; font-size: 18px; color: var(--color-primary);">Finds it hard to navigate group dynamics</h3>
                             </div>
                             <span class="signal-tag">Social Nuance</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="assessment-card signal-card reveal-stagger">
+                <div class="assessment-card signal-card">
                     <div class="signal-card-inner">
                         <div class="signal-card-face signal-card-front">
                             <div>
                                 <span class="signal-label-see">Sign #2</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Gets overwhelmed by strong emotions</h3>
+                                <h3 style="margin-top: 10px; font-size: 18px; color: var(--color-primary);">Gets overwhelmed by strong emotions</h3>
                             </div>
                             <span class="signal-tag">Self-Regulation</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="assessment-card signal-card reveal-stagger">
+                <div class="assessment-card signal-card">
                     <div class="signal-card-inner">
                         <div class="signal-card-face signal-card-front">
                             <div>
                                 <span class="signal-label-see">Sign #3</span>
-                                <h3 style="margin-top: 10px; font-size: 20px;">Struggles to express needs appropriately</h3>
+                                <h3 style="margin-top: 10px; font-size: 18px; color: var(--color-primary);">Struggles to express needs appropriately</h3>
                             </div>
                             <span class="signal-tag">Self-Advocacy</span>
                         </div>
@@ -113,103 +126,7 @@
         </div>
     </section>
 
-    <!-- 8-WEEK ARC -->
-    <section class="process-section">
-        <div class="blob blob-purple"></div>
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">The Eight-Week Arc</span>
-                <h2>Eight weeks, eight relational milestones</h2>
-                <div class="section-divider"></div>
-            </div>
-
-            <div class="process-cards">
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">01</span>
-                    <p>Identifying emotional triggers early</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">02</span>
-                    <p>Reading subtle social signals</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">03</span>
-                    <p>Expressing boundaries calmly</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">04</span>
-                    <p>Active listening &amp; turn-taking</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">05</span>
-                    <p>Repairing small peer misunderstandings</p>
-                </div>
-            </div>
-
-            <div class="process-cards" style="margin-top: 20px; justify-content: center;">
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">06</span>
-                    <p>Coping with unfairness or losing</p>
-                </div>
-                <div class="process-card-mini bg-sage reveal-stagger">
-                    <span class="pcm-number">07</span>
-                    <p>Asking for support confidently</p>
-                </div>
-                <div class="process-card-mini bg-lavender reveal-stagger">
-                    <span class="pcm-number">08</span>
-                    <p>Building meaningful team trust</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TYPICAL SESSION & QUOTE -->
-    <section class="services-overview">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">A Typical Session</span>
-                <h2>What it looks like in practice</h2>
-            </div>
-
-            <div class="quotes-grid reveal">
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-purple);">
-                    <p>Collaborative team games designed to build joint strategies.</p>
-                </div>
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-gold);">
-                    <p>Guided perspective-taking activities in low-stakes scenarios.</p>
-                </div>
-                <div class="quote-card glow-on-hover" style="--quote-accent: var(--color-teal);">
-                    <p>Real-time coaching during moments of frustration or disagreement.</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 60px; text-align: center;" class="reveal">
-                <div class="hero-insight-card" style="margin: 0 auto; max-width: 650px;">
-                    <div class="hero-insight-tier hero-insight-tier--reveal">
-                        <span class="hero-insight-label">What you might notice at home</span>
-                        <p class="hero-insight-line hero-insight-line--bold">"Easier resolution of sibling conflicts and calmer responses to frustration."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION -->
-    <section class="cta-section" style="padding: 80px 0; position: relative; text-align: center;">
-        <div class="blob blob-purple"></div>
-        <div class="blob blob-teal"></div>
-        <div class="container cta-container reveal">
-            <h2>Ready to sign up?</h2>
-            <p style="margin-bottom: 24px; color: var(--color-ink-soft);">We'll tell you honestly whether this is the right club.</p>
-            <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center;">
-                <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">WhatsApp Us →</a>
-                <a href="index.html#weekend-clubs" class="btn btn-outline">See All Clubs</a>
-            </div>
-        </div>
-    </section>
-
     <footer></footer>
-
-    <script src="include.js?v=15"></script>
+    <script src="include.js?v=16"></script>
 </body>
 </html>
