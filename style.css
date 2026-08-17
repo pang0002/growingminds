@@ -5252,10 +5252,8 @@ footer {
 
 /* Apply only to the homepage when .home-page class is on body */
 .home-page .section-fullscreen {
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: auto;
+    min-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5447,10 +5445,8 @@ body.home-page-locked {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .home-page .section-fullscreen {
-        height: 100vh;
-        height: 100dvh;
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: auto;
+        min-height: 0;
         padding: 0;
         align-items: center;
     }
@@ -5479,15 +5475,14 @@ body.home-page-locked {
     }
 
     /* home-page-flow: applied by include.js on mobile viewports instead
-       of the desktop swipe/scroll-snap experience. Sections must NOT be
-       locked to exactly one screen height with hidden overflow here,
-       or any section whose content runs longer than one phone screen
-       (grids, testimonials, footer notes, etc.) gets silently cut off
-       with no way to reach the rest of it. */
+       of the desktop swipe/scroll-snap experience. Sections size to
+       their own content here too — no min-height floor — so short
+       sections don't carry large empty margins, matching the desktop
+       fix. overflow stays visible so nothing gets clipped regardless
+       of how tall a section's content runs. */
     .home-page.home-page-flow .section-fullscreen {
         height: auto;
-        min-height: 100vh;
-        min-height: 100dvh;
+        min-height: 0;
         overflow: visible;
         align-items: center;
         padding: 48px 0;
