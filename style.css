@@ -406,16 +406,15 @@ header.is-scrolled::after {
     position: relative;
     width: 100%;
     padding: 0 48px;
-    max-width: 1320px;
+    max-width: 1560px;
     margin: 0 auto;
-    gap: 20px;
+    gap: 48px;
 }
 
 .logo {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    margin-right: auto;
 }
 
 .logo a {
@@ -561,6 +560,7 @@ header.is-scrolled .logo-tagline {
 #site-nav {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 #site-nav ul {
@@ -570,10 +570,12 @@ header.is-scrolled .logo-tagline {
     gap: 10px;
     margin: 0;
     padding: 0;
+    flex-wrap: nowrap;
 }
 
 #site-nav li {
     position: relative;
+    flex-shrink: 0;
 }
 
 #site-nav a {
@@ -588,6 +590,7 @@ header.is-scrolled .logo-tagline {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
 }
 
 /* Enhanced link underline animation */
@@ -742,6 +745,7 @@ header.is-scrolled .logo-tagline {
     gap: 8px;
     margin-left: 6px;
     box-shadow: 0 3px 0 0 var(--color-primary);
+    white-space: nowrap;
 }
 
 .btn-nav:hover {
@@ -4227,6 +4231,28 @@ footer {
    RESPONSIVE HEADER
    ============================================================ */
 
+/* Desktop - laptop widths: trim horizontal breathing room so the
+   full-size nav still fits on one line before the bigger 1200px
+   breakpoint kicks in and shrinks font sizes */
+@media (max-width: 1450px) {
+    .header-container {
+        padding: 0 32px;
+        gap: 28px;
+    }
+
+    #site-nav ul {
+        gap: 6px;
+    }
+
+    #site-nav a {
+        padding: 12px 14px;
+    }
+
+    #site-nav a.btn-nav {
+        padding: 15px 28px;
+    }
+}
+
 /* Desktop - Large screens */
 @media (max-width: 1200px) {
     .header-container {
@@ -4271,7 +4297,7 @@ footer {
         font-size: 13px;
     }
     
-    .btn-nav {
+    #site-nav a.btn-nav {
         padding: 10px 20px;
         font-size: 12px;
     }
@@ -4409,7 +4435,7 @@ footer {
         background: rgba(44, 181, 165, 0.12);
     }
 
-    #site-nav .btn-nav {
+    #site-nav a.btn-nav {
         margin-top: 12px;
         padding: 16px 32px;
         font-size: 16px;
@@ -4613,7 +4639,7 @@ footer {
         padding: 12px 14px;
     }
 
-    #site-nav .btn-nav {
+    #site-nav a.btn-nav {
         padding: 14px 24px;
         font-size: 14px;
     }
