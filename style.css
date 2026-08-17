@@ -2852,7 +2852,7 @@ header.is-scrolled::after {
 }
 
 .who-we-work .container {
-    max-width: 960px;
+    max-width: 1100px;
 }
 
 .who-grid {
@@ -2860,6 +2860,7 @@ header.is-scrolled::after {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-top: 40px;
+    width: 100%;
 }
 
 .who-item {
@@ -2869,13 +2870,13 @@ header.is-scrolled::after {
     box-shadow: var(--shadow-card);
     border-top: 6px solid var(--color-teal);
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    display: flex;
+    flex-direction: column;
 }
 
 .who-item:last-child {
-    grid-column: 1 / -1;
-    border-top-color: var(--color-gold);
+    border-top-color: var(--color-accent);
     background: var(--color-cream);
-    padding: 44px 48px;
 }
 
 .who-item:hover {
@@ -2902,11 +2903,6 @@ header.is-scrolled::after {
     margin-bottom: 0;
 }
 
-.who-item .who-highlight {
-    font-weight: 600;
-    color: var(--color-primary);
-}
-
 .who-item .age-highlight {
     color: var(--color-primary);
     font-weight: 700;
@@ -2921,15 +2917,7 @@ header.is-scrolled::after {
         margin-top: 28px;
     }
 
-    .who-item:last-child {
-        grid-column: auto;
-    }
-
     .who-item {
-        padding: 32px 28px;
-    }
-
-    .who-item:last-child {
         padding: 32px 28px;
     }
 
@@ -2948,10 +2936,6 @@ header.is-scrolled::after {
 
 @media (max-width: 480px) {
     .who-item {
-        padding: 24px 20px;
-    }
-
-    .who-item:last-child {
         padding: 24px 20px;
     }
 
