@@ -3056,39 +3056,52 @@ header.is-scrolled .logo-tagline {
 
 .footer-socials {
     display: flex;
-    gap: 12px;
+    gap: 10px;
 }
 
-.footer-socials a {
-    font-size: 12px;
-    font-weight: 700;
+.footer-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(31, 60, 136, 0.08);
     color: var(--color-primary);
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.footer-socials a:hover {
-    opacity: 1;
+.footer-social-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
-/* Micro-Cards Container */
+.footer-social-icon:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Info Columns (plain, no card styling) */
 .footer-cards-container {
     display: flex;
-    gap: 16px;
+    gap: 40px;
     flex-grow: 1;
     justify-content: center;
 }
 
 .footer-card {
-    background: var(--color-white);
-    padding: 16px 20px;
-    border-radius: 8px;
-    border: 1px solid rgba(31, 60, 136, 0.08);
-    box-shadow: 0 2px 4px rgba(31, 60, 136, 0.03);
     display: flex;
     flex-direction: column;
-    min-width: 180px;
+    flex: 0 1 200px;
+    min-width: 0;
+    padding-left: 20px;
+    border-left: 2px solid rgba(31, 60, 136, 0.1);
+}
+
+.footer-card:first-child {
+    padding-left: 0;
+    border-left: none;
 }
 
 .footer-card-label {
@@ -3105,6 +3118,8 @@ header.is-scrolled .logo-tagline {
     font-weight: 600;
     color: var(--color-ink-soft);
     text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .footer-card-sub {
@@ -3182,6 +3197,12 @@ header.is-scrolled .logo-tagline {
 @media (max-width: 640px) {
     .footer-cards-container {
         flex-direction: column;
+        gap: 20px;
+    }
+    .footer-card,
+    .footer-card:first-child {
+        padding-left: 0;
+        border-left: none;
     }
     .footer-bottom-row {
         flex-direction: column-reverse;
