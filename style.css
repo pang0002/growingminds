@@ -3126,6 +3126,12 @@ header.is-scrolled .logo-tagline {
     overflow-wrap: anywhere;
     word-break: break-word;
     line-height: 1.45;
+    transition: color 0.2s ease;
+}
+
+.footer-card-value:hover,
+.footer-card-sub a:hover {
+    color: var(--color-primary);
 }
 
 .footer-card-sub {
@@ -3133,6 +3139,13 @@ header.is-scrolled .logo-tagline {
     color: var(--color-ink-soft);
     opacity: 0.75;
     margin-top: 5px;
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.footer-card-sub:hover {
+    color: var(--color-primary);
 }
 
 .footer-card-sub a {
