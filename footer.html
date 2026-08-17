@@ -1,76 +1,53 @@
-<footer>
-    <!-- Spacing overrides only — the base look (colours, fonts, layout)
-         still comes entirely from style.css. This just tightens values
-         that were making the footer feel oversized, especially the
-         160px-tall logo and the generous container padding/gaps,
-         without editing the shared stylesheet. -->
-    <style>
-        .footer-container {
-            padding-top: 36px;
-            padding-bottom: 36px;
-            gap: 32px;
-        }
-        .logo-img-footer {
-            height: 130px !important;
-        }
-        .footer-brand .brand-tagline {
-            margin-top: 2px;
-            font-size: 15px;
-        }
-        .footer-bottom {
-            padding: 14px 0;
-        }
-        @media (max-width: 576px) {
-            .footer-container {
-                padding-top: 28px;
-                padding-bottom: 24px;
-                gap: 22px;
-            }
-            .logo-img-footer {
-                height: 100px !important;
-            }
-            .footer-brand .brand-tagline {
-                font-size: 14px;
-            }
-        }
-    </style>
-    <div class="container footer-container">
-        <!-- Column 1: Brand -->
-        <div class="footer-brand">
-            <a href="index.html" class="footer-logo-link">
-                <img src="images/logo.png" alt="Growing Minds" class="logo-img-footer" />
-            </a>
-            <p class="brand-tagline">Building the skills behind learning</p>
+<footer class="site-footer-minimal">
+    <div class="container">
+        <div class="footer-action-strip">
+
+            <!-- Brand & Identity -->
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="images/logo.png" alt="Growing Minds" class="footer-logo-img" />
+                </a>
+                <p class="footer-tagline">Building the skills behind learning</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/growingminds.my?igsh=MW04MXpzb3J0dnJpMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a href="mailto:hallo.growingminds@gmail.com" aria-label="Email">EM</a>
+                    <a href="https://wa.me/60178913963" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+                </div>
+            </div>
+
+            <!-- Detail Micro-Cards -->
+            <div class="footer-cards-container">
+
+                <div class="footer-card">
+                    <span class="footer-card-label">Direct Contact</span>
+                    <a href="mailto:hallo.growingminds@gmail.com" class="footer-card-value">hallo.growingminds@gmail.com</a>
+                    <span class="footer-card-sub"><a href="tel:+60178913963">017-891 3963</a></span>
+                </div>
+
+                <div class="footer-card">
+                    <span class="footer-card-label">Studio Location</span>
+                    <span class="footer-card-value">Unit 3-6, Residensi Park, Persiaran Jalil Utama</span>
+                    <span class="footer-card-sub">Bukit Jalil, 57000 Kuala Lumpur</span>
+                </div>
+
+                <div class="footer-card">
+                    <span class="footer-card-label">Studio Hours</span>
+                    <span class="footer-card-value">Tue – Sat: 9am – 6pm</span>
+                    <span class="footer-card-sub">Closed Sun &amp; Mon</span>
+                </div>
+
+            </div>
+
+            <!-- Action Button -->
+            <div class="footer-action">
+                <a href="https://wa.me/60178913963" target="_blank" rel="noopener" class="btn-footer-cta">Chat on WhatsApp</a>
+            </div>
         </div>
 
-        <!-- Column 2: Navigation -->
-        <div class="footer-column">
-            <h4>Explore</h4>
-            <ul>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="schools.html">For Schools</a></li>
-                <li><a href="journal.html">Journal</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-
-        <!-- Column 3: Get in Touch -->
-        <div class="footer-column">
-            <h4>Get in Touch</h4>
-            <ul>
-                <li><a href="https://wa.me/60178913963" target="_blank">Chat on WhatsApp</a></li>
-                <li><a href="mailto:hallo.growingminds@gmail.com">Email Us</a></li>
-                <li><a href="contact.html#location">Our Location</a></li>
-                <li><a href="tel:+60178913963">+60 17-891 3963</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <div class="container footer-bottom-container">
-            <p>&copy; 2026 Growing Minds — Child Development &amp; Learning Studio. Led by an educational psychologist. Kuala Lumpur, Malaysia.</p>
-            <ul class="footer-legal">
+        <!-- Utility & Legal Bottom Strip -->
+        <div class="footer-bottom-row">
+            <p class="copyright">&copy; 2026 Growing Minds. All rights reserved.</p>
+            <ul class="footer-legal-links">
                 <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms of Service</a></li>
             </ul>

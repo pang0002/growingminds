@@ -3016,128 +3016,140 @@ header.is-scrolled .logo-tagline {
 }
 
 /* ----- FOOTER ----- */
-footer {
+.site-footer-minimal {
     background-color: var(--color-cream);
     color: var(--color-ink-soft);
-    padding-top: 0px; 
-    padding-bottom: 0px; 
     font-family: var(--font-body);
+    padding: 48px 0 24px;
     border-top: 2px solid rgba(31, 60, 136, 0.12);
 }
 
-.footer-container {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding-top: 50px;   
-    padding-bottom: 50px; 
-    align-items: start;
-}
-
-/* --- Brand & Logo Fix --- */
-.footer-brand {
+.footer-action-strip {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-}
-
-.footer-logo-link {
-    display: inline-block;
-    margin-bottom: 10px;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    line-height: 0;
-}
-
-.footer-logo-link:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-.logo-img-footer,
-.logo-img {
-    height: 160px !important; 
-    width: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-    border-radius: 10px;
-}
-
-.footer-brand .brand-tagline {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-top: 0px; /* Pulled the text closer to the logo */
-    line-height: 1.3;
-    max-width: 300px;
-    text-align: center;
-    text-wrap: balance; 
-}
-
-/* --- Standard Link Columns --- */
-.footer-column h4 {
-    color: var(--color-primary);
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    position: relative;
-    display: inline-block;
-}
-
-.footer-column h4::after {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 3px;
-    background: var(--color-gold);
-    margin-top: 6px;
-    border-radius: 2px;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column ul li {
-    margin-bottom: 12px;
-}
-
-.footer-column ul a {
-    font-size: 14.5px;
-    color: var(--color-ink-soft);
-    text-decoration: none;
-    display: inline-block;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.footer-column ul a:hover {
-    color: var(--color-teal-dark);
-    transform: translateX(4px);
-}
-
-/* --- Footer Bottom Bar ---
-   A solid ink-blue bookend, echoing the .cta-section treatment, so the
-   page has a clear, confident stopping point rather than fading out. */
-.footer-bottom {
-    padding: 18px 0;
-    background: var(--color-primary);
-    border-top: none;
-    font-size: 13px;
-    color: var(--color-muted-on-dark, rgba(247,243,236,0.75));
-}
-
-.footer-bottom-container {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+/* Brand Section */
+.footer-brand {
+    max-width: 240px;
+}
+
+.footer-logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-tagline {
+    font-size: 13.5px;
+    color: var(--color-ink-soft);
+    opacity: 0.8;
+    margin: 6px 0 12px;
+    line-height: 1.4;
+}
+
+.footer-socials {
+    display: flex;
     gap: 12px;
 }
 
-.footer-legal {
+.footer-socials a {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.footer-socials a:hover {
+    opacity: 1;
+}
+
+/* Micro-Cards Container */
+.footer-cards-container {
+    display: flex;
+    gap: 16px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.footer-card {
+    background: var(--color-white);
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(31, 60, 136, 0.08);
+    box-shadow: 0 2px 4px rgba(31, 60, 136, 0.03);
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.footer-card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.footer-card-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+}
+
+.footer-card-sub {
+    font-size: 12.5px;
+    color: var(--color-ink-soft);
+    opacity: 0.75;
+    margin-top: 2px;
+}
+
+.footer-card-sub a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* CTA Button */
+.btn-footer-cta {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.btn-footer-cta:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Bottom Utility Row */
+.footer-bottom-row {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color-ink-soft);
+    opacity: 0.75;
+}
+
+.footer-legal-links {
     display: flex;
     gap: 20px;
     list-style: none;
@@ -3145,33 +3157,36 @@ footer {
     padding: 0;
 }
 
-.footer-legal a {
-    color: var(--color-white);
+.footer-legal-links a {
+    color: inherit;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.footer-legal a:hover {
-    color: var(--color-gold);
+.footer-legal-links a:hover {
+    color: var(--color-primary);
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 992px) {
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-    }
-}
-
-@media (max-width: 576px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    .footer-bottom-container {
+/* Responsive Layout Adjustments */
+@media (max-width: 1024px) {
+    .footer-action-strip {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
+    }
+    .footer-cards-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-cards-container {
+        flex-direction: column;
+    }
+    .footer-bottom-row {
+        flex-direction: column-reverse;
+        gap: 12px;
+        align-items: flex-start;
     }
 }
 
@@ -4327,11 +4342,6 @@ footer {
 
     .hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
     .pathway-grid {
         grid-template-columns: 1fr;
     }
@@ -4533,11 +4543,6 @@ footer {
     .pillar-card:nth-child(3n+2) { margin-top: 0; }
 
     .why-grow blockquote { font-size: 21px; }
-
-    .footer-links {
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-    }
 
     .service-detail h2 { font-size: 24px; }
     .journey-list { grid-template-columns: 1fr; }
