@@ -5855,21 +5855,24 @@ body.home-page-locked {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 12px 20px;
-    background: rgba(255, 255, 255, 0.7);
+    gap: 10px 20px;
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(8px);
-    border: 1.5px solid var(--color-paper-deep);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(31, 60, 136, 0.08);
     border-radius: 16px;
-    padding: 12px 24px;
+    padding: 12px 28px;
     margin: 22px auto 6px;
     width: fit-content;
+    box-shadow: 0 4px 20px rgba(31, 60, 136, 0.06);
 }
 
 .club-meta-note {
     font-size: 13px;
     color: var(--color-ink-soft);
     text-align: center;
-    margin: 0 auto 24px;
+    margin: 6px auto 28px;
+    opacity: 0.8;
 }
 
 /* Simple, single-column club hero (no floating side card) */
@@ -5880,16 +5883,18 @@ body.home-page-locked {
     padding: 44px 0 50px;
 }
 
-.club-hero-simple .club-hero-top {
+.club-hero-simple .hero-top-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .club-hero-simple h1 {
-    font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+    font-size: clamp(2.2rem, 4.8vw, 3.2rem);
+    letter-spacing: -0.02em;
     line-height: 1.15;
     white-space: nowrap;
 }
@@ -5901,20 +5906,32 @@ body.home-page-locked {
 .club-hero-simple .hero-tagline-description {
     font-size: 19px;
 }
+
+.club-hero-simple .hero-tagline {
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    color: var(--color-teal-dark);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 22px 0;
+}
+
 .club-meta-item {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--color-primary);
+}
+.club-meta-item span {
+    white-space: nowrap;
 }
 .club-meta-divider {
     width: 4px;
     height: 4px;
     border-radius: 50%;
     background-color: var(--color-ink-soft);
-    opacity: 0.4;
+    opacity: 0.3;
 }
 .club-meta-icon {
     width: 16px;
@@ -5950,13 +5967,123 @@ body.home-page-locked {
     text-transform: uppercase;
     padding: 8px 20px;
     border-radius: 100px;
-    margin-bottom: 18px;
 }
 
 .club-vibe-badge svg {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+/* CTA panel — prompt line + button(s) inside a highlighted sage box */
+.club-hero-simple .hero-cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px 32px;
+    flex-wrap: wrap;
+    padding: 18px 28px;
+    background: var(--color-sage);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(44, 181, 165, 0.15);
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.club-hero-simple .hero-cta-text {
+    flex: 0 1 auto;
+}
+
+.club-hero-simple .hero-cta-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.club-hero-simple .hero-cta-prompt svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.club-hero-simple .hero-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.club-hero-simple .hero-cta-buttons .btn {
+    padding: 12px 28px;
+    font-size: 15px;
+}
+
+.club-hero-simple .hero-cta-buttons .btn-outline {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .club-hero-simple .hero-top-row { gap: 10px; }
+
+    .club-meta-bar {
+        padding: 10px 16px;
+        gap: 8px 14px;
+        width: 100%;
+        justify-content: center;
+        border-radius: 12px;
+    }
+
+    .club-meta-item { font-size: 12px; }
+    .club-meta-item span { white-space: normal; }
+    .club-meta-divider { display: none; }
+
+    .club-meta-note {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .club-hero-simple .hero-cta-group {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 20px;
+        gap: 16px;
+    }
+
+    .club-hero-simple .hero-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .club-hero-simple .hero-cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-hero-simple .hero-tagline { font-size: 1rem; }
+
+    .club-meta-bar {
+        padding: 8px 12px;
+        gap: 6px 10px;
+    }
+
+    .club-meta-item { font-size: 11px; gap: 4px; }
+    .club-meta-icon { width: 14px; height: 14px; }
+
+    .club-hero-simple .hero-cta-prompt { font-size: 14px; }
+
+    .club-hero-simple .hero-cta-buttons .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
 /* Streamlined Right-Side Insight Card */
 .club-insight-card {
