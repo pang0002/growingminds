@@ -7437,6 +7437,7 @@ body.home-page-locked {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 12px;
         padding-top: 20px;
         border-top: 2px dashed rgba(31,60,136,0.2);
         font-size: 15px;
@@ -7445,12 +7446,20 @@ body.home-page-locked {
         color: var(--color-primary);
     }
 
+    /* Keep the price/duration label on one line so the dashed divider
+       sits at the same height across all three cards, regardless of
+       how long the label text is */
+    .fits-footer span:first-child {
+        white-space: nowrap;
+    }
+
     .fits-item-dark .fits-footer {
         border-top-color: rgba(255,255,255,0.25);
         color: var(--color-white);
     }
 
     .fits-arrow {
+        flex-shrink: 0;
         transition: transform 0.2s var(--ease);
     }
 
