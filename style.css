@@ -1365,69 +1365,70 @@ header.is-scrolled #site-nav a.btn-nav {
     box-shadow: var(--shadow-hover);
 }
 
-/* ----- GOAL GROUPS (categorised "things to do" list) ----- */
-.goals-groups {
+/* ----- GOALS SECTION (2-column bulleted list, no card wrapper) ----- */
+.goals-card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+.goals-card-heading {
+    color: var(--color-primary);
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.goals-card-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 34px;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
 }
 
-.goals-group {
-    background: var(--color-white);
-    border-radius: var(--radius-md);
-    padding: 26px 26px 12px;
-    box-shadow: var(--shadow-card);
-    border-top: 4px solid var(--group-accent, var(--color-teal));
+.goals-card-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.16);
 }
 
-.goals-group-title {
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--group-accent, var(--color-teal));
-    margin: 0 0 14px;
+.goals-card-item--last {
+    border-bottom: none;
 }
 
-.goals-group-item {
-    padding: 13px 0;
-    border-bottom: 1px solid rgba(31, 60, 136, 0.1);
+.goals-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-teal-dark);
+    margin-top: 8px;
+    flex-shrink: 0;
 }
 
-.goals-group-item p {
+.goals-card-item p {
     margin: 0;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.5;
     color: var(--color-primary);
 }
 
-.goals-group-item p strong {
-    font-weight: 800;
+.goals-card-closing {
+    margin: 28px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
 }
 
-@media (max-width: 900px) {
-    .goals-groups {
+@media (max-width: 700px) {
+    .goals-card-list {
         grid-template-columns: 1fr;
-        gap: 24px;
     }
-}
-
-.goal-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-}
-
-@media (max-width: 900px) {
-    .goals-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .goals-card-item {
+        border-bottom: 1px solid rgba(31, 60, 136, 0.16) !important;
     }
-}
-
-@media (max-width: 560px) {
-    .goals-grid {
-        grid-template-columns: 1fr;
+    .goals-card-item--last:last-child {
+        border-bottom: none !important;
     }
 }
 
