@@ -288,13 +288,13 @@ em {
 
 .section-tag {
     display: inline-block;
-    background: none;
+    background: var(--color-gold);
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 15px;
-    padding-bottom: 10px;
-    border: none;
-    border-bottom: 3px solid var(--color-gold);
+    font-size: 13px;
+    padding: 5px 16px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     margin-bottom: 14px;
@@ -1365,32 +1365,53 @@ header.is-scrolled #site-nav a.btn-nav {
     box-shadow: var(--shadow-hover);
 }
 
-/* ----- GOAL CARDS ("things to do" variant of the quote card) ----- */
-.goals-grid {
+/* ----- GOAL GROUPS (categorised "things to do" list) ----- */
+.goals-groups {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
     margin-top: 34px;
+    align-items: start;
 }
 
-.goal-card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 128px;
+.goals-group {
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 28px 26px;
-    font-size: 19px;
-    line-height: 1.4;
-    font-weight: 700;
-    color: var(--color-primary);
+    padding: 26px 26px 12px;
     box-shadow: var(--shadow-card);
-    border-top: 4px solid var(--goal-accent, var(--color-teal));
-    cursor: default;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    border-top: 4px solid var(--group-accent, var(--color-teal));
+}
+
+.goals-group-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--group-accent, var(--color-teal));
+    margin: 0 0 14px;
+}
+
+.goals-group-item {
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.1);
+}
+
+.goals-group-item p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-primary);
+}
+
+.goals-group-item p strong {
+    font-weight: 800;
+}
+
+@media (max-width: 900px) {
+    .goals-groups {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
 }
 
 .goal-card:hover {
