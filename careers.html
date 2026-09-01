@@ -47,7 +47,7 @@
                     Fill in the form below and we'll get back to you within 5 working days.
                 </p>
 
-                <form id="careersForm" action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
+                <form id="careersForm" action="https://script.google.com/macros/s/AKfycbwPl8w65HMGYyNcEx_PZEB3MeZWYIaEVfzNuW6FUuKIJqaJxkxfgquK3y67tspQiSnT/exec" method="POST" enctype="multipart/form-data">
                     <!-- Row: Name + Email -->
                     <div class="form-row">
                         <div class="form-group">
@@ -180,28 +180,28 @@
 
                 const formData = new FormData(form);
 
-                // Send to Formspree (replace with your endpoint)
-                fetch('https://formspree.io/f/your-form-id', {
+                // Send to Google Apps Script Web App (saves resume to Drive, logs row to Sheet)
+                // NOTE: Apps Script web apps don't send CORS headers back to the browser,
+                // so we use mode: 'no-cors'. This means we can't actually read the response
+                // to confirm success/failure -- we optimistically show the success message
+                // once the request has been sent. Verify submissions are landing correctly
+                // in your Sheet during testing (see Step 6).
+                fetch('https://script.google.com/macros/s/AKfycbwPl8w65HMGYyNcEx_PZEB3MeZWYIaEVfzNuW6FUuKIJqaJxkxfgquK3y67tspQiSnT/exec', {
                     method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    mode: 'no-cors',
+                    body: formData
                 })
-                .then(function(response) {
-                    if (response.ok) {
-                        form.reset();
-                        successMsg.classList.add('show');
-                        // Hide success message after 8 seconds
-                        setTimeout(function() {
-                            successMsg.classList.remove('show');
-                        }, 8000);
-                        // Reset file upload label
-                        fileName.classList.remove('show');
-                        uploadText.classList.remove('hide');
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
+                .then(function() {
+                    // With no-cors we always land here (opaque response), so treat as success
+                    form.reset();
+                    successMsg.classList.add('show');
+                    // Hide success message after 8 seconds
+                    setTimeout(function() {
+                        successMsg.classList.remove('show');
+                    }, 8000);
+                    // Reset file upload label
+                    fileName.classList.remove('show');
+                    uploadText.classList.remove('hide');
                 })
                 .catch(function(error) {
                     alert('Oops! Something went wrong. Please try again or email us directly at hallo.growingminds@gmail.com');
