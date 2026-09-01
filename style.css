@@ -890,20 +890,20 @@ header.is-scrolled #site-nav a.btn-nav {
 .btn-primary {
     background: var(--color-primary);
     color: var(--color-white);
-    box-shadow: 0 3px 0 0 var(--color-primary-dark), 0 8px 20px rgba(27, 54, 133, 0.25);
+    box-shadow: 0 4px 12px rgba(27, 54, 133, 0.15);
 }
 
 .btn-primary:hover {
     background: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 0 0 var(--color-primary-dark), 0 12px 26px rgba(27, 54, 133, 0.35);
+    box-shadow: 0 6px 16px rgba(27, 54, 133, 0.22);
     filter: brightness(1.06);
 }
 
 .btn-primary:active {
     transform: translateY(1px);
-    box-shadow: 0 1px 0 0 var(--color-primary-dark), 0 4px 10px rgba(27, 54, 133, 0.25);
+    box-shadow: 0 2px 6px rgba(27, 54, 133, 0.15);
     filter: none;
 }
 
@@ -1159,6 +1159,18 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-bottom: 20px;
 }
 
+/* Match the primary + outline hero buttons into a matched pair: same
+   height and full pill radius, so neither reads as bigger/smaller. */
+.hero-buttons .btn {
+    height: 48px;
+    padding: 0 30px;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hero-location {
     font-size: 14px;
     font-weight: 600;
@@ -1249,11 +1261,9 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     text-align: center;
     min-height: 128px;
-    padding: 22px 34px 22px 18px;
+    padding: 26px 24px;
     border-radius: var(--radius-md);
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 16px;
     line-height: 1.3;
     color: var(--color-white);
     text-decoration: none;
@@ -1276,16 +1286,18 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .hero-quicklink span {
     display: block;
+    font-size: 19px;
+    font-weight: 700;
 }
 
 .hero-quicklink small {
     display: block;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.01em;
     opacity: 0.85;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .hero-quicklink:hover {
@@ -1312,8 +1324,13 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     .hero-quicklink {
         min-height: 104px;
-        padding: 16px 28px 16px 12px;
-        font-size: 14px;
+        padding: 18px 16px;
+    }
+    .hero-quicklink span {
+        font-size: 16px;
+    }
+    .hero-quicklink small {
+        font-size: 12px;
     }
     .hero-quicklink::after {
         top: 9px;
@@ -2965,6 +2982,16 @@ header.is-scrolled #site-nav a.btn-nav {
     flex-wrap: wrap;
 }
 
+.cta-buttons .btn {
+    height: 48px;
+    padding: 0 30px;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* The default .btn-primary is ink-blue, which nearly disappears against
    the ink-blue .cta-section background. Use the brighter sunflower
    treatment here instead so the CTA button stays visible site-wide. */
@@ -2972,18 +2999,18 @@ header.is-scrolled #site-nav a.btn-nav {
     background: var(--color-gold);
     color: var(--color-primary);
     border-color: var(--color-gold-dark);
-    box-shadow: 0 3px 0 0 var(--color-gold-dark), 0 8px 20px rgba(224, 172, 31, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
 .cta-section .btn-primary:hover {
     background: #ffd869;
     border-color: var(--color-gold-dark);
-    box-shadow: 0 5px 0 0 var(--color-gold-dark), 0 12px 26px rgba(224, 172, 31, 0.4);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
     filter: brightness(1.03);
 }
 
 .cta-section .btn-primary:active {
-    box-shadow: 0 1px 0 0 var(--color-gold-dark), 0 4px 10px rgba(224, 172, 31, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
     filter: none;
 }
 
