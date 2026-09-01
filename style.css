@@ -1248,7 +1248,7 @@ header.is-scrolled #site-nav a.btn-nav {
 /* ----- HERO QUICKLINKS (2x2 button grid) ----- */
 .hero-quicklinks {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 1fr;
     gap: 18px;
     max-width: 440px;
@@ -1262,7 +1262,7 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 158px;
+    min-height: 148px;
     padding: 26px 20px;
     border-radius: var(--radius-md);
     font-family: var(--font-display);
@@ -1279,6 +1279,8 @@ header.is-scrolled #site-nav a.btn-nav {
     display: block;
     font-size: 19px;
     font-weight: 700;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .hero-quicklink small {
@@ -1309,7 +1311,7 @@ header.is-scrolled #site-nav a.btn-nav {
         max-width: 360px;
     }
     .hero-quicklink {
-        height: 130px;
+        min-height: 120px;
         padding: 16px 14px;
     }
     .hero-quicklink span {
