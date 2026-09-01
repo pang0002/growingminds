@@ -288,13 +288,13 @@ em {
 
 .section-tag {
     display: inline-block;
-    background: var(--color-gold);
+    background: none;
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 13px;
-    padding: 5px 16px;
-    border: 2px solid var(--color-primary);
-    border-radius: 50px;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 3px solid var(--color-gold);
     text-transform: uppercase;
     letter-spacing: 0.6px;
     margin-bottom: 14px;
