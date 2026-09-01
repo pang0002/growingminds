@@ -7777,64 +7777,79 @@ body.home-page-locked {
     margin-top: 24px;
 }
 
-/* 3. Each item gets more breathing room + a coloured left marker */
+/* 3. Each item styled as a bullet point with icon top-right */
 .goals-card-item {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    padding: 18px 16px 18px 20px;
+    gap: 12px;
+    padding: 18px 16px 18px 0;
     margin: 0;
     border-bottom: 1px solid rgba(31, 60, 136, 0.08);
     border-radius: 0;
-    transition: background 0.2s var(--ease), padding-left 0.2s var(--ease);
+    transition: background 0.2s var(--ease);
     position: relative;
 }
 
-/* Coloured left marker (replaces the dot) */
+/* 4. Bullet point (replaces the coloured marker) */
 .goals-card-item::before {
-    content: "";
+    content: "•";
     position: absolute;
-    left: 0;
-    top: 20%;
-    bottom: 20%;
-    width: 4px;
-    border-radius: 4px;
-    background: var(--dot-color, var(--color-teal-dark));
-    transition: top 0.25s var(--ease), bottom 0.25s var(--ease);
+    left: -12px;
+    top: 18px;
+    font-size: 22px;
+    color: var(--dot-color, var(--color-teal-dark));
+    line-height: 1;
+    transition: transform 0.25s var(--ease);
 }
 
-/* On hover, the marker expands */
+/* Bullet scales slightly on hover */
 .goals-card-item:hover::before {
-    top: 10%;
-    bottom: 10%;
+    transform: scale(1.3);
 }
 
-/* 4. Replace the dot span with an icon */
+/* 5. Hide the old dot */
 .goals-dot {
-    display: none; /* hide the old dot */
+    display: none;
 }
 
-/* 5. New icon class — added to each item via HTML */
+/* 6. Icon — positioned top-right, enlarged */
 .goals-icon {
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    margin-top: 2px;
-    opacity: 0.8;
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    margin-top: 0;
+    opacity: 0.7;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    order: 1;
 }
 
-/* 6. Each item gets a subtle lift on hover */
-.goals-card-item:hover {
-    background: rgba(31, 60, 136, 0.03);
-    padding-left: 24px;
+/* Icon brightens and scales on hover */
+.goals-card-item:hover .goals-icon {
+    opacity: 1;
+    transform: scale(1.1) rotate(-4deg);
 }
 
-/* 7. Last row items: no border if they're in a 2-col layout */
+/* 7. Text takes remaining space, sits left of icon */
+.goals-card-item p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--color-primary);
+    flex: 1;
+    padding-right: 8px;
+}
+
+.goals-card-item p strong {
+    font-weight: 800;
+}
+
+/* 8. Last row items: no border if they're in a 2-col layout */
 .goals-card-item--last {
     border-bottom: none !important;
 }
 
-/* 8. Closing line — emphasised with divider + colour */
+/* 9. Closing line — emphasised with divider + colour */
 .goals-card-closing {
     margin: 32px 0 0;
     padding-top: 24px;
@@ -7847,7 +7862,7 @@ body.home-page-locked {
     letter-spacing: -0.01em;
 }
 
-/* 9. Add a subtle accent mark before the closing line */
+/* 10. Add a subtle accent mark before the closing line */
 .goals-card-closing::before {
     content: "✦";
     display: block;
@@ -7857,7 +7872,7 @@ body.home-page-locked {
     opacity: 0.6;
 }
 
-/* 10. Responsive: single column on smaller screens */
+/* 11. Responsive: single column on smaller screens */
 @media (max-width: 700px) {
     .goals-card-list {
         grid-template-columns: 1fr;
@@ -7865,7 +7880,13 @@ body.home-page-locked {
     }
 
     .goals-card-item {
-        padding: 16px 14px 16px 18px;
+        padding: 16px 14px 16px 16px;
+    }
+
+    .goals-card-item::before {
+        left: 0;
+        top: 16px;
+        font-size: 20px;
     }
 
     .goals-card-item--last:last-child {
@@ -7881,9 +7902,14 @@ body.home-page-locked {
         padding-top: 18px;
         margin-top: 20px;
     }
+
+    .goals-icon {
+        width: 30px;
+        height: 30px;
+    }
 }
 
-/* 11. Touch-up for the heading + divider */
+/* 12. Touch-up for the heading + divider */
 .goals-card-heading {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
 }
