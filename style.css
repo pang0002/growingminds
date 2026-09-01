@@ -1365,7 +1365,7 @@ header.is-scrolled #site-nav a.btn-nav {
     box-shadow: var(--shadow-hover);
 }
 
-/* ----- GOAL CARDS (numbered "things to do" variant of the quote card) ----- */
+/* ----- GOAL CARDS ("things to do" variant of the quote card) ----- */
 .goals-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1375,28 +1375,22 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .goal-card {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 128px;
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 28px 24px 24px;
-    font-size: 16.5px;
-    line-height: 1.5;
-    font-weight: 600;
+    padding: 28px 26px;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 700;
     color: var(--color-primary);
     box-shadow: var(--shadow-card);
     border-top: 4px solid var(--goal-accent, var(--color-teal));
     cursor: default;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-
-.goal-card-num {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    color: var(--goal-accent, var(--color-teal));
-    opacity: 0.7;
-    margin-bottom: 12px;
 }
 
 .goal-card:hover {
@@ -1923,6 +1917,12 @@ header.is-scrolled #site-nav a.btn-nav {
     background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
     border-radius: 4px;
     margin: 16px auto 0;
+}
+
+@media (min-width: 700px) {
+    .goals-heading {
+        white-space: nowrap;
+    }
 }
 
 /* ============================================================
