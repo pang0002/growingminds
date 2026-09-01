@@ -890,19 +890,21 @@ header.is-scrolled #site-nav a.btn-nav {
 .btn-primary {
     background: var(--color-primary);
     color: var(--color-white);
-    box-shadow: 0 3px 0 0 var(--color-primary-dark);
+    box-shadow: 0 3px 0 0 var(--color-primary-dark), 0 8px 20px rgba(27, 54, 133, 0.25);
 }
 
 .btn-primary:hover {
     background: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 0 0 var(--color-primary-dark);
+    box-shadow: 0 5px 0 0 var(--color-primary-dark), 0 12px 26px rgba(27, 54, 133, 0.35);
+    filter: brightness(1.06);
 }
 
 .btn-primary:active {
     transform: translateY(1px);
-    box-shadow: 0 1px 0 0 var(--color-primary-dark);
+    box-shadow: 0 1px 0 0 var(--color-primary-dark), 0 4px 10px rgba(27, 54, 133, 0.25);
+    filter: none;
 }
 
 .btn-secondary {
@@ -922,13 +924,15 @@ header.is-scrolled #site-nav a.btn-nav {
     background: transparent;
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
+    font-weight: 600;
 }
 
 .btn-outline:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: rgba(31, 60, 136, 0.05);
+    color: var(--color-primary);
+    border-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 0 0 var(--color-primary-dark);
+    box-shadow: 0 6px 16px rgba(31, 60, 136, 0.12);
 }
 
 .btn-outline-light {
@@ -978,6 +982,18 @@ header.is-scrolled #site-nav a.btn-nav {
         transform: scale(4);
         opacity: 0;
     }
+}
+
+/* Arrow glyph inside CTA buttons — nudges right on hover to reinforce
+   clickability without relying on the button's own shift alone. */
+.btn-arrow {
+    display: inline-block;
+    margin-left: 2px;
+    transition: transform 0.25s var(--ease);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
 }
 
 /* ----- IMAGE SLOTS ----- */
@@ -1227,12 +1243,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .hero-quicklink {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 128px;
-    padding: 22px 18px;
+    padding: 22px 34px 22px 18px;
     border-radius: var(--radius-md);
     font-family: var(--font-display);
     font-weight: 700;
@@ -1241,7 +1258,20 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-white);
     text-decoration: none;
     box-shadow: var(--shadow-card);
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), filter 0.25s var(--ease);
+}
+
+.hero-quicklink::after {
+    content: '↗';
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    opacity: 0.55;
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
 }
 
 .hero-quicklink span {
@@ -1261,6 +1291,13 @@ header.is-scrolled #site-nav a.btn-nav {
 .hero-quicklink:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
+    border-color: rgba(255, 255, 255, 0.55);
+    filter: brightness(1.06);
+}
+
+.hero-quicklink:hover::after {
+    opacity: 1;
+    transform: translate(2px, -2px);
 }
 
 .hero-quicklink--teal { background: var(--color-teal); }
@@ -1275,8 +1312,13 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     .hero-quicklink {
         min-height: 104px;
-        padding: 16px 12px;
+        padding: 16px 28px 16px 12px;
         font-size: 14px;
+    }
+    .hero-quicklink::after {
+        top: 9px;
+        right: 10px;
+        font-size: 13px;
     }
 }
 
@@ -2930,17 +2972,19 @@ header.is-scrolled #site-nav a.btn-nav {
     background: var(--color-gold);
     color: var(--color-primary);
     border-color: var(--color-gold-dark);
-    box-shadow: 0 3px 0 0 var(--color-gold-dark);
+    box-shadow: 0 3px 0 0 var(--color-gold-dark), 0 8px 20px rgba(224, 172, 31, 0.3);
 }
 
 .cta-section .btn-primary:hover {
     background: #ffd869;
     border-color: var(--color-gold-dark);
-    box-shadow: 0 5px 0 0 var(--color-gold-dark);
+    box-shadow: 0 5px 0 0 var(--color-gold-dark), 0 12px 26px rgba(224, 172, 31, 0.4);
+    filter: brightness(1.03);
 }
 
 .cta-section .btn-primary:active {
-    box-shadow: 0 1px 0 0 var(--color-gold-dark);
+    box-shadow: 0 1px 0 0 var(--color-gold-dark), 0 4px 10px rgba(224, 172, 31, 0.3);
+    filter: none;
 }
 
 /* ============================================================
