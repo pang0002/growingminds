@@ -1279,8 +1279,9 @@ header.is-scrolled #site-nav a.btn-nav {
     display: block;
     font-size: 19px;
     font-weight: 700;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 .hero-quicklink small {
