@@ -1374,23 +1374,38 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .goals-card-heading {
     color: var(--color-primary);
-    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
     line-height: 1.2;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
+}
+
+@media (min-width: 700px) {
+    .goals-card-heading {
+        white-space: nowrap;
+    }
 }
 
 .goals-card-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 48px;
+    margin-top: 34px;
 }
 
 .goals-card-item {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 16px 0;
+    padding: 16px 10px;
+    margin: 0 -10px;
+    border-radius: 8px;
     border-bottom: 1px solid rgba(31, 60, 136, 0.16);
+    transition: background 0.2s var(--ease), padding-left 0.2s var(--ease);
+}
+
+.goals-card-item:hover {
+    background: rgba(31, 60, 136, 0.04);
+    padding-left: 16px;
 }
 
 .goals-card-item--last {
@@ -1398,10 +1413,10 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .goals-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    background: var(--color-teal-dark);
+    background: var(--dot-color, var(--color-teal-dark));
     margin-top: 8px;
     flex-shrink: 0;
 }
@@ -1411,6 +1426,10 @@ header.is-scrolled #site-nav a.btn-nav {
     font-size: 17px;
     line-height: 1.5;
     color: var(--color-primary);
+}
+
+.goals-card-item p strong {
+    font-weight: 800;
 }
 
 .goals-card-closing {
