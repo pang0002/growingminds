@@ -47,7 +47,7 @@
                     Fill in the form below and we'll get back to you within 5 working days.
                 </p>
 
-                <form id="careersForm" action="https://script.google.com/macros/s/AKfycbwPl8w65HMGYyNcEx_PZEB3MeZWYIaEVfzNuW6FUuKIJqaJxkxfgquK3y67tspQiSnT/exec" method="POST" enctype="multipart/form-data">
+                <form id="careersForm" action="https://script.google.com/macros/s/AKfycbwPl8w65HMGYyNcEx_PZEB3MeZWYIaEVfzNuW6FUuKIJqaJxkxfgquK3y67tspQiSnT/exec" method="POST">
                     <!-- Row: Name + Email -->
                     <div class="form-row">
                         <div class="form-group">
@@ -168,47 +168,82 @@
             });
         }
 
-        let submitIframe = document.getElementById('careersFormTargetFrame');
-        if (!submitIframe) {
-            submitIframe = document.createElement('iframe');
-            submitIframe.name = 'careersFormTargetFrame';
-            submitIframe.id = 'careersFormTargetFrame';
-            submitIframe.style.display = 'none';
-            document.body.appendChild(submitIframe);
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPl8w65HMGYyNcEx_PZEB3MeZWYIaEVfzNuW6FUuKIJqaJxkxfgquK3y67tspQiSnT/exec';
+
+        // Reads a File object and resolves with its base64 data (no data: prefix)
+        function fileToBase64(file) {
+            return new Promise(function(resolve, reject) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    // result looks like "data:<mime>;base64,AAAA..." -- strip the prefix
+                    const base64 = reader.result.split(',')[1];
+                    resolve(base64);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
         }
-        form.setAttribute('target', 'careersFormTargetFrame');
 
         // Form submission
         if (form) {
-            let submitting = false;
-
-            form.addEventListener('submit', function() {
-                // Let the form submit natively into the hidden iframe (no preventDefault).
-                submitting = true;
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
 
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
                 submitBtn.textContent = 'Submitting...';
                 submitBtn.disabled = true;
 
-                // The iframe's 'load' event fires once the Apps Script response
-                // (including following its redirect) has fully come back.
-                submitIframe.addEventListener('load', function onLoad() {
-                    submitIframe.removeEventListener('load', onLoad);
-                    if (!submitting) return;
-                    submitting = false;
+                const file = fileInput.files && fileInput.files[0];
 
-                    form.reset();
-                    successMsg.classList.add('show');
-                    setTimeout(function() {
-                        successMsg.classList.remove('show');
-                    }, 8000);
-                    fileName.classList.remove('show');
-                    uploadText.classList.remove('hide');
+                Promise.resolve(file ? fileToBase64(file) : '')
+                    .then(function(base64Data) {
+                        const payload = {
+                            name: form.name.value,
+                            email: form.email.value,
+                            phone: form.phone.value,
+                            age: form.age.value,
+                            position: form.position.value,
+                            reason: form.reason.value,
+                            fileName: file ? file.name : '',
+                            mimeType: file ? file.type : '',
+                            fileData: base64Data
+                        };
 
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
+                        // Sent as JSON with Content-Type text/plain so the browser treats
+                        // this as a "simple request" (no CORS preflight), and encoded as
+                        // base64 JSON rather than multipart/form-data so the file survives
+                        // the redirect Apps Script's .../exec URL issues on every request.
+                        return fetch(SCRIPT_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                            body: JSON.stringify(payload)
+                        });
+                    })
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(result) {
+                        if (result && result.result === 'success') {
+                            form.reset();
+                            successMsg.classList.add('show');
+                            setTimeout(function() {
+                                successMsg.classList.remove('show');
+                            }, 8000);
+                            fileName.classList.remove('show');
+                            uploadText.classList.remove('hide');
+                        } else {
+                            throw new Error((result && result.error) || 'Form submission failed');
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error(error);
+                        alert('Oops! Something went wrong. Please try again or email us directly at hallo.growingminds@gmail.com');
+                    })
+                    .finally(function() {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
             });
         }
     });
