@@ -3204,7 +3204,7 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: center;
     gap: 48px;
     max-width: 100%;
-    margin: 64px 0 8px;
+    margin: 8px 0 8px;
 }
 
 .who-lead-q {
@@ -3216,6 +3216,14 @@ header.is-scrolled #site-nav a.btn-nav {
     letter-spacing: -0.01em;
     margin: 0;
     text-align: left;
+}
+
+.who-lead-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-teal-dark);
+    font-size: 1.1em;
 }
 
 .who-lead-a {
@@ -3239,7 +3247,7 @@ header.is-scrolled #site-nav a.btn-nav {
         flex-direction: column;
         align-items: flex-start;
         gap: 18px;
-        margin-top: 56px;
+        margin-top: 58px;
     }
     .who-lead-q {
         font-size: 1.9rem;
