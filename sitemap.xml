@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://growingminds.com.my/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -37,6 +37,13 @@
   </url>
 
   <url>
+    <loc>https://growingminds.com.my/weekend-club.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
     <loc>https://growingminds.com.my/clubs-social-emotions.html</loc>
     <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
@@ -54,6 +61,13 @@
     <loc>https://growingminds.com.my/clubs-ready-for-life.html</loc>
     <lastmod>2026-08-26</lastmod>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://growingminds.com.my/faq.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
@@ -76,6 +90,20 @@
     <lastmod>2026-08-17</lastmod>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://growingminds.com.my/privacy.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://growingminds.com.my/terms.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
   </url>
 
 </urlset>
