@@ -3191,98 +3191,39 @@ header.is-scrolled #site-nav a.btn-nav {
     font-size: 20px;
 }
 
-/* ----- Q&A CHAT TRANSCRIPT ----- */
-.qa-chat {
-    max-width: 760px;
-    margin: 40px auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/* ----- WHO-LEAD (enlarged lead Q&A above the two smaller cards) ----- */
+.who-lead {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 8px;
 }
 
-.qa-chat-msg {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
+.who-lead-q {
+    font-size: clamp(2rem, 3.8vw, 2.9rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 14px;
 }
 
-.qa-chat-msg--q {
-    flex-direction: row-reverse;
-}
-
-.qa-chat-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    overflow: hidden;
-}
-
-.qa-chat-avatar--q {
-    background: rgba(31, 60, 136, 0.08);
-}
-
-.qa-chat-avatar--q svg {
-    width: 22px;
-    height: 22px;
-}
-
-.qa-chat-avatar--a {
-    background: var(--color-white);
-    box-shadow: var(--shadow-card);
-    padding: 5px;
-}
-
-.qa-chat-avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.qa-chat-bubble {
-    max-width: 78%;
-    padding: 16px 20px;
-    line-height: 1.6;
-}
-
-.qa-chat-bubble p {
+.who-lead-a {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
     margin: 0;
-    font-size: 16px;
 }
 
-.qa-chat-bubble p + p {
-    margin-top: 10px;
-}
-
-.qa-chat-bubble--q {
-    background: rgba(31, 60, 136, 0.06);
+.who-lead-a strong {
     color: var(--color-primary);
     font-weight: 700;
-    border-radius: 20px 20px 4px 20px;
-}
-
-.qa-chat-bubble--a {
-    background: var(--color-teal);
-    color: var(--color-white);
-    border-radius: 20px 20px 20px 4px;
-    box-shadow: var(--shadow-card);
-}
-
-.qa-chat-bubble--a .age-highlight {
-    color: var(--color-white);
-    font-weight: 800;
 }
 
 @media (max-width: 640px) {
-    .qa-chat-bubble {
-        max-width: 84%;
+    .who-lead-q {
+        font-size: 1.8rem;
     }
-    .qa-chat-avatar {
-        width: 34px;
-        height: 34px;
+    .who-lead-a {
+        font-size: 16.5px;
     }
 }
 
