@@ -3193,9 +3193,17 @@ header.is-scrolled #site-nav a.btn-nav {
 
 /* ----- WHO-LEAD (enlarged lead Q&A above the two smaller cards) ----- */
 .who-lead {
-    text-align: center;
+    text-align: left;
     max-width: 720px;
-    margin: 0 auto 8px;
+    margin: 0 0 8px;
+}
+
+.who-lead-kicker {
+    margin-bottom: 8px;
+}
+
+.who-lead-kicker--a {
+    margin-top: 22px;
 }
 
 .who-lead-q {
@@ -3203,7 +3211,7 @@ header.is-scrolled #site-nav a.btn-nav {
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1.2;
-    margin-bottom: 14px;
+    margin-bottom: 0;
 }
 
 .who-lead-a {
@@ -3211,6 +3219,8 @@ header.is-scrolled #site-nav a.btn-nav {
     line-height: 1.7;
     color: var(--color-ink-soft);
     margin: 0;
+    border-left: 4px solid var(--color-teal);
+    padding-left: 20px;
 }
 
 .who-lead-a strong {
@@ -3224,6 +3234,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     .who-lead-a {
         font-size: 16.5px;
+        padding-left: 16px;
     }
 }
 
