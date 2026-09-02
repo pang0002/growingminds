@@ -3526,6 +3526,103 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-ink-soft);
 }
 
+.page-hero-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    color: var(--color-teal-dark);
+    margin-top: 20px;
+}
+
+.iv-intro {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+}
+
+/* ----- 1-TO-1 PRICING CARD ----- */
+.iv-pricing-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(31, 60, 136, 0.08);
+    padding: 36px 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.iv-pricing-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+.iv-pricing-row--last {
+    border-bottom: none;
+}
+
+.iv-pricing-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+}
+
+.iv-pricing-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--color-primary);
+    text-align: right;
+}
+
+.iv-pricing-value small {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--color-ink-soft);
+}
+
+.iv-pricing-note {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+    margin: 20px 0 24px;
+}
+
+.iv-pricing-note strong {
+    color: var(--color-primary);
+}
+
+.iv-pricing-note a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.iv-pricing-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 560px) {
+    .iv-pricing-card {
+        padding: 28px 24px;
+    }
+    .iv-pricing-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .iv-pricing-value {
+        text-align: left;
+    }
+}
+
 /* ----- ABOUT PAGE ----- */
 .founder-details {
     padding: 80px 0 20px;
@@ -7163,37 +7260,6 @@ body.home-page-locked {
    INDIVIDUAL SUPPORT PAGE
    ============================================================ */
 
-
-    .iv-hero-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 56px;
-        text-align: left;
-    }
-
-    .iv-hero-copy { flex: 1 1 440px; max-width: 500px; }
-    .iv-hero-card { flex: 1 1 380px; max-width: 420px; margin: 0; }
-
-    .iv-lead {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: clamp(19px, 2.2vw, 22px);
-        line-height: 1.55;
-        color: var(--color-ink-soft);
-        margin-bottom: 12px;
-    }
-
-    .iv-lead:last-of-type { margin-bottom: 0; }
-
-    .iv-lead strong { color: var(--color-primary); }
-
-    @media (max-width: 860px) {
-        .iv-hero-row { flex-direction: column; text-align: center; gap: 32px; }
-        .iv-hero-copy { text-align: center; max-width: 560px; }
-        .iv-hero-card { max-width: 460px; width: 100%; }
-    }
-
     /* --- Who This Is For: icon checklist --- */
     .iv-checklist {
         list-style: none;
@@ -7239,28 +7305,6 @@ body.home-page-locked {
 
     @media (max-width: 640px) {
         .process-cards--six { grid-template-columns: 1fr; }
-    }
-
-    /* --- Cost pill (mirrors the Learning Profile page's meta pill) --- */
-    .iv-meta {
-        display: inline-flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 24px;
-        font-size: 16.5px;
-        color: var(--color-ink-soft);
-        background: var(--color-sage);
-        padding: 14px 28px;
-        border-radius: 100px;
-    }
-
-    .iv-alongside {
-        max-width: 640px;
-        margin: 14px auto 0;
-        text-align: center;
-        font-size: 15.5px;
-        line-height: 1.75;
-        color: var(--color-ink-soft);
     }
 
 /* ============================================================
