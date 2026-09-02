@@ -3192,35 +3192,41 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* ----- WHO-LEAD (enlarged lead Q&A above the two smaller cards) ----- */
+.who-tag-corner {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    margin: 0;
+}
+
 .who-lead {
-    text-align: left;
-    max-width: 720px;
-    margin: 0 0 8px;
-}
-
-.who-lead-kicker {
-    margin-bottom: 8px;
-}
-
-.who-lead-kicker--a {
-    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 100%;
+    margin: 64px 0 8px;
 }
 
 .who-lead-q {
-    font-size: clamp(2rem, 3.8vw, 2.9rem);
-    font-weight: 700;
+    flex: 1 1 50%;
+    font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+    font-weight: 800;
     color: var(--color-primary);
-    line-height: 1.2;
-    margin-bottom: 0;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-align: left;
 }
 
 .who-lead-a {
-    font-size: 19px;
+    flex: 1 1 42%;
+    font-size: 18px;
     line-height: 1.7;
     color: var(--color-ink-soft);
     margin: 0;
-    border-left: 4px solid var(--color-teal);
-    padding-left: 20px;
+    border-left: 3px solid rgba(31, 60, 136, 0.18);
+    padding-left: 26px;
+    text-align: left;
 }
 
 .who-lead-a strong {
@@ -3228,13 +3234,19 @@ header.is-scrolled #site-nav a.btn-nav {
     font-weight: 700;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
+    .who-lead {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        margin-top: 56px;
+    }
     .who-lead-q {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
     .who-lead-a {
         font-size: 16.5px;
-        padding-left: 16px;
+        padding-left: 18px;
     }
 }
 
