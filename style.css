@@ -1455,8 +1455,8 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .goals-card-item p {
     margin: 0;
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: 19.5px;
+    line-height: 1.55;
     color: var(--color-primary);
 }
 
@@ -7900,8 +7900,8 @@ body.home-page-locked {
 /* 7. Text takes remaining space, sits left of icon */
 .goals-card-item p {
     margin: 0;
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: 19.5px;
+    line-height: 1.55;
     color: var(--color-primary);
     flex: 1;
     padding-right: 8px;
