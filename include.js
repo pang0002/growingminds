@@ -742,6 +742,32 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initSignalCards, 'initSignalCards');
 
     // ============================================================
+    // WHO-WE-WORK-WITH Q&A ACCORDION
+    // ============================================================
+    function initWhoQaCards() {
+        const container = document.querySelector('.who-grid');
+        if (!container) return;
+
+        container.addEventListener('click', function (e) {
+            const toggleBtn = e.target.closest('.qa-toggle');
+            const header = e.target.closest('.qa-header');
+            const trigger = toggleBtn || header;
+            if (!trigger) return;
+
+            const card = trigger.closest('.who-item');
+            if (!card || !container.contains(card)) return;
+
+            e.preventDefault();
+
+            const nowExpanded = card.classList.toggle('expanded');
+            const btn = card.querySelector('.qa-toggle');
+            if (btn) btn.setAttribute('aria-expanded', nowExpanded ? 'true' : 'false');
+        });
+    }
+
+    safeInit(initWhoQaCards, 'initWhoQaCards');
+
+    // ============================================================
     // FULL-SCREEN SCROLL - DISABLED (fixes header overlap on mobile)
     // ============================================================
     function initFullScreenScroll() {
