@@ -3558,50 +3558,78 @@ header.is-scrolled #site-nav a.btn-nav {
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 30px rgba(31, 60, 136, 0.08);
-    padding: 36px 40px;
-    max-width: 500px;
+    padding: 40px;
+    max-width: 620px;
     width: 100%;
 }
 
-.iv-pricing-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(31, 60, 136, 0.12);
+.iv-pricing-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
-.iv-pricing-row--last {
-    border-bottom: none;
+.iv-pricing-option {
+    position: relative;
+    text-align: center;
+    padding: 26px 18px 22px;
+    border-radius: var(--radius-md, 16px);
+    border: 1.5px solid rgba(31, 60, 136, 0.12);
+    background: var(--color-cream);
 }
 
-.iv-pricing-label {
-    font-size: 14px;
+.iv-pricing-option--highlight {
+    border-color: var(--color-teal);
+    background: var(--color-pale-teal, rgba(23, 120, 109, 0.06));
+}
+
+.iv-pricing-option-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-teal);
+    color: var(--color-white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.iv-pricing-option-label {
+    display: block;
+    font-size: 13.5px;
     font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     color: var(--color-ink-soft);
 }
 
-.iv-pricing-value {
+.iv-pricing-option-value {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 19px;
+    font-size: 26px;
     color: var(--color-primary);
-    text-align: right;
+    margin-top: 8px;
+    line-height: 1.2;
 }
 
-.iv-pricing-value small {
-    font-family: var(--font-body);
-    font-weight: 500;
+.iv-pricing-option-sub {
+    display: block;
     font-size: 13px;
     color: var(--color-ink-soft);
+    margin-top: 6px;
 }
 
 .iv-pricing-note {
     font-size: 14.5px;
     line-height: 1.65;
     color: var(--color-ink-soft);
-    margin: 20px 0 24px;
+    margin: 26px 0 24px;
+    text-align: center;
 }
 
 .iv-pricing-note strong {
@@ -3621,14 +3649,13 @@ header.is-scrolled #site-nav a.btn-nav {
 
 @media (max-width: 560px) {
     .iv-pricing-card {
-        padding: 28px 24px;
+        padding: 28px 22px;
     }
-    .iv-pricing-row {
-        flex-direction: column;
-        gap: 4px;
+    .iv-pricing-options {
+        grid-template-columns: 1fr;
     }
-    .iv-pricing-value {
-        text-align: left;
+    .iv-pricing-option-value {
+        font-size: 23px;
     }
 }
 
