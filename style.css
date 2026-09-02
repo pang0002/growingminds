@@ -3527,12 +3527,21 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .page-hero-quote {
+    display: inline-block;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
     font-size: clamp(1.3rem, 2.4vw, 1.7rem);
     color: var(--color-teal-dark);
     margin-top: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.page-hero-quote:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-teal-dark);
 }
 
 .iv-intro {
