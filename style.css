@@ -1162,8 +1162,9 @@ header.is-scrolled #site-nav a.btn-nav {
 /* Match the primary + outline hero buttons into a matched pair: same
    height and full pill radius, so neither reads as bigger/smaller. */
 .hero-buttons .btn {
-    height: 48px;
-    padding: 0 30px;
+    height: 58px;
+    padding: 0 38px;
+    font-size: 16.5px;
     border-radius: 9999px;
     box-sizing: border-box;
     display: inline-flex;
@@ -5946,9 +5947,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .founder-spotlight p { color: #D5DDF1; max-width: 52ch; }
 .founder-spotlight a { color: var(--color-gold); font-weight: 700; }
 
-/* ----- CTA CLOSING LINES -----
-   Stacked headline treatment for a closing section, e.g.
-   "The child experiences play. / You see growth. / We understand..." */
+/* ----- CTA CLOSING LINES ----- */
 .cta-lines {
     font-family: var(--font-display);
     font-weight: 600;
@@ -6011,12 +6010,6 @@ body.home-page-locked {
 .home-page .section-fullscreen.cta-section {
     padding: 60px 0;
 }
-
-/* ============================================================
-   CLUB SUB-PAGES (Social & Emotions / Ready to Learn / Ready for Life)
-   Shared markup across the three club pages, themed per page via the
-   --club-accent custom property set inline on <body>.
-   ============================================================ */
 
 .club-hero-badges {
     display: flex;
@@ -6914,13 +6907,7 @@ body.home-page-locked {
         padding: 14px 28px;
     }
 }
-/* ============================================================
-   APPROACH PAGE
-   ============================================================ */
-
-
-    /* --- Mission & Vision: give the two cards distinct, tinted identities
-           instead of two identical white blocks, and connect them visually --- */
+/* Approach page */
     .approach-mv-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -7656,7 +7643,7 @@ body.home-page-locked {
     }
 
 /* ============================================================
-   HOME PAGE (index.html)
+   HOME PAGE
    ============================================================ */
 
     @media (max-width: 768px) {
@@ -7893,9 +7880,6 @@ body.home-page-locked {
         color: var(--color-primary);
     }
 
-    /* Keep the price/duration label on one line so the dashed divider
-       sits at the same height across all three cards, regardless of
-       how long the label text is */
     .fits-footer span:first-child {
         white-space: nowrap;
     }
@@ -7961,7 +7945,7 @@ body.home-page-locked {
     }
 
 /* ============================================================
-   GOALS SECTION — VISUAL ENHANCEMENTS (dot → icon + 2-col layout)
+   GOALS SECTION
    ============================================================ */
 
 /* 1. Whole section gets a warm background box */
