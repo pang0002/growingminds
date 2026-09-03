@@ -8112,6 +8112,10 @@ body.home-page-locked {
     transition: transform 0.25s var(--ease);
 }
 
+.goals-card-list--checks .goals-card-item::before {
+    display: none;
+}
+
 /* Bullet scales slightly on hover */
 .goals-card-item:hover::before {
     transform: scale(1.3);
