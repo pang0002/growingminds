@@ -3526,6 +3526,34 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-ink-soft);
 }
 
+.wc-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 18px 0 20px;
+}
+
+.wc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(31, 60, 136, 0.06);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+.wc-badge svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 .page-hero-quote {
     display: inline-block;
     font-family: var(--font-display);
