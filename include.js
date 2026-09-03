@@ -384,55 +384,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(function (error) { console.error('Error loading footer:', error); });
 
     // ============================================================
-    // FORM HANDLING (Contact Page)
-    // ============================================================
-    function initContactForm() {
-        const form = document.querySelector('.contact-form form');
-        if (!form) return;
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(function (response) {
-                if (response.ok) {
-                    const successDiv = document.createElement('div');
-                    successDiv.className = 'form-success show';
-                    successDiv.innerHTML = '✅ Thank you! Your message has been sent. We\'ll get back to you soon.';
-                    form.appendChild(successDiv);
-                    form.reset();
-
-                    setTimeout(function () {
-                        successDiv.classList.remove('show');
-                        setTimeout(function () { successDiv.remove(); }, 500);
-                    }, 5000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(function (error) {
-                alert('Oops! Something went wrong. Please try again or email us directly.');
-            })
-            .finally(function () {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-    }
-    safeInit(initContactForm, 'initContactForm');
-
-    // ============================================================
     // ACTIVE NAV LINK HIGHLIGHTING
     // ============================================================
     function initActiveNav() {
