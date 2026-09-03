@@ -3708,6 +3708,127 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 }
 
+/* ----- IV PRICING CARD: 3-UP STAT OPTIONS VARIANT ----- */
+.iv-pricing-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+.iv-pricing-option {
+    text-align: center;
+    padding: 8px 16px;
+    border-right: 1px solid rgba(31, 60, 136, 0.12);
+}
+
+.iv-pricing-option:last-child {
+    border-right: none;
+}
+
+.iv-pricing-option-label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-soft);
+    margin-bottom: 8px;
+}
+
+.iv-pricing-option-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--color-primary);
+    line-height: 1.1;
+}
+
+.iv-pricing-option-sub {
+    display: block;
+    font-size: 13px;
+    color: var(--color-ink-soft);
+    margin-top: 6px;
+}
+
+@media (max-width: 560px) {
+    .iv-pricing-options {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .iv-pricing-option {
+        border-right: none;
+        border-bottom: 1px solid rgba(31, 60, 136, 0.12);
+        padding-bottom: 18px;
+    }
+    .iv-pricing-option:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+/* ----- LP RECEIVE LIST (icon + title/description row) ----- */
+.lp-receive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lp-receive-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 18px 4px;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.1);
+}
+
+.lp-receive-row:last-child {
+    border-bottom: none;
+}
+
+.lp-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-pale-teal);
+    flex-shrink: 0;
+}
+
+.lp-receive-row-content h4 {
+    font-size: 18px;
+    color: var(--color-primary);
+    margin: 0 0 4px;
+}
+
+.lp-receive-row-content p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--color-ink-soft);
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    .lp-receive-row {
+        gap: 14px;
+    }
+    .lp-icon {
+        width: 46px;
+        height: 46px;
+    }
+    .lp-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
 /* ----- ABOUT PAGE ----- */
 .founder-details {
     padding: 80px 0 20px;
