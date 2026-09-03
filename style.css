@@ -7574,6 +7574,8 @@ body.home-page-locked {
     .lp-receive-grid {
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
+        list-style: none;
+        padding: 0;
         gap: 24px;
         margin-top: 36px;
         max-width: 1000px;
