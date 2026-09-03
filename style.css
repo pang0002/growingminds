@@ -3630,15 +3630,115 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .lp-assessment-summary {
-    max-width: 620px;
+    max-width: 780px;
     margin: 32px auto 0;
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     font-weight: 600;
     line-height: 1.4;
     color: var(--color-primary);
     text-align: center;
 }
+
+.lp-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.lp-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.lp-hero-container .lp-assessment-summary {
+    margin-top: 24px;
+}
+
+.lp-hero-container h1 span {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.5em;
+}
+
+.iv-hero-container .iv-intro {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.iv-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.iv-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.eip-hero-container .iv-intro {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.eip-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.eip-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.kr-hero-container .iv-intro {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.kr-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.kr-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.social-hero-container .hero-tagline-description {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.social-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.social-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.school-club-hero-container .hero-tagline-description {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.school-club-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.school-club-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.life-club-hero-container .hero-tagline-description {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.life-club-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.life-club-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
 
 /* ----- 1-TO-1 PRICING CARD ----- */
 .iv-pricing-card {
