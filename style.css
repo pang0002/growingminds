@@ -3629,6 +3629,17 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-ink-soft);
 }
 
+.lp-assessment-summary {
+    max-width: 620px;
+    margin: 32px auto 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-primary);
+    text-align: center;
+}
+
 /* ----- 1-TO-1 PRICING CARD ----- */
 .iv-pricing-card {
     background: var(--color-white);
