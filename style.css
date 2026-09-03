@@ -3048,6 +3048,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* ----- CTA SECTION ----- */
+/* ----- CTA SECTION ----- */
 .cta-section {
     padding: 90px 0;
     background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
@@ -3088,6 +3089,7 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     gap: 14px;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .cta-buttons .btn {
@@ -3120,6 +3122,51 @@ header.is-scrolled #site-nav a.btn-nav {
 .cta-section .btn-primary:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
     filter: none;
+}
+
+/* CTA Stats Row - redesigned for better visual hierarchy */
+.cta-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cta-stat-item {
+    text-align: center;
+}
+
+.cta-stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-gold);
+    line-height: 1.2;
+}
+
+.cta-stat-number .star {
+    font-size: 28px;
+}
+
+.cta-stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+    .cta-stats {
+        gap: 28px;
+    }
+    
+    .cta-stat-number {
+        font-size: 26px;
+    }
+    
+    .cta-stat-label {
+        font-size: 12px;
+    }
 }
 
 /* ============================================================
