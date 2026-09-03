@@ -3558,78 +3558,50 @@ header.is-scrolled #site-nav a.btn-nav {
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 30px rgba(31, 60, 136, 0.08);
-    padding: 40px;
-    max-width: 620px;
+    padding: 36px 40px;
+    max-width: 500px;
     width: 100%;
 }
 
-.iv-pricing-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+.iv-pricing-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.12);
 }
 
-.iv-pricing-option {
-    position: relative;
-    text-align: center;
-    padding: 26px 18px 22px;
-    border-radius: var(--radius-md, 16px);
-    border: 1.5px solid rgba(31, 60, 136, 0.12);
-    background: var(--color-cream);
+.iv-pricing-row--last {
+    border-bottom: none;
 }
 
-.iv-pricing-option--highlight {
-    border-color: var(--color-teal);
-    background: var(--color-pale-teal, rgba(23, 120, 109, 0.06));
-}
-
-.iv-pricing-option-tag {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-teal);
-    color: var(--color-white);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
-}
-
-.iv-pricing-option-label {
-    display: block;
-    font-size: 13.5px;
+.iv-pricing-label {
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
     color: var(--color-ink-soft);
 }
 
-.iv-pricing-option-value {
+.iv-pricing-value {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 26px;
+    font-size: 19px;
     color: var(--color-primary);
-    margin-top: 8px;
-    line-height: 1.2;
+    text-align: right;
 }
 
-.iv-pricing-option-sub {
-    display: block;
+.iv-pricing-value small {
+    font-family: var(--font-body);
+    font-weight: 500;
     font-size: 13px;
     color: var(--color-ink-soft);
-    margin-top: 6px;
 }
 
 .iv-pricing-note {
     font-size: 14.5px;
     line-height: 1.65;
     color: var(--color-ink-soft);
-    margin: 26px 0 24px;
-    text-align: center;
+    margin: 20px 0 24px;
 }
 
 .iv-pricing-note strong {
@@ -3649,13 +3621,14 @@ header.is-scrolled #site-nav a.btn-nav {
 
 @media (max-width: 560px) {
     .iv-pricing-card {
-        padding: 28px 22px;
+        padding: 28px 24px;
     }
-    .iv-pricing-options {
-        grid-template-columns: 1fr;
+    .iv-pricing-row {
+        flex-direction: column;
+        gap: 4px;
     }
-    .iv-pricing-option-value {
-        font-size: 23px;
+    .iv-pricing-value {
+        text-align: left;
     }
 }
 
@@ -4090,31 +4063,6 @@ header.is-scrolled #site-nav a.btn-nav {
     .desk-pills {
         justify-content: flex-start;
     }
-}
-
-/* ----- WEEKEND CLUB PAGE HERO ----- */
-.wc-badge-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-}
-
-.wc-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 13.5px;
-}
-
-.wc-badge svg {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
 }
 
 /* Vertical Step Timeline */
@@ -6400,14 +6348,24 @@ body.home-page-locked {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 12px 20px;
+    gap: 10px 16px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(8px);
     border: 1.5px solid var(--color-paper-deep);
     border-radius: 16px;
-    padding: 12px 24px;
+    padding: 12px 22px;
     margin: 22px auto 6px;
     width: fit-content;
+    max-width: 100%;
+}
+
+@media (min-width: 760px) {
+    .club-meta-bar {
+        flex-wrap: nowrap;
+    }
+    .club-meta-item span {
+        white-space: nowrap;
+    }
 }
 
 .club-meta-note {
@@ -6420,7 +6378,7 @@ body.home-page-locked {
 /* Simple, single-column club hero (no floating side card) */
 .club-hero-simple {
     text-align: center;
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 44px 0 50px;
 }
@@ -6452,7 +6410,7 @@ body.home-page-locked {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--color-primary);
 }
@@ -7372,55 +7330,131 @@ body.home-page-locked {
    LEARNING PROFILE PAGE
    ============================================================ */
 
-    .lp-receive-list {
-        list-style: none;
-        padding: 0;
-        margin: 36px auto 0;
-        max-width: 760px;
+
+    .lp-lead {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: clamp(20px, 2.4vw, 24px);
+        line-height: 1.5;
+        color: var(--color-primary);
+        margin-bottom: 14px;
+    }
+
+    .lp-sub {
+        font-size: 17.5px;
+        line-height: 1.8;
+        color: var(--color-ink-soft);
+    }
+
+    .lp-hero-row {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 56px;
+        margin-top: 40px;
+        text-align: left;
     }
 
-    .lp-receive-row {
+    .lp-hero-copy {
+        flex: 1 1 420px;
+        max-width: 480px;
+    }
+
+    .lp-hero-card {
+        flex: 1 1 400px;
+        max-width: 440px;
+        margin: 0;
+    }
+
+    .lp-hero-card .hero-insight-label {
+        font-size: 12.5px;
+    }
+
+    .lp-hero-card .hero-insight-line {
+        font-size: 21px;
+    }
+
+    .lp-hero-card .hero-insight-line--bold {
+        font-size: 22px;
+    }
+
+    @media (max-width: 860px) {
+        .lp-hero-row {
+            flex-direction: column;
+            text-align: center;
+            gap: 32px;
+        }
+        .lp-hero-copy { text-align: center; max-width: 560px; }
+        .lp-hero-card { max-width: 460px; width: 100%; }
+    }
+
+    .lp-receive-grid {
         display: flex;
-        align-items: flex-start;
-        gap: 22px;
-        padding: 24px 0;
-        border-bottom: 1px solid rgba(31, 60, 136, 0.10);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+        margin-top: 36px;
     }
 
-    .lp-receive-row:first-child {
-        padding-top: 0;
+    .lp-receive-card {
+        flex: 1 1 300px;
+        max-width: 340px;
+        background: var(--color-white);
+        border-radius: var(--radius-lg);
+        padding: 32px 24px;
+        text-align: center;
+        border: 1.5px solid rgba(31, 60, 136, 0.10);
+        border-top: 4px solid var(--card-accent, var(--color-teal));
+        box-shadow: 0 12px 28px rgba(31, 60, 136, 0.12);
+        transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
     }
 
-    .lp-receive-row:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
+    .lp-receive-card:hover {
+        transform: translate(-3px, -3px);
+        border-color: var(--color-primary);
+        box-shadow: 6px 6px 0 0 var(--color-teal);
     }
 
-    .lp-receive-row .lp-icon {
-        flex-shrink: 0;
-        width: 58px;
-        height: 58px;
+    .lp-receive-card:nth-child(1) { --card-accent: var(--color-teal); }
+    .lp-receive-card:nth-child(2) { --card-accent: var(--color-gold); }
+    .lp-receive-card:nth-child(3) { --card-accent: var(--color-accent); }
+    .lp-receive-card:nth-child(4) { --card-accent: #6FBF9E; }
+    .lp-receive-card:nth-child(5) { --card-accent: var(--color-gold); }
+
+    .lp-receive-card .lp-icon {
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 30px;
+        margin: 0 auto 18px;
+        transition: transform 0.4s var(--ease-bounce);
     }
 
-    .lp-receive-row:nth-child(1) .lp-icon { background: var(--color-pale-teal); }
-    .lp-receive-row:nth-child(2) .lp-icon { background: var(--color-pale-sun); }
-    .lp-receive-row:nth-child(3) .lp-icon { background: var(--color-pale-lavender); }
-    .lp-receive-row:nth-child(4) .lp-icon { background: var(--color-sage); }
-    .lp-receive-row:nth-child(5) .lp-icon { background: var(--color-pale-sun); }
+    .lp-receive-card .lp-icon svg {
+        width: 42px;
+        height: 42px;
+    }
 
-    .lp-receive-row-content h4 {
-        font-size: 19px;
+    .lp-receive-card:hover .lp-icon {
+        transform: scale(1.1) rotate(-6deg);
+    }
+
+    .lp-receive-card:nth-child(1) .lp-icon { background: var(--color-pale-teal); }
+    .lp-receive-card:nth-child(2) .lp-icon { background: var(--color-pale-sun); }
+    .lp-receive-card:nth-child(3) .lp-icon { background: var(--color-pale-lavender); }
+    .lp-receive-card:nth-child(4) .lp-icon { background: var(--color-sage); }
+    .lp-receive-card:nth-child(5) .lp-icon { background: var(--color-pale-sun); }
+
+    .lp-receive-card h4 {
+        font-size: 19.5px;
         color: var(--color-primary);
-        margin: 0 0 6px;
+        margin-bottom: 9px;
     }
 
-    .lp-receive-row-content p {
+    .lp-receive-card p {
         font-size: 15.5px;
         line-height: 1.65;
         color: var(--color-ink-soft);
@@ -7531,13 +7565,18 @@ body.home-page-locked {
         border-radius: 100px;
     }
 
-    @media (max-width: 480px) {
-        .lp-receive-row {
-            gap: 16px;
+    @media (max-width: 900px) {
+        .lp-receive-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
-        .lp-receive-row .lp-icon {
-            width: 46px;
-            height: 46px;
+    }
+
+    @media (max-width: 560px) {
+        .lp-receive-grid {
+            grid-template-columns: 1fr;
+            max-width: 360px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
