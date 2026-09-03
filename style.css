@@ -4140,41 +4140,6 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 }
 
-/* ----- EARLY INTERVENTION PAGE ----- */
-.ei-list {
-    list-style: none;
-    padding: 0;
-    margin: 32px auto 0;
-    max-width: 640px;
-    display: flex;
-    flex-direction: column;
-}
-
-.ei-item {
-    position: relative;
-    padding: 16px 0 16px 26px;
-    border-bottom: 1px solid rgba(31, 60, 136, 0.10);
-    color: var(--color-ink-soft);
-    font-size: 16.5px;
-    line-height: 1.6;
-}
-
-.ei-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.ei-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 24px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-accent);
-}
-
 /* Vertical Step Timeline */
 .step-timeline {
     list-style: none;
