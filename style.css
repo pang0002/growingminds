@@ -3687,6 +3687,40 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-top: 24px;
 }
 
+.eip-build-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 36px auto 0;
+    max-width: 820px;
+}
+
+.eip-build-card {
+    background: var(--color-white);
+    border: 1.5px solid rgba(31, 60, 136, 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 24px rgba(31, 60, 136, 0.1);
+    padding: 28px 24px;
+    text-align: center;
+}
+
+.eip-build-card .lp-icon {
+    margin: 0 auto 18px;
+}
+
+.eip-build-card .lp-receive-row-content h4 {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 560px) {
+    .eip-build-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+    }
+}
+
 .kr-hero-container .iv-intro {
     margin-top: 24px;
     font-weight: 600;
