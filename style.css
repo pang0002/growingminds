@@ -8379,14 +8379,20 @@ body.home-page-locked {
 /* ============================================================ */
 /* PHOTO STRIP — "Inside Growing Minds" gallery band on homepage */
 /* ============================================================ */
-.photo-strip {
+.home-page .photo-strip {
     position: relative;
     overflow: hidden;
     min-height: 560px;
     display: flex;
     align-items: center;
-    background: var(--color-primary);
-    padding: 70px 0;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary) 84%, var(--color-sage) 100%);
+    border-radius: 54px 54px 0 0;
+    padding: 48px 0 68px;
+}
+
+.home-page .photo-strip .container {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .photo-strip::before,
@@ -8494,7 +8500,8 @@ body.home-page-locked {
 @media (max-width: 640px) {
     .photo-strip {
         min-height: 390px;
-        padding: 54px 0;
+        border-radius: 34px 34px 0 0;
+        padding: 40px 0 52px;
     }
     .photo-strip::before,
     .photo-strip::after {
