@@ -8376,3 +8376,84 @@ body.home-page-locked {
 .section-divider {
     margin-left: 0;
 }
+/* ============================================================ */
+/* PHOTO STRIP — "Inside Growing Minds" gallery band on homepage */
+/* ============================================================ */
+.photo-strip {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-sage);
+    padding: 64px 0 60px;
+}
+
+.photo-strip .blob-teal { width: 300px; height: 300px; top: -100px; left: -80px; opacity: 0.35; }
+.photo-strip .blob-gold { width: 240px; height: 240px; bottom: -90px; right: -60px; opacity: 0.28; }
+
+.photo-strip-head {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 36px;
+}
+
+.photo-strip-head h2 {
+    margin-top: 8px;
+    color: var(--color-primary);
+}
+
+.photo-strip-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 12px 4px 20px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.photo-strip-grid::-webkit-scrollbar { height: 6px; }
+.photo-strip-grid::-webkit-scrollbar-thumb { background: var(--color-teal); border-radius: 10px; }
+
+.photo-strip-item {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    scroll-snap-align: start;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.photo-strip-item--up {
+    margin-top: -22px;
+}
+
+.photo-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-strip-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+@media (min-width: 1180px) {
+    .photo-strip-grid {
+        justify-content: center;
+        overflow-x: visible;
+    }
+    .photo-strip-item {
+        width: 240px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 640px) {
+    .photo-strip { padding: 48px 0 44px; }
+    .photo-strip-item { width: 170px; height: 220px; }
+    .photo-strip-item--up { margin-top: -14px; }
+}
