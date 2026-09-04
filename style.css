@@ -4435,6 +4435,14 @@ header.is-scrolled #site-nav a.btn-nav {
 .pill-grid .pill:nth-child(3n+3) { background: rgba(142, 125, 240, 0.10); border-color: rgba(142, 125, 240, 0.30); }
 
 /* ===== Nobody Sits At A Desk ===== */
+/* .section-fullscreen only does anything inside .home-page (see the
+   .home-page .section-fullscreen rules) — on this page it was dead
+   weight, papered over with inline height/centering hacks that had
+   nothing to actually center against. Real spacing lives here instead. */
+.desk-section {
+    padding: 64px 0 72px;
+}
+
 .desk-grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -4683,6 +4691,151 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .programme-card .deco-circle.purple {
     background: rgba(142, 125, 240, 0.08);
+}
+
+/* ============================================================
+   WEEKEND CLUB CARDS (calm / confident / capable)
+   A slimmer variant of .programme-card for the three clickable
+   club links — swaps the emoji card-icon for a custom SVG mark
+   and adds a colour-coded top bar. Colour comes from a modifier
+   class (.wc-card--accent/--teal/--gold) rather than nth-child,
+   so it holds up if the cards are reordered or a fourth is added.
+   ============================================================ */
+.wc-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    background: var(--color-white);
+    padding: 38px 34px 30px;
+}
+
+.wc-card-topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+
+.wc-card--accent .wc-card-topbar { background: linear-gradient(90deg, var(--color-accent), #b09ef5); }
+.wc-card--teal .wc-card-topbar   { background: linear-gradient(90deg, var(--color-teal), #5dd5c7); }
+.wc-card--gold .wc-card-topbar   { background: linear-gradient(90deg, var(--color-gold), #fad96a); }
+
+.wc-card--accent:hover { box-shadow: 6px 6px 0 0 var(--color-accent); }
+.wc-card--teal:hover   { box-shadow: 6px 6px 0 0 var(--color-teal); }
+.wc-card--gold:hover   { box-shadow: 6px 6px 0 0 var(--color-gold); }
+
+.wc-card-toprow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-top: 4px;
+}
+
+.wc-card-badge {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 18px;
+    border-radius: 50px;
+    border: 1.5px solid;
+}
+
+.wc-card--accent .wc-card-badge { color: var(--color-accent); background: rgba(142,125,240,0.12); border-color: var(--color-accent); }
+.wc-card--teal .wc-card-badge   { color: var(--color-teal); background: rgba(44,181,165,0.12); border-color: var(--color-teal); }
+.wc-card--gold .wc-card-badge   { color: var(--color-gold-dark); background: rgba(247,201,72,0.16); border-color: var(--color-gold); }
+
+.wc-card-age {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(31,60,136,0.06);
+    padding: 5px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(31,60,136,0.08);
+}
+
+.wc-card-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    opacity: 0.85;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.wc-card h3 {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 5px;
+}
+
+.wc-card-tagline {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--color-teal-dark);
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-weight: 500;
+}
+
+.wc-card-desc {
+    font-size: 16px;
+    color: var(--color-ink-soft);
+    line-height: 1.65;
+    margin: 0 0 20px;
+    /* keeps the skill tag lined up across cards regardless of how
+       many lines the description wraps to (roughly 3 lines) */
+    min-height: 3em;
+}
+
+.wc-card-tag {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 50px;
+    display: inline-block;
+    align-self: flex-start;
+    border: 1px solid;
+}
+
+.wc-card--accent .wc-card-tag { color: var(--color-accent); background: rgba(142,125,240,0.08); border-color: rgba(142,125,240,0.18); }
+.wc-card--teal .wc-card-tag   { color: var(--color-teal-dark); background: rgba(44,181,165,0.08); border-color: rgba(44,181,165,0.18); }
+.wc-card--gold .wc-card-tag   { color: var(--color-gold-dark); background: rgba(247,201,72,0.10); border-color: rgba(247,201,72,0.20); }
+
+.wc-card-divider {
+    border-top: 1px solid rgba(31,60,136,0.08);
+    margin: 16px 0 12px;
+    margin-top: auto;
+}
+
+.wc-card-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Base state for the circular arrow button — was inline-only before,
+   so .programme-card:hover .programme-arrow (defined above) had no
+   shared base style to key off of. */
+.programme-arrow {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 20px;
+    transition: all 0.3s var(--ease);
+    background: transparent;
 }
 
 /* Programmes Section */
@@ -8298,12 +8451,11 @@ body.home-page-locked {
         }
     }
 
-/* --- Programme card hover effect (was inline in a card block) --- */
-    .programme-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 48px rgba(31,60,136,0.14);
-        border-color: rgba(31,60,136,0.20);
-    }
+/* Programme-card arrow hover (paired with the colour-coded hover
+   shadows defined alongside .programme-card above — a second,
+   flat-shadow :hover rule used to live here and silently overrode
+   that colour coding on every card; removed so each club's hard
+   "sticker" shadow shows again on hover). */
     .programme-card:hover .programme-arrow {
         background: var(--color-primary);
         color: var(--color-white);
@@ -8575,21 +8727,6 @@ body.home-page-locked {
 .photo-strip-item:hover {
     transform: translateY(-8px) rotate(0deg);
     box-shadow: 0 16px 0 rgba(20, 42, 97, 0.7);
-}
-
-.clubs-intro {
-    max-width: 760px;
-    margin: 0 auto 32px;
-    text-align: center;
-}
-
-.clubs-intro p {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-    font-weight: 600;
-    line-height: 1.45;
-    color: var(--color-primary);
 }
 
 @media (min-width: 1180px) {
