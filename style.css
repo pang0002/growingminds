@@ -3564,6 +3564,21 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .page-hero .container { position: relative; z-index: 1; }
 
+.about-page-hero {
+    padding-bottom: 96px;
+}
+
+.about-page-hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 72px;
+    background: linear-gradient(180deg, transparent, var(--color-cream));
+    pointer-events: none;
+}
+
 .page-hero h1 {
     font-size: clamp(1.9rem, 4vw, 2.9rem);
     letter-spacing: -0.02em;
