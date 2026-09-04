@@ -89,6 +89,94 @@ body {
     }
 }
 
+/* ============================================================
+   GLOBAL BACKGROUND BLOBS
+   Site-wide version of the .page-hero blob backdrop. Injected as
+   the first child of <body> by include.js (same pattern used for
+   header.html / footer.html) so every page gets it automatically —
+   no per-page markup needed. Fixed + negative z-index so it sits
+   behind all page content and stays put while the page scrolls.
+   ============================================================ */
+.site-bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.site-bg-blobs .blob {
+    filter: blur(4px);
+    max-width: none;
+    max-height: none;
+}
+
+/* Positioned with a mix of top/left values scattered across the
+   whole viewport (not pinned to corners), each a different size,
+   so they read as loose, organic shapes rather than a matched set. */
+.site-bg-blobs .blob-teal {
+    width: 600px;
+    height: 600px;
+    top: -12vh;
+    left: 2vw;
+    opacity: 0.22;
+}
+
+.site-bg-blobs .blob-purple {
+    width: 420px;
+    height: 420px;
+    top: 30vh;
+    left: 58vw;
+    opacity: 0.24;
+}
+
+.site-bg-blobs .blob-gold {
+    width: 520px;
+    height: 520px;
+    top: 62vh;
+    left: 12vw;
+    opacity: 0.22;
+}
+
+.site-bg-blobs .blob-blue {
+    width: 340px;
+    height: 340px;
+    top: -6vh;
+    left: 78vw;
+    opacity: 0.18;
+}
+
+@media (max-width: 768px) {
+    .site-bg-blobs .blob {
+        animation: none;
+        filter: blur(2px);
+    }
+    .site-bg-blobs .blob-teal {
+        width: 56vw;
+        height: 56vw;
+        top: -8vh;
+        left: -4vw;
+    }
+    .site-bg-blobs .blob-purple {
+        width: 40vw;
+        height: 40vw;
+        top: 28vh;
+        left: 54vw;
+    }
+    .site-bg-blobs .blob-gold {
+        width: 48vw;
+        height: 48vw;
+        top: 60vh;
+        left: 6vw;
+    }
+    .site-bg-blobs .blob-blue {
+        width: 34vw;
+        height: 34vw;
+        top: 2vh;
+        left: 66vw;
+    }
+}
+
 .section-white-bg,
 .section-sage-bg {
     background: transparent;

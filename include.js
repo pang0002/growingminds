@@ -11,6 +11,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // ============================================================
+    // GLOBAL BACKGROUND BLOBS
+    // Same organic blob shapes used in .page-hero, but fixed behind
+    // the whole page so every page gets the hero-style backdrop
+    // without needing the markup copy-pasted into every HTML file.
+    // ============================================================
+    function initGlobalBackgroundBlobs() {
+        if (document.querySelector('.site-bg-blobs')) return; // don't double-inject
+
+        const bg = document.createElement('div');
+        bg.className = 'site-bg-blobs';
+        bg.setAttribute('aria-hidden', 'true');
+        bg.innerHTML =
+            '<div class="blob blob-teal"></div>' +
+            '<div class="blob blob-gold"></div>' +
+            '<div class="blob blob-purple"></div>' +
+            '<div class="blob blob-blue"></div>';
+
+        document.body.insertBefore(bg, document.body.firstChild);
+    }
+    safeInit(initGlobalBackgroundBlobs, 'initGlobalBackgroundBlobs');
+
     // On the home page, header + sections + footer all live inside one
     // scrollable element (.fullscreen-scroll-container) instead of the
     // document itself. Other code (back-to-top, header shrink-on-scroll,
