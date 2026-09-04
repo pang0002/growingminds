@@ -3864,6 +3864,14 @@ header.is-scrolled #site-nav a.btn-nav {
     border-radius: 48px 48px 0 0;
 }
 
+.weekend-page-hero {
+    padding-bottom: 64px;
+}
+
+.weekend-first-section {
+    border-radius: 48px 48px 0 0;
+}
+
 
 /* ----- 1-TO-1 PRICING CARD ----- */
 .iv-pricing-card {
