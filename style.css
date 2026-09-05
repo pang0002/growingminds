@@ -5532,7 +5532,7 @@ header.is-scrolled #site-nav a.btn-nav {
         gap: 40px;
     }
 
-    .hero-visual { order: -1; max-width: 360px; margin: 0 auto; }
+    .hero-visual { max-width: 360px; margin: 0 auto; }
 
     .pathway-grid {
         grid-template-columns: 1fr;
