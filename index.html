@@ -108,10 +108,16 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PARENT VOICES — hangs directly off the photo strip above via  -->
-    <!-- a shared dashed line, so the two sections read as one band.  -->
+    <!-- PARENT VOICES — a curved wave carries the photo strip's own   -->
+    <!-- fade into this section, then the banner cards hang off a     -->
+    <!-- shared dashed line beneath it.                                -->
     <!-- ============================================================ -->
     <section class="parent-voices section-fullscreen">
+        <div class="parent-voices-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,46 C240,96 480,6 720,46 C960,86 1200,16 1440,46 L1440,100 L0,100 Z" fill="var(--color-cream)"></path>
+            </svg>
+        </div>
         <div class="container">
             <div class="parent-voices-line" aria-hidden="true"></div>
             <div class="parent-voices-grid reveal-stagger">

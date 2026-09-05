@@ -3015,10 +3015,10 @@ header.is-scrolled #site-nav a.btn-nav {
 
 /* ----- PARENT VOICES ----- */
 /* A curved wave carries the photo strip's own navy-to-sage fade
-   into this section, so the two bands read as one continuous
-   shape. Quotes sit directly on the page background — no card
-   box, no border — just an oversized quote mark and a colored
-   underline to tell them apart. */
+   into this section (no flat seam), the section itself stays
+   transparent so it shares the same page texture as every other
+   section (no isolated block), and the cards hang off a shared
+   dashed line via a small peg + tick pseudo-element each. */
 .parent-voices {
     background: transparent;
     margin-top: -84px;
@@ -3039,7 +3039,14 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .parent-voices .container {
-    padding-top: 34px;
+    padding-top: 20px;
+}
+
+.parent-voices-line {
+    max-width: 640px;
+    margin: 0 auto;
+    border-top: 3px dashed rgba(31, 60, 136, 0.28);
+    height: 0;
 }
 
 .parent-voices-grid {
@@ -3047,38 +3054,63 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 56px;
+    gap: 28px;
+    margin-top: 40px;
 }
 
-.parent-voice {
+.testimonial-card {
     position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 30px 24px 22px;
     width: 300px;
     max-width: 100%;
-    text-align: left;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
-.parent-voice-mark {
-    display: block;
-    font-family: var(--font-quote);
-    font-size: 64px;
-    line-height: 1;
-    color: var(--voice-color, var(--color-teal));
-    opacity: 0.35;
-    margin-bottom: -14px;
+.testimonial-card:hover {
+    transform: translateY(-4px) rotate(0deg) !important;
 }
 
-.parent-voice--teal { --voice-color: var(--color-teal); }
-.parent-voice--gold { --voice-color: var(--color-gold-dark); }
-.parent-voice--lavender { --voice-color: var(--color-accent); }
+/* Peg + tick "hanging" from the shared line above each card */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    width: 0;
+    height: 20px;
+    border-left: 2px dashed var(--peg-color, var(--color-teal));
+    transform: translateX(-50%);
+}
+
+.testimonial-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--peg-color, var(--color-teal));
+    box-shadow: 0 0 0 4px var(--color-cream);
+    transform: translateX(-50%);
+}
+
+.testimonial-card--teal { --peg-color: var(--color-teal); border-color: var(--color-teal); box-shadow: 4px 4px 0 0 var(--color-teal); transform: rotate(-1.5deg); }
+.testimonial-card--gold { --peg-color: var(--color-gold-dark); border-color: var(--color-gold-dark); box-shadow: 4px 4px 0 0 var(--color-gold-dark); transform: rotate(1.2deg); }
+.testimonial-card--lavender { --peg-color: var(--color-accent); border-color: var(--color-accent); box-shadow: 4px 4px 0 0 var(--color-accent); transform: rotate(-1deg); }
 
 .testimonial-stars {
     color: var(--color-gold-dark);
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
-.parent-voice blockquote {
+.testimonial-card blockquote {
     font-family: var(--font-quote);
     font-style: italic;
     font-size: 15.5px;
@@ -3097,19 +3129,17 @@ header.is-scrolled #site-nav a.btn-nav {
     font-size: 12.5px;
     color: var(--color-ink-soft);
     margin-top: 2px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--voice-color, var(--color-teal));
-    display: inline-block;
 }
 
 @media (max-width: 700px) {
+    .parent-voices-line {
+        display: none;
+    }
     .parent-voices-grid {
         flex-direction: column;
         align-items: center;
-        gap: 40px;
-    }
-    .parent-voice {
-        text-align: center;
+        margin-top: 44px;
+        gap: 44px;
     }
 }
 
