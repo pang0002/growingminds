@@ -3013,44 +3013,87 @@ header.is-scrolled #site-nav a.btn-nav {
     margin: 0 auto;
 }
 
-/* ----- TESTIMONIALS ----- */
-.testimonials {
-    padding: 80px 0;
-    background: transparent;
-    overflow: hidden;
+/* ----- PARENT VOICES ----- */
+/* Sits directly under the photo strip and picks up its sage fade,
+   so the two sections read as one continuous band rather than two
+   stacked ones. Cards "hang" off a shared dashed line via a small
+   peg + tick, drawn with pseudo-elements so no extra markup is
+   needed per card. */
+.parent-voices {
+    background: linear-gradient(180deg, var(--color-sage) 0%, var(--color-cream) 220px);
+    padding-top: 0 !important;
+    overflow: visible;
     position: relative;
 }
 
-.testimonials .blob-teal { width: 240px; height: 240px; top: -50px; right: -80px; opacity: 0.2; }
-.testimonials .container { position: relative; z-index: 1; }
+.parent-voices .container {
+    padding-top: 28px;
+}
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+.parent-voices-line {
+    max-width: 640px;
+    margin: 0 auto;
+    border-top: 3px dashed rgba(31, 60, 136, 0.28);
+    height: 0;
+}
+
+.parent-voices-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 40px;
 }
 
 .testimonial-card {
-    background: var(--color-cream);
+    position: relative;
+    background: var(--color-white);
     border-radius: var(--radius-lg);
-    padding: 30px 28px;
-    box-shadow: var(--shadow-card);
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    border: 1px solid rgba(31, 60, 136,0.04);
+    padding: 30px 24px 22px;
+    width: 300px;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .testimonial-card:hover {
-    transform: translateY(-6px) rotate(-0.6deg);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px) rotate(0deg) !important;
 }
 
-/* A little hand-placed imperfection, like notes pinned to a board */
-.testimonials-grid .testimonial-card:nth-child(3n+1) { transform: rotate(-0.6deg); }
-.testimonials-grid .testimonial-card:nth-child(3n+3) { transform: rotate(0.5deg); }
+/* Peg + tick "hanging" from the shared line above each card */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    width: 0;
+    height: 20px;
+    border-left: 2px dashed var(--peg-color, var(--color-teal));
+    transform: translateX(-50%);
+}
+
+.testimonial-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--peg-color, var(--color-teal));
+    box-shadow: 0 0 0 4px var(--color-sage);
+    transform: translateX(-50%);
+}
+
+.testimonial-card--teal { --peg-color: var(--color-teal); border-color: var(--color-teal); box-shadow: 4px 4px 0 0 var(--color-teal); transform: rotate(-1.5deg); }
+.testimonial-card--gold { --peg-color: var(--color-gold-dark); border-color: var(--color-gold-dark); box-shadow: 4px 4px 0 0 var(--color-gold-dark); transform: rotate(1.2deg); }
+.testimonial-card--lavender { --peg-color: var(--color-accent); border-color: var(--color-accent); box-shadow: 4px 4px 0 0 var(--color-accent); transform: rotate(-1deg); }
 
 .testimonial-stars {
-    color: var(--color-gold);
-    font-size: 18px;
+    color: var(--color-gold-dark);
+    font-size: 16px;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
@@ -3058,39 +3101,34 @@ header.is-scrolled #site-nav a.btn-nav {
 .testimonial-card blockquote {
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: 16px;
+    font-size: 15.5px;
     line-height: 1.6;
     color: var(--color-ink);
-    margin-bottom: 12px;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.testimonial-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-sage);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
+    margin: 0 0 14px;
 }
 
 .testimonial-name {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-primary);
     font-size: 14px;
 }
 
 .testimonial-role {
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--color-ink-soft);
-    opacity: 0.7;
+    margin-top: 2px;
+}
+
+@media (max-width: 700px) {
+    .parent-voices-line {
+        display: none;
+    }
+    .parent-voices-grid {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 44px;
+        gap: 44px;
+    }
 }
 
 /* ----- RESOURCES ----- */
@@ -5541,12 +5579,6 @@ header.is-scrolled #site-nav a.btn-nav {
         grid-column: 1;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
     .brand-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -6632,7 +6664,7 @@ body.home-page-locked {
 .home-page .section-fullscreen.mission-vision,
 .home-page .section-fullscreen.programmes-section,
 .home-page .section-fullscreen.why-grow,
-.home-page .section-fullscreen.testimonials,
+.home-page .section-fullscreen.parent-voices,
 .home-page .section-fullscreen.founder-details,
 .home-page .section-fullscreen.resources,
 .home-page .section-fullscreen.cta-section {
