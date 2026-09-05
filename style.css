@@ -3014,28 +3014,32 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* ----- PARENT VOICES ----- */
-/* Sits directly under the photo strip and picks up its sage fade,
-   so the two sections read as one continuous band rather than two
-   stacked ones. Cards "hang" off a shared dashed line via a small
-   peg + tick, drawn with pseudo-elements so no extra markup is
-   needed per card. */
+/* A curved wave carries the photo strip's own navy-to-sage fade
+   into this section, so the two bands read as one continuous
+   shape. Quotes sit directly on the page background — no card
+   box, no border — just an oversized quote mark and a colored
+   underline to tell them apart. */
 .parent-voices {
-    background: linear-gradient(180deg, var(--color-sage) 0%, var(--color-cream) 70px);
-    margin-top: -48px;
+    background: transparent;
+    margin-top: -84px;
     padding-top: 0 !important;
     overflow: visible;
     position: relative;
 }
 
-.parent-voices .container {
-    padding-top: 8px;
+.parent-voices-wave {
+    line-height: 0;
+    margin-bottom: -2px;
 }
 
-.parent-voices-line {
-    max-width: 640px;
-    margin: 0 auto;
-    border-top: 3px dashed rgba(31, 60, 136, 0.28);
-    height: 0;
+.parent-voices-wave svg {
+    display: block;
+    width: 100%;
+    height: 84px;
+}
+
+.parent-voices .container {
+    padding-top: 34px;
 }
 
 .parent-voices-grid {
@@ -3043,63 +3047,38 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 28px;
-    margin-top: 40px;
+    gap: 56px;
 }
 
-.testimonial-card {
+.parent-voice {
     position: relative;
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 30px 24px 22px;
     width: 300px;
     max-width: 100%;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    text-align: left;
 }
 
-.testimonial-card:hover {
-    transform: translateY(-4px) rotate(0deg) !important;
+.parent-voice-mark {
+    display: block;
+    font-family: var(--font-quote);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--voice-color, var(--color-teal));
+    opacity: 0.35;
+    margin-bottom: -14px;
 }
 
-/* Peg + tick "hanging" from the shared line above each card */
-.testimonial-card::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: -30px;
-    width: 0;
-    height: 20px;
-    border-left: 2px dashed var(--peg-color, var(--color-teal));
-    transform: translateX(-50%);
-}
-
-.testimonial-card::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: -40px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--peg-color, var(--color-teal));
-    box-shadow: 0 0 0 4px var(--color-sage);
-    transform: translateX(-50%);
-}
-
-.testimonial-card--teal { --peg-color: var(--color-teal); border-color: var(--color-teal); box-shadow: 4px 4px 0 0 var(--color-teal); transform: rotate(-1.5deg); }
-.testimonial-card--gold { --peg-color: var(--color-gold-dark); border-color: var(--color-gold-dark); box-shadow: 4px 4px 0 0 var(--color-gold-dark); transform: rotate(1.2deg); }
-.testimonial-card--lavender { --peg-color: var(--color-accent); border-color: var(--color-accent); box-shadow: 4px 4px 0 0 var(--color-accent); transform: rotate(-1deg); }
+.parent-voice--teal { --voice-color: var(--color-teal); }
+.parent-voice--gold { --voice-color: var(--color-gold-dark); }
+.parent-voice--lavender { --voice-color: var(--color-accent); }
 
 .testimonial-stars {
     color: var(--color-gold-dark);
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
-.testimonial-card blockquote {
+.parent-voice blockquote {
     font-family: var(--font-quote);
     font-style: italic;
     font-size: 15.5px;
@@ -3118,17 +3097,19 @@ header.is-scrolled #site-nav a.btn-nav {
     font-size: 12.5px;
     color: var(--color-ink-soft);
     margin-top: 2px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--voice-color, var(--color-teal));
+    display: inline-block;
 }
 
 @media (max-width: 700px) {
-    .parent-voices-line {
-        display: none;
-    }
     .parent-voices-grid {
         flex-direction: column;
         align-items: center;
-        margin-top: 44px;
-        gap: 44px;
+        gap: 40px;
+    }
+    .parent-voice {
+        text-align: center;
     }
 }
 
