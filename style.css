@@ -3020,14 +3020,15 @@ header.is-scrolled #site-nav a.btn-nav {
    peg + tick, drawn with pseudo-elements so no extra markup is
    needed per card. */
 .parent-voices {
-    background: linear-gradient(180deg, var(--color-sage) 0%, var(--color-cream) 220px);
+    background: linear-gradient(180deg, var(--color-sage) 0%, var(--color-cream) 70px);
+    margin-top: -48px;
     padding-top: 0 !important;
     overflow: visible;
     position: relative;
 }
 
 .parent-voices .container {
-    padding-top: 28px;
+    padding-top: 8px;
 }
 
 .parent-voices-line {
