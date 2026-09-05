@@ -5677,11 +5677,23 @@ header.is-scrolled #site-nav a.btn-nav {
         margin-left: 0;
     }
 
-    /* Nav dropdown becomes a static, always-visible indented sublist
-       on mobile — there's no hover on touch devices, and the slide-out
-       panel already has room to show it inline. */
+    /* Nav dropdown becomes a collapsible accordion on mobile — there's
+       no hover on touch devices, so tapping the parent label toggles
+       the sublist open/closed instead of navigating (the caret rotates
+       to show state; JS in include.js handles the toggle). */
+    .nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .nav-dropdown .nav-caret {
-        display: none;
+        display: inline-flex;
+        transition: transform 0.3s var(--ease);
+    }
+
+    .nav-dropdown.dropdown-open .nav-caret {
+        transform: rotate(225deg) translateY(1px);
     }
 
     .dropdown-menu {
@@ -5692,11 +5704,20 @@ header.is-scrolled #site-nav a.btn-nav {
         box-shadow: none;
         border: none;
         background: rgba(44, 181, 165, 0.04);
-        margin: 2px 0 8px;
-        padding: 6px;
+        margin: 0;
+        padding: 0;
         display: flex !important;
         flex-direction: column !important;
         gap: 2px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s var(--ease), margin 0.35s var(--ease), padding 0.35s var(--ease);
+    }
+
+    .nav-dropdown.dropdown-open .dropdown-menu {
+        max-height: 600px;
+        margin: 2px 0 8px;
+        padding: 6px;
     }
 
     .dropdown-menu a {

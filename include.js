@@ -285,6 +285,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 scrim.classList.remove('is-visible');
                 toggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+                nav.querySelectorAll('.nav-dropdown.dropdown-open').forEach(function (openItem) {
+                    openItem.classList.remove('dropdown-open');
+                });
             };
 
             var openNav = function () {
@@ -301,8 +304,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
             scrim.addEventListener('click', closeNav);
 
+            // On mobile, tapping a dropdown parent ("What We Offer",
+            // "Weekend Club") toggles its sublist open/closed instead of
+            // navigating away and closing the whole panel — the sublist
+            // links themselves still navigate and close the panel as
+            // normal. Desktop keeps its existing hover behavior untouched.
+            var isMobileNav = function () {
+                return window.matchMedia('(max-width: 768px)').matches;
+            };
+
             nav.querySelectorAll('a').forEach(function (link) {
-                link.addEventListener('click', closeNav);
+                var isDropdownParent = link.parentElement &&
+                    link.parentElement.classList.contains('nav-dropdown');
+
+                link.addEventListener('click', function (e) {
+                    if (isDropdownParent && isMobileNav()) {
+                        e.preventDefault();
+                        var parentItem = link.closest('.nav-dropdown');
+                        var willOpen = !parentItem.classList.contains('dropdown-open');
+                        nav.querySelectorAll('.nav-dropdown.dropdown-open').forEach(function (openItem) {
+                            if (openItem !== parentItem) { openItem.classList.remove('dropdown-open'); }
+                        });
+                        parentItem.classList.toggle('dropdown-open', willOpen);
+                        return; // don't close the whole nav panel — user wants to see the sublist
+                    }
+                    closeNav();
+                });
             });
 
             document.addEventListener('keydown', function (e) {
