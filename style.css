@@ -3016,7 +3016,7 @@ header.is-scrolled #site-nav a.btn-nav {
 /* ----- PARENT VOICES ----- */
 /* A layered double wave (two offset SVGs) carries the photo strip's
    fade into this section with extra bend/depth, four cute doodles
-   (star, squiggle, sparkle, crescent moon) frame the card row with a
+   (star, cloud, sparkle, crescent moon) frame the card row with a
    kid-friendly touch, and the cards hang off a shared dashed line
    via a small peg + tick pseudo-element each. */
 .parent-voices {
@@ -3080,7 +3080,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .voices-doodle--star { width: 40px; top: -20px; left: 4%; transform: rotate(-14deg); }
-.voices-doodle--squiggle { width: 88px; top: -16px; right: 5%; opacity: 0.8; }
+.voices-doodle--cloud { width: 70px; top: 18px; right: 5%; opacity: 0.85; }
 .voices-doodle--sparkle { width: 36px; bottom: 24px; left: 1%; transform: rotate(-6deg); }
 .voices-doodle--moon { width: 28px; bottom: 40px; right: 2%; transform: rotate(-8deg); opacity: 0.85; }
 
