@@ -114,14 +114,8 @@
     <!-- ============================================================ -->
     <section class="parent-voices section-fullscreen">
         <div class="parent-voices-wave" aria-hidden="true">
-            <svg class="parent-voices-wave-layer parent-voices-wave-back" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,70 C200,-10 340,140 620,60 C900,-20 1040,150 1440,55 L1440,120 L0,120 Z" fill="var(--color-teal)"></path>
-            </svg>
-            <svg class="parent-voices-wave-layer parent-voices-wave-mid" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,50 C260,130 420,-20 700,60 C980,140 1140,-10 1440,65 L1440,120 L0,120 Z" fill="var(--color-pale-sun)"></path>
-            </svg>
-            <svg class="parent-voices-wave-layer parent-voices-wave-front" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,60 C280,-30 460,140 720,55 C980,-30 1160,140 1440,50 L1440,120 L0,120 Z" fill="var(--color-cream)"></path>
+            <svg class="parent-voices-wave-layer" viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,70 C240,140 480,0 720,65 C960,130 1200,0 1440,65 L1440,140 L0,140 Z" fill="var(--color-cream)"></path>
             </svg>
         </div>
 
@@ -133,7 +127,13 @@
             <svg class="voices-doodle voices-doodle--dots" viewBox="0 0 60 20" fill="none" aria-hidden="true"><circle cx="8" cy="10" r="5" fill="var(--color-teal)"/><circle cx="30" cy="10" r="5" fill="var(--color-gold)"/><circle cx="52" cy="10" r="5" fill="var(--color-accent)"/></svg>
             <svg class="voices-doodle voices-doodle--heart" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5S3 15 3 8.8C3 5.6 5.5 3.5 8.2 3.5c1.7 0 3.3.9 3.8 2.3.5-1.4 2.1-2.3 3.8-2.3 2.7 0 5.2 2.1 5.2 5.3 0 6.2-9 11.7-9 11.7z" stroke="var(--color-gold-dark)" stroke-width="1.6" stroke-linejoin="round"/></svg>
 
-            <div class="parent-voices-line" aria-hidden="true"></div>
+            <!-- The "string" the cards hang from — wavy, not straight, so
+                 each card can sit at a different height along it -->
+            <div class="parent-voices-line" aria-hidden="true">
+                <svg viewBox="0 0 1000 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,20 C160,60 320,-10 500,26 C680,60 840,-10 1000,20" fill="none" stroke="rgba(31,60,136,0.32)" stroke-width="3" stroke-dasharray="8 8" stroke-linecap="round"/>
+                </svg>
+            </div>
             <div class="parent-voices-grid reveal-stagger">
 
                 <div class="testimonial-card testimonial-card--teal">

@@ -3069,28 +3069,6 @@ header.is-scrolled #site-nav a.btn-nav {
     height: 100%;
 }
 
-.parent-voices-wave-back {
-    opacity: 0.35;
-    animation: voicesWaveDrift 13s ease-in-out infinite alternate;
-}
-
-.parent-voices-wave-mid {
-    opacity: 0.55;
-    animation: voicesWaveDrift 9s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes voicesWaveDrift {
-    from { transform: translateX(-16px); }
-    to { transform: translateX(16px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .parent-voices-wave-back,
-    .parent-voices-wave-mid {
-        animation: none;
-    }
-}
-
 /* Cute doodles anchored to the card row, not the far viewport edges */
 .voices-doodle {
     position: absolute;
@@ -3117,10 +3095,16 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .parent-voices-line {
-    max-width: 640px;
+    max-width: 960px;
     margin: 0 auto;
-    border-top: 3px dashed rgba(31, 60, 136, 0.28);
-    height: 0;
+    height: 44px;
+    line-height: 0;
+}
+
+.parent-voices-line svg {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .parent-voices-grid {
@@ -3131,6 +3115,12 @@ header.is-scrolled #site-nav a.btn-nav {
     gap: 28px;
     margin-top: 40px;
 }
+
+/* Staggered hang depth — like flags dangling at different lengths
+   from a wavy string, instead of all three sitting at one height */
+.testimonial-card--teal { margin-top: 0; }
+.testimonial-card--gold { margin-top: 38px; }
+.testimonial-card--lavender { margin-top: 14px; }
 
 .testimonial-card {
     position: relative;
@@ -3217,6 +3207,11 @@ header.is-scrolled #site-nav a.btn-nav {
         align-items: center;
         margin-top: 44px;
         gap: 44px;
+    }
+    .testimonial-card--teal,
+    .testimonial-card--gold,
+    .testimonial-card--lavender {
+        margin-top: 0;
     }
 }
 
