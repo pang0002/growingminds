@@ -3015,11 +3015,10 @@ header.is-scrolled #site-nav a.btn-nav {
 
 /* ----- PARENT VOICES ----- */
 /* A layered double wave (two offset SVGs) carries the photo strip's
-   fade into this section with extra bend/depth, a scattered set of
-   cute doodles (star, squiggle, sparkle, confetti dots, ring, cross,
-   crescent moon) add a kid-friendly touch around the banner, and the
-   cards hang off a shared dashed line via a small peg + tick
-   pseudo-element each. */
+   fade into this section with extra bend/depth, four cute doodles
+   (star, squiggle, sparkle, crescent moon) frame the card row with a
+   kid-friendly touch, and the cards hang off a shared dashed line
+   via a small peg + tick pseudo-element each. */
 .parent-voices {
     background: transparent;
     margin-top: -60px;
@@ -3071,26 +3070,19 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* Cute doodles anchored to the card row, not the far viewport edges —
-   kept in two open bands (above the dashed line, and below the card
-   row) so nothing sits behind or clips into a card's own footprint,
-   and spread across left/center/right within each band rather than
-   clustering near one corner. */
+   four pieces sharing a whimsical/celestial feel (star, squiggle,
+   sparkle, moon), each framing a corner near its nearest card rather
+   than floating alone in open space. */
 .voices-doodle {
     position: absolute;
     pointer-events: none;
     z-index: 2;
 }
 
-/* Top band — clear of the dashed line and every card */
-.voices-doodle--star { width: 42px; top: -22px; left: 3%; transform: rotate(-14deg); }
-.voices-doodle--ring { width: 26px; top: -12px; left: 24%; opacity: 0.8; }
-.voices-doodle--squiggle { width: 90px; top: -18px; right: 4%; opacity: 0.8; }
-
-/* Bottom band — below the lowest-hanging card, spread wide */
-.voices-doodle--sparkle { width: 38px; bottom: 20px; left: -1%; transform: rotate(-6deg); }
-.voices-doodle--cross { width: 22px; bottom: -8px; left: 58%; transform: rotate(12deg); opacity: 0.75; }
-.voices-doodle--dots { width: 74px; bottom: -16px; right: 22%; }
-.voices-doodle--moon { width: 28px; bottom: 60px; right: -3%; transform: rotate(-8deg); opacity: 0.85; }
+.voices-doodle--star { width: 40px; top: -20px; left: 4%; transform: rotate(-14deg); }
+.voices-doodle--squiggle { width: 88px; top: -16px; right: 5%; opacity: 0.8; }
+.voices-doodle--sparkle { width: 36px; bottom: 24px; left: 1%; transform: rotate(-6deg); }
+.voices-doodle--moon { width: 28px; bottom: 40px; right: 2%; transform: rotate(-8deg); opacity: 0.85; }
 
 @media (max-width: 1248px) {
     .voices-doodle {
