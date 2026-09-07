@@ -3021,7 +3021,7 @@ header.is-scrolled #site-nav a.btn-nav {
    via a small peg + tick pseudo-element each. */
 .parent-voices {
     background: transparent;
-    margin-top: -85px;
+    margin-top: -60px;
     padding-top: 0 !important;
     overflow: visible;
     position: relative;
@@ -3032,7 +3032,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .parent-voices::after {
     content: '';
     position: absolute;
-    top: 130px;
+    top: 80px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -3054,7 +3054,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .parent-voices-wave {
     position: relative;
     z-index: 1;
-    height: 180px;
+    height: 70px;
     line-height: 0;
     margin-bottom: -2px;
     overflow: hidden;
@@ -3113,14 +3113,17 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     flex-wrap: wrap;
     gap: 28px;
-    margin-top: 40px;
+    margin-top: 6px;
 }
 
 /* Staggered hang depth — like flags dangling at different lengths
-   from a wavy string, instead of all three sitting at one height */
-.testimonial-card--teal { margin-top: 0; }
-.testimonial-card--gold { margin-top: 38px; }
-.testimonial-card--lavender { margin-top: 14px; }
+   from a wavy string, instead of all three sitting at one height.
+   --hang drives both the card's own drop AND its peg/tick length,
+   so every peg still reaches up to the same line regardless of
+   how far down its card sits. */
+.testimonial-card--teal { --hang: 0px; margin-top: var(--hang); }
+.testimonial-card--gold { --hang: 38px; margin-top: var(--hang); }
+.testimonial-card--lavender { --hang: 14px; margin-top: var(--hang); }
 
 .testimonial-card {
     position: relative;
@@ -3138,14 +3141,16 @@ header.is-scrolled #site-nav a.btn-nav {
     transform: translateY(-4px) rotate(0deg) !important;
 }
 
-/* Peg + tick "hanging" from the shared line above each card */
+/* Peg + tick "hanging" from the shared line above each card — the
+   tick's length grows by --hang so the peg always meets the same
+   line position no matter how far the card itself has dropped */
 .testimonial-card::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: -30px;
+    top: calc(-30px - var(--hang, 0px));
     width: 0;
-    height: 20px;
+    height: calc(20px + var(--hang, 0px));
     border-left: 2px dashed var(--peg-color, var(--color-teal));
     transform: translateX(-50%);
 }
@@ -3154,7 +3159,7 @@ header.is-scrolled #site-nav a.btn-nav {
     content: '';
     position: absolute;
     left: 50%;
-    top: -40px;
+    top: calc(-40px - var(--hang, 0px));
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -3197,7 +3202,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 @media (max-width: 700px) {
     .parent-voices {
-        margin-top: -68px;
+        margin-top: -45px;
     }
     .parent-voices-line {
         display: none;
