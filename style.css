@@ -3021,43 +3021,88 @@ header.is-scrolled #site-nav a.btn-nav {
    via a small peg + tick pseudo-element each. */
 .parent-voices {
     background: transparent;
-    margin-top: -92px;
+    margin-top: -85px;
     padding-top: 0 !important;
     overflow: visible;
     position: relative;
 }
 
-.parent-voices-wave {
-    position: relative;
-    height: 100px;
-    line-height: 0;
-    margin-bottom: -2px;
+/* A scattered confetti-dot texture across the whole banner so it
+   doesn't read as a plain empty field between the wave and cards */
+.parent-voices::after {
+    content: '';
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, rgba(44,181,165,0.22) 5px, transparent 5.5px),
+        radial-gradient(circle, rgba(224,172,31,0.22) 4px, transparent 4.5px),
+        radial-gradient(circle, rgba(142,125,240,0.2) 6px, transparent 6.5px),
+        radial-gradient(circle, rgba(44,181,165,0.16) 4px, transparent 4.5px),
+        radial-gradient(circle, rgba(224,172,31,0.18) 5px, transparent 5.5px),
+        radial-gradient(circle, rgba(142,125,240,0.18) 4px, transparent 4.5px);
+    background-repeat: no-repeat;
+    background-position:
+        4% 12%, 94% 10%, 12% 78%,
+        88% 70%, 48% 6%, 55% 88%;
 }
 
-.parent-voices-wave svg {
+.parent-voices-wave {
+    position: relative;
+    z-index: 1;
+    height: 180px;
+    line-height: 0;
+    margin-bottom: -2px;
+    overflow: hidden;
+}
+
+.parent-voices-wave-layer {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -5%;
     display: block;
-    width: 100%;
+    width: 110%;
     height: 100%;
 }
 
 .parent-voices-wave-back {
-    opacity: 0.6;
+    opacity: 0.35;
+    animation: voicesWaveDrift 13s ease-in-out infinite alternate;
 }
 
-/* Cute doodles scattered around the banner — decorative only */
+.parent-voices-wave-mid {
+    opacity: 0.55;
+    animation: voicesWaveDrift 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes voicesWaveDrift {
+    from { transform: translateX(-16px); }
+    to { transform: translateX(16px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parent-voices-wave-back,
+    .parent-voices-wave-mid {
+        animation: none;
+    }
+}
+
+/* Cute doodles anchored to the card row, not the far viewport edges */
 .voices-doodle {
     position: absolute;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
 }
 
-.voices-doodle--star { width: 32px; top: 116px; left: 6%; transform: rotate(-10deg); }
-.voices-doodle--squiggle { width: 74px; top: 132px; right: 8%; opacity: 0.7; }
-.voices-doodle--sparkle { width: 28px; bottom: 6%; left: 4%; }
-.voices-doodle--dots { width: 64px; bottom: 8%; right: 5%; }
+.voices-doodle--star { width: 46px; top: -14px; left: -6px; transform: rotate(-10deg); }
+.voices-doodle--squiggle { width: 100px; top: -6px; right: -14px; opacity: 0.8; }
+.voices-doodle--sparkle { width: 40px; bottom: 46px; left: -18px; }
+.voices-doodle--dots { width: 80px; bottom: 36px; right: -20px; }
+.voices-doodle--heart { width: 34px; top: 50%; left: 50%; margin-left: 148px; opacity: 0.75; }
 
 @media (max-width: 900px) {
     .voices-doodle {
@@ -3067,7 +3112,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .parent-voices .container {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding-top: 20px;
 }
 
@@ -3128,9 +3173,9 @@ header.is-scrolled #site-nav a.btn-nav {
     transform: translateX(-50%);
 }
 
-.testimonial-card--teal { --peg-color: var(--color-teal); border-color: var(--color-teal); box-shadow: 4px 4px 0 0 var(--color-teal); transform: rotate(-1.5deg); }
-.testimonial-card--gold { --peg-color: var(--color-gold-dark); border-color: var(--color-gold-dark); box-shadow: 4px 4px 0 0 var(--color-gold-dark); transform: rotate(1.2deg); }
-.testimonial-card--lavender { --peg-color: var(--color-accent); border-color: var(--color-accent); box-shadow: 4px 4px 0 0 var(--color-accent); transform: rotate(-1deg); }
+.testimonial-card--teal { --peg-color: var(--color-teal); background: var(--color-pale-teal); border-color: var(--color-teal); box-shadow: 4px 4px 0 0 var(--color-teal); transform: rotate(-1.5deg); }
+.testimonial-card--gold { --peg-color: var(--color-gold-dark); background: var(--color-pale-sun); border-color: var(--color-gold-dark); box-shadow: 4px 4px 0 0 var(--color-gold-dark); transform: rotate(1.2deg); }
+.testimonial-card--lavender { --peg-color: var(--color-accent); background: var(--color-pale-lavender); border-color: var(--color-accent); box-shadow: 4px 4px 0 0 var(--color-accent); transform: rotate(-1deg); }
 
 .testimonial-stars {
     color: var(--color-gold-dark);
@@ -3161,6 +3206,9 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 @media (max-width: 700px) {
+    .parent-voices {
+        margin-top: -68px;
+    }
     .parent-voices-line {
         display: none;
     }
@@ -8819,8 +8867,13 @@ body.home-page-locked {
     min-height: 560px;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary) 84%, var(--color-sage) 100%);
-    border-radius: 54px 54px 0 0;
+    /* A cream wave mask sits on top of the gradient at the very top
+       edge, so the section emerges from the page with a curve
+       instead of starting as a flat-topped rounded card. */
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1440,0 L1440,25 C1200,60 960,10 720,35 C480,60 240,10 0,35 Z' fill='%23F7F3EC'/%3E%3C/svg%3E") top / 100% 90px no-repeat,
+        linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary) 84%, var(--color-sage) 100%);
+    border-radius: 0;
     padding: 48px 0 68px;
 }
 
