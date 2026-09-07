@@ -108,16 +108,26 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PARENT VOICES — a curved wave carries the photo strip's own   -->
-    <!-- fade into this section, then the banner cards hang off a     -->
-    <!-- shared dashed line beneath it.                                -->
+    <!-- PARENT VOICES — a bendier double wave carries the photo strip -->
+    <!-- into this section, with a few cute doodles scattered around   -->
+    <!-- the banner cards for a kid-friendly touch.                    -->
     <!-- ============================================================ -->
     <section class="parent-voices section-fullscreen">
         <div class="parent-voices-wave" aria-hidden="true">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,46 C240,96 480,6 720,46 C960,86 1200,16 1440,46 L1440,100 L0,100 Z" fill="var(--color-cream)"></path>
+            <svg class="parent-voices-wave-back" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,58 C220,4 380,112 720,58 C1060,4 1220,112 1440,58 L1440,100 L0,100 Z" fill="var(--color-sage)"></path>
+            </svg>
+            <svg class="parent-voices-wave-front" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,48 C260,108 460,-8 720,48 C980,104 1180,-8 1440,48 L1440,100 L0,100 Z" fill="var(--color-cream)"></path>
             </svg>
         </div>
+
+        <!-- Cute decorative doodles, hidden on smaller screens -->
+        <svg class="voices-doodle voices-doodle--star" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l2.1 5.9 6.1.6-4.7 4 1.4 6-4.9-3.4-4.9 3.4 1.4-6-4.7-4 6.1-.6z" stroke="var(--color-gold-dark)" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <svg class="voices-doodle voices-doodle--squiggle" viewBox="0 0 60 24" fill="none" aria-hidden="true"><path d="M2 18c6-14 12 14 18 0s12-14 18 0s10 8 20-2" stroke="var(--color-teal)" stroke-width="3" stroke-linecap="round"/></svg>
+        <svg class="voices-doodle voices-doodle--sparkle" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round"><path d="M12 1.6v3.2"/><path d="M19.4 4.6l-2.2 2.2"/><path d="M22.4 12h-3.2"/><path d="M4.6 4.6l2.2 2.2"/></g><circle cx="12" cy="13" r="4.6" fill="var(--color-accent)"/></svg>
+        <svg class="voices-doodle voices-doodle--dots" viewBox="0 0 60 20" fill="none" aria-hidden="true"><circle cx="8" cy="10" r="5" fill="var(--color-teal)"/><circle cx="30" cy="10" r="5" fill="var(--color-gold)"/><circle cx="52" cy="10" r="5" fill="var(--color-accent)"/></svg>
+
         <div class="container">
             <div class="parent-voices-line" aria-hidden="true"></div>
             <div class="parent-voices-grid reveal-stagger">
