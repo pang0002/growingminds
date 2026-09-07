@@ -3071,21 +3071,26 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* Cute doodles anchored to the card row, not the far viewport edges —
-   scattered at varied heights and rotations rather than pinned to the
-   four corners, so they read as loosely floating confetti. */
+   kept in two open bands (above the dashed line, and below the card
+   row) so nothing sits behind or clips into a card's own footprint,
+   and spread across left/center/right within each band rather than
+   clustering near one corner. */
 .voices-doodle {
     position: absolute;
     pointer-events: none;
     z-index: 2;
 }
 
-.voices-doodle--star { width: 42px; top: -20px; left: 5%; transform: rotate(-14deg); }
-.voices-doodle--squiggle { width: 96px; top: 44px; right: 3%; opacity: 0.8; transform: rotate(4deg); }
-.voices-doodle--sparkle { width: 38px; bottom: 76px; left: -1%; transform: rotate(-6deg); }
-.voices-doodle--dots { width: 74px; bottom: -6px; right: 20%; }
-.voices-doodle--ring { width: 26px; top: -14px; left: 36%; opacity: 0.8; }
-.voices-doodle--cross { width: 22px; bottom: 16px; left: 54%; transform: rotate(12deg); opacity: 0.75; }
-.voices-doodle--moon { width: 30px; top: 66px; right: -2%; transform: rotate(-8deg); opacity: 0.85; }
+/* Top band — clear of the dashed line and every card */
+.voices-doodle--star { width: 42px; top: -22px; left: 3%; transform: rotate(-14deg); }
+.voices-doodle--ring { width: 26px; top: -12px; left: 24%; opacity: 0.8; }
+.voices-doodle--squiggle { width: 90px; top: -18px; right: 4%; opacity: 0.8; }
+
+/* Bottom band — below the lowest-hanging card, spread wide */
+.voices-doodle--sparkle { width: 38px; bottom: 20px; left: -1%; transform: rotate(-6deg); }
+.voices-doodle--cross { width: 22px; bottom: -8px; left: 58%; transform: rotate(12deg); opacity: 0.75; }
+.voices-doodle--dots { width: 74px; bottom: -16px; right: 22%; }
+.voices-doodle--moon { width: 28px; bottom: 60px; right: -3%; transform: rotate(-8deg); opacity: 0.85; }
 
 @media (max-width: 1248px) {
     .voices-doodle {
