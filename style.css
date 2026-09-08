@@ -8889,11 +8889,6 @@ body.home-page-locked {
     padding: 48px 0 68px;
 }
 
-.home-page .photo-strip .container {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
 .photo-strip::before,
 .photo-strip::after {
     content: "";
@@ -8933,75 +8928,72 @@ body.home-page-locked {
     color: var(--color-primary);
 }
 
-.photo-strip-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(12px, 1.5vw, 28px);
+/* Container handles the horizontal scroll/loop; overflow-y hidden so
+   the staggered (translateY) cards never trigger a vertical scrollbar. */
+.gallery-container {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    overflow: visible;
-    padding: 0 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 60px 24px;
+    -webkit-overflow-scrolling: touch;
     position: relative;
     z-index: 1;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;       /* Firefox */
     -ms-overflow-style: none;    /* old Edge/IE */
 }
 
-.photo-strip-grid::-webkit-scrollbar {
+.gallery-container::-webkit-scrollbar {
     display: none;               /* Chrome, Safari, new Edge */
     height: 0;
     width: 0;
 }
 
-.photo-strip-item {
-    flex: 0 0 auto;
+/* Flex track keeps every photo in one horizontal line */
+.gallery-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 30px);
+    width: max-content;
+}
+
+/* Base card styling — landscape, fixed size, never shrinks */
+.gallery-card {
     width: clamp(240px, 24vw, 420px);
     height: clamp(160px, 15vw, 260px);
+    object-fit: cover;
     border-radius: 34px;
-    overflow: hidden;
     border: 6px solid var(--color-cream);
     background: var(--color-primary-dark);
     box-shadow: 0 12px 0 rgba(20, 42, 97, 0.7);
-    transform: rotate(-2deg);
+    flex-shrink: 0;
+    display: block;
     transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-.photo-strip-item--up {
-    margin-top: -90px;
-    transform: rotate(2deg);
+/* Playful scattered offsets & tilts — alternating up/down with a
+   gentler third beat every 3rd card so the rhythm doesn't feel too
+   mechanical */
+.gallery-card:nth-child(odd) {
+    transform: translateY(-24px) rotate(-2deg);
 }
 
-.photo-strip-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.gallery-card:nth-child(even) {
+    transform: translateY(24px) rotate(2deg);
 }
 
-.photo-strip-item:hover {
-    transform: translateY(-8px) rotate(0deg);
+.gallery-card:nth-child(3n) {
+    transform: translateY(-8px) rotate(1.2deg);
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px) scale(1.04) rotate(0deg);
     box-shadow: 0 16px 0 rgba(20, 42, 97, 0.7);
-}
-
-@media (min-width: 1180px) {
-    .photo-strip-grid {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
+    z-index: 2;
 }
 
 @media (max-width: 1179px) and (min-width: 641px) {
-    .photo-strip-grid {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-    .photo-strip-item {
+    .gallery-card {
         width: 280px;
         height: 200px;
     }
@@ -9019,15 +9011,15 @@ body.home-page-locked {
         height: 260px;
         border-width: 14px;
     }
-    .photo-strip-grid {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding: 0 18px 12px;
+    .gallery-container {
+        padding: 40px 18px;
     }
-    .photo-strip-item {
+    .gallery-card {
         width: 240px;
         height: 170px;
         border-radius: 24px;
     }
-    .photo-strip-item--up { margin-top: -46px; }
+    .gallery-card:nth-child(odd) { transform: translateY(-14px) rotate(-2deg); }
+    .gallery-card:nth-child(even) { transform: translateY(14px) rotate(2deg); }
+    .gallery-card:nth-child(3n) { transform: translateY(-5px) rotate(1.2deg); }
 }
