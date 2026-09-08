@@ -8893,7 +8893,13 @@ body.home-page-locked {
     min-height: 560px;
     display: flex;
     align-items: center;
-    background: var(--color-primary);
+    background: linear-gradient(
+        to bottom,
+        var(--color-cream) 0%,
+        var(--color-primary) 14%,
+        var(--color-primary) 80%,
+        var(--color-sage) 100%
+    );
     padding: 56px 0 64px;
     box-sizing: border-box;
 }
