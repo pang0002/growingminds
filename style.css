@@ -8884,6 +8884,7 @@ body.home-page-locked {
 /* PHOTO STRIP — solid blue + both rings visible + infinite marquee */
 /* ============================================================ */
 
+/* Base section (keep your existing solid blue + height) */
 .home-page .photo-strip {
     position: relative;
     overflow: hidden;
@@ -8892,12 +8893,12 @@ body.home-page-locked {
     min-height: 480px;
     display: flex;
     align-items: center;
-    background: var(--color-primary);   /* solid blue, no fade */
+    background: var(--color-primary);
     padding: 56px 0 64px;
     box-sizing: border-box;
 }
 
-/* Thin cream wave at the very top */
+/* Thin cream wave at top */
 .home-page .photo-strip::before {
     content: "";
     position: absolute;
@@ -8910,37 +8911,77 @@ body.home-page-locked {
     pointer-events: none;
 }
 
-/* Teal decorative ring */
+/* --- Ring 1: large teal (left-center) --- */
 .home-page .photo-strip::after {
     content: "";
     position: absolute;
-    width: 720px;
-    height: 360px;
-    border: 20px solid var(--color-teal);
+    width: 780px;
+    height: 390px;
+    border: 22px solid var(--color-teal);
     border-radius: 50%;
-    opacity: 0.9;
-    top: 50%;
-    left: 32%;                    /* pushed toward center */
-    transform: translate(-50%, -50%) rotate(-11deg);
+    opacity: 0.75;
+    top: 45%;
+    left: 28%;
+    transform: translate(-50%, -50%) rotate(-14deg);
     pointer-events: none;
     z-index: 0;
+    animation: ring-float 9s ease-in-out infinite;
 }
 
-/* Gold decorative ring */
+/* --- Ring 2: gold (right-center, overlaps teal) --- */
 .photo-strip-ring--gold {
     position: absolute;
-    width: 680px;
-    height: 340px;
+    width: 700px;
+    height: 350px;
     border: 20px solid var(--color-gold);
     border-radius: 50%;
-    opacity: 0.9;
-    top: 48%;
-    left: 68%;                    /* pushed toward center */
-    transform: translate(-50%, -50%) rotate(14deg);
+    opacity: 0.8;
+    top: 55%;
+    left: 72%;
+    transform: translate(-50%, -50%) rotate(12deg);
     pointer-events: none;
     z-index: 0;
+    animation: ring-float 11s ease-in-out infinite reverse;
 }
 
+/* --- Ring 3: smaller teal accent (extra life) --- */
+.photo-strip-ring--teal-small {
+    position: absolute;
+    width: 420px;
+    height: 210px;
+    border: 14px solid var(--color-teal);
+    border-radius: 50%;
+    opacity: 0.55;
+    top: 68%;
+    left: 48%;
+    transform: translate(-50%, -50%) rotate(8deg);
+    pointer-events: none;
+    z-index: 0;
+    animation: ring-float 7s ease-in-out infinite;
+}
+
+/* Soft floating motion */
+@keyframes ring-float {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(var(--ring-rot, -14deg)) scale(1);
+    }
+    50% {
+        transform: translate(-50%, calc(-50% - 10px)) rotate(var(--ring-rot, -14deg)) scale(1.03);
+    }
+}
+
+/* Assign different base rotations so the keyframes keep the angle */
+.home-page .photo-strip::after {
+    --ring-rot: -14deg;
+}
+.photo-strip-ring--gold {
+    --ring-rot: 12deg;
+}
+.photo-strip-ring--teal-small {
+    --ring-rot: 8deg;
+}
+
+/* Hide old blobs */
 .photo-strip .blob-teal,
 .photo-strip .blob-gold {
     display: none !important;
