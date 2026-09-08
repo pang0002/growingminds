@@ -8876,7 +8876,7 @@ body.home-page-locked {
 .home-page .photo-strip {
     position: relative;
     overflow: hidden;
-    min-height: 520px;
+    min-height: 580px;
     display: flex;
     align-items: center;
     /* A cream wave mask sits on top of the gradient at the very top
@@ -8969,7 +8969,7 @@ body.home-page-locked {
 }
 
 .photo-strip-item--up {
-    margin-top: -50px;
+    margin-top: -90px;
     transform: rotate(2deg);
 }
 
@@ -8989,8 +8989,8 @@ body.home-page-locked {
     .photo-strip-grid {
         justify-content: flex-start;
         overflow-x: auto;
-        padding-left: max(24px, calc((100vw - 1200px) / 2 + 24px));
-        padding-right: max(24px, calc((100vw - 1200px) / 2 + 24px));
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 
@@ -9009,7 +9009,7 @@ body.home-page-locked {
 
 @media (max-width: 640px) {
     .photo-strip {
-        min-height: 340px;
+        min-height: 380px;
         border-radius: 34px 34px 0 0;
         padding: 40px 0 52px;
     }
@@ -9029,5 +9029,5 @@ body.home-page-locked {
         height: 170px;
         border-radius: 24px;
     }
-    .photo-strip-item--up { margin-top: -24px; }
+    .photo-strip-item--up { margin-top: -46px; }
 }
