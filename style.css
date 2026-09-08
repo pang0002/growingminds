@@ -3209,16 +3209,26 @@ header.is-scrolled #site-nav a.btn-nav {
     .parent-voices-line {
         display: none;
     }
+    .testimonial-card::before,
+    .testimonial-card::after {
+        display: none;
+    }
     .parent-voices-grid {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 44px;
-        gap: 44px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 24px;
+        gap: 16px;
     }
     .testimonial-card--teal,
     .testimonial-card--gold,
     .testimonial-card--lavender {
         margin-top: 0;
+    }
+    .testimonial-card {
+        width: calc(50% - 8px);
+        min-width: 150px;
     }
 }
 
