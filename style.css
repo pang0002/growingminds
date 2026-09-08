@@ -8937,6 +8937,7 @@ body.home-page-locked {
     overflow-y: hidden;
     padding: 60px 24px;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto; /* override the global "smooth" so our loop-reset jumps are instant, not animated */
     position: relative;
     z-index: 1;
     scrollbar-width: none;       /* Firefox */
