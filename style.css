@@ -8876,7 +8876,7 @@ body.home-page-locked {
 .home-page .photo-strip {
     position: relative;
     overflow: hidden;
-    min-height: 420px;
+    min-height: 520px;
     display: flex;
     align-items: center;
     /* A cream wave mask sits on top of the gradient at the very top
@@ -9000,7 +9000,7 @@ body.home-page-locked {
 
 @media (max-width: 640px) {
     .photo-strip {
-        min-height: 320px;
+        min-height: 340px;
         border-radius: 34px 34px 0 0;
         padding: 40px 0 52px;
     }
