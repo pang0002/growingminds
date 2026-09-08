@@ -8871,65 +8871,47 @@ body.home-page-locked {
     margin-left: 0;
 }
 /* ============================================================ */
-/* PHOTO STRIP — solid blue, rings fully visible                */
+/* PHOTO STRIP — "Inside Growing Minds" gallery band on homepage */
 /* ============================================================ */
-
 .home-page .photo-strip {
     position: relative;
     overflow: hidden;
     min-height: 460px;
     display: flex;
     align-items: center;
-    background: var(--color-primary);   /* solid blue, no fade */
+    /* A cream wave mask sits on top of the gradient at the very top
+       edge, so the section emerges from the page with a curve
+       instead of starting as a flat-topped rounded card. */
+    background:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1440,0 L1440,25 C1200,60 960,10 720,35 C480,60 240,10 0,35 Z' fill='%23F7F3EC'/%3E%3C/svg%3E") top / 100% 70px no-repeat,
+            var(--color-primary);
     border-radius: 0;
-    padding: 52px 0 60px;
+    padding: 50px 0 62px;
 }
 
-/* Thin cream wave only at the very top edge */
-.home-page .photo-strip::before {
+.photo-strip::before,
+.photo-strip::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 42px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1440,0 L1440,20 C1200,50 960,8 720,28 C480,48 240,8 0,28 Z' fill='%23F7F3EC'/%3E%3C/svg%3E") top / 100% 100% no-repeat;
-    z-index: 2;
+    width: 760px;
+    height: 390px;
+    border: 22px solid var(--color-teal);
+    border-radius: 50%;
+    opacity: 0.9;
     pointer-events: none;
 }
 
-/* Teal ring */
-.home-page .photo-strip::after {
-    content: "";
-    position: absolute;
-    width: 580px;
-    height: 290px;
-    border: 18px solid var(--color-teal);
-    border-radius: 50%;
-    opacity: 0.85;
+.photo-strip::before {
     top: 50%;
-    left: 20%;
+    left: 18%;
     transform: translate(-50%, -50%) rotate(-11deg);
-    pointer-events: none;
-    z-index: 0;
 }
 
-/* Gold ring — needs a real element. Add this empty div inside the section in HTML:
-   <div class="photo-strip-ring photo-strip-ring--gold" aria-hidden="true"></div>
-*/
-
-.photo-strip-ring--gold {
-    position: absolute;
-    width: 540px;
-    height: 270px;
-    border: 18px solid var(--color-gold);
-    border-radius: 50%;
-    opacity: 0.85;
+.photo-strip::after {
     top: 48%;
-    left: 75%;
+    left: 70%;
     transform: translate(-50%, -50%) rotate(14deg);
-    pointer-events: none;
-    z-index: 0;
+    border-color: var(--color-gold);
 }
 
 .photo-strip .blob-teal,
@@ -8937,6 +8919,18 @@ body.home-page-locked {
     display: none;
 }
 
+.photo-strip-head {
+    display: none;
+}
+
+.photo-strip-head h2 {
+    margin-top: 8px;
+    color: var(--color-primary);
+}
+
+/* Container handles the horizontal scroll/loop; overflow-y hidden so
+   the staggered (translateY) cards never trigger a vertical scrollbar. */
+/* Infinite marquee container — hides overflow, full-bleed */
 .gallery-container {
     width: 100vw;
     margin-left: calc(50% - 50vw);
@@ -8946,90 +8940,110 @@ body.home-page-locked {
     z-index: 1;
 }
 
+/* Flex track: duplicated image set + continuous slide */
 .gallery-track {
     display: flex;
     align-items: center;
-    gap: clamp(18px, 2.2vw, 32px);
+    gap: clamp(16px, 2vw, 30px);
     width: max-content;
     animation: marquee-slide 40s linear infinite;
     will-change: transform;
 }
 
+/* Pause on hover so users can look at a photo */
 .gallery-track:hover {
     animation-play-state: paused;
 }
 
+/* Base card styling — landscape, fixed size, never shrinks */
 .gallery-card {
-    width: clamp(240px, 24vw, 400px);
-    height: clamp(155px, 14.5vw, 250px);
+    width: clamp(240px, 24vw, 420px);
+    height: clamp(160px, 15vw, 260px);
     object-fit: cover;
-    border-radius: 28px;
-    border: 5px solid var(--color-cream);
+    border-radius: 34px;
+    border: 6px solid var(--color-cream);
     background: var(--color-primary-dark);
-    box-shadow: 0 10px 0 rgba(20, 42, 97, 0.65);
+    box-shadow: 0 12px 0 rgba(20, 42, 97, 0.7);
     flex-shrink: 0;
     display: block;
     transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-.gallery-card:nth-child(odd)  { transform: translateY(-18px) rotate(-1.8deg); }
-.gallery-card:nth-child(even) { transform: translateY(18px) rotate(1.8deg); }
-.gallery-card:nth-child(3n)   { transform: translateY(-6px) rotate(1deg); }
+/* Playful scattered offsets & tilts — alternating up/down */
+.gallery-card:nth-child(odd) {
+    transform: translateY(-24px) rotate(-2deg);
+}
+
+.gallery-card:nth-child(even) {
+    transform: translateY(24px) rotate(2deg);
+}
+
+.gallery-card:nth-child(3n) {
+    transform: translateY(-8px) rotate(1.2deg);
+}
 
 .gallery-card:hover {
-    transform: translateY(-6px) scale(1.04) rotate(0deg);
-    box-shadow: 0 14px 0 rgba(20, 42, 97, 0.7);
+    transform: translateY(-8px) scale(1.04) rotate(0deg);
+    box-shadow: 0 16px 0 rgba(20, 42, 97, 0.7);
     z-index: 2;
 }
 
+/* Keyframes: move exactly one full set (50% of the duplicated track) */
 @keyframes marquee-slide {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
+/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-    .gallery-track { animation: none; }
+    .gallery-track {
+        animation: none;
+    }
     .gallery-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
-    .gallery-container::-webkit-scrollbar { display: none; }
+    .gallery-container::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media (max-width: 1179px) and (min-width: 641px) {
-    .home-page .photo-strip { min-height: 400px; }
-    .gallery-card { width: 270px; height: 185px; }
-    .home-page .photo-strip::after,
-    .photo-strip-ring--gold {
-        width: 480px;
-        height: 240px;
-        border-width: 15px;
+    .gallery-card {
+        width: 280px;
+        height: 200px;
     }
 }
 
 @media (max-width: 640px) {
-    .home-page .photo-strip {
-        min-height: 340px;
-        padding: 36px 0 44px;
-        border-radius: 28px 28px 0 0;
+    .photo-strip {
+        min-height: 380px;
+        border-radius: 34px 34px 0 0;
+        padding: 40px 0 52px;
     }
-    .home-page .photo-strip::before { height: 32px; }
-    .home-page .photo-strip::after,
-    .photo-strip-ring--gold {
-        width: 360px;
-        height: 180px;
-        border-width: 12px;
+    .photo-strip::before,
+    .photo-strip::after {
+        width: 540px;
+        height: 260px;
+        border-width: 14px;
     }
-    .gallery-container { padding: 24px 0; }
+    .gallery-container {
+        padding: 40px 0;
+    }
     .gallery-card {
-        width: 220px;
-        height: 155px;
-        border-radius: 22px;
-        border-width: 4px;
+        width: 240px;
+        height: 170px;
+        border-radius: 24px;
     }
-    .gallery-card:nth-child(odd)  { transform: translateY(-12px) rotate(-1.8deg); }
-    .gallery-card:nth-child(even) { transform: translateY(12px) rotate(1.8deg); }
-    .gallery-card:nth-child(3n)   { transform: translateY(-4px) rotate(1deg); }
-    .gallery-track { animation-duration: 28s; }
+    .gallery-card:nth-child(odd) { transform: translateY(-14px) rotate(-2deg); }
+    .gallery-card:nth-child(even) { transform: translateY(14px) rotate(2deg); }
+    .gallery-card:nth-child(3n) { transform: translateY(-5px) rotate(1.2deg); }
+    .gallery-track {
+        animation-duration: 28s; /* slightly faster on small screens */
+    }
 }
