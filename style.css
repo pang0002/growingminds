@@ -8895,8 +8895,7 @@ body.home-page-locked {
     align-items: center;
     background: linear-gradient(
         to bottom,
-        var(--color-cream) 0%,
-        var(--color-primary) 14%,
+        var(--color-primary) 0%,
         var(--color-primary) 80%,
         var(--color-sage) 100%
     );
