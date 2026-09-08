@@ -8978,8 +8978,10 @@ body.home-page-locked {
 
 @media (min-width: 1180px) {
     .photo-strip-grid {
-        padding-left: 0;
-        padding-right: 0;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-left: max(24px, calc((100vw - 1200px) / 2 + 24px));
+        padding-right: max(24px, calc((100vw - 1200px) / 2 + 24px));
     }
 }
 
