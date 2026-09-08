@@ -8914,13 +8914,13 @@ body.home-page-locked {
 .home-page .photo-strip::after {
     content: "";
     position: absolute;
-    width: 680px;
-    height: 340px;
+    width: 720px;
+    height: 360px;
     border: 20px solid var(--color-teal);
     border-radius: 50%;
     opacity: 0.9;
     top: 50%;
-    left: 16%;
+    left: 32%;                    /* pushed toward center */
     transform: translate(-50%, -50%) rotate(-11deg);
     pointer-events: none;
     z-index: 0;
@@ -8929,13 +8929,13 @@ body.home-page-locked {
 /* Gold decorative ring */
 .photo-strip-ring--gold {
     position: absolute;
-    width: 620px;
-    height: 310px;
+    width: 680px;
+    height: 340px;
     border: 20px solid var(--color-gold);
     border-radius: 50%;
     opacity: 0.9;
     top: 48%;
-    left: 78%;
+    left: 68%;                    /* pushed toward center */
     transform: translate(-50%, -50%) rotate(14deg);
     pointer-events: none;
     z-index: 0;
