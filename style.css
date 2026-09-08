@@ -8954,6 +8954,7 @@ body.home-page-locked {
     border-radius: 34px;
     overflow: hidden;
     border: 6px solid var(--color-cream);
+    background: var(--color-primary-dark);
     box-shadow: 0 12px 0 rgba(20, 42, 97, 0.7);
     transform: rotate(-2deg);
     transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
