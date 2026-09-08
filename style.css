@@ -8890,7 +8890,7 @@ body.home-page-locked {
     overflow: hidden;
     width: 100%;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 560px;
     display: flex;
     align-items: center;
     background: var(--color-primary);
@@ -8924,7 +8924,7 @@ body.home-page-locked {
     left: 28%;
     transform: translate(-50%, -50%) rotate(-14deg);
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
     animation: ring-float 9s ease-in-out infinite;
 }
 
@@ -8940,7 +8940,7 @@ body.home-page-locked {
     left: 72%;
     transform: translate(-50%, -50%) rotate(12deg);
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
     animation: ring-float 11s ease-in-out infinite reverse;
 }
 
@@ -8956,7 +8956,7 @@ body.home-page-locked {
     left: 48%;
     transform: translate(-50%, -50%) rotate(8deg);
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
     animation: ring-float 7s ease-in-out infinite;
 }
 
@@ -9058,7 +9058,7 @@ body.home-page-locked {
 }
 
 @media (max-width: 1179px) and (min-width: 641px) {
-    .home-page .photo-strip { min-height: 420px; }
+    .home-page .photo-strip { min-height: 480px; }
     .gallery-card { width: 270px; height: 185px; }
     .home-page .photo-strip::after {
         width: 520px;
@@ -9074,7 +9074,7 @@ body.home-page-locked {
 
 @media (max-width: 640px) {
     .home-page .photo-strip {
-        min-height: 360px;
+        min-height: 420px;
         padding: 40px 0 48px;
     }
     .home-page .photo-strip::before { height: 36px; }
