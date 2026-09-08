@@ -8911,8 +8911,8 @@ body.home-page-locked {
         var(--color-primary) 80%,
         var(--color-sage) 100%
     );
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,190 C134,190 269,100 403,100 C508,100 614,190 720,190 C826,190 931,100 1037,100 C1171,100 1305,190 1440,190 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,190 C134,190 269,100 403,100 C508,100 614,190 720,190 C826,190 931,100 1037,100 C1171,100 1305,190 1440,190 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,120 C134,120 269,35 403,35 C508,35 614,120 720,120 C826,120 931,35 1037,35 C1171,35 1305,120 1440,120 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,120 C134,120 269,35 403,35 C508,35 614,120 720,120 C826,120 931,35 1037,35 C1171,35 1305,120 1440,120 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
