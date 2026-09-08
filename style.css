@@ -8884,7 +8884,7 @@ body.home-page-locked {
 /* PHOTO STRIP — solid blue + both rings visible + infinite marquee */
 /* ============================================================ */
 
-/* Base section (keep your existing solid blue + height) */
+/* Base section — no fill of its own; the wavy navy layer below paints it */
 .home-page .photo-strip {
     position: relative;
     overflow: hidden;
@@ -8893,27 +8893,33 @@ body.home-page-locked {
     min-height: 460px;
     display: flex;
     align-items: center;
+    background: transparent;
+    padding: 56px 0 64px;
+    box-sizing: border-box;
+}
+
+/* The actual navy fill, cut into a wave at the top edge using a mask —
+   this reveals the real page background above the curve, rather than
+   painting a cream shape on top of a solid rectangle. */
+.home-page .photo-strip::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: linear-gradient(
         to bottom,
         var(--color-primary) 0%,
         var(--color-primary) 80%,
         var(--color-sage) 100%
     );
-    padding: 56px 0 64px;
-    box-sizing: border-box;
-}
-
-/* Thin cream wave at top */
-/* Cream wave at top, mirroring the wave used at the bottom */
-.home-page .photo-strip::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 130px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 130' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C240,110 480,10 720,54 C960,98 1200,10 1440,54 L1440,0 L0,0 Z' fill='%23F7F3EC'/%3E%3C/svg%3E") top / 100% 100% no-repeat;
-    z-index: 3;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,170 C240,230 480,90 720,150 C960,210 1200,90 1440,150 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,170 C240,230 480,90 720,150 C960,210 1200,90 1440,150 L1440,1000 L0,1000 Z' fill='white'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: top;
+    mask-position: top;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -9083,7 +9089,6 @@ body.home-page-locked {
         min-height: 420px;
         padding: 40px 0 48px;
     }
-    .home-page .photo-strip::before { height: 70px; }
     .home-page .photo-strip::after {
         width: 380px;
         height: 140px;
