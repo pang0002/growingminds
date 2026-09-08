@@ -8955,13 +8955,11 @@ body.home-page-locked {
     overflow: hidden;
     border: 6px solid var(--color-cream);
     box-shadow: 0 12px 0 rgba(20, 42, 97, 0.7);
-    transform: rotate(-2deg);
     transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .photo-strip-item--up {
-    margin-top: -70px;
-    transform: rotate(2deg);
+    margin-top: 0;
 }
 
 .photo-strip-item img {
@@ -9020,5 +9018,5 @@ body.home-page-locked {
         height: 250px;
         border-radius: 24px;
     }
-    .photo-strip-item--up { margin-top: -34px; }
+    .photo-strip-item--up { margin-top: 0; }
 }
