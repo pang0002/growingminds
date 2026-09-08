@@ -8906,14 +8906,6 @@ body.home-page-locked {
     position: absolute;
     inset: 0;
     background: var(--color-primary);
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,90 C134,90 269,10 403,10 C508,10 614,50 720,50 C826,50 931,10 1037,10 C1171,10 1305,90 1440,90 L1440,910 C1305,910 1171,990 1037,990 C931,990 826,950 720,950 C614,950 508,990 403,990 C269,990 134,910 0,910 Z' fill='white'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,90 C134,90 269,10 403,10 C508,10 614,50 720,50 C826,50 931,10 1037,10 C1171,10 1305,90 1440,90 L1440,910 C1305,910 1171,990 1037,990 C931,990 826,950 720,950 C614,950 508,990 403,990 C269,990 134,910 0,910 Z' fill='white'/%3E%3C/svg%3E");
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
     z-index: 0;
     pointer-events: none;
 }
