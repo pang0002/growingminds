@@ -8945,6 +8945,14 @@ body.home-page-locked {
     position: relative;
     z-index: 1;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* old Edge/IE */
+}
+
+.photo-strip-grid::-webkit-scrollbar {
+    display: none;               /* Chrome, Safari, new Edge */
+    height: 0;
+    width: 0;
 }
 
 .photo-strip-item {
