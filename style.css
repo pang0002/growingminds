@@ -502,10 +502,10 @@ header.is-scrolled::after {
     align-items: center;
     position: relative;
     width: 100%;
-    padding: 0 60px;
-    max-width: 1560px;
+    padding: 0 32px;
+    max-width: 1400px;
     margin: 0 auto;
-    gap: 48px;
+    gap: 24px;
 }
 
 .logo {
@@ -876,6 +876,7 @@ header.is-scrolled #site-nav a.btn-nav {
     transition: all 0.3s var(--ease);
     padding: 0;
     flex-shrink: 0;
+    margin-left: auto; /* This pushes the toggle to the right */
 }
 
 .nav-toggle:hover {
@@ -5515,36 +5516,8 @@ header.is-scrolled #site-nav a.btn-nav {
    RESPONSIVE HEADER - ENLARGED
    ============================================================ */
 
-/* Desktop - wide laptop widths: the gap between full-size nav and the
-   1450px tier below. Needed once a 6th nav item (Blog) was added, since
-   these widths were previously relying on full "ENLARGED" sizing with
-   no room to spare. */
+/* Desktop - wide laptop widths */
 @media (max-width: 1700px) {
-    .header-container {
-        padding: 0 48px;
-        gap: 38px;
-    }
-
-    #site-nav ul {
-        gap: 6px;
-    }
-
-    #site-nav a {
-        padding: 13px 20px;
-        font-size: 19px;
-    }
-
-    #site-nav a.btn-nav {
-        padding: 15px 38px;
-        font-size: 18px;
-        margin-left: 14px;
-    }
-}
-
-/* Desktop - laptop widths: trim horizontal breathing room so the
-   full-size nav still fits on one line before the bigger 1200px
-   breakpoint kicks in and shrinks font sizes */
-@media (max-width: 1450px) {
     .header-container {
         padding: 0 40px;
         gap: 32px;
@@ -5566,11 +5539,15 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 }
 
-/* Desktop - Large screens */
-@media (max-width: 1300px) {
+/* Desktop - laptop widths */
+@media (max-width: 1450px) {
     .header-container {
         padding: 0 32px;
         gap: 24px;
+    }
+
+    #site-nav ul {
+        gap: 2px;
     }
 
     #site-nav a {
@@ -5583,31 +5560,15 @@ header.is-scrolled #site-nav a.btn-nav {
         font-size: 16px;
         margin-left: 10px;
     }
-
-    .logo-name {
-        font-size: 30px;
-    }
-
-    .logo-tagline {
-        font-size: 13px;
-    }
 }
 
-@media (max-width: 1200px) {
-    :root {
-        --header-height: 110px;
-        --header-logo-size: 85px;
-    }
-
+/* Desktop - Large screens */
+@media (max-width: 1300px) {
     .header-container {
-        padding: 0 28px;
+        padding: 0 24px;
         gap: 20px;
     }
-    
-    #site-nav ul {
-        gap: 2px;
-    }
-    
+
     #site-nav a {
         padding: 8px 14px;
         font-size: 16px;
@@ -5626,44 +5587,12 @@ header.is-scrolled #site-nav a.btn-nav {
     .logo-tagline {
         font-size: 12px;
     }
-
-    .logo-text-next {
-        display: none !important;
-    }
-
-    .logo-text {
-        display: none !important;
-    }
-
-    header.is-scrolled {
-        --header-height: 90px;
-        --header-logo-size: 70px;
-    }
-
-    header.is-scrolled .logo-name {
-        font-size: 22px;
-    }
-
-    header.is-scrolled .logo-tagline {
-        font-size: 11px;
-    }
-
-    header.is-scrolled #site-nav a {
-        font-size: 15px;
-        padding: 7px 12px;
-    }
-
-    header.is-scrolled #site-nav a.btn-nav {
-        font-size: 14px;
-        padding: 9px 20px;
-    }
 }
 
-/* Desktop - Medium */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     :root {
-        --header-logo-size: 72px;
-        --header-height: 90px;
+        --header-height: 110px;
+        --header-logo-size: 85px;
     }
 
     .header-container {
@@ -5671,13 +5600,17 @@ header.is-scrolled #site-nav a.btn-nav {
         gap: 16px;
     }
     
+    #site-nav ul {
+        gap: 2px;
+    }
+    
     #site-nav a {
         padding: 8px 12px;
         font-size: 15px;
     }
-    
+
     #site-nav a.btn-nav {
-        padding: 10px 22px;
+        padding: 10px 20px;
         font-size: 14px;
         margin-left: 6px;
     }
@@ -5690,9 +5623,21 @@ header.is-scrolled #site-nav a.btn-nav {
         font-size: 11px;
     }
 
+    .logo-text {
+        display: none !important;
+    }
+
     header.is-scrolled {
-        --header-height: 78px;
-        --header-logo-size: 60px;
+        --header-height: 90px;
+        --header-logo-size: 70px;
+    }
+
+    header.is-scrolled .logo-name {
+        font-size: 20px;
+    }
+
+    header.is-scrolled .logo-tagline {
+        font-size: 10px;
     }
 
     header.is-scrolled #site-nav a {
@@ -5703,6 +5648,53 @@ header.is-scrolled #site-nav a.btn-nav {
     header.is-scrolled #site-nav a.btn-nav {
         font-size: 13px;
         padding: 8px 18px;
+    }
+}
+
+/* Desktop - Medium */
+@media (max-width: 992px) {
+    :root {
+        --header-logo-size: 72px;
+        --header-height: 90px;
+    }
+
+    .header-container {
+        padding: 0 16px;
+        gap: 12px;
+    }
+    
+    #site-nav a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    
+    #site-nav a.btn-nav {
+        padding: 8px 18px;
+        font-size: 13px;
+        margin-left: 4px;
+    }
+
+    .logo-name {
+        font-size: 22px;
+    }
+
+    .logo-tagline {
+        font-size: 10px;
+    }
+
+    header.is-scrolled {
+        --header-height: 78px;
+        --header-logo-size: 60px;
+    }
+
+    header.is-scrolled #site-nav a {
+        font-size: 13px;
+        padding: 5px 8px;
+    }
+
+    header.is-scrolled #site-nav a.btn-nav {
+        font-size: 12px;
+        padding: 7px 16px;
     }
 
     /* Other responsive adjustments */
