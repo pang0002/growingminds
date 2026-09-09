@@ -867,8 +867,8 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: rgba(31, 60, 136, 0.04);
     border: 2px solid rgba(31, 60, 136, 0.08);
     border-radius: 12px;
@@ -9338,10 +9338,11 @@ body.home-page-locked {
 }
 
 .blog-post-hero-top {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 16px;
+    min-height: 44px;
     margin-bottom: 22px;
     text-align: left;
 }
@@ -9351,6 +9352,10 @@ body.home-page-locked {
 }
 
 .blog-post-hero-top .section-tag {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin-bottom: 0;
 }
 
@@ -9358,16 +9363,25 @@ body.home-page-locked {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     color: var(--color-teal-dark);
     margin-bottom: 22px;
 }
 
 @media (max-width: 480px) {
     .blog-post-hero-top {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        min-height: 0;
+    }
+
+    .blog-post-hero-top .section-tag {
+        position: static;
+        transform: none;
+        align-self: flex-start;
     }
 }
 
