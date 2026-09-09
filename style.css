@@ -5506,6 +5506,32 @@ header.is-scrolled #site-nav a.btn-nav {
    RESPONSIVE HEADER - ENLARGED
    ============================================================ */
 
+/* Desktop - wide laptop widths: the gap between full-size nav and the
+   1450px tier below. Needed once a 6th nav item (Blog) was added, since
+   these widths were previously relying on full "ENLARGED" sizing with
+   no room to spare. */
+@media (max-width: 1700px) {
+    .header-container {
+        padding: 0 48px;
+        gap: 38px;
+    }
+
+    #site-nav ul {
+        gap: 6px;
+    }
+
+    #site-nav a {
+        padding: 13px 20px;
+        font-size: 19px;
+    }
+
+    #site-nav a.btn-nav {
+        padding: 15px 38px;
+        font-size: 18px;
+        margin-left: 14px;
+    }
+}
+
 /* Desktop - laptop widths: trim horizontal breathing room so the
    full-size nav still fits on one line before the bigger 1200px
    breakpoint kicks in and shrinks font sizes */
