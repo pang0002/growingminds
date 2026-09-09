@@ -407,11 +407,11 @@ document.addEventListener('DOMContentLoaded', function () {
             safeInit(initSmoothScroll, 'initSmoothScroll');
 
             setTimeout(function () {
-                var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                var currentPath = window.location.pathname.split('/').pop();
                 var navLinks = document.querySelectorAll('#site-nav a:not(.btn-nav)');
                 navLinks.forEach(function (link) {
                     var href = link.getAttribute('href');
-                    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    if (href === currentPath || (href === '/' && (currentPath === '' || currentPath === 'index.html'))) {
                         link.classList.add('active');
                     }
                 });
@@ -436,12 +436,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // ACTIVE NAV LINK HIGHLIGHTING
     // ============================================================
     function initActiveNav() {
-        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPath = window.location.pathname.split('/').pop();
         const navLinks = document.querySelectorAll('#site-nav a:not(.btn-nav)');
 
         navLinks.forEach(function (link) {
             const href = link.getAttribute('href');
-            if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+            if (href === currentPath || (href === '/' && (currentPath === '' || currentPath === 'index.html'))) {
                 link.style.color = 'var(--color-primary)';
                 link.style.fontWeight = '600';
             }
