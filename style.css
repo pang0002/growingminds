@@ -867,8 +867,8 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background: rgba(31, 60, 136, 0.04);
     border: 2px solid rgba(31, 60, 136, 0.08);
     border-radius: 12px;
