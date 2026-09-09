@@ -9337,14 +9337,38 @@ body.home-page-locked {
     text-align: center;
 }
 
-.blog-post-back {
-    display: inline-flex;
+.blog-post-hero-top {
+    display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.blog-post-hero-top .blog-post-back {
+    margin-bottom: 0;
+}
+
+.blog-post-hero-top .section-tag {
+    margin-bottom: 0;
+}
+
+.blog-post-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
     font-weight: 700;
     font-size: 14px;
     color: var(--color-teal-dark);
     margin-bottom: 22px;
+}
+
+@media (max-width: 480px) {
+    .blog-post-hero-top {
+        flex-wrap: wrap;
+    }
 }
 
 .blog-post-hero h1 {
