@@ -691,6 +691,53 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initExpandableCards, 'initExpandableCards');
 
     // ============================================================
+    // BLOG FEED - EXPAND ARTICLE IN PLACE
+    // Each .blog-entry toggles open independently (not a strict
+    // accordion - readers can have more than one article open).
+    // Height is measured via scrollHeight so it works for any
+    // article length, rather than relying on a fixed max-height.
+    // ============================================================
+    function initBlogFeed() {
+        const entries = document.querySelectorAll('.blog-entry');
+        if (!entries.length) return;
+
+        entries.forEach(function (entry) {
+            const toggle = entry.querySelector('.blog-entry-toggle');
+            const body = entry.querySelector('.blog-entry-body');
+            if (!toggle || !body) return;
+
+            toggle.addEventListener('click', function () {
+                const isExpanded = entry.classList.contains('expanded');
+
+                if (isExpanded) {
+                    body.style.maxHeight = '0px';
+                    entry.classList.remove('expanded');
+                    toggle.setAttribute('aria-expanded', 'false');
+                } else {
+                    entry.classList.add('expanded');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+
+                    setTimeout(function () {
+                        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                        const top = entry.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }, 120);
+                }
+            });
+        });
+
+        // Keep open articles correctly sized if the window is resized
+        // (e.g. rotating a phone), since scrollHeight can change.
+        window.addEventListener('resize', function () {
+            document.querySelectorAll('.blog-entry.expanded .blog-entry-body').forEach(function (body) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+            });
+        });
+    }
+    safeInit(initBlogFeed, 'initBlogFeed');
+
+    // ============================================================
     // SIGNAL CARDS - FLIP CARD BEHAVIOR
     // ============================================================
     function initSignalCards() {

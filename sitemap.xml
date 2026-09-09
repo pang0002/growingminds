@@ -86,6 +86,13 @@
   </url>
 
   <url>
+    <loc>https://growingminds.com.my/blog.html</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
     <loc>https://growingminds.com.my/careers.html</loc>
     <lastmod>2026-09-04</lastmod>
     <priority>0.5</priority>
