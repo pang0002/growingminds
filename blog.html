@@ -28,13 +28,13 @@
                 <p>Articles, stories, and ideas from our team and community &mdash; on learning, development, and raising confident kids. Tap any article to read the full piece.</p>
 
                 <div class="blog-filter-bar" role="tablist" aria-label="Filter articles by topic">
-                    <a href="#" class="blog-filter-pill active">All Articles</a>
-                    <a href="#" class="blog-filter-pill">Learning Tips</a>
-                    <a href="#" class="blog-filter-pill">Parenting</a>
-                    <a href="#" class="blog-filter-pill">Assessments</a>
-                    <a href="#" class="blog-filter-pill">Weekend Club</a>
-                    <a href="#" class="blog-filter-pill">Team Stories</a>
-                    <a href="#" class="blog-filter-pill">Community</a>
+                    <a href="#" class="blog-filter-pill active" data-filter="all">All Articles</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Learning Tips">Learning Tips</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Parenting">Parenting</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Assessments">Assessments</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Weekend Club">Weekend Club</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Team Stories">Team Stories</a>
+                    <a href="#" class="blog-filter-pill" data-filter="Community">Community</a>
                 </div>
             </div>
         </section>
@@ -56,14 +56,18 @@
 
         <!-- ============ BLOG FEED ============
              Each .blog-entry is one article. To publish a new (approved)
-             submission: copy one whole <article class="blog-entry">...</article>
-             block, paste it above this comment, then edit the tag, title,
-             meta line, excerpt, and the full text inside .blog-entry-body-inner. -->
+             submission: copy one whole <article class="blog-entry" data-tag="...">
+             block, paste it above this comment, then edit the data-tag
+             (must exactly match one of the data-filter values on the
+             pills above, e.g. "Parenting"), the tag/title/meta/excerpt,
+             and the full text inside .blog-entry-body-inner. -->
         <section class="section-white-bg">
             <div class="container">
                 <div class="blog-feed">
 
-                    <article class="blog-entry reveal">
+                    <p class="blog-feed-empty" hidden>No articles in this category yet — check back soon.</p>
+
+                    <article class="blog-entry reveal" data-tag="Parenting">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/featured-placeholder.jpg" alt="" />
@@ -113,7 +117,7 @@
                         </div>
                     </article>
 
-                    <article class="blog-entry reveal reveal-stagger">
+                    <article class="blog-entry reveal reveal-stagger" data-tag="Learning Tips">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/post-placeholder-1.jpg" alt="" />
@@ -153,7 +157,7 @@
                         </div>
                     </article>
 
-                    <article class="blog-entry reveal reveal-stagger">
+                    <article class="blog-entry reveal reveal-stagger" data-tag="Weekend Club">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/post-placeholder-2.jpg" alt="" />
@@ -193,7 +197,7 @@
                         </div>
                     </article>
 
-                    <article class="blog-entry reveal reveal-stagger">
+                    <article class="blog-entry reveal reveal-stagger" data-tag="Parenting">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/post-placeholder-3.jpg" alt="" />
@@ -230,7 +234,7 @@
                         </div>
                     </article>
 
-                    <article class="blog-entry reveal reveal-stagger">
+                    <article class="blog-entry reveal reveal-stagger" data-tag="Team Stories">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/post-placeholder-4.jpg" alt="" />
@@ -268,7 +272,7 @@
                         </div>
                     </article>
 
-                    <article class="blog-entry reveal reveal-stagger">
+                    <article class="blog-entry reveal reveal-stagger" data-tag="Learning Tips">
                         <button class="blog-entry-toggle" aria-expanded="false">
                             <div class="blog-entry-image">
                                 <img src="images/blog/post-placeholder-5.jpg" alt="" />

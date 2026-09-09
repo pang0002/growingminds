@@ -9278,6 +9278,13 @@ body.home-page-locked {
     margin-top: 20px;
 }
 
+.blog-feed-empty {
+    text-align: center;
+    color: var(--color-ink-soft);
+    font-size: 16px;
+    padding: 40px 0;
+}
+
 .blog-entry {
     background: var(--color-white);
     border: 2px solid rgba(31, 60, 136, 0.12);

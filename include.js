@@ -738,6 +738,40 @@ document.addEventListener('DOMContentLoaded', function () {
     safeInit(initBlogFeed, 'initBlogFeed');
 
     // ============================================================
+    // BLOG FEED - FILTER BY TOPIC PILL
+    // Shows/hides .blog-entry articles based on their data-tag,
+    // matched against the clicked pill's data-filter value.
+    // ============================================================
+    function initBlogFilter() {
+        const pills = document.querySelectorAll('.blog-filter-pill');
+        const entries = document.querySelectorAll('.blog-entry');
+        const emptyMsg = document.querySelector('.blog-feed-empty');
+        if (!pills.length || !entries.length) return;
+
+        pills.forEach(function (pill) {
+            pill.addEventListener('click', function (e) {
+                e.preventDefault();
+                const filter = pill.getAttribute('data-filter');
+
+                pills.forEach(function (p) { p.classList.remove('active'); });
+                pill.classList.add('active');
+
+                let visibleCount = 0;
+                entries.forEach(function (entry) {
+                    const matches = filter === 'all' || entry.getAttribute('data-tag') === filter;
+                    entry.style.display = matches ? '' : 'none';
+                    if (matches) visibleCount++;
+                });
+
+                if (emptyMsg) {
+                    emptyMsg.hidden = visibleCount !== 0;
+                }
+            });
+        });
+    }
+    safeInit(initBlogFilter, 'initBlogFilter');
+
+    // ============================================================
     // SIGNAL CARDS - FLIP CARD BEHAVIOR
     // ============================================================
     function initSignalCards() {
