@@ -520,10 +520,13 @@ header.is-scrolled::after {
     transition: all 0.4s var(--ease-bounce);
     position: relative;
     gap: 16px;
+    text-decoration: none;
 }
 
 .logo-crop {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: var(--header-logo-size);
     width: auto;
     max-height: var(--header-logo-size);
@@ -533,6 +536,15 @@ header.is-scrolled::after {
     transition: all 0.4s var(--ease-bounce);
     position: relative;
     flex-shrink: 0;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.15;
+    white-space: nowrap;
+    transform: none; /* removed translateY(8px) */
 }
 
 .logo-img {
@@ -545,16 +557,6 @@ header.is-scrolled::after {
     display: block;
     transition: transform 0.5s var(--ease-bounce);
     padding: 6px;
-}
-
-/* Wordmark text beside the logo icon */
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.15;
-    white-space: nowrap;
-    transform: translateY(8px);
 }
 
 .logo-name {
@@ -577,7 +579,7 @@ header.is-scrolled::after {
 
 /* Scale wordmark down slightly with the logo when scrolled */
 header.is-scrolled .logo-text {
-    transform: translateY(5px);
+    transform: none;
 }
 
 header.is-scrolled .logo-name {
@@ -817,10 +819,17 @@ header.is-scrolled .logo-tagline {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     margin-left: 16px;
     box-shadow: 0 3px 0 0 var(--color-primary);
     white-space: nowrap;
+    line-height: 1;
+}
+
+.btn-nav-icon {
+    flex-shrink: 0;
+    display: block;
 }
 
 .btn-nav:hover {
