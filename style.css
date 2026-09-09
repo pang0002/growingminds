@@ -9276,6 +9276,7 @@ body.home-page-locked {
     flex-direction: column;
     gap: 24px;
     margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .blog-feed-empty {
