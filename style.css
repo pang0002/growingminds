@@ -822,7 +822,7 @@ header.is-scrolled .logo-tagline {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin-left: 8%;
+    margin-left: 20px;
     box-shadow: 0 3px 0 0 var(--color-primary);
     white-space: nowrap;
     line-height: 1;
