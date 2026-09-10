@@ -442,6 +442,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
     }
 
+    // Browsers often restore a page from the back/forward cache (bfcache)
+    // when you navigate away and then back — this skips DOMContentLoaded
+    // entirely, so the trigger above never re-runs. Catch that case here.
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted && isHomePageLoad) {
+            homeTransitionOverlay.classList.remove('is-active');
+            // Force a reflow so the re-added class restarts the transition
+            void homeTransitionOverlay.offsetWidth;
+            homeTransitionOverlay.classList.add('is-active');
+            setTimeout(function () {
+                homeTransitionOverlay.classList.remove('is-active');
+            }, 500);
+        }
+    });
+
     // ============================================================
     // LOAD HEADER
     // ============================================================
