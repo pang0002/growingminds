@@ -4095,7 +4095,8 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .big-school-hero-container .hero-tagline-description {
     margin-top: 24px;
-    font-weight: 600;
+    font-weight: 700;
+    max-width: 760px;
 }
 
 .big-school-hero-container .club-meta-bar {
