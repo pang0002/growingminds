@@ -572,6 +572,7 @@ header.is-scrolled::after {
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 12px;
+    line-height: 1.45;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--color-ink-soft);
