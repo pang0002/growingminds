@@ -9689,22 +9689,38 @@ body.rfbs-popup-open {
 }
 
 /* ============================================================ */
-/* READY FOR BIG SCHOOL — HERO ILLUSTRATION */
+/* READY FOR BIG SCHOOL — HERO PHOTO */
 /* ============================================================ */
-.big-school-hero-illustration {
-    max-width: 480px;
-    margin: 0 auto 18px;
+.big-school-hero-photo {
+    position: absolute;
+    right: 28px;
+    bottom: 18px;
+    width: 190px;
+    aspect-ratio: 231 / 326;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 4px solid var(--color-white);
+    box-shadow: 0 14px 34px rgba(31, 60, 136, 0.22);
+    z-index: 2;
 }
 
-.big-school-hero-illustration svg {
+.big-school-hero-photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-@media (max-width: 560px) {
-    .big-school-hero-illustration {
-        max-width: 320px;
-        margin-bottom: 10px;
+@media (max-width: 900px) {
+    .big-school-hero-photo {
+        width: 140px;
+        right: 16px;
+        bottom: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .big-school-hero-photo {
+        display: none;
     }
 }
