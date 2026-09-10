@@ -4101,6 +4101,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .big-school-hero-container .club-meta-bar {
     margin-top: 24px;
+    flex-wrap: wrap;
 }
 
 .big-school-hero-container .page-hero-quote {
