@@ -915,15 +915,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================================
     // READY FOR BIG SCHOOL — ENTRY POPUP
-    // Shows once per browser tab visit on any page that includes the
-    // popup markup (currently the homepage). Click image -> Ready for
-    // Big School page. Close / click outside / Esc -> stays on page.
+    // Shows on homepage visit / back-navigation.
     // ============================================================
     function initReadyForBigSchoolPopup() {
         const overlay = document.getElementById('rfbs-popup-overlay');
         if (!overlay) return;
 
-        const STORAGE_KEY = 'rfbsPopupSeen';
         const closeBtn = overlay.querySelector('.rfbs-popup-close');
 
         function closePopup() {
@@ -936,13 +933,17 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.classList.add('rfbs-popup-open');
         }
 
-        // Only show once per browser tab session — avoids nagging on every page.
-        if (!sessionStorage.getItem(STORAGE_KEY)) {
-            window.addEventListener('load', function () {
+        // Trigger popup on initial page load
+        window.addEventListener('load', function () {
+            setTimeout(openPopup, 400);
+        });
+
+        // Handle back-forward navigation cache (bfcache)
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
                 setTimeout(openPopup, 400);
-            });
-            sessionStorage.setItem(STORAGE_KEY, '1');
-        }
+            }
+        });
 
         if (closeBtn) {
             closeBtn.addEventListener('click', closePopup);
