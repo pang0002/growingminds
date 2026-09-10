@@ -4093,6 +4093,27 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-top: 24px;
 }
 
+.big-school-hero-container .hero-tagline-description {
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.big-school-hero-container .club-meta-bar {
+    margin-top: 24px;
+}
+
+.big-school-hero-container .page-hero-quote {
+    margin-top: 24px;
+}
+
+.big-school-page-hero {
+    padding-bottom: 64px;
+}
+
+.big-school-insight-section {
+    border-radius: 48px 48px 0 0;
+}
+
 .life-page-hero {
     padding-bottom: 64px;
 }
