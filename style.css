@@ -3621,15 +3621,15 @@ header.is-scrolled #site-nav a.btn-nav {
 .footer-action-strip {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 48px;
+    justify-content: flex-start;
+    gap: 96px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(31, 60, 136, 0.12);
 }
 
 /* Brand Section */
 .footer-brand {
-    max-width: 280px;
+    max-width: 360px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3650,6 +3650,12 @@ header.is-scrolled #site-nav a.btn-nav {
     opacity: 0.8;
     margin: 6px 0 16px;
     line-height: 1.4;
+}
+
+@media (min-width: 521px) {
+    .footer-tagline {
+        white-space: nowrap;
+    }
 }
 
 .footer-socials {
@@ -3685,7 +3691,6 @@ header.is-scrolled #site-nav a.btn-nav {
 .footer-cards-container {
     display: flex;
     gap: 64px;
-    margin-left: auto;
     padding-top: 10px;
 }
 
