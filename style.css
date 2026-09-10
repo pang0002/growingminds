@@ -9695,7 +9695,7 @@ body.rfbs-popup-open {
     position: absolute;
     right: 20px;
     bottom: 0;
-    width: 260px;
+    width: 400px;
     aspect-ratio: 231 / 326;
 }
 
@@ -9708,7 +9708,7 @@ body.rfbs-popup-open {
 
 @media (max-width: 900px) {
     .big-school-hero-photo {
-        width: 190px;
+        width: 290px;
         right: 12px;
         bottom: 0;
     }
