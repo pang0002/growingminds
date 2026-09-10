@@ -892,4 +892,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     safeInit(initReadyForBigSchoolPopup, 'initReadyForBigSchoolPopup');
 
+    // ============================================================
+    // FAVICON
+    // Injects the full site icon set into <head> on any page that
+    // doesn't already declare one statically (index.html and
+    // ready-for-big-school.html have static tags; this covers
+    // every other page automatically since include.js loads
+    // everywhere).
+    // ============================================================
+    function initFavicon() {
+        if (document.querySelector('link[rel="icon"]')) return; // page already has its own tags
+
+        const links = [
+            { rel: 'icon', type: 'image/x-icon', href: 'images/favicon/favicon.ico' },
+            { rel: 'icon', type: 'image/png', sizes: '16x16', href: 'images/favicon/favicon-16x16.png' },
+            { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'images/favicon/favicon-32x32.png' },
+            { rel: 'apple-touch-icon', sizes: '180x180', href: 'images/favicon/apple-touch-icon.png' },
+            { rel: 'manifest', href: 'site.webmanifest' }
+        ];
+
+        links.forEach(function (attrs) {
+            const el = document.createElement('link');
+            Object.keys(attrs).forEach(function (key) {
+                el.setAttribute(key, attrs[key]);
+            });
+            document.head.appendChild(el);
+        });
+
+        const themeColor = document.createElement('meta');
+        themeColor.setAttribute('name', 'theme-color');
+        themeColor.setAttribute('content', '#1F3C88');
+        document.head.appendChild(themeColor);
+    }
+    safeInit(initFavicon, 'initFavicon');
+
 });
