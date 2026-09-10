@@ -9687,3 +9687,24 @@ body.rfbs-popup-open {
 @keyframes page-transition-spin {
     to { transform: rotate(360deg); }
 }
+
+/* ============================================================ */
+/* READY FOR BIG SCHOOL — HERO ILLUSTRATION */
+/* ============================================================ */
+.big-school-hero-illustration {
+    max-width: 480px;
+    margin: 0 auto 18px;
+}
+
+.big-school-hero-illustration svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 560px) {
+    .big-school-hero-illustration {
+        max-width: 320px;
+        margin-bottom: 10px;
+    }
+}

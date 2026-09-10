@@ -31,6 +31,54 @@
     <!-- HERO — single centered column, no floating card -->
     <section class="page-hero big-school-page-hero">
         <div class="container reveal club-hero-simple big-school-hero-container">
+            <div class="big-school-hero-illustration" aria-hidden="true">
+                <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- backdrop blob -->
+                    <ellipse cx="260" cy="150" rx="230" ry="38" fill="var(--color-pale-sun)" opacity="0.6"/>
+
+                    <!-- school building -->
+                    <g>
+                        <rect x="368" y="70" width="110" height="80" rx="6" fill="var(--color-white)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                        <path d="M360 74l63-32 63 32z" fill="var(--color-pale-teal)" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+                        <rect x="415" y="26" width="4" height="16" fill="var(--color-primary)"/>
+                        <rect x="405" y="18" width="26" height="10" rx="2" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2"/>
+                        <circle cx="423" cy="98" r="15" fill="var(--color-pale-sun)" stroke="var(--color-primary)" stroke-width="2.2"/>
+                        <path d="M423 90v8l6 4" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="385" y="120" width="20" height="30" rx="2" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2"/>
+                        <rect x="443" y="120" width="20" height="30" rx="2" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2"/>
+                    </g>
+
+                    <!-- sparkles -->
+                    <g stroke="var(--color-gold-dark)" stroke-width="3" stroke-linecap="round">
+                        <path d="M60 40v16M52 48h16"/>
+                        <path d="M180 30v14M173 37h14"/>
+                        <path d="M300 46v14M293 53h14"/>
+                    </g>
+
+                    <!-- child 1 -->
+                    <g>
+                        <circle cx="150" cy="90" r="24" fill="var(--color-pale-teal)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                        <path d="M141 92c3 3 8 3 11 0" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/>
+                        <circle cx="142" cy="85" r="2" fill="var(--color-primary)"/>
+                        <circle cx="158" cy="85" r="2" fill="var(--color-primary)"/>
+                        <path d="M120 150c2-24 14-34 30-34s28 10 30 34" fill="var(--color-teal)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                        <rect x="103" y="112" width="22" height="28" rx="7" fill="var(--color-gold)" stroke="var(--color-primary)" stroke-width="2.2"/>
+                        <path d="M108 100l-14-20" stroke="var(--color-primary)" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- child 2 (taller, waving) -->
+                    <g>
+                        <circle cx="235" cy="78" r="26" fill="var(--color-pale-lavender)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                        <path d="M225 80c3.5 3.5 9 3.5 12.5 0" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round"/>
+                        <circle cx="226" cy="72" r="2.2" fill="var(--color-primary)"/>
+                        <circle cx="244" cy="72" r="2.2" fill="var(--color-primary)"/>
+                        <path d="M202 150c2-28 16-40 33-40s31 12 33 40" fill="var(--color-accent)" stroke="var(--color-primary)" stroke-width="2.5"/>
+                        <rect x="216" y="106" width="24" height="32" rx="8" fill="var(--color-teal-dark)" stroke="var(--color-primary)" stroke-width="2.2"/>
+                        <path d="M265 96l16-24" stroke="var(--color-primary)" stroke-width="4.5" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </div>
+
             <span class="eyebrow">Prepared</span>
 
             <h1>Ready for Primary School</h1>
@@ -56,13 +104,14 @@
     </section>
 
     <!-- CHECKLIST CTA -->
-    <section class="cta-section">
-        <div class="blob blob-teal"></div>
-        <div class="blob blob-gold"></div>
-        <div class="container cta-container reveal">
-            <h2>Curious if this sounds like your child?</h2>
-            <p>Take our quick checklist to see where they stand before Primary 1.</p>
-            <div class="cta-buttons">
+    <section class="section-white-bg" style="padding:0 0 56px;">
+        <div class="container">
+            <div class="blog-submit-cta reveal">
+                <div class="blog-submit-cta-text">
+                    <span class="eyebrow">Curious?</span>
+                    <h2>Curious if this sounds like your child?</h2>
+                    <p>Take our quick checklist to see where they stand before Primary 1. Every response helps us tailor the right fit for your child.</p>
+                </div>
                 <a href="https://forms.gle/Q6zfejw2zmYT9eN89" target="_blank" rel="noopener" class="btn btn-primary btn-ripple">Take the Checklist →</a>
             </div>
         </div>
