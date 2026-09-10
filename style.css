@@ -3622,7 +3622,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 96px;
+    gap: 160px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(31, 60, 136, 0.12);
 }
