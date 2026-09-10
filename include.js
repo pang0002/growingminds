@@ -915,46 +915,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================================
     // READY FOR BIG SCHOOL — ENTRY POPUP
-    // Shows on homepage visit / back-navigation.
     // ============================================================
     function initReadyForBigSchoolPopup() {
-        const overlay = document.getElementById('rfbs-popup-overlay');
-        if (!overlay) return;
-
-        const closeBtn = overlay.querySelector('.rfbs-popup-close');
-
-        function closePopup() {
-            overlay.classList.remove('is-open');
-            document.body.classList.remove('rfbs-popup-open');
-        }
-
         function openPopup() {
+            const overlay = document.getElementById('rfbs-popup-overlay');
+            if (!overlay) return false;
             overlay.classList.add('is-open');
             document.body.classList.add('rfbs-popup-open');
-        }
+            const closeBtn = overlay.querySelector('.rfbs-popup-close');
 
-        // Trigger popup on initial page load
-        window.addEventListener('load', function () {
-            setTimeout(openPopup, 400);
-        });
-
-        // Handle back-forward navigation cache (bfcache)
-        window.addEventListener('pageshow', function (event) {
-            if (event.persisted) {
-                setTimeout(openPopup, 400);
+            function closePopup() {
+                overlay.classList.remove('is-open');
+                document.body.classList.remove('rfbs-popup-open');
             }
-        });
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closePopup);
+            if (closeBtn && !closeBtn.dataset.bound) {
+                closeBtn.addEventListener('click', closePopup);
+                closeBtn.dataset.bound = "true";
+            }
+            if (!overlay.dataset.bound) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) closePopup();
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') closePopup();
+                });
+                overlay.dataset.bound = "true";
+            }
+            return true;
         }
-
-        overlay.addEventListener('click', function (e) {
-            if (e.target === overlay) closePopup();
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closePopup();
+        // Try triggering the popup immediately or retry until DOM content is ready
+        function triggerWithRetry(retriesLeft = 10) {
+            setTimeout(function () {
+                const success = openPopup();
+                if (!success && retriesLeft > 0) {
+                    triggerWithRetry(retriesLeft - 1);
+                }
+            }, 300);
+        }
+        // Trigger on initial page load / click navigation
+        if (document.readyState === 'complete') {
+            triggerWithRetry();
+        } else {
+            window.addEventListener('load', function () {
+                triggerWithRetry();
+            });
+        }
+        // Trigger on back/forward browser cache navigation
+        window.addEventListener('pageshow', function () {
+            triggerWithRetry();
         });
     }
     safeInit(initReadyForBigSchoolPopup, 'initReadyForBigSchoolPopup');
