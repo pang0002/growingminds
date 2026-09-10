@@ -394,6 +394,40 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================================
+    // HOME LINK PAGE-TRANSITION EFFECT
+    // ============================================================
+    var homeTransitionOverlay = document.createElement('div');
+    homeTransitionOverlay.className = 'page-transition-overlay';
+    homeTransitionOverlay.setAttribute('aria-hidden', 'true');
+    homeTransitionOverlay.innerHTML =
+        '<div class="page-transition-pill">' +
+            '<span class="page-transition-spinner"></span>' +
+            '<span class="page-transition-label">Home</span>' +
+        '</div>';
+    document.body.appendChild(homeTransitionOverlay);
+
+    function bindHomeTransition(container) {
+        var homeLinks = container.querySelectorAll('a[href="/"]');
+        homeLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                // Allow opening in a new tab/window as normal
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) { return; }
+                var destination = link.getAttribute('href');
+
+                // Only show the transition once per browser session
+                if (sessionStorage.getItem('gm_home_transition_shown')) { return; }
+
+                e.preventDefault();
+                sessionStorage.setItem('gm_home_transition_shown', '1');
+                homeTransitionOverlay.classList.add('is-active');
+                setTimeout(function () {
+                    window.location.href = destination;
+                }, 250);
+            });
+        });
+    }
+
+    // ============================================================
     // LOAD HEADER
     // ============================================================
     fetch('header.html', { cache: 'no-store' })
@@ -405,6 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('header').outerHTML = data;
             safeInit(initHeaderBehavior, 'initHeaderBehavior');
             safeInit(initSmoothScroll, 'initSmoothScroll');
+            bindHomeTransition(document);
 
             setTimeout(function () {
                 var currentPath = window.location.pathname.split('/').pop();
@@ -429,6 +464,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             document.querySelector('footer').innerHTML = data;
+            bindHomeTransition(document.querySelector('footer'));
         })
         .catch(function (error) { console.error('Error loading footer:', error); });
 
