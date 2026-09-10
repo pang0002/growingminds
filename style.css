@@ -4101,7 +4101,15 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .big-school-hero-container .club-meta-bar {
     margin-top: 24px;
-    flex-wrap: wrap;
+}
+
+@media (min-width: 760px) {
+    .big-school-hero-container .club-meta-bar {
+        gap: 8px 12px;
+    }
+    .big-school-hero-container .club-meta-item {
+        font-size: 13px;
+    }
 }
 
 .big-school-hero-container .page-hero-quote {
