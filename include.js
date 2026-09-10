@@ -427,6 +427,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Show the same effect whenever the homepage itself loads or refreshes
+    // (direct visit, reload, or bookmark) — independent of the click-based
+    // trigger above, so it plays every single time, with no session skip.
+    var isHomePageLoad = window.location.pathname === '/' ||
+        window.location.pathname === '/index.html' ||
+        window.location.pathname.endsWith('index.html') ||
+        window.location.pathname === '';
+
+    if (isHomePageLoad) {
+        homeTransitionOverlay.classList.add('is-active');
+        setTimeout(function () {
+            homeTransitionOverlay.classList.remove('is-active');
+        }, 500);
+    }
+
     // ============================================================
     // LOAD HEADER
     // ============================================================
