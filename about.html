@@ -45,7 +45,7 @@
             <!-- Founder Card -->
             <div class="founder-card reveal" style="background:var(--color-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lift);border:2px solid rgba(31,60,136,0.08);overflow:hidden;max-width:1000px;margin:24px auto 0;padding:clamp(24px, 5vw, 40px) clamp(20px, 6vw, 48px);">
 
-                <!-- Card Inner: photo + content, stacks on mobile -->
+                <!-- Top row: photo + name/title/quote, similar heights. Stacks on mobile. -->
                 <div style="display:flex;gap:clamp(24px, 4vw, 40px);align-items:flex-start;flex-wrap:wrap;">
 
                     <!-- Photo -->
@@ -53,8 +53,8 @@
                         <img src="images/founder.jpg" alt="Xue Min Ng, Founder of Growing Minds" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius-md);border:2px solid rgba(31,60,136,0.08);" />
                     </div>
 
-                    <!-- Content -->
-                    <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px;">
+                    <!-- Name + Title + Quote -->
+                    <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px;justify-content:center;">
 
                         <!-- Name + Title (added inside card) -->
                         <div style="margin-bottom:4px;">
@@ -63,11 +63,15 @@
                         </div>
 
                         <!-- Quote -->
-                        <blockquote style="font-family:var(--font-quote);font-style:italic;font-size:clamp(17px, 3.6vw, 22px);line-height:1.5;color:var(--color-primary);margin:8px 0 12px 0;border-left:5px solid var(--color-teal);padding-left:clamp(14px, 3vw, 24px);">
+                        <blockquote style="font-family:var(--font-quote);font-style:italic;font-size:clamp(17px, 3.6vw, 22px);line-height:1.5;color:var(--color-primary);margin:8px 0 0 0;border-left:5px solid var(--color-teal);padding-left:clamp(14px, 3vw, 24px);">
                             "Every child is unique, and no single approach fits every learner. Every child deserves to be understood, supported, and given the opportunity to thrive."
                         </blockquote>
 
-                        <!-- Bio -->
+                    </div>
+                </div>
+
+                <!-- Bio: full-width below the photo/quote row -->
+                <div style="margin-top:clamp(20px, 4vw, 32px);display:flex;flex-direction:column;gap:8px;">
                         <p style="font-size:clamp(15px, 3vw, 18px);line-height:1.7;color:var(--color-ink-soft);margin:0 0 14px;max-width:95%;">
                             Xue Min is an Educational Psychologist with over eight years of experience working with children and families. She holds a Master in Educational Psychology from Victoria University of Wellington, New Zealand, and is a Full Member of the Malaysia Educational Psychology Society (MEPS).
                         </p>
@@ -86,7 +90,6 @@
 
                     <!-- Stats REMOVED -->
 
-                    </div>
                 </div>
             </div>
         </div>
