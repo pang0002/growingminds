@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit an Article | Growing Minds</title>
+    <meta name="description" content="Submit your own article to the Growing Minds blog." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Fraunces:ital,wght@0,500;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header></header>
+
+    <main>
+
+        <!-- ============ PAGE HERO ============ -->
+        <section class="page-hero blog-page-hero">
+            <div class="container">
+                <span class="section-tag">Blog</span>
+                <h1>Submit Your Article</h1>
+                <p>Write it here with real formatting &mdash; headings, bold, lists &mdash; then submit. Our team reviews every submission before it's published.</p>
+            </div>
+        </section>
+
+        <!-- ============ SUBMISSION FORM ============ -->
+        <section class="section-white-bg" style="padding:20px 0 80px;">
+            <div class="container">
+                <div class="submit-form-wrapper reveal">
+                    <h2>Tell us about your article</h2>
+                    <p class="form-intro">Fill in the details below. Once submitted, it lands in our review queue &mdash; we'll be in touch if we have questions before publishing.</p>
+
+                    <form id="submit-form">
+
+                        <div class="form-group">
+                            <label for="s-name">Full Name<span class="required">*</span></label>
+                            <input type="text" id="s-name" name="name" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="s-email">Email<span class="required">*</span></label>
+                            <input type="email" id="s-email" name="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="s-title">Article Title<span class="required">*</span></label>
+                            <input type="text" id="s-title" name="title" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="s-topic">Topic<span class="required">*</span></label>
+                            <select id="s-topic" name="topic" required>
+                                <option value="" disabled selected>Select a topic&hellip;</option>
+                                <option value="Learning Tips">Learning Tips</option>
+                                <option value="Parenting">Parenting</option>
+                                <option value="Assessments">Assessments</option>
+                                <option value="Weekend Club">Weekend Club</option>
+                                <option value="Team Stories">Team Stories</option>
+                                <option value="Community">Community</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="s-summary">Short Summary<span class="required">*</span></label>
+                            <span class="hint">1&ndash;2 sentences. This becomes the preview text on the blog list.</span>
+                            <textarea id="s-summary" name="summary" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="s-editor">Full Article<span class="required">*</span></label>
+                            <span class="hint">Use the toolbar to format headings, bold text, and lists &mdash; just like a normal document.</span>
+
+                            <div class="rte-toolbar" role="toolbar" aria-label="Formatting">
+                                <button type="button" class="rte-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+                                <button type="button" class="rte-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+                                <div class="rte-divider"></div>
+                                <button type="button" class="rte-btn" data-cmd="formatBlock" data-value="H2" title="Heading">H2</button>
+                                <button type="button" class="rte-btn" data-cmd="formatBlock" data-value="H3" title="Subheading">H3</button>
+                                <button type="button" class="rte-btn" data-cmd="formatBlock" data-value="P" title="Paragraph">¶</button>
+                                <div class="rte-divider"></div>
+                                <button type="button" class="rte-btn" data-cmd="insertUnorderedList" title="Bullet list">&bull; List</button>
+                                <button type="button" class="rte-btn" data-cmd="insertOrderedList" title="Numbered list">1. List</button>
+                                <button type="button" class="rte-btn" data-cmd="formatBlock" data-value="BLOCKQUOTE" title="Quote">&ldquo;&rdquo;</button>
+                                <div class="rte-divider"></div>
+                                <button type="button" class="rte-btn" data-cmd="removeFormat" title="Clear formatting">Clear</button>
+                            </div>
+                            <div id="s-editor" class="rte-editor" contenteditable="true" data-placeholder="Start writing your article here&hellip;"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-sun btn-ripple" id="submit-btn">Submit Article <span class="btn-arrow">&rarr;</span></button>
+
+                        <div id="submit-status" class="submit-status-message" role="status"></div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="submit-config.js"></script>
+    <script src="include.js"></script>
+    <script>
+        (function () {
+            const editor = document.getElementById('s-editor');
+            const toolbar = document.querySelector('.rte-toolbar');
+
+            // Toolbar buttons apply formatting commands to the editor.
+            toolbar.addEventListener('click', function (e) {
+                const btn = e.target.closest('.rte-btn');
+                if (!btn) return;
+                e.preventDefault();
+                editor.focus();
+                const cmd = btn.getAttribute('data-cmd');
+                const value = btn.getAttribute('data-value') || undefined;
+                document.execCommand(cmd, false, value);
+            });
+
+            const form = document.getElementById('submit-form');
+            const statusBox = document.getElementById('submit-status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('s-name').value.trim();
+                const email = document.getElementById('s-email').value.trim();
+                const title = document.getElementById('s-title').value.trim();
+                const topic = document.getElementById('s-topic').value;
+                const summary = document.getElementById('s-summary').value.trim();
+                const articleHtml = editor.innerHTML.trim();
+                const articleText = editor.textContent.trim();
+
+                if (!name || !email || !title || !topic || !summary || !articleText) {
+                    statusBox.textContent = 'Please fill in every field before submitting.';
+                    statusBox.className = 'submit-status-message is-error';
+                    return;
+                }
+
+                if (typeof SUBMIT_ENDPOINT === 'undefined' || SUBMIT_ENDPOINT.indexOf('PASTE_YOUR') === 0) {
+                    statusBox.textContent = 'Submissions aren\u2019t connected yet \u2014 the site owner still needs to finish setup (see submit-config.js).';
+                    statusBox.className = 'submit-status-message is-error';
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting…';
+
+                fetch(SUBMIT_ENDPOINT, {
+                    method: 'POST',
+                    // text/plain avoids a CORS preflight request, which
+                    // Apps Script Web Apps don't handle. The server still
+                    // reads this as JSON.
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ name, email, title, topic, summary, articleHtml })
+                })
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (data.result === 'success') {
+                            form.reset();
+                            editor.innerHTML = '';
+                            statusBox.textContent = 'Thanks! Your article has been submitted for review.';
+                            statusBox.className = 'submit-status-message is-success';
+                        } else {
+                            throw new Error(data.message || 'Unknown error');
+                        }
+                    })
+                    .catch(function (err) {
+                        statusBox.textContent = 'Something went wrong submitting your article. Please try again, or message us directly.';
+                        statusBox.className = 'submit-status-message is-error';
+                        console.error(err);
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Article <span class="btn-arrow">&rarr;</span>';
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>
