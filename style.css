@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+/* Form controls don't inherit the page font by default in any
+   browser — they fall back to the OS's system UI font unless every
+   one is targeted individually. This one rule makes every button,
+   input, select, textarea, and dropdown option (including on the
+   submit-article page) pick up whatever font its container is
+   already using, instead of relying on scattered per-element rules
+   that are easy to miss. */
+button, input, select, textarea, optgroup, option {
+    font: inherit;
+    color: inherit;
+}
+
 /* Prevent horizontal page shift / right-side gap */
 html, body {
     overflow-x: hidden;
