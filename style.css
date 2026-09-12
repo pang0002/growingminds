@@ -9773,6 +9773,27 @@ body.home-page-locked {
         font-size: 16px;
     }
 }
+
+/* Force article content to respect website typography */
+.blog-post-body,
+.blog-post-body * {
+    font-family: var(--font-body) !important;
+}
+
+.blog-post-body h1,
+.blog-post-body h2,
+.blog-post-body h3,
+.blog-post-body h4 {
+    font-family: var(--font-display) !important;
+    color: var(--color-primary) !important;
+}
+
+.blog-post-body blockquote,
+.blog-post-body blockquote * {
+    font-family: var(--font-quote) !important;
+}
+
+
 /* ============================================================ */
 /* READY FOR BIG SCHOOL — ENTRY POPUP                            */
 /* ============================================================ */
