@@ -190,4 +190,11 @@
     <changefreq>yearly</changefreq>
   </url>
 
+  <url>
+    <loc>https://growingminds.com.my/blog-post-primary-school-readiness-it-s-more-than-academics.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>
