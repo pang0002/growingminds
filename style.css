@@ -209,25 +209,17 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
     position: relative;
 }
 
-/* On larger screens, 1200px starts to feel narrow and leaves a lot of
-   empty space on both sides — widen the content column progressively
-   instead of just centering a fixed-width block on a wide viewport. */
-@media (min-width: 1440px) {
-    .container {
-        max-width: 1320px;
-        padding: 0 32px;
-    }
-}
-
+/* On very wide screens, keep giving the content a bit more room
+   instead of leaving it stranded in a fixed-width column. */
 @media (min-width: 1700px) {
     .container {
-        max-width: 1480px;
+        max-width: 1560px;
         padding: 0 40px;
     }
 }
