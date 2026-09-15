@@ -215,6 +215,23 @@ body {
     position: relative;
 }
 
+/* On larger screens, 1200px starts to feel narrow and leaves a lot of
+   empty space on both sides — widen the content column progressively
+   instead of just centering a fixed-width block on a wide viewport. */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+        padding: 0 32px;
+    }
+}
+
+@media (min-width: 1700px) {
+    .container {
+        max-width: 1480px;
+        padding: 0 40px;
+    }
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -6890,7 +6907,7 @@ body.home-page-locked {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -8298,7 +8315,7 @@ body.home-page-locked {
         padding: 0;
         gap: 24px;
         margin-top: 36px;
-        max-width: 1000px;
+        max-width: 1140px;
         margin-left: auto;
         margin-right: auto;
     }
