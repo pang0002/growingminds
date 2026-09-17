@@ -362,7 +362,7 @@ em {
 /* ----- EYEBROW / TAG LABELS -----
    Carries the "sun" mark from the logo as a recurring small motif —
    a cheap, consistent way to build brand recognition across every
-   section tag on the site (per brand system §1.3). */
+   section tag on the site (per brand system 1.3). */
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -371,7 +371,7 @@ em {
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
     margin-bottom: 10px;
 }
@@ -379,7 +379,7 @@ em {
 /* Larger variant for standalone club vibe badges (Calm/Confident/Capable) */
 .eyebrow-lg {
     gap: 12px;
-    font-size: 20px;
+    font-size: 21px;
     margin-bottom: 18px;
 }
 
@@ -410,7 +410,7 @@ em {
     background: var(--color-gold);
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     padding: 5px 16px;
     border: 2px solid var(--color-primary);
     border-radius: 50px;
@@ -583,7 +583,7 @@ header.is-scrolled::after {
 .logo-name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 26px;
+    font-size: 27px;
     letter-spacing: 0.1px;
     color: var(--color-primary);
 }
@@ -609,13 +609,13 @@ header.is-scrolled .logo-name {
 }
 
 header.is-scrolled .logo-tagline {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 /* Fallback text when image doesn't load */
 .logo-text-fallback {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 29px;
     font-weight: 700;
     color: var(--color-primary);
     letter-spacing: 1px;
@@ -639,7 +639,7 @@ header.is-scrolled .logo-tagline {
 /* Logo text that appears next to image (optional) */
 .logo-text-next {
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: 27px;
     font-weight: 700;
     color: var(--color-primary);
     letter-spacing: -0.5px;
@@ -681,7 +681,7 @@ header.is-scrolled .logo-tagline {
 }
 
 #site-nav a {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--color-ink-soft);
     transition: all 0.3s var(--ease);
@@ -803,7 +803,7 @@ header.is-scrolled .logo-tagline {
 .dropdown-menu a {
     display: block;
     width: 100%;
-    font-size: 18px !important;
+    font-size: 19px !important;
     font-weight: 600 !important;
     color: var(--color-ink-soft, #51649D) !important;
     padding: 14px 22px !important;
@@ -834,7 +834,7 @@ header.is-scrolled .logo-tagline {
     border: 2.5px solid var(--color-primary);
     border-radius: 50px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
     position: relative;
     letter-spacing: 0.2px;
@@ -869,12 +869,12 @@ header.is-scrolled .logo-tagline {
 
 /* Scrolled state nav adjustments */
 header.is-scrolled #site-nav a {
-    font-size: 18px;
+    font-size: 19px;
     padding: 11px 18px;
 }
 
 header.is-scrolled #site-nav a.btn-nav {
-    font-size: 17px;
+    font-size: 18px;
     padding: 14px 34px;
     margin-left: 12px;
 }
@@ -975,7 +975,7 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-white);
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 21px;
     box-shadow: 0 8px 24px rgba(31, 60, 136, 0.25);
     z-index: 150;
     opacity: 0;
@@ -1009,7 +1009,7 @@ header.is-scrolled #site-nav a.btn-nav {
     padding: 15px 30px;
     border-radius: 100px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease), color 0.18s var(--ease);
     text-align: center;
     border: 2px solid var(--color-primary);
@@ -1149,7 +1149,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .img-slot p {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--color-ink-soft);
     letter-spacing: 0.2px;
@@ -1251,7 +1251,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.15rem, 4.8vw, 3.7rem);
+    font-size: clamp(2.25rem, 4.8vw, 3.8rem);
     font-weight: 600;
     line-height: 1.14;
     margin-bottom: 22px;
@@ -1277,7 +1277,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .hero-description {
-    font-size: 19px;
+    font-size: 20px;
     color: var(--color-ink-soft);
     max-width: 480px;
     margin-bottom: 28px;
@@ -1305,7 +1305,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .hero-location {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-ink-soft);
     margin-bottom: 8px;
@@ -1367,7 +1367,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .hero-insight-line {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.45;
     color: var(--color-primary);
     margin: 0;
@@ -1375,7 +1375,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .hero-insight-line--bold {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 /* ----- HERO QUICKLINKS (2x2 button grid) ----- */
@@ -1410,7 +1410,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .hero-quicklink span {
     display: block;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 700;
     overflow-wrap: normal;
     word-break: normal;
@@ -1421,7 +1421,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: block;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.01em;
     opacity: 0.85;
     margin-top: 6px;
@@ -1449,7 +1449,7 @@ header.is-scrolled #site-nav a.btn-nav {
         padding: 16px 14px;
     }
     .hero-quicklink span {
-        font-size: 16px;
+        font-size: 17px;
     }
     .hero-quicklink small {
         font-size: 12px;
@@ -1470,7 +1470,7 @@ header.is-scrolled #site-nav a.btn-nav {
     padding: 32px 24px 24px;
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.55;
     color: var(--color-ink);
     box-shadow: var(--shadow-card);
@@ -1507,7 +1507,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .goals-card-heading {
     color: var(--color-primary);
-    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
     line-height: 1.2;
     margin-bottom: 8px;
 }
@@ -1599,7 +1599,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .goals-card-closing {
     margin: 28px 0 0;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
     color: var(--color-primary);
 }
@@ -1732,7 +1732,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .signal-label-see {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -1741,7 +1741,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .signal-label-underneath {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -1753,7 +1753,7 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-top: 20px;
     background: var(--color-white);
     color: var(--color-teal-dark);
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     padding: 10px 18px;
     border-radius: 20px;
@@ -1769,7 +1769,7 @@ header.is-scrolled #site-nav a.btn-nav {
     background: none;
     border: none;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--color-teal-dark);
     cursor: pointer;
@@ -1796,7 +1796,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 /* Main tagline headline */
 .hero-tagline-main {
-    font-size: clamp(2.15rem, 4.8vw, 3.7rem);
+    font-size: clamp(2.25rem, 4.8vw, 3.8rem);
     font-weight: 700;
     line-height: 1.14;
     margin-bottom: 22px;
@@ -1809,14 +1809,14 @@ header.is-scrolled #site-nav a.btn-nav {
     display: block;
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
     color: var(--color-teal-dark);
     margin-bottom: 18px;
 }
 
 /* Description text below tagline */
 .hero-tagline-description {
-    font-size: 19px;
+    font-size: 20px;
     color: var(--color-ink-soft);
     max-width: 480px;
     margin-bottom: 28px;
@@ -1839,18 +1839,18 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .floating-card span {
-    font-size: 26px;
+    font-size: 27px;
 }
 
 .floating-card strong {
     display: block;
     color: var(--color-primary);
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .floating-card p {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
 }
 
@@ -1900,7 +1900,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .brand-goal .goal-description {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-ink-soft);
     max-width: 660px;
     margin: 0 auto;
@@ -1922,7 +1922,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .brand-text p {
-    font-size: 17px;
+    font-size: 18px;
     margin-bottom: 16px;
 }
 
@@ -2034,13 +2034,13 @@ header.is-scrolled #site-nav a.btn-nav {
 .interactive-card:nth-child(4n+4).active .card-ring { background: var(--color-primary); }
 
 .interactive-card .card-content h3 {
-    font-size: 19px;
+    font-size: 20px;
     margin-bottom: 6px;
     color: var(--color-primary);
 }
 
 .interactive-card .card-content p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     line-height: 1.7;
     margin: 0;
@@ -2116,13 +2116,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .section-header h2 {
-    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
     letter-spacing: -0.02em;
     line-height: 1.2;
 }
 
 .section-header p {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-ink-soft);
     margin-top: 12px;
 }
@@ -2212,7 +2212,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .pcm-label {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary);
     margin-top: 6px;
 }
@@ -2232,7 +2232,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .process-card-mini p {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.55;
     color: var(--color-ink);
     margin: 0;
@@ -2330,7 +2330,7 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-ink-soft);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2339,7 +2339,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .step-node .step-label {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-ink-soft);
     transition: color 0.3s var(--ease);
@@ -2408,19 +2408,19 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .process-card-header h3 {
-    font-size: 28px;
+    font-size: 29px;
     color: var(--color-primary);
     margin: 2px 0;
 }
 
 .step-subtitle {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--color-teal);
 }
 
 .step-description {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.7;
     color: var(--color-ink);
     margin-bottom: 28px;
@@ -2444,12 +2444,12 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .highlight-item .hl-icon {
-    font-size: 22px;
+    font-size: 23px;
 }
 
 .highlight-item strong {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-primary);
 }
 
@@ -2543,7 +2543,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 23px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     flex-shrink: 0;
 }
@@ -2576,7 +2576,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .expandable-card[data-card="4"] .service-icon-box { box-shadow: 0 2px 8px rgba(31, 60, 136, 0.2); }
 
 .service-title-group h3 {
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary, #0A4860);
     margin: 0;
     line-height: 1.3;
@@ -2605,7 +2605,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .expand-toggle .plus-icon {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 300;
     color: var(--color-teal-dark);
     transition: all 0.4s var(--ease);
@@ -2643,7 +2643,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .service-description {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--color-ink-soft, #5A6E77);
     margin-bottom: 16px;
@@ -2661,7 +2661,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink);
     padding: 8px 12px;
     background: var(--color-white);
@@ -2670,7 +2670,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .detail-item .detail-icon {
-    font-size: 16px;
+    font-size: 17px;
     flex-shrink: 0;
 }
 
@@ -2683,7 +2683,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--color-primary, #0A4860);
     text-decoration: none;
@@ -2731,7 +2731,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     .service-title-group h3 {
-        font-size: 18px;
+        font-size: 19px;
     }
     
     .expand-toggle {
@@ -2803,7 +2803,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .tab-btn .tab-num {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-teal-dark);
     background: var(--color-white);
     padding: 4px 10px;
@@ -2812,7 +2812,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .tab-btn .tab-text {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--color-primary);
 }
@@ -2869,7 +2869,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-icon-box {
-    font-size: 28px;
+    font-size: 29px;
     width: 52px;
     height: 52px;
     background: var(--color-sage);
@@ -2881,7 +2881,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .pillar-subtitle {
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: var(--color-teal-dark);
@@ -2894,7 +2894,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-desc {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.7;
     color: var(--color-ink-soft);
     margin-bottom: 24px;
@@ -2902,7 +2902,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .pillar-features h4 {
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 10px;
@@ -2918,7 +2918,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-features li {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink);
     display: flex;
     align-items: center;
@@ -2954,7 +2954,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .pillar-quote-box p {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-primary);
     margin-bottom: 4px;
     position: relative;
@@ -3053,7 +3053,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .why-grow blockquote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 26px;
+    font-size: 27px;
     color: var(--color-primary);
     line-height: 1.5;
     margin-bottom: 18px;
@@ -3229,7 +3229,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .testimonial-stars {
     color: var(--color-gold-dark);
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
@@ -3246,7 +3246,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .testimonial-name {
     font-weight: 700;
     color: var(--color-primary);
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .testimonial-role {
@@ -3307,7 +3307,7 @@ header.is-scrolled #site-nav a.btn-nav {
     background: var(--color-white);
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px 22px;
     border-radius: 50px;
     box-shadow: var(--shadow-card);
@@ -3356,13 +3356,13 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .cta-section h2 {
     color: var(--color-white);
-    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
     margin-bottom: 14px;
 }
 
 .cta-section p {
     color: rgba(255,255,255,0.85);
-    font-size: 18px;
+    font-size: 19px;
     margin-bottom: 32px;
 }
 
@@ -3428,11 +3428,11 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .cta-stat-number .star {
-    font-size: 28px;
+    font-size: 29px;
 }
 
 .cta-stat-label {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.02em;
 }
@@ -3443,7 +3443,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     .cta-stat-number {
-        font-size: 26px;
+        font-size: 27px;
     }
     
     .cta-stat-label {
@@ -3461,7 +3461,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .who-we-work .container {
-    max-width: 1100px;
+    max-width: 1280px;
 }
 
 .who-grid {
@@ -3493,7 +3493,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .who-item h3 {
-    font-size: 24px;
+    font-size: 25px;
     color: var(--color-primary);
     margin-bottom: 0;
     font-weight: 700;
@@ -3501,7 +3501,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .who-item p {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.8;
     color: var(--color-ink-soft);
     margin-bottom: 14px;
@@ -3517,7 +3517,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .who-item .age-highlight {
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 /* ----- WHO-LEAD (enlarged lead Q&A above the two smaller cards) ----- */
@@ -3538,7 +3538,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .who-lead-q {
     flex: 1 1 50%;
-    font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+    font-size: clamp(2.3rem, 4.2vw, 3.3rem);
     font-weight: 800;
     color: var(--color-primary);
     line-height: 1.15;
@@ -3557,7 +3557,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .who-lead-a {
     flex: 1 1 42%;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.7;
     color: var(--color-ink-soft);
     margin: 0;
@@ -3600,15 +3600,15 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .who-item h3 {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .who-item p {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .who-item .age-highlight {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
@@ -3618,7 +3618,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .who-item h3 {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .who-item p {
@@ -3626,7 +3626,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .who-item .age-highlight {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -3666,7 +3666,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .footer-tagline {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--color-ink-soft);
     opacity: 0.8;
     margin: 6px 0 16px;
@@ -3730,7 +3730,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .footer-card-label {
-    font-size: 18px;
+    font-size: 19px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--color-primary);
@@ -3739,7 +3739,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .footer-card-value {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     color: var(--color-ink-soft);
     text-decoration: none;
@@ -3755,7 +3755,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .footer-card-sub {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     opacity: 0.75;
     margin-top: 5px;
@@ -3779,7 +3779,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     opacity: 0.75;
 }
@@ -3854,13 +3854,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .page-hero h1 {
-    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: -0.02em;
     margin-bottom: 12px;
 }
 
 .page-hero p {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-ink-soft);
 }
 
@@ -3880,7 +3880,7 @@ header.is-scrolled #site-nav a.btn-nav {
     background: rgba(31, 60, 136, 0.06);
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     padding: 8px 18px;
     border-radius: 50px;
     border: 1px solid rgba(31, 60, 136, 0.12);
@@ -3897,7 +3897,7 @@ header.is-scrolled #site-nav a.btn-nav {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
     color: var(--color-teal-dark);
     margin-top: 20px;
     text-decoration: none;
@@ -3914,7 +3914,7 @@ header.is-scrolled #site-nav a.btn-nav {
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.7;
     color: var(--color-ink-soft);
 }
@@ -3923,7 +3923,7 @@ header.is-scrolled #site-nav a.btn-nav {
     max-width: 780px;
     margin: 32px auto 0;
     font-family: var(--font-display);
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
     font-weight: 600;
     line-height: 1.4;
     color: var(--color-primary);
@@ -4145,7 +4145,7 @@ header.is-scrolled #site-nav a.btn-nav {
         gap: 8px 12px;
     }
     .big-school-hero-container .club-meta-item {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -4203,7 +4203,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .iv-pricing-label {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-ink-soft);
 }
@@ -4211,7 +4211,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .iv-pricing-value {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 19px;
+    font-size: 20px;
     color: var(--color-primary);
     text-align: right;
 }
@@ -4219,7 +4219,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .iv-pricing-value small {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
 }
 
@@ -4288,14 +4288,14 @@ header.is-scrolled #site-nav a.btn-nav {
 .iv-pricing-option-value {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: 26px;
+    font-size: 27px;
     color: var(--color-primary);
     line-height: 1.1;
 }
 
 .iv-pricing-option-sub {
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
     margin-top: 6px;
 }
@@ -4353,7 +4353,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .lp-receive-row-content h4 {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-primary);
     margin: 0 0 4px;
 }
@@ -4421,7 +4421,7 @@ header.is-scrolled #site-nav a.btn-nav {
     font-family: var(--font-quote);
     font-style: italic;
     font-weight: 500;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.55;
     color: var(--color-primary);
     border-left: 3px solid var(--color-teal);
@@ -4492,7 +4492,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .philosophy-quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary);
     padding: 24px 32px;
     background: var(--color-sage);
@@ -4522,7 +4522,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .philosophy-hero-content .lead-text {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 500;
     color: var(--color-ink);
     line-height: 1.6;
@@ -4530,7 +4530,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .philosophy-hero-content .sub-text {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--color-ink-soft);
     line-height: 1.7;
 }
@@ -4562,7 +4562,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .philosophy-quote-card blockquote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 500;
     color: var(--color-primary);
     margin: 0;
@@ -4623,7 +4623,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-icon {
-    font-size: 26px;
+    font-size: 27px;
     width: 44px;
     height: 44px;
     background: var(--color-sage);
@@ -4635,13 +4635,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-card h3 {
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary);
     margin: 0;
 }
 
 .pillar-card p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     line-height: 1.65;
     margin: 0;
@@ -4670,7 +4670,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .assessment-intro .lead-text {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-ink-soft);
     line-height: 1.6;
 }
@@ -4702,13 +4702,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .assessment-card h3 {
-    font-size: 22px;
+    font-size: 23px;
     color: var(--color-primary);
     margin-bottom: 6px;
 }
 
 .card-subtext {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     margin-bottom: 24px;
 }
@@ -4723,7 +4723,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .pill {
     background: var(--color-white);
     color: var(--color-primary);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 20px;
@@ -4758,7 +4758,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .desk-content p {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.8;
     color: var(--color-ink-soft);
     margin-bottom: 20px;
@@ -4769,7 +4769,7 @@ header.is-scrolled #site-nav a.btn-nav {
     font-style: italic;
     font-weight: 600;
     color: var(--color-teal-dark);
-    font-size: 21px !important;
+    font-size: 22px !important;
     line-height: 1.6 !important;
     margin-top: 28px !important;
 }
@@ -4787,7 +4787,7 @@ header.is-scrolled #site-nav a.btn-nav {
     gap: 12px;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 17px;
+    font-size: 18px;
     color: var(--color-primary);
     padding: 14px 26px;
     border-radius: 50px;
@@ -4841,7 +4841,7 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-white);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -4855,13 +4855,13 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .step-info strong {
     display: block;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-primary);
     margin-bottom: 2px;
 }
 
 .step-info p {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
     margin: 0;
     line-height: 1.4;
@@ -4933,7 +4933,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .programme-card .card-icon {
-    font-size: 28px;
+    font-size: 29px;
 }
 
 .programme-card .age-badge {
@@ -4947,13 +4947,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .programme-card h3 {
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary);
     margin-bottom: 6px;
 }
 
 .programme-card .card-description {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     line-height: 1.6;
     margin-bottom: 16px;
@@ -5042,7 +5042,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .wc-card-badge {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -5056,7 +5056,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .wc-card--gold .wc-card-badge   { color: var(--color-gold-dark); background: rgba(247,201,72,0.16); border-color: var(--color-gold); }
 
 .wc-card-age {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-primary);
     background: rgba(31,60,136,0.06);
@@ -5082,7 +5082,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .wc-card-tagline {
-    font-size: 17px;
+    font-size: 18px;
     font-style: italic;
     color: var(--color-teal-dark);
     margin: 0 0 10px;
@@ -5091,7 +5091,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .wc-card-desc {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--color-ink-soft);
     line-height: 1.65;
     margin: 0 0 20px;
@@ -5101,7 +5101,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .wc-card-tag {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     padding: 6px 18px;
     border-radius: 50px;
@@ -5138,7 +5138,7 @@ header.is-scrolled #site-nav a.btn-nav {
     justify-content: center;
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 21px;
     transition: all 0.3s var(--ease);
     background: transparent;
 }
@@ -5162,7 +5162,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .programmes-intro p {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-ink-soft);
     line-height: 1.8;
 }
@@ -5176,7 +5176,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .programmes-footer .note {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     opacity: 0.8;
     margin-bottom: 20px;
@@ -5199,11 +5199,11 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     .programmes-intro h2 {
-        font-size: 28px;
+        font-size: 29px;
     }
     
     .programmes-intro p {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
 
@@ -5242,7 +5242,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .about-intro .intro-content p {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.8;
     color: var(--color-ink-soft);
 }
@@ -5293,12 +5293,12 @@ header.is-scrolled #site-nav a.btn-nav {
 .value-card:nth-child(3n+3) > div:first-child { background: rgba(142, 125, 240, 0.12); }
 
 .value-card h4 {
-    font-size: 20px;
+    font-size: 21px;
     margin-bottom: 8px;
 }
 
 .value-card p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
 }
 
@@ -5321,13 +5321,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .philosophy-pillar h4 {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-primary);
     margin-bottom: 8px;
 }
 
 .philosophy-pillar p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
 }
 
@@ -5362,7 +5362,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 23px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -5378,13 +5378,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .services-overview-card h3 {
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-primary);
     margin-bottom: 8px;
 }
 
 .services-overview-card p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     margin-bottom: 16px;
 }
@@ -5407,7 +5407,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .careers-intro .careers-content p {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--color-ink-soft);
     line-height: 1.8;
 }
@@ -5429,12 +5429,12 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .contact-details h2,
 .contact-form h2 {
-    font-size: 26px;
+    font-size: 27px;
     margin-bottom: 14px;
 }
 
 .contact-details > p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     margin-bottom: 22px;
 }
@@ -5482,7 +5482,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 19px;
     flex-shrink: 0;
 }
 
@@ -5491,7 +5491,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .contact-item:nth-of-type(3) .contact-icon { background: rgba(247, 201, 72, 0.20); }
 
 .contact-item h4 {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 2px;
 }
 
@@ -5581,18 +5581,18 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     #site-nav a {
-        font-size: 15px;
+        font-size: 16px;
         padding: 8px 12px;
     }
     
     #site-nav a.btn-nav {
-        font-size: 14px;
+        font-size: 15px;
         padding: 8px 18px;
         margin-left: 4px;
     }
     
     .logo-name {
-        font-size: 22px;
+        font-size: 23px;
     }
     
     .logo-tagline {
@@ -5611,7 +5611,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     #site-nav a {
-        font-size: 13px;
+        font-size: 14px;
         padding: 6px 10px;
     }
     
@@ -5622,7 +5622,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     .logo-name {
-        font-size: 18px;
+        font-size: 19px;
     }
     
     .logo-tagline {
@@ -5647,17 +5647,17 @@ header.is-scrolled #site-nav a.btn-nav {
     
     #site-nav a {
         padding: 8px 12px;
-        font-size: 15px;
+        font-size: 16px;
     }
 
     #site-nav a.btn-nav {
         padding: 10px 20px;
-        font-size: 14px;
+        font-size: 15px;
         margin-left: 6px;
     }
 
     .logo-name {
-        font-size: 24px;
+        font-size: 25px;
     }
 
     .logo-tagline {
@@ -5674,7 +5674,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     header.is-scrolled .logo-name {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     header.is-scrolled .logo-tagline {
@@ -5682,12 +5682,12 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     header.is-scrolled #site-nav a {
-        font-size: 14px;
+        font-size: 15px;
         padding: 6px 10px;
     }
 
     header.is-scrolled #site-nav a.btn-nav {
-        font-size: 13px;
+        font-size: 14px;
         padding: 8px 18px;
     }
 }
@@ -5706,17 +5706,17 @@ header.is-scrolled #site-nav a.btn-nav {
     
     #site-nav a {
         padding: 6px 10px;
-        font-size: 14px;
+        font-size: 15px;
     }
     
     #site-nav a.btn-nav {
         padding: 8px 18px;
-        font-size: 13px;
+        font-size: 14px;
         margin-left: 4px;
     }
 
     .logo-name {
-        font-size: 22px;
+        font-size: 23px;
     }
 
     .logo-tagline {
@@ -5729,7 +5729,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     header.is-scrolled #site-nav a {
-        font-size: 13px;
+        font-size: 14px;
         padding: 5px 8px;
     }
 
@@ -5811,7 +5811,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .logo-name {
-        font-size: 22px;
+        font-size: 23px;
     }
 
     .logo-tagline {
@@ -5819,7 +5819,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     header.is-scrolled .logo-name {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     header.is-scrolled .logo-tagline {
@@ -5859,7 +5859,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     #site-nav a {
-        font-size: 20px;
+        font-size: 21px;
         padding: 16px 20px;
         width: 100%;
         border-radius: 10px;
@@ -5881,7 +5881,7 @@ header.is-scrolled #site-nav a.btn-nav {
     #site-nav a.btn-nav {
         margin-top: 16px;
         padding: 18px 40px;
-        font-size: 18px;
+        font-size: 19px;
         width: 100%;
         justify-content: center;
         border-radius: 12px;
@@ -5932,7 +5932,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .dropdown-menu a {
-        font-size: 18px !important;
+        font-size: 19px !important;
         padding: 14px 20px 14px 34px !important;
         color: var(--color-ink-soft);
     }
@@ -5966,7 +5966,7 @@ header.is-scrolled #site-nav a.btn-nav {
         right: 20px;
         width: 42px;
         height: 42px;
-        font-size: 16px;
+        font-size: 17px;
     }
 
     /* Other mobile styles */
@@ -5985,9 +5985,9 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     .pillar-card:nth-child(3n+2) { margin-top: 0; }
 
-    .why-grow blockquote { font-size: 21px; }
+    .why-grow blockquote { font-size: 22px; }
 
-    .service-detail h2 { font-size: 24px; }
+    .service-detail h2 { font-size: 25px; }
     .journey-list { grid-template-columns: 1fr; }
 
     .contact-form { padding: 24px; }
@@ -6007,15 +6007,15 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .brand-goal .goal-headline {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .brand-goal .goal-description {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .brand-text h2 {
-        font-size: 28px;
+        font-size: 29px;
     }
 
     .interactive-card {
@@ -6029,15 +6029,15 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .interactive-card .card-emoji {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .interactive-card .card-content h3 {
-        font-size: 17px;
+        font-size: 18px;
     }
 
     .interactive-card .card-content p {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .card-nav-dots .dot {
@@ -6060,7 +6060,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .assessment-intro h2 {
-        font-size: 28px;
+        font-size: 29px;
     }
 }
 
@@ -6088,7 +6088,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .logo-name {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .logo-tagline {
@@ -6096,7 +6096,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     header.is-scrolled .logo-name {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     header.is-scrolled .logo-tagline {
@@ -6109,17 +6109,17 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     #site-nav a {
-        font-size: 18px;
+        font-size: 19px;
         padding: 14px 16px;
     }
 
     #site-nav a.btn-nav {
         padding: 16px 30px;
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .dropdown-menu a {
-        font-size: 17px !important;
+        font-size: 18px !important;
         padding: 12px 16px 12px 28px !important;
     }
 
@@ -6149,15 +6149,15 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .brand-goal .goal-headline {
-        font-size: 22px;
+        font-size: 23px;
     }
 
     .assessment-intro h2 {
-        font-size: 24px;
+        font-size: 25px;
     }
     
     .assessment-intro .lead-text {
-        font-size: 16px;
+        font-size: 17px;
     }
     
     .pill {
@@ -6176,7 +6176,7 @@ header.is-scrolled #site-nav a.btn-nav {
     }
     
     .step-info strong {
-        font-size: 14px;
+        font-size: 15px;
     }
     
     .step-info p {
@@ -6227,13 +6227,13 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .framework-pillar h3 {
-    font-size: 22px;
+    font-size: 23px;
     margin-bottom: 12px;
     color: var(--color-primary);
 }
 
 .framework-pillar p {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.65;
     color: var(--color-ink-soft);
     max-width: 220px;
@@ -6281,11 +6281,11 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 
     .framework-pillar h3 {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .framework-pillar p {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -6305,7 +6305,7 @@ header.is-scrolled #site-nav a.btn-nav {
     display: block;
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-primary);
     margin-bottom: 4px;
 }
@@ -6340,7 +6340,7 @@ header.is-scrolled #site-nav a.btn-nav {
     margin: 6px 0 0;
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.3;
 }
 
@@ -6380,7 +6380,7 @@ header.is-scrolled #site-nav a.btn-nav {
     padding: 20px 22px;
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.5;
     color: var(--color-ink);
 }
@@ -6414,7 +6414,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .qa-box__q {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.25;
     margin-bottom: 10px;
     color: var(--color-primary);
@@ -6423,7 +6423,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .qa-box__big {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(24px, 3vw, 34px);
+    font-size: clamp(25px, 3vw, 34px);
     line-height: 1.1;
     margin-bottom: 8px;
     color: var(--color-primary);
@@ -6476,12 +6476,12 @@ header.is-scrolled #site-nav a.btn-nav {
 .peel-card__line {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.2;
     color: var(--color-primary);
 }
 
-.peel-card__back .peel-card__line { font-size: 16px; font-weight: 600; line-height: 1.35; }
+.peel-card__back .peel-card__line { font-size: 17px; font-weight: 600; line-height: 1.35; }
 .peel-card__more { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--color-primary); }
 
 /* On touch devices (no hover), show a static two-part card instead
@@ -6508,7 +6508,7 @@ header.is-scrolled #site-nav a.btn-nav {
     border-radius: 100px;
     padding: 10px 18px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-primary);
 }
 
@@ -6538,14 +6538,14 @@ header.is-scrolled #site-nav a.btn-nav {
 .door-card__if {
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--color-ink-soft);
 }
 
 .door-card h3 { margin: 4px 0 6px; }
 
 .door-card__meta {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-ink-soft);
     border-top: 2px dashed rgba(31, 60, 136, 0.2);
@@ -6623,7 +6623,7 @@ header.is-scrolled #site-nav a.btn-nav {
     color: var(--color-cream);
     border-radius: 100px;
     padding: 9px 20px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -6691,12 +6691,12 @@ header.is-scrolled #site-nav a.btn-nav {
 .skill-list b {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: -0.01em;
 }
 
 .skill-list span {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
 }
 
@@ -6742,7 +6742,7 @@ header.is-scrolled #site-nav a.btn-nav {
     margin: 10px 0 0;
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
 }
 
@@ -6790,7 +6790,7 @@ header.is-scrolled #site-nav a.btn-nav {
 .cta-lines {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(17px, 2.2vw, 23px);
+    font-size: clamp(18px, 2.2vw, 23px);
     line-height: 1.5;
     letter-spacing: -0.01em;
 }
@@ -6876,7 +6876,7 @@ body.home-page-locked {
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.85;
     color: var(--color-ink-soft);
 }
@@ -6888,7 +6888,7 @@ body.home-page-locked {
 }
 
 .club-section-head h2 {
-    font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+    font-size: clamp(2rem, 3.4vw, 2.6rem);
     letter-spacing: -0.02em;
     line-height: 1.2;
     margin-top: 6px;
@@ -6942,7 +6942,7 @@ body.home-page-locked {
 .club-insight-tile-label {
     display: block;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.01em;
     text-transform: none;
@@ -6962,7 +6962,7 @@ body.home-page-locked {
 
 .club-insight-tile p {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--color-ink-soft);
     font-weight: 400;
@@ -7029,7 +7029,7 @@ body.home-page-locked {
 
 .club-check-item p {
     margin: 0;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.6;
     color: var(--color-ink);
     font-weight: 500;
@@ -7083,7 +7083,7 @@ body.home-page-locked {
 
 .club-reason-item p {
     margin: 0;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.6;
     color: var(--color-ink);
     font-weight: 500;
@@ -7202,7 +7202,7 @@ body.home-page-locked {
     background: var(--club-accent, var(--color-accent));
     color: var(--color-white);
     font-weight: 800;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .club-example-item p {
@@ -7248,7 +7248,7 @@ body.home-page-locked {
     margin: 0;
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(24px, 3.6vw, 32px);
+    font-size: clamp(25px, 3.6vw, 32px);
     line-height: 1.45;
     color: var(--color-primary);
 }
@@ -7287,7 +7287,7 @@ body.home-page-locked {
 }
 
 .club-meta-note {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-soft);
     text-align: center;
     margin: 0 auto 24px;
@@ -7310,7 +7310,7 @@ body.home-page-locked {
 }
 
 .club-hero-simple h1 {
-    font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+    font-size: clamp(2.2rem, 4.5vw, 2.9rem);
     line-height: 1.15;
     white-space: nowrap;
 }
@@ -7320,7 +7320,7 @@ body.home-page-locked {
 }
 
 .club-hero-simple .hero-tagline-description {
-    font-size: 19px;
+    font-size: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -7328,7 +7328,7 @@ body.home-page-locked {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-primary);
 }
@@ -7353,7 +7353,7 @@ body.home-page-locked {
     background: var(--color-pale-sun);
     color: var(--color-primary);
     border: 1px solid var(--color-gold);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     padding: 6px 14px;
     border-radius: 100px;
@@ -7367,7 +7367,7 @@ body.home-page-locked {
     background: var(--color-pale-lavender);
     color: var(--color-primary);
     border: 1.5px solid var(--color-accent);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -7413,7 +7413,7 @@ body.home-page-locked {
     display: block;
 }
 .club-insight-text {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--color-primary);
     line-height: 1.4;
@@ -7531,13 +7531,13 @@ body.home-page-locked {
 }
 
 .careers-form-wrapper h2 {
-    font-size: 28px;
+    font-size: 29px;
     margin-bottom: 8px;
     color: var(--color-primary);
 }
 
 .careers-form-wrapper .form-intro {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--color-ink-soft);
     margin-bottom: 32px;
     line-height: 1.7;
@@ -7549,7 +7549,7 @@ body.home-page-locked {
 
 .careers-form-wrapper .form-group label {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 6px;
@@ -7578,7 +7578,7 @@ body.home-page-locked {
     border: 2px solid rgba(31, 60, 136, 0.14);
     background: var(--color-cream);
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink);
     transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
@@ -7635,12 +7635,12 @@ body.home-page-locked {
 }
 
 .careers-form-wrapper .file-upload-label .upload-icon {
-    font-size: 28px;
+    font-size: 29px;
     flex-shrink: 0;
 }
 
 .careers-form-wrapper .file-upload-label .upload-text {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
 }
 
@@ -7649,7 +7649,7 @@ body.home-page-locked {
 }
 
 .careers-form-wrapper .file-upload-label .file-name {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-teal-dark);
     font-weight: 600;
     display: none;
@@ -7679,7 +7679,7 @@ body.home-page-locked {
     width: 100%;
     justify-content: center;
     padding: 16px 40px;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 /* Success message */
@@ -7691,7 +7691,7 @@ body.home-page-locked {
     padding: 24px 28px;
     margin-top: 24px;
     color: #155724;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
 }
 
@@ -7718,7 +7718,7 @@ body.home-page-locked {
     }
 
     .careers-form-wrapper h2 {
-        font-size: 24px;
+        font-size: 25px;
     }
 
     .careers-form-wrapper .form-row {
@@ -7732,7 +7732,7 @@ body.home-page-locked {
     }
 
     .careers-form-wrapper .file-upload-label .upload-icon {
-        font-size: 24px;
+        font-size: 25px;
     }
 }
 
@@ -7742,18 +7742,18 @@ body.home-page-locked {
     }
 
     .careers-form-wrapper h2 {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .careers-form-wrapper .form-group input,
     .careers-form-wrapper .form-group select,
     .careers-form-wrapper .form-group textarea {
         padding: 11px 14px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .careers-form-wrapper .submit-wrap .btn {
-        font-size: 15px;
+        font-size: 16px;
         padding: 14px 28px;
     }
 }
@@ -7822,7 +7822,7 @@ body.home-page-locked {
     }
 
     .approach-mv-grid h3 {
-        font-size: 22px;
+        font-size: 23px;
         margin-bottom: 10px;
     }
 
@@ -7872,7 +7872,7 @@ body.home-page-locked {
         background: var(--color-primary);
         color: var(--color-white);
         font-family: var(--font-display);
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -7896,7 +7896,7 @@ body.home-page-locked {
     }
 
     .approach-skills-grid .skill-card h3 {
-        font-size: 16px;
+        font-size: 17px;
         margin-bottom: 6px;
         color: var(--color-primary);
     }
@@ -7920,7 +7920,7 @@ body.home-page-locked {
         font-family: var(--font-quote);
         font-style: italic;
         font-weight: 500;
-        font-size: clamp(22px, 3vw, 30px);
+        font-size: clamp(23px, 3vw, 30px);
         line-height: 1.5;
         color: var(--color-primary);
         position: relative;
@@ -7990,7 +7990,7 @@ body.home-page-locked {
         color: var(--color-primary);
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 14px;
+        font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -8006,12 +8006,12 @@ body.home-page-locked {
     }
 
     .approach-pillars-grid .pillar-card h3 {
-        font-size: 18px;
+        font-size: 19px;
         margin-bottom: 8px;
     }
 
     .approach-pillars-grid .pillar-card p {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.6;
         margin: 0;
     }
@@ -8060,7 +8060,7 @@ body.home-page-locked {
     }
 
     .approach-values-grid .value-card h4 {
-        font-size: 17px;
+        font-size: 18px;
         margin-bottom: 4px;
         color: var(--color-primary);
     }
@@ -8217,11 +8217,11 @@ body.home-page-locked {
     }
 
     /* Scoped bump for this page only — pills, assessment-card headings, process cards */
-    .assessment-card h3 { font-size: 24px; }
-    .assessment-card .pill { font-size: 15px; padding: 9px 16px; }
-    .iv-note { font-size: 16px; line-height: 1.7; }
+    .assessment-card h3 { font-size: 25px; }
+    .assessment-card .pill { font-size: 16px; padding: 9px 16px; }
+    .iv-note { font-size: 17px; line-height: 1.7; }
 
-    .process-cards--six .pcm-label { font-size: 21px; }
+    .process-cards--six .pcm-label { font-size: 22px; }
     .process-cards--six h4 { font-size: 18.5px; }
     .process-cards--six p { font-size: 15.5px; }
 
@@ -8246,7 +8246,7 @@ body.home-page-locked {
     .lp-lead {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: clamp(20px, 2.4vw, 24px);
+        font-size: clamp(21px, 2.4vw, 25px);
         line-height: 1.5;
         color: var(--color-primary);
         margin-bottom: 14px;
@@ -8283,11 +8283,11 @@ body.home-page-locked {
     }
 
     .lp-hero-card .hero-insight-line {
-        font-size: 21px;
+        font-size: 22px;
     }
 
     .lp-hero-card .hero-insight-line--bold {
-        font-size: 22px;
+        font-size: 23px;
     }
 
     @media (max-width: 860px) {
@@ -8428,7 +8428,7 @@ body.home-page-locked {
     }
 
     .flip-front .flip-hint {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -8442,21 +8442,21 @@ body.home-page-locked {
     }
 
     .flip-back p {
-        font-size: 16px;
+        font-size: 17px;
         line-height: 1.7;
         color: var(--color-muted-on-dark);
         margin: 0;
     }
 
     .lp-faq h3 {
-        font-size: 21px;
+        font-size: 22px;
         color: var(--color-primary);
         margin-bottom: 0;
     }
 
     .flip-back h3 {
         color: var(--color-white);
-        font-size: 19px;
+        font-size: 20px;
         margin-bottom: 12px;
     }
 
@@ -8469,7 +8469,7 @@ body.home-page-locked {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px 24px;
-        font-size: 15px;
+        font-size: 16px;
         color: var(--color-ink-soft);
         background: var(--color-sage);
         padding: 14px 28px;
@@ -8512,7 +8512,7 @@ body.home-page-locked {
     }
 
     .who-we-work .container {
-        max-width: 960px;
+        max-width: 1280px;
     }
 
     .who-grid {
@@ -8541,7 +8541,7 @@ body.home-page-locked {
     }
 
     .who-item h3 {
-        font-size: 24px;
+        font-size: 25px;
         color: var(--color-primary);
         margin-bottom: 16px;
         font-weight: 700;
@@ -8549,7 +8549,7 @@ body.home-page-locked {
     }
 
     .who-item p {
-        font-size: 18px;
+        font-size: 19px;
         line-height: 1.8;
         color: var(--color-ink-soft);
         margin-bottom: 14px;
@@ -8570,7 +8570,7 @@ body.home-page-locked {
     .who-item .age-highlight {
         color: var(--color-primary);
         font-weight: 700;
-        font-size: 20px;
+        font-size: 21px;
     }
 
     @media (max-width: 768px) {
@@ -8585,15 +8585,15 @@ body.home-page-locked {
         }
 
         .who-item h3 {
-            font-size: 20px;
+            font-size: 21px;
         }
 
         .who-item p {
-            font-size: 16px;
+            font-size: 17px;
         }
 
         .who-item .age-highlight {
-            font-size: 17px;
+            font-size: 18px;
         }
     }
 
@@ -8603,7 +8603,7 @@ body.home-page-locked {
         }
 
         .who-item h3 {
-            font-size: 18px;
+            font-size: 19px;
         }
 
         .who-item p {
@@ -8611,7 +8611,7 @@ body.home-page-locked {
         }
 
         .who-item .age-highlight {
-            font-size: 15px;
+            font-size: 16px;
         }
     }
 
@@ -8724,7 +8724,7 @@ body.home-page-locked {
         gap: 12px;
         padding-top: 20px;
         border-top: 2px dashed rgba(31,60,136,0.2);
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.02em;
         color: var(--color-primary);
@@ -8752,7 +8752,7 @@ body.home-page-locked {
         text-align: center;
         max-width: 760px;
         margin: 36px auto 0;
-        font-size: 17px;
+        font-size: 18px;
         line-height: 1.8;
         color: var(--color-ink-soft);
     }
@@ -8774,11 +8774,11 @@ body.home-page-locked {
         }
 
         .fits-item h3 {
-            font-size: 20px;
+            font-size: 21px;
         }
 
         .fits-item p {
-            font-size: 15px;
+            font-size: 16px;
         }
     }
 
@@ -8834,7 +8834,7 @@ body.home-page-locked {
     position: absolute;
     left: -12px;
     top: 18px;
-    font-size: 22px;
+    font-size: 23px;
     color: var(--dot-color, var(--color-teal-dark));
     line-height: 1;
     transition: transform 0.25s var(--ease);
@@ -8896,7 +8896,7 @@ body.home-page-locked {
     margin: 32px 0 0;
     padding-top: 24px;
     border-top: 2px solid rgba(44, 181, 165, 0.2);
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 700;
     color: var(--color-primary);
     text-align: center;
@@ -8908,7 +8908,7 @@ body.home-page-locked {
 .goals-card-closing::before {
     content: "✦";
     display: block;
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-gold);
     margin-bottom: 6px;
     opacity: 0.6;
@@ -8928,7 +8928,7 @@ body.home-page-locked {
     .goals-card-item::before {
         left: 0;
         top: 16px;
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .goals-card-item--last:last-child {
@@ -8940,7 +8940,7 @@ body.home-page-locked {
     }
 
     .goals-card-closing {
-        font-size: 17px;
+        font-size: 18px;
         padding-top: 18px;
         margin-top: 20px;
     }
@@ -8953,7 +8953,7 @@ body.home-page-locked {
 
 /* 12. Touch-up for the heading + divider */
 .goals-card-heading {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
 }
 
 .section-divider {
@@ -9207,13 +9207,13 @@ body.home-page-locked {
 }
 
 .submit-form-wrapper h2 {
-    font-size: 28px;
+    font-size: 29px;
     margin-bottom: 8px;
     color: var(--color-primary);
 }
 
 .submit-form-wrapper .form-intro {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--color-ink-soft);
     margin-bottom: 32px;
     line-height: 1.7;
@@ -9225,7 +9225,7 @@ body.home-page-locked {
 
 .submit-form-wrapper .form-group label {
     display: block;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 6px;
@@ -9254,7 +9254,7 @@ body.home-page-locked {
     border: 2px solid rgba(31, 60, 136, 0.14);
     background: var(--color-cream);
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink);
     transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
@@ -9303,7 +9303,7 @@ body.home-page-locked {
     color: var(--color-primary);
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: background 0.15s ease, border-color 0.15s ease;
 }
@@ -9331,7 +9331,7 @@ body.home-page-locked {
     border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     background: var(--color-cream);
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.75;
     color: var(--color-ink);
     overflow-y: auto;
@@ -9350,13 +9350,13 @@ body.home-page-locked {
 }
 
 .rte-editor h2 {
-    font-size: 22px;
+    font-size: 23px;
     color: var(--color-primary);
     margin: 20px 0 10px;
 }
 
 .rte-editor h3 {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-primary);
     margin: 16px 0 8px;
 }
@@ -9383,7 +9383,7 @@ body.home-page-locked {
     margin-top: 20px;
     padding: 14px 18px;
     border-radius: var(--radius-sm);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     display: none;
 }
@@ -9430,7 +9430,7 @@ body.home-page-locked {
     background: var(--color-white);
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     padding: 8px 20px;
     border-radius: 50px;
     border: 2px solid rgba(31, 60, 136, 0.14);
@@ -9459,14 +9459,14 @@ body.home-page-locked {
 }
 
 .blog-submit-cta-text h2 {
-    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
     margin: 4px 0 10px;
 }
 
 .blog-submit-cta-text p {
     max-width: 560px;
     color: var(--color-ink-soft);
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .blog-submit-cta .btn {
@@ -9486,7 +9486,7 @@ body.home-page-locked {
 .blog-feed-empty {
     text-align: center;
     color: var(--color-ink-soft);
-    font-size: 16px;
+    font-size: 17px;
     padding: 20px 0 32px;
 }
 
@@ -9564,7 +9564,7 @@ body.home-page-locked {
 }
 
 .blog-list-card-body h2 {
-    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    font-size: clamp(1.25rem, 1.6vw, 1.6rem);
     line-height: 1.3;
     margin-bottom: 10px;
     transition: color 0.2s var(--ease);
@@ -9575,7 +9575,7 @@ body.home-page-locked {
 }
 
 .blog-list-card-body > p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-ink-soft);
     margin-bottom: 16px;
 }
@@ -9585,7 +9585,7 @@ body.home-page-locked {
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-ink-soft);
     margin-bottom: 18px;
 }
@@ -9650,7 +9650,7 @@ body.home-page-locked {
     justify-content: center;
     gap: 8px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 19px;
     color: var(--color-teal-dark);
     margin-bottom: 22px;
 }
@@ -9673,7 +9673,7 @@ body.home-page-locked {
 .blog-post-hero h1 {
     max-width: 820px;
     margin: 0 auto 16px;
-    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem);
 }
 
 .blog-post-meta {
@@ -9682,7 +9682,7 @@ body.home-page-locked {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-ink-soft);
 }
@@ -9715,17 +9715,17 @@ body.home-page-locked {
     margin: 0 auto;
     padding: 48px 0 20px;
     color: var(--color-ink-soft);
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.85;
 }
 
 .blog-post-body h2 {
-    font-size: 26px;
+    font-size: 27px;
     margin: 40px 0 14px;
 }
 
 .blog-post-body h3 {
-    font-size: 20px;
+    font-size: 21px;
     margin: 30px 0 12px;
 }
 
@@ -9745,7 +9745,7 @@ body.home-page-locked {
 .blog-post-body blockquote {
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-teal-dark);
     border-left: 4px solid var(--color-gold);
     padding: 4px 0 4px 22px;
@@ -9766,7 +9766,7 @@ body.home-page-locked {
     background: rgba(31, 60, 136, 0.06);
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     padding: 6px 16px;
     border-radius: 50px;
 }
@@ -9779,7 +9779,7 @@ body.home-page-locked {
 
 @media (max-width: 640px) {
     .blog-post-body {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
 
@@ -9867,7 +9867,7 @@ body.rfbs-popup-open {
     border-radius: 50%;
     background: rgba(20, 30, 60, 0.65);
     color: #fff;
-    font-size: 22px;
+    font-size: 23px;
     line-height: 1;
     display: flex;
     align-items: center;
@@ -9920,7 +9920,7 @@ body.rfbs-popup-open {
     border-radius: 999px;
     font-family: 'Karla', sans-serif;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 0.2px;
     box-shadow: 0 10px 30px rgba(20, 30, 60, 0.25);
     transform: translateY(10px) scale(0.94);
