@@ -9711,7 +9711,7 @@ body.home-page-locked {
 }
 
 .blog-post-body {
-    max-width: 720px;
+    max-width: 820px;
     margin: 0 auto;
     padding: 48px 0 20px;
     color: var(--color-ink-soft);
@@ -9772,7 +9772,7 @@ body.home-page-locked {
 }
 
 .blog-post-cta {
-    max-width: 720px;
+    max-width: 820px;
     margin: 0 auto;
     padding: 8px 0 60px;
 }
