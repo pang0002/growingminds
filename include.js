@@ -427,9 +427,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Show the same effect whenever the homepage itself loads or refreshes
-    // (direct visit, reload, or bookmark) — independent of the click-based
-    // trigger above, so it plays every single time, with no session skip.
     var isHomePageLoad = window.location.pathname === '/' ||
         window.location.pathname === '/index.html' ||
         window.location.pathname.endsWith('index.html') ||
@@ -974,11 +971,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================================
     // FAVICON
-    // Injects the full site icon set into <head> on any page that
-    // doesn't already declare one statically (index.html and
-    // ready-for-big-school.html have static tags; this covers
-    // every other page automatically since include.js loads
-    // everywhere).
     // ============================================================
     function initFavicon() {
         if (document.querySelector('link[rel="icon"]')) return; // page already has its own tags
