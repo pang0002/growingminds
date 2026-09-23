@@ -396,6 +396,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================================
     // HOME LINK PAGE-TRANSITION EFFECT
     // ============================================================
+    // Set to true to re-enable the "Home" loading transition. Everything
+    // below is left fully intact — flipping this back on is the only step needed.
+    var HOME_TRANSITION_ENABLED = false;
+
+    if (HOME_TRANSITION_ENABLED) {
     var homeTransitionOverlay = document.createElement('div');
     homeTransitionOverlay.className = 'page-transition-overlay';
     homeTransitionOverlay.setAttribute('aria-hidden', 'true');
@@ -427,6 +432,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Show the same effect whenever the homepage itself loads or refreshes
+    // (direct visit, reload, or bookmark) — independent of the click-based
+    // trigger above, so it plays every single time, with no session skip.
     var isHomePageLoad = window.location.pathname === '/' ||
         window.location.pathname === '/index.html' ||
         window.location.pathname.endsWith('index.html') ||
@@ -453,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 500);
         }
     });
+    } // end HOME_TRANSITION_ENABLED
 
     // ============================================================
     // LOAD HEADER
