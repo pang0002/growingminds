@@ -3905,6 +3905,10 @@ header.is-scrolled #site-nav a.btn-nav {
     transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
+.page-hero-cta {
+    margin-top: 28px;
+}
+
 .page-hero-quote:hover {
     color: var(--color-primary);
     border-bottom-color: var(--color-teal-dark);
