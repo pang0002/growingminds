@@ -3907,6 +3907,14 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .page-hero-cta {
     margin-top: 28px;
+    padding: 20px 44px;
+    font-size: 19px;
+    font-weight: 800;
+    box-shadow: 0 8px 24px rgba(27, 54, 133, 0.28);
+}
+
+.page-hero-cta:hover {
+    box-shadow: 0 10px 28px rgba(27, 54, 133, 0.34);
 }
 
 .page-hero-quote:hover {
