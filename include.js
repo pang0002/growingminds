@@ -917,6 +917,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // READY FOR BIG SCHOOL — ENTRY POPUP
     // ============================================================
     function initReadyForBigSchoolPopup() {
+        // Set to true to re-enable the entry popup. Everything below is
+        // left fully intact — flipping this back on is the only step needed.
+        var RFBS_POPUP_ENABLED = false;
+        if (!RFBS_POPUP_ENABLED) return;
+
         function openPopup() {
             const overlay = document.getElementById('rfbs-popup-overlay');
             if (!overlay) return false;
