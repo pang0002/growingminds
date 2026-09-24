@@ -401,66 +401,66 @@ document.addEventListener('DOMContentLoaded', function () {
     var HOME_TRANSITION_ENABLED = false;
 
     if (HOME_TRANSITION_ENABLED) {
-    var homeTransitionOverlay = document.createElement('div');
-    homeTransitionOverlay.className = 'page-transition-overlay';
-    homeTransitionOverlay.setAttribute('aria-hidden', 'true');
-    homeTransitionOverlay.innerHTML =
-        '<div class="page-transition-pill">' +
-            '<span class="page-transition-spinner"></span>' +
-            '<span class="page-transition-label">Home</span>' +
-        '</div>';
-    document.body.appendChild(homeTransitionOverlay);
+        var homeTransitionOverlay = document.createElement('div');
+        homeTransitionOverlay.className = 'page-transition-overlay';
+        homeTransitionOverlay.setAttribute('aria-hidden', 'true');
+        homeTransitionOverlay.innerHTML =
+            '<div class="page-transition-pill">' +
+                '<span class="page-transition-spinner"></span>' +
+                '<span class="page-transition-label">Home</span>' +
+            '</div>';
+        document.body.appendChild(homeTransitionOverlay);
 
-    function bindHomeTransition(container) {
-        var homeLinks = container.querySelectorAll('a[href="/"]');
-        homeLinks.forEach(function (link) {
-            link.addEventListener('click', function (e) {
-                // Allow opening in a new tab/window as normal
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) { return; }
-                var destination = link.getAttribute('href');
+        function bindHomeTransition(container) {
+            var homeLinks = container.querySelectorAll('a[href="/"]');
+            homeLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    // Allow opening in a new tab/window as normal
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) { return; }
+                    var destination = link.getAttribute('href');
 
-                // Only show the transition once per browser session
-                if (sessionStorage.getItem('gm_home_transition_shown')) { return; }
+                    // Only show the transition once per browser session
+                    if (sessionStorage.getItem('gm_home_transition_shown')) { return; }
 
-                e.preventDefault();
-                sessionStorage.setItem('gm_home_transition_shown', '1');
-                homeTransitionOverlay.classList.add('is-active');
-                setTimeout(function () {
-                    window.location.href = destination;
-                }, 250);
+                    e.preventDefault();
+                    sessionStorage.setItem('gm_home_transition_shown', '1');
+                    homeTransitionOverlay.classList.add('is-active');
+                    setTimeout(function () {
+                        window.location.href = destination;
+                    }, 250);
+                });
             });
-        });
-    }
+        }
 
-    // Show the same effect whenever the homepage itself loads or refreshes
-    // (direct visit, reload, or bookmark) — independent of the click-based
-    // trigger above, so it plays every single time, with no session skip.
-    var isHomePageLoad = window.location.pathname === '/' ||
-        window.location.pathname === '/index.html' ||
-        window.location.pathname.endsWith('index.html') ||
-        window.location.pathname === '';
+        // Show the same effect whenever the homepage itself loads or refreshes
+        // (direct visit, reload, or bookmark) — independent of the click-based
+        // trigger above, so it plays every single time, with no session skip.
+        var isHomePageLoad = window.location.pathname === '/' ||
+            window.location.pathname === '/index.html' ||
+            window.location.pathname.endsWith('index.html') ||
+            window.location.pathname === '';
 
-    if (isHomePageLoad) {
-        homeTransitionOverlay.classList.add('is-active');
-        setTimeout(function () {
-            homeTransitionOverlay.classList.remove('is-active');
-        }, 500);
-    }
-
-    // Browsers often restore a page from the back/forward cache (bfcache)
-    // when you navigate away and then back — this skips DOMContentLoaded
-    // entirely, so the trigger above never re-runs. Catch that case here.
-    window.addEventListener('pageshow', function (event) {
-        if (event.persisted && isHomePageLoad) {
-            homeTransitionOverlay.classList.remove('is-active');
-            // Force a reflow so the re-added class restarts the transition
-            void homeTransitionOverlay.offsetWidth;
+        if (isHomePageLoad) {
             homeTransitionOverlay.classList.add('is-active');
             setTimeout(function () {
                 homeTransitionOverlay.classList.remove('is-active');
             }, 500);
         }
-    });
+
+        // Browsers often restore a page from the back/forward cache (bfcache)
+        // when you navigate away and then back — this skips DOMContentLoaded
+        // entirely, so the trigger above never re-runs. Catch that case here.
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted && isHomePageLoad) {
+                homeTransitionOverlay.classList.remove('is-active');
+                // Force a reflow so the re-added class restarts the transition
+                void homeTransitionOverlay.offsetWidth;
+                homeTransitionOverlay.classList.add('is-active');
+                setTimeout(function () {
+                    homeTransitionOverlay.classList.remove('is-active');
+                }, 500);
+            }
+        });
     } // end HOME_TRANSITION_ENABLED
 
     // ============================================================
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('header').outerHTML = data;
             safeInit(initHeaderBehavior, 'initHeaderBehavior');
             safeInit(initSmoothScroll, 'initSmoothScroll');
-            bindHomeTransition(document);
+            // bindHomeTransition(document); // ERROR FIXED: This call is commented out because the function is conditionally defined.
 
             setTimeout(function () {
                 var currentPath = window.location.pathname.split('/').pop();
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             document.querySelector('footer').innerHTML = data;
-            bindHomeTransition(document.querySelector('footer'));
+            // bindHomeTransition(document.querySelector('footer')); // ERROR FIXED: This call is commented out.
         })
         .catch(function (error) { console.error('Error loading footer:', error); });
 
