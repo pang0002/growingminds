@@ -5194,71 +5194,93 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-bottom: 20px;
 }
 
-/* Founder teaser card (About Us page — links through to founder.html) */
-.founder-teaser-card {
-    display: block;
+/* Team list — horizontal cards (photo left, info right). Reusable as the team grows. */
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 760px;
+    margin: 24px auto 0;
+}
+
+.team-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 4vw, 36px);
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lift);
     border: 2px solid rgba(31, 60, 136, 0.08);
-    margin: 24px auto 0;
-    padding: clamp(28px, 5vw, 44px) clamp(24px, 6vw, 48px);
-    max-width: 620px;
-    text-align: center;
+    padding: clamp(24px, 4vw, 32px);
     text-decoration: none;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
-.founder-teaser-card:hover {
+.team-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(31, 60, 136, 0.16);
 }
 
-.founder-teaser-photo {
-    width: 140px;
-    height: 140px;
+.team-card-photo {
+    flex: none;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid rgba(31, 60, 136, 0.08);
-    margin: 0 auto 20px;
-    display: block;
 }
 
-.founder-teaser-name {
-    font-size: clamp(22px, 4vw, 27px);
+.team-card-body {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.team-card-name {
+    font-size: clamp(20px, 3.6vw, 24px);
     color: var(--color-primary);
     margin: 0;
     font-weight: 700;
 }
 
-.founder-teaser-title {
-    font-size: clamp(15px, 3vw, 17px);
+.team-card-title {
+    font-size: clamp(14px, 2.6vw, 16px);
     color: var(--color-teal-dark);
     font-weight: 600;
-    margin: 2px 0 16px;
+    margin: 2px 0 10px;
 }
 
-.founder-teaser-quote {
+.team-card-quote {
     font-family: var(--font-quote);
     font-style: italic;
-    font-size: clamp(16px, 3vw, 19px);
+    font-size: clamp(15px, 2.6vw, 17px);
     line-height: 1.5;
-    color: var(--color-primary);
-    margin: 0 auto;
-    max-width: 480px;
+    color: var(--color-ink-soft);
+    margin: 0 0 12px;
 }
 
-.founder-teaser-link {
+.team-card-link {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 22px;
     font-weight: 700;
     color: var(--color-teal-dark);
+    font-size: 15px;
 }
 
-.founder-teaser-card:hover .founder-teaser-link .btn-arrow {
+.team-card:hover .team-card-link .btn-arrow {
     transform: translateX(4px);
+}
+
+@media (max-width: 560px) {
+    .team-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team-card-body {
+        text-align: center;
+    }
 }
 .programmes-grid-two {
     grid-template-columns: repeat(2, 1fr);
