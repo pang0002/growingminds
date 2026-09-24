@@ -2221,7 +2221,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .process-card-mini p {
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 19.5px;
     line-height: 1.55;
     color: var(--color-ink);
     margin: 0;
@@ -4316,16 +4316,14 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .lp-receive-row-content h4 {
-    font-size: 19px;
+    font-size: clamp(17px, 2.5vw, 19px);
     color: var(--color-primary);
-    margin: 0 0 4px;
+    margin-bottom: 8px;
 }
-
 .lp-receive-row-content p {
-    font-size: 15.5px;
-    line-height: 1.6;
+    font-size: 19.5px;
     color: var(--color-ink-soft);
-    margin: 0;
+    line-height: 1.75;
 }
 
 @media (max-width: 560px) {
@@ -4447,7 +4445,7 @@ header.is-scrolled #site-nav a.btn-nav {
     margin: 0 0 3px 0;
 }
 .cred-info p {
-    font-size: 14.5px;
+    font-size: 19.5px;
     color: var(--color-ink-soft);
     margin: 0;
 }
@@ -4723,7 +4721,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .pillar-card p {
-    font-size: 16px;
+    font-size: 19.5px;
     color: var(--color-ink-soft);
     line-height: 1.65;
     margin: 0;
@@ -5169,7 +5167,7 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 .wc-card-desc {
-    font-size: 17px;
+    font-size: 19.5px;
     color: var(--color-ink-soft);
     line-height: 1.65;
     margin: 0 0 20px;
@@ -7263,7 +7261,7 @@ body.home-page-locked {
 
 .club-insight-tile p {
     margin: 0;
-    font-size: 16px;
+    font-size: 19.5px;
     line-height: 1.6;
     color: var(--color-ink-soft);
     font-weight: 400;
@@ -7384,7 +7382,7 @@ body.home-page-locked {
 
 .club-reason-item p {
     margin: 0;
-    font-size: 18px;
+    font-size: 19.5px;
     line-height: 1.6;
     color: var(--color-ink);
     font-weight: 500;
@@ -7449,7 +7447,7 @@ body.home-page-locked {
 
 .club-practise-chip p {
     margin: 0;
-    font-size: 15.5px;
+    font-size: 19.5px;
     line-height: 1.55;
     color: var(--color-ink);
 }
@@ -7508,8 +7506,8 @@ body.home-page-locked {
 
 .club-example-item p {
     margin: 0;
-    font-size: 16.5px;
-    line-height: 1.6;
+    font-size: 19.5px;
+    line-height: 1.7;
     color: var(--color-ink);
 }
 
@@ -8512,7 +8510,7 @@ body.home-page-locked {
 
     .iv-check-item p {
         margin: 0;
-        font-size: 16.5px;
+        font-size: 19.5px;
         line-height: 1.6;
         color: var(--color-ink);
     }
@@ -8797,11 +8795,11 @@ body.home-page-locked {
    EARLY INTERVENTION (EIP) PAGE
    ============================================================ */
 .section-subtitle {
-    font-size: clamp(16px, 2.5vw, 18px);
+    font-size: clamp(17px, 2.8vw, 19px); /* INCREASED FONT SIZE */
     color: var(--color-ink-soft);
-    max-width: 680px;
+    max-width: 720px;
     margin: 16px auto 0 auto;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .skills-grid {
@@ -8840,15 +8838,15 @@ body.home-page-locked {
 }
 
 .skill-card h3 {
-    font-size: clamp(18px, 3vw, 21px);
+    font-size: clamp(19px, 3vw, 22px); /* Slightly increased */
     color: var(--color-primary);
     margin: 0 0 10px 0;
 }
 
 .skill-card p {
-    font-size: clamp(15px, 2.2vw, 16px);
+    font-size: 19.5px;
     color: var(--color-ink-soft);
-    line-height: 1.75;
+    line-height: 1.8;
     margin: 0;
 }
 
@@ -10345,4 +10343,10 @@ body.rfbs-popup-open {
     .big-school-hero-photo {
         display: none;
     }
+}
+/* --- 4-Column Approach Blocks (e.g., Home Page) --- */
+.approach-item p {
+    font-size: 19.5px;
+    line-height: 1.8;
+    color: var(--color-ink);
 }
