@@ -4034,29 +4034,46 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .eip-build-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
     list-style: none;
     padding: 0;
     margin: 36px auto 0;
-    max-width: 820px;
+    max-width: 1040px;
 }
 
 .eip-build-card {
     background: var(--color-white);
     border: 1.5px solid rgba(31, 60, 136, 0.1);
     border-radius: var(--radius-lg);
-    box-shadow: 0 10px 24px rgba(31, 60, 136, 0.1);
+    box-shadow: 0 10px 24px rgba(31, 60, 136, 0.08); 
     padding: 28px 24px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px; 
 }
 
 .eip-build-card .lp-icon {
-    margin: 0 auto 18px;
+    margin: 0 auto 16px; 
 }
 
 .eip-build-card .lp-receive-row-content h4 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    font-size: 17px;
+}
+
+.eip-build-card .lp-receive-row-content p {
+    font-size: 14px; 
+    color: var(--color-ink-soft);
+}
+
+@media (max-width: 900px) {
+    .eip-build-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
+    }
 }
 
 @media (max-width: 560px) {
@@ -5234,7 +5251,11 @@ header.is-scrolled #site-nav a.btn-nav {
     flex: 1;
     min-width: 0;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: justify;
 }
+
 
 .team-card-name {
     font-size: clamp(20px, 3.6vw, 24px);
