@@ -5194,7 +5194,72 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-bottom: 20px;
 }
 
-/* Two-card variant of .programmes-grid (e.g. the Ready for School hub page) */
+/* Founder teaser card (About Us page — links through to founder.html) */
+.founder-teaser-card {
+    display: block;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lift);
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    margin: 24px auto 0;
+    padding: clamp(28px, 5vw, 44px) clamp(24px, 6vw, 48px);
+    max-width: 620px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.founder-teaser-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(31, 60, 136, 0.16);
+}
+
+.founder-teaser-photo {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.founder-teaser-name {
+    font-size: clamp(22px, 4vw, 27px);
+    color: var(--color-primary);
+    margin: 0;
+    font-weight: 700;
+}
+
+.founder-teaser-title {
+    font-size: clamp(15px, 3vw, 17px);
+    color: var(--color-teal-dark);
+    font-weight: 600;
+    margin: 2px 0 16px;
+}
+
+.founder-teaser-quote {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: clamp(16px, 3vw, 19px);
+    line-height: 1.5;
+    color: var(--color-primary);
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+.founder-teaser-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 22px;
+    font-weight: 700;
+    color: var(--color-teal-dark);
+}
+
+.founder-teaser-card:hover .founder-teaser-link .btn-arrow {
+    transform: translateX(4px);
+}
 .programmes-grid-two {
     grid-template-columns: repeat(2, 1fr);
     max-width: 1100px;
