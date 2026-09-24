@@ -6899,11 +6899,11 @@ header.is-scrolled #site-nav a.btn-nav {
 .credential-list {
     list-style: none;
     padding: 0;
-    margin: 24px 0 0;
+    margin: 24px auto 0; 
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Clean 2-column layout */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 16px 24px;
-    max-width: 900px;
+    max-width: 860px; 
 }
 
 .credential-item {
@@ -6922,7 +6922,6 @@ header.is-scrolled #site-nav a.btn-nav {
     box-shadow: 0 8px 20px rgba(31, 60, 136, 0.06);
 }
 
-/* Modern Rounded Container for SVG Icons */
 .credential-icon {
     width: 46px;
     height: 46px;
@@ -6931,11 +6930,10 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: rgba(31, 60, 136, 0.05); /* Soft background using your primary brand color */
-    color: var(--color-primary); /* Keeps icons uniform with your brand color */
+    background-color: rgba(31, 60, 136, 0.05); 
+    color: var(--color-primary); 
 }
 
-/* Text styles within the credentials list */
 .credential-text h4 {
     font-size: 16px;
     font-weight: 700;
@@ -6950,11 +6948,11 @@ header.is-scrolled #site-nav a.btn-nav {
     line-height: 1.4;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .credential-list {
-        grid-template-columns: 1fr; /* Stacks to single-column beautifully on tablets & mobile */
+        grid-template-columns: 1fr;
         gap: 16px;
+        max-width: 420px; 
     }
 }
 
