@@ -4378,8 +4378,6 @@ header.is-scrolled #site-nav a.btn-nav {
     margin-bottom: 16px;
 }
 
-/* Founder pull-quote — formalises the inline style previously hand-rolled
-   on the About page so it can be reused consistently. */
 .founder-quote {
     font-family: var(--font-quote);
     font-style: italic;
@@ -4395,9 +4393,6 @@ header.is-scrolled #site-nav a.btn-nav {
 .founder-bio p { margin: 0 0 18px; }
 .founder-bio p:last-of-type { margin-bottom: 0; }
 
-/* Two-tone line icon used inside the founder photo placeholder —
-   navy outline + a single brand-colour accent, matching the site's
-   icon language (see .eyebrow::before). */
 .founder-avatar-icon {
     width: 58px;
     height: 58px;
@@ -4407,6 +4402,56 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 .founder-avatar-icon svg { width: 100%; height: 100%; }
 .img-frame:hover .founder-avatar-icon { transform: scale(1.08) rotate(-6deg); }
+
+.founder-card-full-width-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    justify-content: center;
+}
+
+.founder-card-full-width-wrapper .team-list {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 24px; 
+}
+
+.founder-card-full-width-wrapper .team-card {
+    gap: clamp(32px, 5vw, 60px); 
+    padding: clamp(32px, 5vw, 50px); 
+}
+
+.founder-card-full-width-wrapper .team-card-photo {
+    width: 180px;
+    height: 180px; 
+}
+
+.founder-card-full-width-wrapper .team-card-name {
+    font-size: clamp(22px, 4vw, 28px);
+}
+
+.founder-card-full-width-wrapper .team-card-title {
+    font-size: clamp(16px, 2.8vw, 18px);
+}
+
+.founder-card-full-wrapper .team-card-quote {
+    font-size: clamp(16px, 2.8vw, 19px);
+}
+
+@media (max-width: 560px) {
+    .founder-card-full-width-wrapper .team-card {
+        padding: 24px;
+        gap: 20px;
+    }
+    .founder-card-full-width-wrapper .team-card-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
 
 .mission-vision {
     padding: 70px 0;
