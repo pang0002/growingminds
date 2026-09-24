@@ -103,9 +103,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* background-attachment:fixed forces a repaint of the background on
-       every scroll frame and is notoriously janky (or silently ignored)
-       on mobile Safari. Switching to scroll fixes both. */
     body {
         background-attachment: scroll, scroll, scroll, scroll;
     }
@@ -113,11 +110,6 @@ body {
 
 /* ============================================================
    GLOBAL BACKGROUND BLOBS
-   Site-wide version of the .page-hero blob backdrop. Injected as
-   the first child of <body> by include.js (same pattern used for
-   header.html / footer.html) so every page gets it automatically —
-   no per-page markup needed. Fixed + negative z-index so it sits
-   behind all page content and stays put while the page scrolls.
    ============================================================ */
 .site-bg-blobs {
     position: fixed;
@@ -133,9 +125,6 @@ body {
     max-height: none;
 }
 
-/* Positioned with a mix of top/left values scattered across the
-   whole viewport (not pinned to corners), each a different size,
-   so they read as loose, organic shapes rather than a matched set. */
 .site-bg-blobs .blob-teal {
     width: 600px;
     height: 600px;
@@ -6874,6 +6863,17 @@ header.is-scrolled #site-nav a.btn-nav {
     text-align: left; 
 }
 
+.hero-back-link-absolute {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: var(--color-teal-dark);
+    text-decoration: none;
+    font-size: 15px;
+}
+
 .hero-title-block {
     flex: 2;
     text-align: center; 
@@ -6892,6 +6892,16 @@ header.is-scrolled #site-nav a.btn-nav {
     
     .hero-title-block {
        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-back-link-absolute {
+        position: static;
+        display: block;
+        transform: none;
+        margin-bottom: 20px;
+        text-align: center;
     }
 }
 
