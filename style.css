@@ -6899,11 +6899,12 @@ header.is-scrolled #site-nav a.btn-nav {
 .credential-list {
     list-style: none;
     padding: 0;
-    margin: 24px auto 0; 
+    margin: 24px auto 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 16px 24px;
-    max-width: 860px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1040px;
+    justify-content: center;
 }
 
 .credential-item {
@@ -6911,25 +6912,26 @@ header.is-scrolled #site-nav a.btn-nav {
     align-items: center;
     gap: 16px;
     background: #fdfdfd;
-    padding: 16px 20px;
+    padding: 20px;
     border-radius: var(--radius-md, 12px);
     border: 1px solid rgba(31, 60, 136, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 90px;
 }
 
 .credential-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(31, 60, 136, 0.06);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(31, 60, 136, 0.07);
 }
 
 .credential-icon {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: rgba(31, 60, 136, 0.05); 
     color: var(--color-primary); 
 }
@@ -6938,7 +6940,7 @@ header.is-scrolled #site-nav a.btn-nav {
     font-size: 16px;
     font-weight: 700;
     color: var(--color-primary);
-    margin: 0 0 2px;
+    margin: 0 0 3px;
 }
 
 .credential-text p {
