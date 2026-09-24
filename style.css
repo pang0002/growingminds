@@ -5199,19 +5199,19 @@ header.is-scrolled #site-nav a.btn-nav {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 760px;
+    max-width: 960px;
     margin: 24px auto 0;
 }
 
 .team-card {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 4vw, 36px);
+    gap: clamp(24px, 4vw, 44px);
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lift);
     border: 2px solid rgba(31, 60, 136, 0.08);
-    padding: clamp(24px, 4vw, 32px);
+    padding: clamp(28px, 4vw, 40px);
     text-decoration: none;
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
@@ -5223,8 +5223,8 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .team-card-photo {
     flex: none;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid rgba(31, 60, 136, 0.08);
