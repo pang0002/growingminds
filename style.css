@@ -4412,42 +4412,69 @@ header.is-scrolled #site-nav a.btn-nav {
     margin: 0;
 }
 
-/* --- 2. Credentials Ledger --- */
-.credentials-clean-wrapper { width: 100%; }
+/* --- 2. Credentials — Bulleted Point-Form List --- */
+.credentials-clean-wrapper { width: 100%; max-width: 760px; margin: 0 auto; }
 .credentials-heading {
     text-align: center;
     font-size: clamp(21px, 4vw, 24px);
     margin-bottom: 24px;
     color: var(--color-primary);
 }
-.credentials-ledger { border-top: 1px solid rgba(31, 60, 136, 0.12); }
-.credential-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    align-items: baseline;
-    gap: 20px;
-    padding: 16px 8px;
-    border-bottom: 1px solid rgba(31, 60, 136, 0.08);
-    transition: background 0.2s ease;
-}
-.credential-row:hover { background: rgba(31, 60, 136, 0.02); }
-.cred-tag {
-    font-size: 11px;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--color-teal);
-}
-.cred-info h4 {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin: 0 0 3px 0;
-}
-.cred-info p {
-    font-size: 19.5px;
-    color: var(--color-ink-soft);
+
+.credentials-points {
+    list-style: none;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.credential-point {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 11px 6px;
+    border-bottom: 1px solid rgba(31, 60, 136, 0.08);
+}
+
+.credential-point:last-child {
+    border-bottom: none;
+}
+
+/* Bullet marker — a small filled dot instead of a text label column,
+   which is what makes this read as "point form" rather than a table */
+.credential-point::before {
+    content: "";
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    align-self: center;
+}
+
+.cred-point-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 16.5px;
+    line-height: 1.5;
+    color: var(--color-primary);
+}
+
+.cred-point-text strong {
+    font-weight: 700;
+}
+
+.cred-point-text .cred-point-source {
+    color: var(--color-ink-soft);
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    .credential-point {
+        padding: 10px 2px;
+    }
 }
 
 /* --- 3. Founder's Story --- */
