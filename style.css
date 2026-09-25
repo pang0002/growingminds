@@ -5314,8 +5314,8 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .team-card-photo {
     flex: none;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid rgba(31, 60, 136, 0.08);
@@ -5375,6 +5375,11 @@ header.is-scrolled #site-nav a.btn-nav {
 
     .team-card-body {
         text-align: center;
+    }
+
+    .team-card-photo {
+        width: 160px;
+        height: 160px;
     }
 }
 .programmes-grid-two {
