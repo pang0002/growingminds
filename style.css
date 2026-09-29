@@ -10382,3 +10382,68 @@ body.rfbs-popup-open {
     line-height: 1.8;
     color: var(--color-ink);
 }
+
+/* ============================================================
+   HOMEPAGE — new content sections (skills grid, programme cards)
+   ============================================================ */
+.skills-grid.skills-grid--three { grid-template-columns: repeat(3, 1fr); }
+.skills-grid--three .skill-card p { font-size: 16px; line-height: 1.6; color: var(--color-ink-soft); margin: 0; }
+
+.programmes-grid.programmes-grid--five { grid-template-columns: repeat(6, 1fr); }
+.programmes-grid--five > .wc-card { grid-column: span 2; }
+.programmes-grid--five > .wc-card:nth-child(n+4) { grid-column: span 3; }
+
+.wc-card-list {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.wc-card-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--color-ink-soft);
+}
+.wc-card-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-teal);
+}
+.wc-card--gold .wc-card-list li::before   { background: var(--color-gold); }
+.wc-card--accent .wc-card-list li::before { background: var(--color-accent); }
+
+.wc-card-note {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: rgba(247, 201, 72, 0.16);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .skills-grid.skills-grid--three { grid-template-columns: repeat(2, 1fr); }
+    .programmes-grid.programmes-grid--five { grid-template-columns: repeat(2, 1fr); }
+    .programmes-grid--five > .wc-card,
+    .programmes-grid--five > .wc-card:nth-child(n+4) { grid-column: span 1; }
+    .programmes-grid--five > .wc-card:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+    .skills-grid.skills-grid--three,
+    .programmes-grid.programmes-grid--five { grid-template-columns: 1fr; }
+    .programmes-grid--five > .wc-card:last-child { grid-column: auto; }
+}
+
+.programmes-grid--five .wc-card-tag,
+.programmes-grid .wc-card > .wc-card-tag { margin-bottom: 16px; }
