@@ -1618,87 +1618,215 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* ============================================================
-   FAMILIAR LIST (New Layout for "Does this sound familiar?")
+   FAMILIAR HIGHLIGHTS GRID ("Sound Familiar?" Section)
    ============================================================ */
-.familiar-list {
+.familiar-highlights-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-top: 28px;
 }
 
-.familiar-item {
-    background: var(--color-white);
-    border-radius: var(--radius-md);
-    padding: 20px 24px;
+.highlight-item {
     display: flex;
     align-items: center;
     gap: 16px;
-    box-shadow: 0 4px 15px rgba(31, 60, 136, 0.07);
-    border: 1px solid transparent;
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(31, 60, 136, 0.05);
+    border-left: 4px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-left-color 0.25s var(--ease);
 }
 
-.familiar-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(31, 60, 136, 0.1);
-    border-color: var(--color-teal);
+.highlight-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(31, 60, 136, 0.08);
 }
 
-.familiar-icon {
+.highlight-item p {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.highlight-icon {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 16px;
     color: var(--color-white);
-    background: var(--color-teal);
-    transition: transform 0.3s var(--ease);
 }
 
-.familiar-item:hover .familiar-icon {
-    transform: scale(1.1) rotate(-10deg);
+.highlight-icon svg {
+    width: 14px;
+    height: 14px;
 }
 
-/* Color cycling for the icons */
-.familiar-item:nth-child(5n+1) .familiar-icon { background: var(--color-teal); }
-.familiar-item:nth-child(5n+2) .familiar-icon { background: var(--color-accent); }
-.familiar-item:nth-child(5n+3) .familiar-icon { background: var(--color-gold-dark); }
-.familiar-item:nth-child(5n+4) .familiar-icon { background: var(--color-primary); }
-.familiar-item:nth-child(5n+5) .familiar-icon { background: var(--color-teal-dark); }
+/* Color cycling for icons and hover border */
+.highlight-item:nth-child(4n+1) { border-left-color: transparent; }
+.highlight-item:nth-child(4n+1) .highlight-icon { background-color: var(--color-teal); }
+.highlight-item:nth-child(4n+1):hover { border-left-color: var(--color-teal); }
 
+.highlight-item:nth-child(4n+2) { border-left-color: transparent; }
+.highlight-item:nth-child(4n+2) .highlight-icon { background-color: var(--color-accent); }
+.highlight-item:nth-child(4n+2):hover { border-left-color: var(--color-accent); }
 
-.familiar-item p {
-    font-size: 17px;
+.highlight-item:nth-child(4n+3) { border-left-color: transparent; }
+.highlight-item:nth-child(4n+3) .highlight-icon { background-color: var(--color-gold-dark); }
+.highlight-item:nth-child(4n+3):hover { border-left-color: var(--color-gold-dark); }
+
+.highlight-item:nth-child(4n+4) { border-left-color: transparent; }
+.highlight-item:nth-child(4n+4) .highlight-icon { background-color: var(--color-primary); }
+.highlight-item:nth-child(4n+4):hover { border-left-color: var(--color-primary); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .familiar-highlights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   SPOTLIGHT COMPARISON ("Not Tuition" Section) - CORRECTED
+   ============================================================ */
+.spotlight-comparison-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    max-width: 1040px;
+    margin: 20px auto 0;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 40px rgba(31, 60, 136, 0.08);
+    border: 1px solid rgba(31, 60, 136, 0.08);
+    overflow: hidden;
+}
+
+.comparison-side {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* This is the key fix for vertical alignment */
+}
+
+.tuition-side {
+    text-align: center; /* Centered text for a cleaner look */
+}
+
+.growing-minds-side {
+    background: linear-gradient(135deg, var(--color-pale-teal) 0%, rgba(220, 242, 239, 0.5) 100%);
+    box-shadow: inset 10px 0px 20px -15px rgba(23, 120, 109, 0.2);
+}
+
+.comparison-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.comparison-tagline {
+    font-family: var(--font-display);
+    font-size: 22px;
     font-weight: 600;
     color: var(--color-primary);
-    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.comparison-tagline strong {
+    font-weight: 700;
+    color: var(--color-teal-dark);
+}
+
+.tuition-side .comparison-tagline strong {
+    color: var(--color-gold-dark);
+}
+
+.comparison-desc {
+    font-size: 16px;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
     margin: 0;
 }
 
-.familiar-item.full-width {
-    grid-column: 1 / -1;
+.comparison-divider {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    background: var(--color-pale-sun);
+    position: relative;
 }
 
-.familiar-item.full-width .familiar-icon {
-    background: var(--color-gold-dark);
+.comparison-divider::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    background: rgba(31, 60, 136, 0.1);
+    border-radius: 2px;
 }
 
-/* Responsive adjustments for the new layout */
+.divider-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(31, 60, 136, 0.2);
+}
+
+.comparison-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left; /* Keep list items left-aligned */
+}
+
+.comparison-checklist li {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-primary);
+    border: 1px solid rgba(44, 181, 165, 0.2);
+    box-shadow: 0 2px 8px rgba(31, 60, 136, 0.03);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .familiar-list {
+    .spotlight-comparison-container {
         grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
     }
-
-    .familiar-item.full-width {
-        justify-content: flex-start;
+    .tuition-side {
+        text-align: left;
+    }
+    .comparison-divider::before {
+        width: 50%;
+        height: 2px;
+        top: 50%;
+        left: 25%;
+        bottom: auto;
+    }
+    .comparison-side {
+        padding: 32px 24px;
+        min-height: 200px; /* Ensure a minimum height on mobile */
     }
 }
 
@@ -1720,9 +1848,6 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 }
 
-/* Flip cards: "what you see" (front) vs "what's underneath" (back) as two faces
-   of the same card — this makes the reveal feel like literally turning the
-   card over, rather than an accordion pushing the page around. */
 .assessment-card.signal-card {
     cursor: pointer;
     background: transparent;
@@ -6647,11 +6772,6 @@ header.is-scrolled #site-nav a.btn-nav {
 .strata__band--deep { background: var(--color-gold); }
 .strata__band--deep p { font-weight: 700; }
 
-/* ----- DARK BAND -----
-   A generic ink-blue section wrapper. Chain two adjacent sections
-   with --top and --bottom to get the concept's "card stack" look
-   (rounded corners meeting only on the outer edges); use --flat
-   for a single freestanding dark section. */
 .dark-band {
     background: var(--color-primary);
     color: var(--color-cream);
@@ -6667,10 +6787,6 @@ header.is-scrolled #site-nav a.btn-nav {
 .dark-band--bottom { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
 .dark-band--flat { border-radius: var(--radius-lg); }
 
-/* ----- VOICE QUOTE -----
-   Hand-placed italic quote chip, e.g. for "sound familiar?" style
-   sections. Default styling suits a light background; add
-   .voice-quote--dark inside a .dark-band. */
 .voice-quote {
     background: var(--color-white);
     border: 1px solid rgba(31, 60, 136, 0.08);
