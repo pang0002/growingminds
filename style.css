@@ -1618,6 +1618,91 @@ header.is-scrolled #site-nav a.btn-nav {
 }
 
 /* ============================================================
+   FAMILIAR LIST (New Layout for "Does this sound familiar?")
+   ============================================================ */
+.familiar-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.familiar-item {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 15px rgba(31, 60, 136, 0.07);
+    border: 1px solid transparent;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.familiar-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(31, 60, 136, 0.1);
+    border-color: var(--color-teal);
+}
+
+.familiar-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-white);
+    background: var(--color-teal);
+    transition: transform 0.3s var(--ease);
+}
+
+.familiar-item:hover .familiar-icon {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Color cycling for the icons */
+.familiar-item:nth-child(5n+1) .familiar-icon { background: var(--color-teal); }
+.familiar-item:nth-child(5n+2) .familiar-icon { background: var(--color-accent); }
+.familiar-item:nth-child(5n+3) .familiar-icon { background: var(--color-gold-dark); }
+.familiar-item:nth-child(5n+4) .familiar-icon { background: var(--color-primary); }
+.familiar-item:nth-child(5n+5) .familiar-icon { background: var(--color-teal-dark); }
+
+
+.familiar-item p {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.familiar-item.full-width {
+    grid-column: 1 / -1;
+    justify-content: center;
+    background: var(--color-pale-sun);
+}
+
+.familiar-item.full-width .familiar-icon {
+    background: var(--color-gold-dark);
+}
+
+/* Responsive adjustments for the new layout */
+@media (max-width: 768px) {
+    .familiar-list {
+        grid-template-columns: 1fr;
+    }
+
+    .familiar-item.full-width {
+        justify-content: flex-start;
+    }
+}
+
+/* ============================================================
    SIGNAL CARDS - FLIP CARD STYLES
    ============================================================ */
 
