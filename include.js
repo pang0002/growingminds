@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(homeTransitionOverlay);
 
         function bindHomeTransition(container) {
-            var homeLinks = container.querySelectorAll('a[href="/"]');
+            var homeLinks = container.querySelectorAll('a[href="index.html"]');
             homeLinks.forEach(function (link) {
                 link.addEventListener('click', function (e) {
                     // Allow opening in a new tab/window as normal
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var navLinks = document.querySelectorAll('#site-nav a:not(.btn-nav)');
                 navLinks.forEach(function (link) {
                     var href = link.getAttribute('href');
-                    if (href === currentPath || (href === '/' && (currentPath === '' || currentPath === 'index.html'))) {
+                    if (href === currentPath || ((href === '/' || href === 'index.html') && (currentPath === '' || currentPath === 'index.html'))) {
                         link.classList.add('active');
                     }
                 });
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.text();
         })
         .then(function (data) {
-            document.querySelector('footer').innerHTML = data;
+            document.querySelector('footer').outerHTML = data;
             // bindHomeTransition(document.querySelector('footer')); // ERROR FIXED: This call is commented out.
         })
         .catch(function (error) { console.error('Error loading footer:', error); });
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         navLinks.forEach(function (link) {
             const href = link.getAttribute('href');
-            if (href === currentPath || (href === '/' && (currentPath === '' || currentPath === 'index.html'))) {
+            if (href === currentPath || ((href === '/' || href === 'index.html') && (currentPath === '' || currentPath === 'index.html'))) {
                 link.style.color = 'var(--color-primary)';
                 link.style.fontWeight = '600';
             }
@@ -778,8 +778,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 const filter = pill.getAttribute('data-filter');
 
-                pills.forEach(function (p) { p.classList.remove('active'); });
+                pills.forEach(function (p) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
                 pill.classList.add('active');
+                pill.setAttribute('aria-pressed', 'true');
 
                 let visibleCount = 0;
                 cards.forEach(function (card) {

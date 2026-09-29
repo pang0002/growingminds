@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog | Growing Minds</title>
     <meta name="description" content="Articles and insights from the Growing Minds team and community on learning, development, and supporting your child." />
+    <link rel="canonical" href="https://growingminds.com.my/blog.html" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Fraunces:ital,wght@0,500;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=40" />
+    <link rel="stylesheet" href="style.css?v=55" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMF1GKD90H"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BMF1GKD90H');
+    </script>
 </head>
 <body>
 
@@ -25,14 +34,14 @@
                 <h1>Notes on <em>growing minds</em></h1>
                 <p>Articles, stories, and ideas from our team and community &mdash; on learning, development, and raising confident kids.</p>
 
-                <div class="blog-filter-bar" role="tablist" aria-label="Filter articles by topic">
-                    <a href="#" class="blog-filter-pill active" data-filter="all">All Articles</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Learning Tips">Learning Tips</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Parenting">Parenting</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Assessments">Assessments</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Weekend Club">Weekend Club</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Team Stories">Team Stories</a>
-                    <a href="#" class="blog-filter-pill" data-filter="Community">Community</a>
+                <div class="blog-filter-bar" role="group" aria-label="Filter articles by topic">
+                    <a href="#" class="blog-filter-pill active" aria-pressed="true" data-filter="all">All Articles</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Learning Tips">Learning Tips</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Parenting">Parenting</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Assessments">Assessments</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Weekend Club">Weekend Club</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Team Stories">Team Stories</a>
+                    <a href="#" class="blog-filter-pill" aria-pressed="false" data-filter="Community">Community</a>
                 </div>
             </div>
         </section>
@@ -228,6 +237,6 @@
 
     <footer></footer>
 
-    <script src="include.js"></script>
+    <script src="include.js?v=33"></script>
 </body>
 </html>
