@@ -5934,6 +5934,44 @@ header.is-scrolled #site-nav a.btn-nav {
 /* ============================================================
    RESPONSIVE HEADER - ENLARGED
    ============================================================ */
+/* Laptop widths (1351-1560px): the nav now has 8 items, so tighten spacing
+   (normal AND scrolled states) so the WhatsApp button is never cut off */
+@media screen and (max-width: 1560px) {
+    .header-container {
+        padding: 0 20px;
+        gap: 14px;
+    }
+
+    #site-nav ul {
+        gap: 2px;
+    }
+
+    #site-nav a,
+    header.is-scrolled #site-nav a {
+        font-size: 17px;
+        padding: 8px 10px;
+    }
+
+    #site-nav a.btn-nav,
+    header.is-scrolled #site-nav a.btn-nav {
+        font-size: 16px;
+        padding: 9px 18px;
+        margin-left: 6px;
+    }
+
+    .logo a {
+        gap: 10px;
+    }
+
+    .logo-name {
+        font-size: 25px;
+    }
+
+    .logo-tagline {
+        font-size: 11px;
+    }
+}
+
 /* Fix for zoom levels between 80-100% - keep header centered */
 @media screen and (max-width: 1350px) {
     .header-container {
