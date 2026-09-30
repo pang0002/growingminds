@@ -27,10 +27,10 @@
         <div class="container reveal">
             <span class="eyebrow">Book</span>
             <h1 id="rTitle">Book your place</h1>
-            <p>Two quick steps. First tell us about your child, so we can keep them safe. Then pay.</p>
+            <p id="rIntro">Two quick steps. First tell us about your child, so we can keep them safe. Then pay.</p>
             <ol class="prog2" aria-label="Booking steps">
                 <li class="on"><b>1</b> Your details</li>
-                <li><b>2</b> Payment</li>
+                <li id="rStep2"><b>2</b> Payment</li>
             </ol>
         </div>
     </section>
@@ -50,6 +50,7 @@
           <div><small>You're booking</small><strong id="itemName">…</strong></div>
           <div class="pr" id="itemPrice"></div>
         </div>
+        <p class="hint" id="itemNote" hidden style="margin:0 0 1.4rem;"></p>
 
         <fieldset class="fs">
           <legend>About you</legend>
@@ -128,8 +129,8 @@
 
     <footer></footer>
 
-    <script src="site-config.js?v=2"></script>
+    <script src="site-config.js?v=3"></script>
     <script src="include.js?v=33"></script>
-    <script src="register.js?v=3"></script>
+    <script src="register.js?v=4"></script>
 </body>
 </html>

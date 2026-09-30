@@ -23,6 +23,10 @@
     $('itemName').textContent = item.name;
   $('itemPrice').textContent = item.price;
   document.title = 'Book: ' + item.name + ' | Growing Minds';
+  if (item.intro) $('rIntro').textContent = item.intro;
+  if (item.step2) $('rStep2').lastChild.nodeValue = ' ' + item.step2;
+  if (item.note) { $('itemNote').textContent = item.note; $('itemNote').hidden = false; }
+  if (item.noPayment) $('submitBtn').textContent = 'Agree, sign and submit';
 
   if (item.choice) {
     $('choiceLbl').firstChild.nodeValue = item.choice.label + ' ';
@@ -136,7 +140,7 @@
   function waLink(text) { return 'https://wa.me/' + num + '?text=' + encodeURIComponent(text); }
 
   function detailsMessage(d) {
-    return HI + "I'd like to book: " + d.itemName + ' (' + d.amount + ').\n\n' +
+    return HI + "I'd like to book: " + d.itemName + (item.noPayment ? '' : ' (' + d.amount + ')') + '.\n\n' +
       'Parent: ' + d.parentName + '\nPhone: ' + d.phone + '\n' +
       'Child: ' + d.childName + ' (born ' + d.childDob + ', ' + d.childAge + ', ' + d.childGender + ')\n' +
       (d.choice ? 'Choice: ' + d.choice + '\n' : '') +
@@ -179,7 +183,7 @@
       html += '<div class="detailsbox"><p><b>One more thing:</b> please send us your details on WhatsApp so we can hold your place. It\'s already written for you.</p>' +
               '<a class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">Send my details on WhatsApp</a></div>';
     }
-    html += '<p class="paynote">We\'ll confirm your place on WhatsApp once your payment arrives.</p>';
+    html += '<p class="paynote">' + esc(item.afterPay || 'We\'ll confirm your place on WhatsApp once your payment arrives.') + '</p>';
     if (num) {
       html += '<p class="paynote">Can\'t pay with the QR code or bank transfer? <a target="_blank" rel="noopener" href="' +
               waLink(HI + "I'm booking " + d.itemName + ' (' + d.amount + ') for ' + d.childName + " but I can't pay by QR or bank transfer. Could you help me?") +
@@ -194,11 +198,23 @@
     else b.textContent = n;
   });
 
+  function registered(d) {
+    var html = '<h2>Thank you, ' + esc(d.parentName.split(' ')[0]) + '. Your registration is received.</h2>' +
+               '<p>' + esc(item.afterSubmit) + '</p>';
+    if (num) {
+      html += '<p class="paynote">Questions in the meantime? <a target="_blank" rel="noopener" href="' +
+              waLink(HI + "I've just registered " + d.childName + ' for ' + d.itemName + '.') + '">Message us on WhatsApp</a>.</p>';
+    }
+    show(html);
+  }
+
   function finishSaved(d) {
+    if (item.noPayment) { registered(d); return; }
     var pay = (C.pay || {})[key], html = '<h2>Thank you, ' + esc(d.parentName.split(' ')[0]) + '. Your details are saved.</h2>';
     if (pay) {
       html += '<p>Now the last step: secure payment for <b>' + esc(d.itemName) + '</b> (' + esc(d.amount) + ').</p>' +
               '<p><a class="btn btn-sun" href="' + esc(pay) + '">Continue to payment</a></p>' +
+              (item.afterPay ? '<p class="paynote">' + esc(item.afterPay) + '</p>' : '') +
               '<p class="help">Taking you there in a moment…</p>';
       show(html); setTimeout(function () { location.href = pay; }, 1800);
     } else if (C.payment) {
@@ -217,6 +233,14 @@
 
   function finishFallback(d) {
     var pay = (C.pay || {})[key];
+    if (item.noPayment) {
+      var nh = '<h2>Almost done: send your details on WhatsApp</h2>';
+      nh += num
+        ? '<p>We\'ve written the message for you, so just press send. ' + esc(item.afterSubmit) + '</p>' +
+          '<p><a class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">Send my details on WhatsApp</a></p>'
+        : '<p><b>This site isn\'t fully set up yet.</b> Please contact us directly so we can complete your registration.</p>';
+      show(nh); return;
+    }
     if (C.payment && !pay) { payScreen(d, false); return; }
     var html = '<h2>Almost done: confirm your booking on WhatsApp</h2>' +
       '<p>Your details are ready to send. We\'ve written the message for you, so just press send and we\'ll confirm your place.</p>';
