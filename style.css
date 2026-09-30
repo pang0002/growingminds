@@ -10868,3 +10868,73 @@ body.rfbs-popup-open {
     text-underline-offset: 3px;
 }
 .wc-card-more:hover { color: var(--color-teal-dark); }
+
+/* ============================================================
+   FULL-WIDTH LAYOUT OVERRIDES
+   Let content use the full .container width instead of sitting
+   in a narrow centred column.
+   ============================================================ */
+.section-header,
+.club-section-head,
+.club-hero-simple,
+.club-hook,
+.iv-intro,
+.philosophy,
+.assessment-intro,
+.about-intro .intro-content,
+.careers-intro .careers-content,
+.programmes-intro,
+.section-subtitle,
+.fits-note,
+.gm-lead,
+.gm-join-note,
+.gm-faq,
+.gm-steps,
+.big-school-hero-container .hero-tagline-description {
+    max-width: none;
+}
+
+.hero-tagline-description { max-width: none; }
+
+.club-reason-list,
+.club-example-list,
+.team-list,
+.about-rec,
+.about-glance,
+.about-glance--two,
+.founder-main-container,
+.credentials-clean-wrapper,
+.desk-grid,
+.programmes-grid-two,
+.careers-form-wrapper,
+.submit-form-wrapper,
+.club-insight-grid,
+.who-we-work .container,
+.fits-together .container,
+.blog-post-body,
+.blog-post-cta {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* keep the 4-up / 3-up grids stretching edge to edge */
+.club-practise-grid,
+.skills-grid,
+.who-grid,
+.programmes-grid { width: 100%; }
+
+/* founder header: photo + name stay together, but centred on a full-width row */
+.founder-header-grid { max-width: 100%; }
+
+/* long-form founder story reads better in two columns on wide screens */
+@media (min-width: 1100px) {
+    .founder-story-editorial { column-count: 1; }
+}
+
+/* re-apply single-column behaviour on small screens */
+@media (max-width: 860px) {
+    .club-insight-grid { max-width: 100%; }
+}
+@media (max-width: 640px) {
+    .programmes-grid-two { max-width: 100%; }
+}
