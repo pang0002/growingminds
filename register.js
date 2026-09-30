@@ -155,6 +155,28 @@
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
+  function payPanel(d) {
+    var P = C.payment; if (!P) return '';
+    return '<div class="paybox">' +
+      (P.qr ? '<div class="paybox__qr"><img src="' + esc(P.qr) + '" alt="DuitNow QR code to pay Growing Minds"><small>Scan with any banking app</small></div>' : '') +
+      '<div class="paybox__bank"><dl>' +
+        '<div><dt>Amount</dt><dd>' + esc(d.amount) + '</dd></div>' +
+        '<div><dt>Bank</dt><dd>' + esc(P.bank) + '</dd></div>' +
+        '<div><dt>Account name</dt><dd>' + esc(P.accountName) + '</dd></div>' +
+        '<div><dt>Account number</dt><dd>' + esc(P.accountNumber) + '</dd></div>' +
+      '</dl><button type="button" class="linkbtn" data-copy="1">Copy account number</button>' +
+      '<p class="help">In the payment reference, please write your child\'s name.</p></div></div>';
+  }
+  function receiptLink(d) {
+    return waLink(HI + "I've paid " + d.amount + ' for ' + d.itemName + ' for ' + d.childName + '. Here is my receipt.');
+  }
+  done.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-copy]'); if (!b || !C.payment) return;
+    var n = C.payment.accountNumber, ok = function () { b.textContent = 'Copied'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(n).then(ok, function () { b.textContent = n; });
+    else b.textContent = n;
+  });
+
   function finishSaved(d) {
     var pay = (C.pay || {})[key], html = '<h2>Thank you, ' + esc(d.parentName.split(' ')[0]) + '. Your details are saved.</h2>';
     if (pay) {
@@ -162,6 +184,12 @@
               '<p><a class="btn btn-sun" href="' + esc(pay) + '">Continue to payment</a></p>' +
               '<p class="help">Taking you there in a moment…</p>';
       show(html); setTimeout(function () { location.href = pay; }, 1800);
+    } else if (C.payment) {
+      html += '<p>Last step: pay <b>' + esc(d.amount) + '</b> for <b>' + esc(d.itemName) + '</b>. Scan the QR code with your banking app, or transfer to the account below.</p>' +
+              payPanel(d) +
+              '<p><a class="btn btn-sun" target="_blank" rel="noopener" href="' + receiptLink(d) + '">I\'ve paid: send my receipt on WhatsApp</a></p>' +
+              '<p class="help">Your place is confirmed once we receive your payment.</p>';
+      show(html);
     } else if (num) {
       html += '<p>Last step: message us and we\'ll send you the payment details for <b>' + esc(d.itemName) + '</b> (' + esc(d.amount) + ').</p>' +
               '<p><a class="btn btn-sun" target="_blank" rel="noopener" href="' +
@@ -181,6 +209,7 @@
     if (num) {
       html += '<p><a id="fbWa" class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">1. Send my details on WhatsApp</a>';
       html += pay ? '<a id="fbPay" class="btn btn-primary" aria-disabled="true" href="' + esc(pay) + '">2. Continue to payment</a></p>'
+                  : C.payment ? '</p><p class="help">Then pay <b>' + esc(d.amount) + '</b> using the QR code or bank details below.</p>' + payPanel(d)
                   : '</p><p class="help">Once we receive it, we\'ll reply with the payment details.</p>';
     } else {
       html += '<p><b>This site isn\'t fully set up yet.</b> Please contact us directly so we can complete your booking.</p>';

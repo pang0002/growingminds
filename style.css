@@ -11080,3 +11080,15 @@ body.rfbs-popup-open {
 .gm-book .opt-note{font-weight:500;color:var(--ink-soft)}
 .gm-book .chk--typed{margin:.7rem 0 0}
 .gm-book .chk--typed label{font-size:.9rem}
+
+/* booking form: payment panel (QR + bank details) */
+.gm-book .paybox{display:grid;grid-template-columns:200px 1fr;gap:1.4rem;align-items:center;background:#fff;
+  border:2.5px solid var(--ink);border-radius:22px;padding:1.2rem 1.4rem;margin:1rem 0 1.2rem}
+@media(max-width:640px){.gm-book .paybox{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.gm-book .paybox__qr img{width:100%;max-width:200px;height:auto;display:block;border-radius:12px}
+.gm-book .paybox__qr small{display:block;margin-top:.4rem;font-size:.8rem;color:var(--ink-soft);text-align:center}
+.gm-book .paybox__bank dl{margin:0 0 .6rem;display:grid;gap:.5rem}
+.gm-book .paybox__bank dl div{display:flex;flex-wrap:wrap;gap:.2rem 1rem;justify-content:space-between;
+  border-bottom:1px solid var(--paper-deep);padding-bottom:.4rem}
+.gm-book .paybox__bank dt{font-size:.85rem;color:var(--ink-soft);font-weight:700}
+.gm-book .paybox__bank dd{margin:0;font-weight:700;font-size:1.05rem}

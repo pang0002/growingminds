@@ -10,6 +10,15 @@ window.GM_CONFIG = {
   // Paste the Web app URL from your Google Apps Script here
   formEndpoint: 'https://script.google.com/macros/s/AKfycbxONeIIAQBzGzZ6QW1Esr4f_rxeSPXQJzrGj9lX9ptwYwJoDAmLJzcyylgGLuWx2hicfw/exec',
 
+  // Bank transfer / DuitNow QR shown after the form when an item has no online payment link.
+  // Upload the QR image to the images folder, and keep the path below in step with it.
+  payment: {
+    bank: 'Maybank',
+    accountName: 'Growing Minds Hub Enterprise',
+    accountNumber: '564418762369',
+    qr: 'images/payment-qr.png'
+  },
+
   // Optional payment links, one per item key below.
   // If an item has no link, parents are sent to WhatsApp to get the payment details.
   // e.g.  'kindy-month': 'https://your-payment-link'
