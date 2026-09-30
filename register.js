@@ -160,7 +160,7 @@
     return '<div class="paycard">' +
       '<div class="paycard__amount"><small>Amount to pay</small><strong>' + esc(d.amount) + '</strong><span>' + esc(d.itemName) + '</span></div>' +
       '<div class="paycard__body">' +
-        (P.qr ? '<div class="paycard__qr"><img src="' + esc(P.qr) + '" alt="DuitNow QR code to pay Growing Minds"><small>Scan with any banking or e-wallet app</small></div>' : '') +
+        (P.qr ? '<div class="paycard__qr"><img src="' + esc(P.qr) + '" alt="DuitNow QR code to pay Growing Minds"><small>Scan with any banking app</small></div>' : '') +
         '<div class="paycard__bank"><p class="paycard__or">Or pay by bank transfer</p><dl>' +
           '<div><dt>Bank</dt><dd>' + esc(P.bank) + '</dd></div>' +
           '<div><dt>Account name</dt><dd>' + esc(P.accountName) + '</dd></div>' +
