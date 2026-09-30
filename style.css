@@ -11082,16 +11082,17 @@ body.rfbs-popup-open {
 .gm-book .chk--typed label{font-size:.9rem}
 
 /* booking form: payment screen (QR first, bank details second) */
-.gm-book .paycard{background:#fff;border:2.5px solid var(--ink);border-radius:24px;padding:1.4rem 1.6rem 1.3rem;margin:1.2rem 0 1rem}
+.gm-book .paycard{background:#fff;border:2.5px solid var(--ink);border-radius:24px;padding:1.6rem 2rem 1.4rem;margin:1.2rem 0 1rem}
 .gm-book .paycard__amount{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.2rem 1rem;
   border-bottom:2px dashed var(--paper-deep);padding-bottom:.9rem;margin-bottom:1.2rem}
 .gm-book .paycard__amount small{width:100%;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
 .gm-book .paycard__amount strong{font-family:var(--display);font-size:2.3rem;line-height:1;letter-spacing:-.02em}
 .gm-book .paycard__amount span{font-size:.95rem;font-weight:600;color:var(--ink-soft)}
-.gm-book .paycard__body{display:grid;grid-template-columns:minmax(0,230px) 1fr;gap:1.8rem;align-items:center}
-.gm-book .paycard__qr img{width:100%;max-width:230px;height:auto;display:block;border-radius:14px;border:1px solid var(--paper-deep)}
+.gm-book .paycard__body{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:2.4rem;align-items:center}
+.gm-book .paycard__qr img{width:100%;max-width:300px;height:auto;display:block;border-radius:14px;border:1px solid var(--paper-deep)}
 .gm-book .paycard__qr small{display:block;margin-top:.5rem;text-align:center;font-size:.82rem;font-weight:600;color:var(--ink-soft)}
 .gm-book .paycard__bank{min-width:0}
+.gm-book #done.regmsg{max-width:1080px}
 .gm-book .paycard__or{margin:0 0 .6rem;font-family:var(--display);font-weight:700;font-size:.95rem}
 .gm-book .paycard__bank dl{margin:0 0 .9rem;display:grid;gap:.55rem}
 .gm-book .paycard__bank dl div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.1rem 1rem;
