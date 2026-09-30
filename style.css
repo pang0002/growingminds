@@ -11113,3 +11113,38 @@ body.rfbs-popup-open {
   .gm-book .paycard__body{grid-template-columns:1fr;justify-items:center;gap:1.2rem}
   .gm-book .paycard__bank{width:100%}
 }
+
+/* ============================================================
+   School Readiness pages: "What we build" skill cards
+   Title on its own line, description beneath, numbered pill badge kept.
+   Five cards sit 3 + 2 (centred); six cards sit 3 + 3.
+   ============================================================ */
+.club-practise-grid--skills { grid-template-columns: repeat(6, 1fr); }
+.club-practise-grid--skills .club-practise-chip { grid-column: span 2; }
+.club-practise-grid--n5 .club-practise-chip:nth-child(4) { grid-column: 2 / span 2; }
+.club-practise-grid--n5 .club-practise-chip:nth-child(5) { grid-column: 4 / span 2; }
+.club-practise-grid--skills .club-practise-chip p b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+.club-practise-grid--skills .club-practise-chip p span {
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+}
+@media (max-width: 900px) {
+    .club-practise-grid--skills { grid-template-columns: repeat(2, 1fr); }
+    .club-practise-grid--skills .club-practise-chip,
+    .club-practise-grid--n5 .club-practise-chip:nth-child(4),
+    .club-practise-grid--n5 .club-practise-chip:nth-child(5) { grid-column: auto; }
+    .club-practise-grid--n5 .club-practise-chip:nth-child(5) { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+    .club-practise-grid--skills { grid-template-columns: 1fr; }
+    .club-practise-grid--n5 .club-practise-chip:nth-child(5) { grid-column: auto; }
+}
