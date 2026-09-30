@@ -5972,6 +5972,14 @@ header.is-scrolled #site-nav a.btn-nav {
     }
 }
 
+/* Wide screens / zoomed-out (above 1560px): the 8-item nav is wider than the old
+   1400px header box, which pushed it off-centre to the right. Give it more room. */
+@media screen and (min-width: 1561px) {
+    .header-container {
+        max-width: 1600px;
+    }
+}
+
 /* Fix for zoom levels between 80-100% - keep header centered */
 @media screen and (max-width: 1350px) {
     .header-container {
