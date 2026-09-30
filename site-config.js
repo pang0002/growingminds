@@ -8,9 +8,7 @@ window.GM_CONFIG = {
   whatsapp: '60173886326',
 
   // Paste the Web app URL from your Google Apps Script here
-  // (deploy form-receiver.gs, see the setup steps at the top of that file).
-  // While this is empty, register.html falls back to a pre-written WhatsApp message.
-  formEndpoint: '',
+  formEndpoint: 'https://script.google.com/macros/s/AKfycbxONeIIAQBzGzZ6QW1Esr4f_rxeSPXQJzrGj9lX9ptwYwJoDAmLJzcyylgGLuWx2hicfw/exec',
 
   // Optional payment links, one per item key below.
   // If an item has no link, parents are sent to WhatsApp to get the payment details.

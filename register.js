@@ -176,12 +176,12 @@
 
   function finishFallback(d) {
     var pay = (C.pay || {})[key];
-    var html = '<h2>Almost done: send us your details</h2>' +
-      '<p>We couldn\'t save your form automatically, so please send it to us on WhatsApp. It\'s already written for you. Just press send.</p>';
+    var html = '<h2>Almost done: confirm your booking on WhatsApp</h2>' +
+      '<p>Your details are ready to send. We\'ve written the message for you, so just press send and we\'ll confirm your place.</p>';
     if (num) {
       html += '<p><a id="fbWa" class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">1. Send my details on WhatsApp</a>';
       html += pay ? '<a id="fbPay" class="btn btn-primary" aria-disabled="true" href="' + esc(pay) + '">2. Continue to payment</a></p>'
-                  : '</p><p class="help">After you send it, we\'ll reply with the payment details.</p>';
+                  : '</p><p class="help">Once we receive it, we\'ll reply with the payment details.</p>';
     } else {
       html += '<p><b>This site isn\'t fully set up yet.</b> Please contact us directly so we can complete your booking.</p>';
     }
