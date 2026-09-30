@@ -174,14 +174,16 @@
       '<p class="paycard__ref">Payment reference: please write <b>' + esc(d.childName) + '</b></p></div>';
   }
   function payScreen(d, saved) {
-    var first = esc(d.parentName.split(' ')[0]);
-    var html = saved
-      ? '<h2>Thank you, ' + first + '. Your details are saved.</h2><p>Last step: pay to confirm your place.</p>'
-      : '<h2>Almost done, ' + first + '. Pay to confirm your place.</h2>';
-    html += payCard(d);
-    if (!saved && num) {
-      html += '<div class="detailsbox"><p><b>One more thing:</b> please send us your details on WhatsApp so we can hold your place. It\'s already written for you.</p>' +
-              '<a class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">Send my details on WhatsApp</a></div>';
+    var first = esc(d.parentName.split(' ')[0]), html;
+    if (saved) {
+      html = '<h2>Thank you, ' + first + '. Your details are saved.</h2><p>Last step: pay to confirm your place.</p>' + payCard(d);
+    } else if (num) {
+      html = '<h2>Almost done, ' + first + '. Two quick steps.</h2>' +
+        '<div class="detailsbox"><p><b>Step 1: Send us your details.</b> Tap the button and press send in WhatsApp. The message is already written for you.</p>' +
+        '<a class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">Send my details on WhatsApp</a></div>' +
+        '<p style="margin:26px 0 12px;"><b>Step 2: Pay ' + esc(d.amount) + '.</b></p>' + payCard(d);
+    } else {
+      html = '<h2>Almost done, ' + first + '. Pay to confirm your place.</h2>' + payCard(d);
     }
     html += '<p class="paynote">' + esc(item.afterPay || 'We\'ll confirm your place on WhatsApp once your payment arrives.') + '</p>';
     if (num) {
