@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book | Growing Minds</title>
+    <meta name="description" content="Book a trial session, class or club at Growing Minds. Tell us about your child, sign our terms, then pay." />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://growingminds.com.my/register.html" />
+    <link rel="stylesheet" href="style.css?v=59" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMF1GKD90H"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BMF1GKD90H');
+    </script>
+</head>
+<body class="gm-book">
+
+    <header></header>
+
+    <section class="page-hero">
+        <div class="container reveal">
+            <span class="eyebrow">Book</span>
+            <h1 id="rTitle">Book your place</h1>
+            <p>Two quick steps. First tell us about your child, so we can keep them safe. Then pay.</p>
+            <ol class="prog2" aria-label="Booking steps">
+                <li class="on"><b>1</b> Your details</li>
+                <li><b>2</b> Payment</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section-white-bg reg-section">
+        <div class="container">
+<div id="missing" class="regmsg regmsg--bad" hidden>
+        <h2>We couldn't find that booking</h2>
+        <p>The link may be old. Please choose again from our programmes or workshops.</p>
+        <p><a class="btn btn-primary" href="index.html#programmes">See programmes</a><a class="btn btn-sun" href="weekend-club.html">See weekend clubs</a></p>
+      </div>
+
+      <div id="done" class="regmsg" tabindex="-1" role="status" aria-live="polite" hidden></div>
+
+      <form id="reg" class="reg" novalidate>
+        <div class="itembar">
+          <div><small>You're booking</small><strong id="itemName">…</strong></div>
+          <div class="pr" id="itemPrice"></div>
+        </div>
+
+        <fieldset class="fs">
+          <legend>About you</legend>
+          <div class="grid2">
+            <div class="fld"><label for="parentName">Parent's name <span class="req">*</span></label>
+              <input id="parentName" type="text" autocomplete="name"><p class="err"></p></div>
+            <div class="fld"><label for="phone">Contact number (WhatsApp) <span class="req">*</span></label>
+              <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 012-345 6789"><p class="err"></p></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>About your child</legend>
+          <div class="grid2">
+            <div class="fld"><label for="childName">Child's name <span class="req">*</span></label>
+              <input id="childName" type="text" autocomplete="off"><p class="err"></p></div>
+            <div class="fld" role="radiogroup" aria-labelledby="genLbl">
+              <span class="lbl" id="genLbl">Child's gender <span class="req">*</span></span>
+              <div class="radios">
+                <label><input id="gFirst" type="radio" name="childGender" value="Girl"> Girl</label>
+                <label><input type="radio" name="childGender" value="Boy"> Boy</label>
+                <label><input type="radio" name="childGender" value="Prefer not to say"> Prefer not to say</label>
+              </div><p class="err"></p></div>
+            <div class="fld"><label for="childDob">Child's date of birth (DD/MM/YYYY) <span class="req">*</span></label>
+              <input id="childDob" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off"><p class="err"></p></div>
+            <div class="fld"><label for="childAge">Child's age</label>
+              <input id="childAge" type="text" readonly placeholder="Filled in from the date of birth" tabindex="-1">
+              <div id="ageWarn" class="warn" role="status"></div></div>
+            <div class="fld" id="choiceFld" hidden><label id="choiceLbl" for="choice">Which? <span class="req">*</span></label>
+              <select id="choice"><option value="">Choose…</option></select><p class="err"></p></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>Health and important notes</legend>
+          <p class="hint">This helps us keep your child safe and comfortable.</p>
+          <div class="fld fld--spaced"><label for="allergies">Any allergies? <span class="req">*</span></label>
+            <textarea id="allergies" placeholder='Food, skin, materials such as paint or latex, medication. Write "None" if there are none.'></textarea><p class="err"></p></div>
+          <div class="fld"><label for="notes">Anything else we should know? <span class="opt-note">(optional)</span></label>
+            <textarea id="notes" placeholder="Medical or developmental needs, sensitivities, fears, what helps your child settle, dietary needs."></textarea></div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>Terms and signature</legend>
+          <p class="hint">Please read the terms below, then tick and sign.</p>
+          <div class="terms" tabindex="0" role="region" aria-label="Terms and conditions"><h4 id="t-who">1. Who these terms apply to</h4><p>These terms apply when you book any workshop, trial session, class or programme with Growing Minds ([registered business name and SSM number]), referred to as “we” or “us”.</p><p>By signing, you confirm that you are the parent or legal guardian of the child named in the form, and that you are able to agree to these terms on their behalf.</p><h4 id="t-payment">2. Booking and payment</h4><p>A place is confirmed once payment is received. Prices are those shown on our website at the time of booking.</p><p><b>All fees are non-refundable.</b> This includes trial sessions, workshops, holiday programmes, and weekend club and School Readiness fees, whether or not your child attends.</p><p>If you tell us in advance that you cannot attend, we may, at our discretion, offer a make-up session, credit or transfer. This is not guaranteed.</p><p>If we have told you a trial fee will be credited to your first month, we will apply the credit when you join.</p><h4 id="t-changes">3. If we cancel or change a session</h4><p>If we cancel an event or session, we will offer you a place on another date or refund the fee for that session.</p><p>We may change a venue, time or facilitator where necessary, and will tell you as soon as we can.</p><h4 id="t-health">4. Information, health and safety</h4><p>You confirm that the information you give us is accurate and complete, including any allergies and any medical, developmental or behavioural information that may affect your child's safety or participation. You will tell us promptly if anything changes.</p><p>Our activities can involve paint, water, foam, food items, art and craft materials and other substances. We take reasonable care, but we cannot guarantee an allergen-free environment.</p><p>If your child needs continuous one-to-one support to take part safely, please tell us when you book so that we can talk it through before the session.</p><h4 id="t-emergency">5. Emergencies</h4><p>If your child is injured or becomes unwell, we will first try to contact you. If we cannot reach you and it is urgent, you authorise us to arrange emergency medical care for your child. You are responsible for any medical costs.</p><h4 id="t-dropoff">6. Drop-off, collection and supervision</h4><p>Unless an event says that parents stay, sessions are drop-off. You must be contactable by phone for the whole session and collect your child on time. Only you, or a person you have told us about in advance, may collect your child.</p><h4 id="t-behaviour">7. Behaviour</h4><p>If a child's behaviour puts their own or others' safety or enjoyment at risk, we may ask you to collect them and may end their participation. Fees are not refunded in that case.</p><h4 id="t-belongings">8. Clothing and belongings</h4><p>Please dress your child in clothes that can get messy. We are not responsible for lost, damaged or stained belongings.</p><h4 id="t-liability">9. Risk and liability</h4><p>You understand that active, messy and group play carries ordinary risks such as minor bumps, scratches and stains.</p><p>To the fullest extent permitted by law, Growing Minds is not liable for loss, injury or damage that does not result from our negligence. Nothing in these terms limits any liability that cannot be excluded by law.</p><h4 id="t-nature">10. What our sessions are</h4><p>Workshops, trial sessions and classes are educational programmes. They are not a diagnosis, an assessment, or medical or therapeutic treatment, and a trial session does not replace an assessment.</p><h4 id="t-photos">11. Photos and videos</h4><p>We will only use photos or videos that show your child on our website or social media if you tick the optional consent box on the booking form. You can withdraw that consent at any time by messaging us, and we will stop using the image in future materials.</p><h4 id="t-privacy">12. Your personal data (Privacy Notice)</h4><p>We collect the details you give in the booking form: your name and phone number; your child's name, date of birth and gender; your child's allergies, health information and other important notes; and your signature.</p><p>We use them to manage your booking, keep your child safe, contact you, and keep records. Health information is sensitive personal data. We use it only with your explicit consent, which you give by ticking the consent box on the form.</p><p>We share information only with our staff and facilitators, and with service providers that help us run bookings and payments. We may share it with medical or emergency services in an emergency, or with authorities where the law requires.</p><p>We keep it only as long as needed for these purposes and to meet legal requirements, and we store it securely.</p><p>You may ask to see, correct or delete your information, or withdraw your consent, by messaging us on WhatsApp or emailing hallo.growingminds@gmail.com. This notice is given under Malaysia's Personal Data Protection Act 2010.</p><h4 id="t-law">13. Changes and governing law</h4><p>We may update these terms. The version you signed applies to your booking. These terms are governed by the laws of Malaysia.</p></div>
+
+          <div class="chk"><label><input id="agreeTerms" type="checkbox"> <span>I have read and agree to the Terms &amp; Conditions. <span class="req">*</span></span></label><p class="err"></p></div>
+          <div class="chk"><label><input id="healthConsent" type="checkbox"> <span>I consent to Growing Minds collecting and using my child's health information (allergies, medical and developmental notes) to keep them safe during the session. <span class="req">*</span></span></label><p class="err"></p></div>
+          <div class="chk chk--opt"><label><input id="photoConsent" type="checkbox"> <span><b>Optional:</b> photos and videos of my child may be used on the Growing Minds website and social media. I can withdraw this at any time.</span></label></div>
+
+          <div class="sigwrap">
+            <span class="lbl">Parent's signature <span class="req">*</span></span>
+            <div id="sigBox" class="sig"><canvas id="sigCanvas" aria-label="Signature box. Draw your signature with your finger or mouse."></canvas>
+              <span class="sig__line"></span><span id="sigPh" class="sig__ph">Sign here</span></div>
+            <div id="sigTools" class="sigtools"><button type="button" id="sigClear" class="linkbtn">Clear signature</button></div>
+            <div class="chk chk--typed"><label><input id="typedOnly" type="checkbox"> <span>I can't draw a signature. My typed name below is my signature.</span></label></div>
+            <p class="err"></p>
+            <div class="fld fld--sig-name"><label for="signedName">Type your full name <span class="req">*</span></label>
+              <input id="signedName" type="text" autocomplete="name"><p class="err"></p></div>
+            <p class="signed" id="signedAt"></p>
+          </div>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input id="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="submitrow">
+          <button id="submitBtn" class="btn btn-sun" type="submit">Agree, sign and continue to payment</button>
+          <p>Your details are used only to run the session and keep your child safe. See our Privacy Notice (section 12 of the terms above).</p>
+        </div>
+      </form>
+
+      <noscript><div class="regmsg regmsg--bad"><h2>JavaScript is needed</h2><p>Please turn on JavaScript, or message us on WhatsApp to book.</p></div></noscript>
+        </div>
+    </section>
+
+    <footer></footer>
+
+    <script src="site-config.js"></script>
+    <script src="include.js?v=33"></script>
+    <script src="register.js?v=1"></script>
+</body>
+</html>
