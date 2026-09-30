@@ -10710,3 +10710,161 @@ body.rfbs-popup-open {
     .about-rec-row { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
     .who-grid.who-grid--three { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   SERVICE PAGES — lead text, step details, price box, FAQ, booking options
+   (assessment, early intervention, 1-to-1, school readiness)
+   ============================================================ */
+.gm-lead {
+    max-width: 760px;
+    margin: -8px auto 28px;
+    text-align: center;
+    font-size: 21px;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+}
+
+.gm-steps { max-width: 900px; margin-left: auto; margin-right: auto; }
+.gm-steps .club-example-item { align-items: flex-start; }
+.gm-steps .club-example-dot { margin-top: 3px; }
+.gm-steps .club-example-item p strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 21px;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+}
+.gm-step-text { display: block; font-size: 18px; line-height: 1.65; color: var(--color-ink-soft); }
+.gm-step-text em { font-style: italic; }
+.gm-step-note {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--color-pale-sun);
+    font-style: normal;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.gm-isnt { margin-top: 14px; }
+.gm-isnt li { font-size: 18px; }
+.gm-isnt li b { color: var(--color-primary); }
+
+.gm-price {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    border-left: 6px solid var(--color-gold);
+    padding: 30px 36px;
+}
+.gm-price-n {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--color-primary);
+    margin: 0 0 8px;
+}
+.gm-price-s { font-size: 18px; line-height: 1.6; color: var(--color-ink-soft); margin: 0; max-width: 520px; }
+
+.gm-faq { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.gm-faq details {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    box-shadow: var(--shadow-card);
+    padding: 0 26px;
+}
+.gm-faq summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 34px 20px 0;
+    position: relative;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--color-primary);
+}
+.gm-faq summary::-webkit-details-marker { display: none; }
+.gm-faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--color-teal-dark);
+}
+.gm-faq details[open] summary::after { content: "\2212"; }
+.gm-faq details p { margin: 0 0 22px; font-size: 18px; line-height: 1.7; color: var(--color-ink-soft); }
+
+.gm-join {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.gm-opt {
+    position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    border: 2px solid rgba(31, 60, 136, 0.08);
+    border-top: 5px solid var(--color-teal);
+    padding: 34px 32px 30px;
+    display: flex;
+    flex-direction: column;
+}
+.gm-opt--feat { border-top-color: var(--color-gold); border-color: var(--color-gold); }
+.gm-opt-badge {
+    position: absolute;
+    top: -15px;
+    right: 24px;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+}
+.gm-opt-k { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-teal-dark); margin: 0 0 6px; }
+.gm-opt-price { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--color-primary); margin: 0; }
+.gm-opt-price small { font-family: var(--font-body); font-size: 17px; font-weight: 600; color: var(--color-ink-soft); margin-left: 8px; }
+.gm-opt-sub { font-size: 18px; color: var(--color-ink-soft); margin: 6px 0 18px; }
+.gm-opt .wc-card-list { flex: 1; margin-bottom: 24px; }
+.gm-opt .btn { align-self: flex-start; }
+.gm-join-note { max-width: 760px; margin: 28px auto 0; text-align: center; font-size: 16.5px; line-height: 1.7; color: var(--color-ink-soft); }
+
+@media (max-width: 800px) {
+    .gm-price { flex-direction: column; align-items: flex-start; padding: 26px 24px; }
+    .gm-join { grid-template-columns: 1fr; gap: 34px; }
+    .gm-steps .club-example-item { padding: 16px 18px; }
+}
+
+.gm-price .btn { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 800px) { .gm-price .btn { white-space: normal; } }
+
+
+.wc-card-more {
+    display: inline-block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.wc-card-more:hover { color: var(--color-teal-dark); }
