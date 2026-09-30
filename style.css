@@ -11081,14 +11081,34 @@ body.rfbs-popup-open {
 .gm-book .chk--typed{margin:.7rem 0 0}
 .gm-book .chk--typed label{font-size:.9rem}
 
-/* booking form: payment panel (QR + bank details) */
-.gm-book .paybox{display:grid;grid-template-columns:200px 1fr;gap:1.4rem;align-items:center;background:#fff;
-  border:2.5px solid var(--ink);border-radius:22px;padding:1.2rem 1.4rem;margin:1rem 0 1.2rem}
-@media(max-width:640px){.gm-book .paybox{grid-template-columns:1fr;justify-items:center;text-align:center}}
-.gm-book .paybox__qr img{width:100%;max-width:200px;height:auto;display:block;border-radius:12px}
-.gm-book .paybox__qr small{display:block;margin-top:.4rem;font-size:.8rem;color:var(--ink-soft);text-align:center}
-.gm-book .paybox__bank dl{margin:0 0 .6rem;display:grid;gap:.5rem}
-.gm-book .paybox__bank dl div{display:flex;flex-wrap:wrap;gap:.2rem 1rem;justify-content:space-between;
-  border-bottom:1px solid var(--paper-deep);padding-bottom:.4rem}
-.gm-book .paybox__bank dt{font-size:.85rem;color:var(--ink-soft);font-weight:700}
-.gm-book .paybox__bank dd{margin:0;font-weight:700;font-size:1.05rem}
+/* booking form: payment screen (QR first, bank details second) */
+.gm-book .paycard{background:#fff;border:2.5px solid var(--ink);border-radius:24px;padding:1.4rem 1.6rem 1.3rem;margin:1.2rem 0 1rem}
+.gm-book .paycard__amount{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.2rem 1rem;
+  border-bottom:2px dashed var(--paper-deep);padding-bottom:.9rem;margin-bottom:1.2rem}
+.gm-book .paycard__amount small{width:100%;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
+.gm-book .paycard__amount strong{font-family:var(--display);font-size:2.3rem;line-height:1;letter-spacing:-.02em}
+.gm-book .paycard__amount span{font-size:.95rem;font-weight:600;color:var(--ink-soft)}
+.gm-book .paycard__body{display:grid;grid-template-columns:minmax(0,230px) 1fr;gap:1.8rem;align-items:center}
+.gm-book .paycard__qr img{width:100%;max-width:230px;height:auto;display:block;border-radius:14px;border:1px solid var(--paper-deep)}
+.gm-book .paycard__qr small{display:block;margin-top:.5rem;text-align:center;font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+.gm-book .paycard__bank{min-width:0}
+.gm-book .paycard__or{margin:0 0 .6rem;font-family:var(--display);font-weight:700;font-size:.95rem}
+.gm-book .paycard__bank dl{margin:0 0 .9rem;display:grid;gap:.55rem}
+.gm-book .paycard__bank dl div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.1rem 1rem;
+  border-bottom:1px solid var(--paper-deep);padding-bottom:.45rem}
+.gm-book .paycard__bank dt{font-size:.85rem;font-weight:700;color:var(--ink-soft)}
+.gm-book .paycard__bank dd{margin:0;font-weight:700}
+.gm-book .paycard__num{font-size:1.2rem;letter-spacing:.06em}
+.gm-book .copybtn{font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--ink);background:var(--sun-pale);
+  border:2px solid var(--ink);border-radius:100px;padding:.55em 1.2em}
+.gm-book .copybtn:hover{background:var(--sun)}
+.gm-book .paycard__ref{margin:1.2rem 0 0;padding:.7rem 1rem;background:var(--sun-pale);border-radius:14px;font-size:.95rem;text-align:center}
+.gm-book .detailsbox{border:2px solid var(--ink);border-radius:20px;background:var(--sun-pale);padding:1rem 1.2rem 1.1rem;margin:0 0 1rem}
+.gm-book .detailsbox p{margin:0 0 .8rem}
+.gm-book .paynote{font-size:.92rem;color:var(--ink-soft);margin:.5rem 0 0}
+.gm-book .paynote a{font-weight:700;text-decoration:underline;color:var(--ink)}
+@media(max-width:640px){
+  .gm-book .paycard{padding:1.1rem 1.1rem 1rem}
+  .gm-book .paycard__body{grid-template-columns:1fr;justify-items:center;gap:1.2rem}
+  .gm-book .paycard__bank{width:100%}
+}

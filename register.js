@@ -125,7 +125,7 @@
 
   /* ---- send ---- */
   function post(url, data) {
-    var ctrl = new AbortController(), t = setTimeout(function () { ctrl.abort(); }, 15000);
+    var ctrl = new AbortController(), t = setTimeout(function () { ctrl.abort(); }, 25000);
     return fetch(url, {
       method: 'POST', mode: 'no-cors', signal: ctrl.signal,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -155,20 +155,37 @@
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  function payPanel(d) {
-    var P = C.payment; if (!P) return '';
-    return '<div class="paybox">' +
-      (P.qr ? '<div class="paybox__qr"><img src="' + esc(P.qr) + '" alt="DuitNow QR code to pay Growing Minds"><small>Scan with any banking app</small></div>' : '') +
-      '<div class="paybox__bank"><dl>' +
-        '<div><dt>Amount</dt><dd>' + esc(d.amount) + '</dd></div>' +
-        '<div><dt>Bank</dt><dd>' + esc(P.bank) + '</dd></div>' +
-        '<div><dt>Account name</dt><dd>' + esc(P.accountName) + '</dd></div>' +
-        '<div><dt>Account number</dt><dd>' + esc(P.accountNumber) + '</dd></div>' +
-      '</dl><button type="button" class="linkbtn" data-copy="1">Copy account number</button>' +
-      '<p class="help">In the payment reference, please write your child\'s name.</p></div></div>';
+  function payCard(d) {
+    var P = C.payment;
+    return '<div class="paycard">' +
+      '<div class="paycard__amount"><small>Amount to pay</small><strong>' + esc(d.amount) + '</strong><span>' + esc(d.itemName) + '</span></div>' +
+      '<div class="paycard__body">' +
+        (P.qr ? '<div class="paycard__qr"><img src="' + esc(P.qr) + '" alt="DuitNow QR code to pay Growing Minds"><small>Scan with any banking or e-wallet app</small></div>' : '') +
+        '<div class="paycard__bank"><p class="paycard__or">Or pay by bank transfer</p><dl>' +
+          '<div><dt>Bank</dt><dd>' + esc(P.bank) + '</dd></div>' +
+          '<div><dt>Account name</dt><dd>' + esc(P.accountName) + '</dd></div>' +
+          '<div><dt>Account number</dt><dd class="paycard__num">' + esc(P.accountNumber) + '</dd></div>' +
+        '</dl><button type="button" class="copybtn" data-copy="1">Copy account number</button></div>' +
+      '</div>' +
+      '<p class="paycard__ref">Payment reference: please write <b>' + esc(d.childName) + '</b></p></div>';
   }
-  function receiptLink(d) {
-    return waLink(HI + "I've paid " + d.amount + ' for ' + d.itemName + ' for ' + d.childName + '. Here is my receipt.');
+  function payScreen(d, saved) {
+    var first = esc(d.parentName.split(' ')[0]);
+    var html = saved
+      ? '<h2>Thank you, ' + first + '. Your details are saved.</h2><p>Last step: pay to confirm your place.</p>'
+      : '<h2>Almost done, ' + first + '. Pay to confirm your place.</h2>';
+    html += payCard(d);
+    if (!saved && num) {
+      html += '<div class="detailsbox"><p><b>One more thing:</b> please send us your details on WhatsApp so we can hold your place. It\'s already written for you.</p>' +
+              '<a class="btn btn-sun" target="_blank" rel="noopener" href="' + waLink(detailsMessage(d)) + '">Send my details on WhatsApp</a></div>';
+    }
+    html += '<p class="paynote">We\'ll confirm your place on WhatsApp once your payment arrives.</p>';
+    if (num) {
+      html += '<p class="paynote">Can\'t pay with the QR code or bank transfer? <a target="_blank" rel="noopener" href="' +
+              waLink(HI + "I'm booking " + d.itemName + ' (' + d.amount + ') for ' + d.childName + " but I can't pay by QR or bank transfer. Could you help me?") +
+              '">Message us on WhatsApp</a> and we\'ll help.</p>';
+    }
+    show(html);
   }
   done.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-copy]'); if (!b || !C.payment) return;
@@ -185,11 +202,7 @@
               '<p class="help">Taking you there in a moment…</p>';
       show(html); setTimeout(function () { location.href = pay; }, 1800);
     } else if (C.payment) {
-      html += '<p>Last step: pay <b>' + esc(d.amount) + '</b> for <b>' + esc(d.itemName) + '</b>. Scan the QR code with your banking app, or transfer to the account below.</p>' +
-              payPanel(d) +
-              '<p><a class="btn btn-sun" target="_blank" rel="noopener" href="' + receiptLink(d) + '">I\'ve paid: send my receipt on WhatsApp</a></p>' +
-              '<p class="help">Your place is confirmed once we receive your payment.</p>';
-      show(html);
+      payScreen(d, true);
     } else if (num) {
       html += '<p>Last step: message us and we\'ll send you the payment details for <b>' + esc(d.itemName) + '</b> (' + esc(d.amount) + ').</p>' +
               '<p><a class="btn btn-sun" target="_blank" rel="noopener" href="' +
@@ -204,6 +217,7 @@
 
   function finishFallback(d) {
     var pay = (C.pay || {})[key];
+    if (C.payment && !pay) { payScreen(d, false); return; }
     var html = '<h2>Almost done: confirm your booking on WhatsApp</h2>' +
       '<p>Your details are ready to send. We\'ve written the message for you, so just press send and we\'ll confirm your place.</p>';
     if (num) {
