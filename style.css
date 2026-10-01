@@ -11292,5 +11292,7 @@ body.rfbs-popup-open {
 }
 
 
-/* HEADER: pull logo and menu slightly closer together on wide screens */
-.header-container { max-width: 1220px; }
+/* HEADER: trim the width only slightly on very wide screens (was 1600px).
+   Keep this at or above the width the logo + menu + button need (about 1520px),
+   otherwise the WhatsApp button is pushed off the right edge. */
+.header-container { max-width: 1560px; }
