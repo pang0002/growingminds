@@ -11194,3 +11194,44 @@ body.rfbs-popup-open {
     .club-practise-grid--skills { grid-template-columns: 1fr; }
     .club-practise-grid--n5 .club-practise-chip:nth-child(5) { grid-column: auto; }
 }
+
+/* ============================================================
+   READABLE MEASURE (overrides the full-width block above)
+   Cards and grids stay full width. Text blocks, headings, FAQ and
+   steps get a comfortable line length (about 55-70 characters),
+   centred, so wide screens don't stretch sentences edge to edge.
+   ============================================================ */
+.club-hero-simple { max-width: 1000px; margin-left: auto; margin-right: auto; }
+
+.iv-intro,
+.hero-tagline-description,
+.club-hook,
+.philosophy,
+.assessment-intro,
+.programmes-intro,
+.section-subtitle,
+.fits-note {
+    max-width: 58ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: balance;
+}
+
+.section-header,
+.club-section-head { max-width: 780px; margin-left: auto; margin-right: auto; }
+
+.gm-lead,
+.gm-join-note { max-width: 760px; margin-left: auto; margin-right: auto; text-wrap: pretty; }
+
+.gm-steps,
+.club-example-list { max-width: 900px; margin-left: auto; margin-right: auto; }
+.gm-faq { max-width: 860px; margin-left: auto; margin-right: auto; }
+.gm-join { max-width: 980px; }
+
+/* two-up club cards: don't let two cards stretch to ~700px each of mostly empty space */
+.programmes-grid-two { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+/* very wide screens: keep the page frame itself a little tighter */
+@media (min-width: 1700px) {
+    .container { max-width: 1400px; }
+}
