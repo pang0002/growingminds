@@ -11243,3 +11243,25 @@ body.rfbs-popup-open {
 @media (min-width: 1700px) {
     .container { max-width: 1400px; }
 }
+
+
+/* ============================================================
+   FOUNDER PAGE: centred reading column
+   (the full-width override block had stretched these to the whole container)
+   ============================================================ */
+.founder-main-container { max-width: 900px; width: 100%; margin-left: auto; margin-right: auto; }
+
+.credentials-clean-wrapper { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+.founder-story-editorial,
+.founder-section { max-width: 760px; width: 100%; margin-left: auto; margin-right: auto; }
+
+.founder-story-editorial p { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.8; }
+.founder-story-editorial .drop-cap { font-size: 64px; }
+
+.founder-closing-quote { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* Founder credentials: regular weight instead of bold */
+.credential-point .cred-point-text,
+.credential-point .cred-point-text strong,
+.credential-point .cred-point-source { font-weight: 400; }
