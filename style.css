@@ -11529,11 +11529,29 @@ body.rfbs-popup-open {
     .hero-quicklink .hero-quicklink-service { font-size: 12px; margin-top: 10px; padding-top: 8px; }
 }
 
-/* About page: thumbnail under the role card, click to enlarge */
-.about-rec-side { display: flex; flex-direction: column; gap: 14px; align-self: start; }
-.about-rec-side .about-rec-role { align-self: auto; }
+/* About page: role chip in the text column, photo as its own right-hand column */
+.about-rec-roleline {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 5px 14px 6px;
+    background: var(--color-pale-sun);
+    border-radius: 999px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+.about-rec-roleline small {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+}
+.about-rec-roleline strong { color: var(--color-primary); font-weight: 700; }
 .about-rec-photo {
     margin: 0;
+    align-self: start;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 22px rgba(31, 60, 136, .12);
@@ -11558,10 +11576,10 @@ body.rfbs-popup-open {
     box-shadow: 0 2px 8px rgba(0,0,0,.2);
 }
 @media (min-width: 901px) {
-    .about-rec-row { grid-template-columns: 96px 1fr 240px; }
+    .about-rec-row { grid-template-columns: 96px 1fr 270px; }
 }
 @media (max-width: 900px) {
-    .about-rec-side { max-width: 420px; }
+    .about-rec-photo { max-width: 460px; }
     .about-rec-photo-link img { aspect-ratio: 16 / 10; }
 }
 
