@@ -27,13 +27,33 @@ window.GM_CONFIG = {
   // name, price, ages ([min, max] in whole years; outside this range the form shows a gentle warning),
   // choice (adds a required dropdown, optional)
   items: {
-    'calm-club': {
-      name: 'Social-Emotional Friendship Club (4 weeks)', price: 'RM 399', ages: [4, 9],
+    // ---- Weekend Enrichment (Brain Boosters + Friendship Club), ages 4-9 ----
+    'brain-booster': {
+      name: 'Brain Boosters (4 weeks)', price: 'RM 399', ages: [4, 9],
       choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
     },
-    'brain-booster': {
-      name: 'Brain Booster Club (4 weeks)', price: 'RM 399', ages: [8, 13],
-      choice: { label: 'Which age group?', options: ['Ages 8–10', 'Ages 11–13'] }
+    'calm-club': {
+      name: 'Friendship Club (4 weeks)', price: 'RM 399', ages: [4, 9],
+      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
+    },
+    'brain-booster-trial': {
+      name: 'Brain Boosters: trial session', price: 'RM 50', ages: [4, 9],
+      note: 'Your RM 50 is credited to your first month if you join. We will send you the balance (RM 349).',
+      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
+    },
+    'calm-club-trial': {
+      name: 'Friendship Club: trial session', price: 'RM 50', ages: [4, 9],
+      note: 'Your RM 50 is credited to your first month if you join. We will send you the balance (RM 349).',
+      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
+    },
+    'weekend-trial': {
+      name: 'Weekend Enrichment: trial session', price: 'RM 50', ages: [4, 9],
+      note: 'Your RM 50 is credited to your first month if you join. We will send you the balance (RM 349).',
+      choice: { label: 'Which club and age group?', options: ['Brain Boosters, ages 4–6', 'Brain Boosters, ages 7–9', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
+    },
+    'weekend-month': {
+      name: 'Weekend Enrichment (4 weeks)', price: 'RM 399', ages: [4, 9],
+      choice: { label: 'Which club and age group?', options: ['Brain Boosters, ages 4–6', 'Brain Boosters, ages 7–9', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
     },
     'kindy-trial':   { name: 'Kindergarten Readiness: trial session', price: 'RM 50',  ages: [3, 6] },
     'kindy-month':   { name: 'Kindergarten Readiness: monthly', price: 'RM 399', ages: [3, 6] },
