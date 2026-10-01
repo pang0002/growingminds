@@ -11290,3 +11290,7 @@ body.rfbs-popup-open {
     .team-card { flex-direction: column; text-align: center; }
     .team-card-body { align-items: center; text-align: center; }
 }
+
+
+/* HEADER: pull logo and menu slightly closer together on wide screens */
+.header-container { max-width: 1220px; }
