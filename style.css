@@ -11211,10 +11211,18 @@ body.rfbs-popup-open {
 .programmes-intro,
 .section-subtitle,
 .fits-note {
-    max-width: 58ch;
+    max-width: 38em;          /* scales with the font size: roughly 70-75 characters a line */
     margin-left: auto;
     margin-right: auto;
-    text-wrap: balance;
+    line-height: 1.65;
+    text-wrap: pretty;        /* avoids one-word last lines without squeezing every line short */
+}
+
+/* hero intros: slightly lighter weight and a touch smaller so long sentences feel calmer */
+.page-hero .iv-intro,
+.page-hero .hero-tagline-description {
+    font-size: clamp(19px, 1.7vw, 23px);
+    font-weight: 500;
 }
 
 .section-header,
