@@ -11306,3 +11306,185 @@ body.rfbs-popup-open {
         gap: 56px;
     }
 }
+
+/* ============================================================
+   CLUB PAGE PHOTOS
+   ============================================================ */
+.club-photo { margin: 0; position: relative; }
+
+/* --- Friendship Club hero: text on the left, framed photo on the right --- */
+.social-hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+    text-align: center;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 36px 24px 56px;
+}
+.social-hero-split .social-hero-text { text-align: center; }
+.social-hero-split .eyebrow { justify-content: center; }
+.social-hero-split h1 { white-space: normal; text-align: center; }
+.social-hero-split .hero-tagline-description {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    text-align: center;
+}
+.social-hero-split .club-meta-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 20px;
+    width: 100%;
+    margin: 24px 0 10px;
+    padding: 18px 22px;
+    justify-content: stretch;
+}
+.social-hero-split .club-meta-divider { display: none; }
+.social-hero-split .club-meta-item { justify-content: center; }
+.social-hero-split .club-meta-item span { white-space: normal; }
+.social-hero-split .club-meta-note { text-align: center; margin: 0 0 6px; }
+.social-hero-split .page-hero-cta { margin-top: 20px; }
+
+/* hero photo: taped polaroid */
+.club-hero-photo-wrap { padding: 12px 8px; }
+.club-photo--polaroid {
+    background: var(--color-white);
+    padding: 14px 14px 0;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(31, 60, 136, .16);
+    transform: rotate(-2deg);
+    transition: transform .35s var(--ease, ease);
+}
+.club-photo--polaroid:hover { transform: rotate(0deg); }
+.club-photo--polaroid::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 120px;
+    height: 30px;
+    background: rgba(247, 201, 72, .7);
+    border-radius: 4px;
+    transform: translateX(-50%) rotate(3deg);
+    box-shadow: 0 2px 6px rgba(31, 60, 136, .1);
+}
+.club-photo--polaroid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.club-photo--polaroid figcaption {
+    padding: 18px 10px 22px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+    .social-hero-split { grid-template-columns: 1fr; gap: 44px; text-align: center; padding-top: 24px; }
+    .social-hero-split .social-hero-text,
+    .social-hero-split h1,
+    .social-hero-split .hero-tagline-description,
+    .social-hero-split .club-meta-note { text-align: center; }
+    .social-hero-split .eyebrow { justify-content: center; }
+    .club-hero-photo-wrap { max-width: 560px; width: 100%; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+    .social-hero-split .club-meta-bar { grid-template-columns: 1fr; }
+    .club-photo--polaroid { transform: rotate(-1deg); }
+    .club-photo--polaroid figcaption { font-size: 18px; }
+}
+
+/* session steps: photo sits at the right of each step */
+.gm-steps .club-example-item p { flex: 1; min-width: 0; }
+.club-step-photo {
+    flex-shrink: 0;
+    width: 190px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+@media (max-width: 760px) {
+    .gm-steps .club-example-item { flex-wrap: wrap; }
+    .gm-steps .club-example-item p { flex: 1 1 calc(100% - 60px); }
+    .club-step-photo { order: 3; width: 100%; height: 190px; }
+}
+
+/* ============================================================
+   EARLY INTERVENTION: "In the room" photo band
+   ============================================================ */
+.ei-room { margin-top: 56px; }
+.ei-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+.ei-photo {
+    margin: 0;
+    background: var(--color-white);
+    border-radius: 18px;
+    padding: 10px 10px 0;
+    box-shadow: 0 12px 30px rgba(31, 60, 136, .12);
+}
+.ei-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.ei-photo figcaption {
+    padding: 14px 8px 18px;
+    text-align: left;
+    color: var(--color-primary);
+}
+.ei-photo figcaption b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.ei-photo figcaption span {
+    display: block;
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: .85;
+}
+@media (max-width: 900px) {
+    .ei-photo-grid { grid-template-columns: 1fr; max-width: 560px; }
+    .ei-room { margin-top: 44px; }
+}
+
+/* Early Intervention hero: reuse the Friendship Club split layout */
+.iv-hero-container.social-hero-split .iv-intro { margin-left: auto; margin-right: auto; font-size: clamp(17px, 1.5vw, 20px); }
+.iv-hero-container.social-hero-split .club-meta-item:last-child { grid-column: 1 / -1; }
+@media (max-width: 480px) {
+    .iv-hero-container.social-hero-split .club-meta-item:last-child { grid-column: auto; }
+}
+
+/* two-photo variant of the "In the room" band (schools page) */
+.ei-photo-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
+@media (max-width: 900px) {
+    .ei-photo-grid--two { grid-template-columns: 1fr; max-width: 560px; }
+}
+
+/* Individual Support: portrait polaroid hero + portrait photo band */
+.iv-hero-container.iv-hero-even.social-hero-split .club-meta-item:last-child { grid-column: auto; }
+.club-photo--portrait img { aspect-ratio: 4 / 5; object-position: center top; }
+.club-photo--portrait { max-width: 440px; margin-left: auto; margin-right: auto; }
+.ei-photo-grid--portrait .ei-photo img { aspect-ratio: 4 / 5; object-position: center top; }
+.ei-photo-grid--portrait { max-width: 1000px; }
+@media (max-width: 900px) {
+    .ei-photo-grid--portrait { grid-template-columns: 1fr; max-width: 420px; }
+}
