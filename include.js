@@ -1008,4 +1008,62 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     safeInit(initFavicon, 'initFavicon');
 
+    // ============================================================
+    // PHOTO LIGHTBOX
+    // Click-to-enlarge for any <a class="about-rec-photo-link"> (About page).
+    // Does nothing on pages without those links. Without JS the link
+    // simply opens the full image, so it degrades gracefully.
+    // ============================================================
+    function initPhotoLightbox() {
+        const links = document.querySelectorAll('.about-rec-photo-link');
+        if (!links.length) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'gm-lightbox';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.hidden = true;
+        overlay.innerHTML =
+            '<button type="button" class="gm-lightbox-close" aria-label="Close">&times;</button>' +
+            '<img alt="" />';
+        document.body.appendChild(overlay);
+
+        const bigImg = overlay.querySelector('img');
+        const closeBtn = overlay.querySelector('button');
+        let lastFocus = null;
+
+        function openLightbox(link) {
+            const thumb = link.querySelector('img');
+            lastFocus = document.activeElement;
+            bigImg.src = link.getAttribute('href');
+            bigImg.alt = thumb ? thumb.alt : '';
+            overlay.hidden = false;
+            document.body.style.overflow = 'hidden';
+            closeBtn.focus();
+        }
+
+        function closeLightbox() {
+            overlay.hidden = true;
+            bigImg.removeAttribute('src');
+            document.body.style.overflow = '';
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+
+        links.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                openLightbox(link);
+            });
+        });
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target !== bigImg) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !overlay.hidden) closeLightbox();
+        });
+    }
+    safeInit(initPhotoLightbox, 'initPhotoLightbox');
+
 });

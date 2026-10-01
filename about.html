@@ -255,25 +255,7 @@
 
     <footer></footer>
 
-    <script src="include.js?v=33"></script>
-
-    <script>
-    (function(){
-        var links=document.querySelectorAll('.about-rec-photo-link');
-        if(!links.length) return;
-        var ov=document.createElement('div');
-        ov.className='gm-lightbox'; ov.setAttribute('role','dialog'); ov.setAttribute('aria-modal','true'); ov.hidden=true;
-        ov.innerHTML='<button type="button" class="gm-lightbox-close" aria-label="Close">&times;</button><img alt="" />';
-        document.body.appendChild(ov);
-        var big=ov.querySelector('img');
-        function open(a){ var t=a.querySelector('img'); big.src=a.getAttribute('href'); big.alt=t?t.alt:''; ov.hidden=false; document.body.style.overflow='hidden'; ov.querySelector('button').focus(); }
-        function close(){ ov.hidden=true; big.removeAttribute('src'); document.body.style.overflow=''; }
-        links.forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); open(a); }); });
-        ov.addEventListener('click',function(e){ if(e.target!==big) close(); });
-        document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
-    })();
-    </script>
-
+    <script src="include.js?v=34"></script>
 
 </body>
 </html>
