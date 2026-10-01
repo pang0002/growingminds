@@ -11265,3 +11265,28 @@ body.rfbs-popup-open {
 .credential-point .cred-point-text,
 .credential-point .cred-point-text strong,
 .credential-point .cred-point-source { font-weight: 400; }
+
+
+/* ============================================================
+   ABOUT PAGE: founder card, larger and higher-contrast text
+   ============================================================ */
+.team-list { max-width: 1040px; margin-left: auto; margin-right: auto; }
+
+.team-card { gap: clamp(28px, 4vw, 52px); }
+.team-card-photo { width: clamp(160px, 18vw, 230px); height: clamp(160px, 18vw, 230px); }
+
+.team-card-name  { font-size: clamp(28px, 3.2vw, 38px); line-height: 1.15; }
+.team-card-title { font-size: clamp(17px, 1.6vw, 21px); margin: 6px 0 16px; }
+.team-card-quote {
+    font-size: clamp(18px, 1.8vw, 23px);
+    line-height: 1.55;
+    font-weight: 600;
+    color: var(--color-primary);   /* darker navy instead of the pale soft blue */
+    margin: 0 0 18px;
+}
+.team-card-link  { font-size: 18px; }
+
+@media (max-width: 700px) {
+    .team-card { flex-direction: column; text-align: center; }
+    .team-card-body { align-items: center; text-align: center; }
+}
