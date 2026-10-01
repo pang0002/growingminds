@@ -10576,7 +10576,9 @@ body.rfbs-popup-open {
 
 .programmes-grid.programmes-grid--five { grid-template-columns: repeat(6, 1fr); }
 .programmes-grid--five > .wc-card { grid-column: span 2; }
-.programmes-grid--five > .wc-card:nth-child(n+4) { grid-column: span 3; }
+/* 3 cards on top, 2 centred underneath (each sits between the cards above), all the same width */
+.programmes-grid--five > .wc-card:nth-child(4) { grid-column: 2 / span 2; }
+.programmes-grid--five > .wc-card:nth-child(5) { grid-column: 4 / span 2; }
 
 .wc-card-list {
     list-style: none;
@@ -10622,12 +10624,13 @@ body.rfbs-popup-open {
     .programmes-grid.programmes-grid--five { grid-template-columns: repeat(2, 1fr); }
     .programmes-grid--five > .wc-card,
     .programmes-grid--five > .wc-card:nth-child(n+4) { grid-column: span 1; }
-    .programmes-grid--five > .wc-card:last-child { grid-column: 1 / -1; }
+    /* last card: same width as the others, centred on its own row */
+    .programmes-grid--five > .wc-card:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 16px); }
 }
 @media (max-width: 640px) {
     .skills-grid.skills-grid--three,
     .programmes-grid.programmes-grid--five { grid-template-columns: 1fr; }
-    .programmes-grid--five > .wc-card:last-child { grid-column: auto; }
+    .programmes-grid--five > .wc-card:last-child { grid-column: auto; justify-self: stretch; width: auto; }
 }
 
 .programmes-grid--five .wc-card-tag,
