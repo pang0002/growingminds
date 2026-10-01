@@ -11021,11 +11021,12 @@ body.rfbs-popup-open {
 
 .club-reason-item p { line-height: 1.55; }
 
-/* odd number of items (5-item club pages): last card spans the row */
-.club-reason-list .club-reason-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+/* odd number of items (5-item club pages): last card keeps the same width as the others, centred on its own row */
+.club-reason-list .club-reason-item:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); }
 
 @media (max-width: 760px) {
     .club-reason-list { grid-template-columns: 1fr; gap: 14px; }
+    .club-reason-list .club-reason-item:last-child:nth-child(odd) { justify-self: stretch; width: auto; }
     .club-reason-item { padding: 20px 20px; }
 }
 
