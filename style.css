@@ -11676,3 +11676,32 @@ body.rfbs-popup-open {
         padding: 8px 12px;
     }
 }
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .dropdown-menu a { font-size: 15px !important; }
+    header.is-scrolled .dropdown-menu a { font-size: 14px !important; }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .dropdown-menu a { font-size: 16px !important; }
+    header.is-scrolled .dropdown-menu a { font-size: 15px !important; }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .dropdown-menu a { font-size: 16px !important; }
+    header.is-scrolled .dropdown-menu a { font-size: 17px !important; }
+}
+
+@media screen and (min-width: 1351px) and (max-width: 1750px) {
+    .dropdown-menu a,
+    header.is-scrolled .dropdown-menu a { font-size: 17px !important; }
+}
+
+@media screen and (min-width: 1751px) {
+    .dropdown-menu a { font-size: 18px !important; }
+    header.is-scrolled .dropdown-menu a { font-size: 19px !important; }
+}
+
+@media screen and (max-width: 480px) {
+    .dropdown-menu a { font-size: 19px !important; }
+}
