@@ -304,11 +304,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             scrim.addEventListener('click', closeNav);
 
-            // On mobile, tapping a dropdown parent ("What We Offer",
-            // "Weekend Club") toggles its sublist open/closed instead of
-            // navigating away and closing the whole panel — the sublist
-            // links themselves still navigate and close the panel as
-            // normal. Desktop keeps its existing hover behavior untouched.
+            // Desktop: hovering a dropdown parent ("Weekend Club",
+            // "School Readiness", "Extra Support") shows its sublist and
+            // clicking the title goes to its page.
+            // Mobile has no hover: the first tap opens the sublist, and
+            // tapping the same title again goes to its page. The sublist
+            // links navigate and close the panel as normal.
             var isMobileNav = function () {
                 return window.matchMedia('(max-width: 768px)').matches;
             };
@@ -319,14 +320,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 link.addEventListener('click', function (e) {
                     if (isDropdownParent && isMobileNav()) {
-                        e.preventDefault();
                         var parentItem = link.closest('.nav-dropdown');
-                        var willOpen = !parentItem.classList.contains('dropdown-open');
-                        nav.querySelectorAll('.nav-dropdown.dropdown-open').forEach(function (openItem) {
-                            if (openItem !== parentItem) { openItem.classList.remove('dropdown-open'); }
-                        });
-                        parentItem.classList.toggle('dropdown-open', willOpen);
-                        return; // don't close the whole nav panel — user wants to see the sublist
+                        if (!parentItem.classList.contains('dropdown-open')) {
+                            e.preventDefault();
+                            nav.querySelectorAll('.nav-dropdown.dropdown-open').forEach(function (openItem) {
+                                openItem.classList.remove('dropdown-open');
+                            });
+                            parentItem.classList.add('dropdown-open');
+                            return;
+                        }
                     }
                     closeNav();
                 });
