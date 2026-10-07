@@ -11658,3 +11658,21 @@ body.rfbs-popup-open {
     .gm-lightbox-prev { left: 8px; }
     .gm-lightbox-next { right: 8px; }
 }
+
+@media screen and (min-width: 1561px) and (max-width: 1750px) {
+    .header-container {
+        padding: 0 40px;
+        gap: 20px;
+    }
+
+    #site-nav ul {
+        gap: 2px;
+        flex-wrap: nowrap;
+    }
+
+    #site-nav a,
+    header.is-scrolled #site-nav a {
+        font-size: 17px;
+        padding: 8px 12px;
+    }
+}
