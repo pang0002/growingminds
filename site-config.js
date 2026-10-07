@@ -29,17 +29,17 @@ window.GM_CONFIG = {
   items: {
     // ---- Weekend Club (Brain Booster + Friendship Club), ages 4-9 ----
     'brain-booster': {
-      name: 'Brain Booster (4 weeks)', price: 'RM 399', ages: [4, 9],
-      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
+      name: 'Brain Booster (4 weeks)', price: 'RM 399', ages: [4, 12],
+      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–12'] }
     },
     'calm-club': {
       name: 'Friendship Club (4 weeks)', price: 'RM 399', ages: [4, 9],
       choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
     },
     'brain-booster-trial': {
-      name: 'Brain Booster: trial session', price: 'RM 50', ages: [4, 9],
+      name: 'Brain Booster: trial session', price: 'RM 50', ages: [4, 12],
       note: 'Your RM 50 is credited to your first month if you join. We will send you the balance (RM 349).',
-      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
+      choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–12'] }
     },
     'calm-club-trial': {
       name: 'Friendship Club: trial session', price: 'RM 50', ages: [4, 9],
@@ -47,13 +47,13 @@ window.GM_CONFIG = {
       choice: { label: 'Which age group?', options: ['Ages 4–6', 'Ages 7–9'] }
     },
     'weekend-trial': {
-      name: 'Weekend Club: trial session', nameTemplate: '{choice}: trial session', price: 'RM 50', ages: [4, 9],
+      name: 'Weekend Club: trial session', nameTemplate: '{choice}: trial session', price: 'RM 50', ages: [4, 12],
       note: 'Your RM 50 is credited to your first month if you join. We will send you the balance (RM 349).',
-      choice: { label: 'Which club and age group?', options: ['Brain Booster, ages 4–6', 'Brain Booster, ages 7–9', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
+      choice: { label: 'Which club and age group?', options: ['Brain Booster, ages 4–6', 'Brain Booster, ages 7–12', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
     },
     'weekend-month': {
-      name: 'Weekend Club (4 weeks)', nameTemplate: '{choice} (4 weeks)', price: 'RM 399', ages: [4, 9],
-      choice: { label: 'Which club and age group?', options: ['Brain Booster, ages 4–6', 'Brain Booster, ages 7–9', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
+      name: 'Weekend Club (4 weeks)', nameTemplate: '{choice} (4 weeks)', price: 'RM 399', ages: [4, 12],
+      choice: { label: 'Which club and age group?', options: ['Brain Booster, ages 4–6', 'Brain Booster, ages 7–12', 'Friendship Club, ages 4–6', 'Friendship Club, ages 7–9'] }
     },
     'kindy-trial':   { name: 'Kindergarten Readiness: trial session', price: 'RM 50',  ages: [3, 6] },
     'kindy-month':   { name: 'Kindergarten Readiness: monthly', price: 'RM 399', ages: [3, 6] },
