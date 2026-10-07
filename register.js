@@ -19,6 +19,11 @@
   var form = $('reg'), missing = $('missing'), done = $('done');
   if (!item) { form.hidden = true; missing.hidden = false; return; }
 
+  function currentName() {
+    var c = $('choice') && $('choice').value;
+    return (item.nameTemplate && c) ? item.nameTemplate.replace('{choice}', c) : item.name;
+  }
+
   /* ---- item header ---- */
     $('itemName').textContent = item.name;
   $('itemPrice').textContent = item.price;
@@ -35,6 +40,12 @@
       var op = document.createElement('option'); op.value = o; op.textContent = o; sel.appendChild(op);
     });
     $('choiceFld').hidden = false;
+    if (item.nameTemplate) {
+      sel.addEventListener('change', function () {
+        $('itemName').textContent = currentName();
+        document.title = 'Book: ' + currentName() + ' | Growing Minds';
+      });
+    }
   }
 
   /* ---- date of birth: auto-slashes, real-date check, auto age ---- */
@@ -266,7 +277,7 @@
     if ($('website').value) return;
 
     var d = {
-      item: key, itemName: item.name, amount: item.price,
+      item: key, itemName: currentName(), amount: item.price,
       choice: item.choice ? $('choice').value : '',
       parentName: $('parentName').value.trim(), phone: $('phone').value.trim(),
       childName: $('childName').value.trim(), childDob: dob.value, childAge: age.value,

@@ -11806,3 +11806,7 @@ body.rfbs-popup-open {
 .about-careers-body p {
     margin-bottom: 24px;
 }
+@media (min-width: 901px) {
+    .club-practise-grid--n8 { grid-template-columns: repeat(4, 1fr); }
+    .club-practise-grid--n8 .club-practise-chip { grid-column: span 1; }
+}
