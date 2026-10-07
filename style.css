@@ -11784,3 +11784,17 @@ body.rfbs-popup-open {
         padding-bottom: 72px;
     }
 }
+
+.footer-cards-container {
+    gap: 48px;
+}
+
+.about-careers-body {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-careers-body p {
+    margin-bottom: 24px;
+}
