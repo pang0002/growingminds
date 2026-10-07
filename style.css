@@ -3923,7 +3923,7 @@ header.is-scrolled #site-nav a.btn-nav {
 
 .footer-legal-links {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -11710,8 +11710,8 @@ body.rfbs-popup-open {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: #25D366;
     color: #ffffff;
@@ -11724,8 +11724,8 @@ body.rfbs-popup-open {
 }
 
 .whatsapp-float svg {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
 }
 
 .whatsapp-float:hover,
@@ -11742,11 +11742,11 @@ body.rfbs-popup-open {
 }
 
 .back-to-top {
-    bottom: 94px;
-    right: 30px;
-    width: 44px;
-    height: 44px;
-    font-size: 19px;
+    bottom: 102px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
     background: #ffffff;
     color: var(--color-primary);
     border: 1px solid rgba(31, 60, 136, 0.15);
@@ -11763,19 +11763,27 @@ body.rfbs-popup-open {
     .whatsapp-float {
         bottom: 16px;
         right: 16px;
+        width: 58px;
+        height: 58px;
     }
 
     .back-to-top {
-        bottom: 84px;
-        right: 22px;
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
+        bottom: 86px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+        font-size: 21px;
     }
 }
 
 .footer-bottom-row {
-    padding-right: 88px;
+    padding-right: 0;
+}
+
+@media (max-width: 1400px) {
+    .footer-bottom-row {
+        padding-right: 88px;
+    }
 }
 
 @media (max-width: 640px) {
