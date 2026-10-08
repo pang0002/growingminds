@@ -11864,3 +11864,34 @@ body.rfbs-popup-open {
         font-size: 19px !important;
     }
 }
+
+.footer-cards-container {
+    align-items: flex-start;
+    gap: 56px;
+}
+
+.footer-card {
+    flex: 0 0 auto;
+}
+
+.footer-card-value,
+.footer-card-sub {
+    white-space: nowrap;
+    line-height: 1.5;
+}
+
+.footer-card-sub {
+    margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .footer-cards-container {
+        gap: 36px;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-cards-container {
+        gap: 22px;
+    }
+}
