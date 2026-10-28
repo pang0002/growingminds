@@ -12217,3 +12217,23 @@ html[lang^="zh"] h3 {
 html[lang^="zh"] #site-nav a {
     letter-spacing: 0.04em;
 }
+/* ===== HEADER: long menu label on two lines (desktop) ===== */
+@media (min-width: 769px) {
+    #site-nav a.nav-two-line {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding-top: 5px;
+        padding-bottom: 9px;
+        line-height: 1.2;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #site-nav a.nav-two-line {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.3em;
+    }
+}
