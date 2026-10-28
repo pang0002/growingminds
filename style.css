@@ -12042,3 +12042,178 @@ body.rfbs-popup-open {
         align-content: start;
     }
 }
+
+/* ===== LANGUAGE MENU (globe + EN/CHI, opens a small list) ===== */
+#site-nav li.lang-menu {
+    position: relative;
+    margin-left: 6px;
+}
+
+#site-nav .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(31, 60, 136, 0.07);
+    color: var(--color-primary);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.25s var(--ease);
+}
+
+#site-nav .lang-btn:hover,
+#site-nav .lang-menu.is-open .lang-btn {
+    background: rgba(44, 181, 165, 0.16);
+}
+
+#site-nav .lang-btn:focus-visible,
+#site-nav .lang-list a:focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+}
+
+#site-nav .lang-globe {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+#site-nav .lang-caret {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.25s var(--ease);
+}
+
+#site-nav .lang-menu.is-open .lang-caret {
+    transform: rotate(180deg);
+}
+
+#site-nav .lang-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 2px;
+    min-width: 190px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--color-white, #fff);
+    border: 1px solid rgba(31, 60, 136, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(31, 60, 136, 0.16);
+}
+
+#site-nav .lang-list[hidden] {
+    display: none;
+}
+
+#site-nav .lang-list li {
+    width: 100%;
+}
+
+#site-nav .lang-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+#site-nav .lang-list a::after {
+    display: none;
+}
+
+#site-nav .lang-list a small {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.65;
+}
+
+#site-nav .lang-list a .lang-check {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    color: var(--color-teal-dark, var(--color-teal));
+}
+
+#site-nav .lang-list a.is-current {
+    color: var(--color-primary);
+    background: rgba(44, 181, 165, 0.1);
+}
+
+@media (max-width: 768px) {
+    #site-nav li.lang-menu {
+        margin: 12px 0 0;
+    }
+
+    #site-nav .lang-btn {
+        font-size: 17px;
+        padding: 10px 14px;
+    }
+
+    #site-nav .lang-list {
+        position: static;
+        min-width: 0;
+        margin-top: 8px;
+        box-shadow: none;
+        background: rgba(44, 181, 165, 0.05);
+    }
+}
+
+/* ===== SIMPLIFIED CHINESE PAGES (html lang="zh-Hans") =====
+   Chinese fonts first, no italics (Chinese has no true italic),
+   no letter-spacing/uppercase tricks that only suit Latin text. */
+html[lang^="zh"] {
+    --font-display: 'Poppins', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+    --font-quote: 'Fraunces', 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif;
+    --font-body: 'Karla', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-accent: var(--font-quote);
+}
+
+html[lang^="zh"] body {
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+}
+
+html[lang^="zh"] em,
+html[lang^="zh"] i,
+html[lang^="zh"] blockquote,
+html[lang^="zh"] [style*="italic"],
+html[lang^="zh"] .highlight,
+html[lang^="zh"] .section-tag,
+html[lang^="zh"] .eyebrow {
+    font-style: normal !important;
+}
+
+html[lang^="zh"] .section-tag,
+html[lang^="zh"] .eyebrow {
+    letter-spacing: 0.12em;
+    text-transform: none;
+}
+
+html[lang^="zh"] h1,
+html[lang^="zh"] h2,
+html[lang^="zh"] h3 {
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+}
+
+html[lang^="zh"] #site-nav a {
+    letter-spacing: 0.04em;
+}

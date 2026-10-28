@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>预约 | Growing Minds</title>
+    <meta name="description" content="预约 Growing Minds 的试课、课程或俱乐部。先告诉我们您孩子的情况，签署条款，然后付款。" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://growingminds.com.my/zh/register.html" />
+    <link rel="stylesheet" href="../style.css?v=63" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Karla:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMF1GKD90H"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BMF1GKD90H');
+    </script>
+</head>
+<body class="gm-book">
+
+    <header></header>
+
+    <section class="page-hero">
+        <div class="container reveal">
+            <span class="eyebrow">预约</span>
+            <h1 id="rTitle">预约您的名额</h1>
+            <p id="rIntro">只需两个简单步骤。先告诉我们您孩子的情况，让我们能照顾好孩子的安全。然后付款。</p>
+            <ol class="prog2" aria-label="预约步骤">
+                <li class="on"><b>1</b> 填写资料</li>
+                <li id="rStep2"><b>2</b> 付款</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section-white-bg reg-section">
+        <div class="container">
+<div id="missing" class="regmsg regmsg--bad" hidden>
+        <h2>找不到该预约项目</h2>
+        <p>链接可能已过期。请重新从我们的课程或工作坊中选择。</p>
+        <p><a class="btn btn-primary" href="index.html#programmes">查看课程</a><a class="btn btn-sun" href="weekend-club.html">查看周末俱乐部</a></p>
+      </div>
+
+      <div id="done" class="regmsg" tabindex="-1" role="status" aria-live="polite" hidden></div>
+
+      <form id="reg" class="reg" novalidate>
+        <div class="itembar">
+          <div><small>您正在预约</small><strong id="itemName">…</strong></div>
+          <div class="pr" id="itemPrice"></div>
+        </div>
+        <p class="hint" id="itemNote" hidden style="margin:0 0 1.4rem;"></p>
+
+        <fieldset class="fs">
+          <legend>关于您</legend>
+          <div class="grid2">
+            <div class="fld"><label for="parentName">家长姓名 <span class="req">*</span></label>
+              <input id="parentName" type="text" autocomplete="name"><p class="err"></p></div>
+            <div class="fld"><label for="phone">联系电话（WhatsApp） <span class="req">*</span></label>
+              <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="例如 012-345 6789"><p class="err"></p></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>关于您的孩子</legend>
+          <div class="grid2">
+            <div class="fld"><label for="childName">孩子姓名 <span class="req">*</span></label>
+              <input id="childName" type="text" autocomplete="off"><p class="err"></p></div>
+            <div class="fld" role="radiogroup" aria-labelledby="genLbl">
+              <span class="lbl" id="genLbl">孩子性别 <span class="req">*</span></span>
+              <div class="radios">
+                <label><input id="gFirst" type="radio" name="childGender" value="Girl"> 女孩</label>
+                <label><input type="radio" name="childGender" value="Boy"> 男孩</label>
+                <label><input type="radio" name="childGender" value="Prefer not to say"> 不便透露</label>
+              </div><p class="err"></p></div>
+            <div class="fld"><label for="childDob">孩子出生日期（DD/MM/YYYY） <span class="req">*</span></label>
+              <input id="childDob" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off"><p class="err"></p></div>
+            <div class="fld"><label for="childAge">孩子年龄</label>
+              <input id="childAge" type="text" readonly placeholder="根据出生日期自动填写" tabindex="-1">
+              <div id="ageWarn" class="warn" role="status"></div></div>
+            <div class="fld" id="choiceFld" hidden><label id="choiceLbl" for="choice">请选择： <span class="req">*</span></label>
+              <select id="choice"><option value="">请选择…</option></select><p class="err"></p></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>健康状况和重要事项</legend>
+          <p class="hint">这能帮助我们让孩子安全、自在地参与。</p>
+          <div class="fld fld--spaced"><label for="allergies">孩子有任何过敏吗？ <span class="req">*</span></label>
+            <textarea id="allergies" placeholder='食物、皮肤、颜料或乳胶等材料、药物过敏。如果没有，请填写“无”。'></textarea><p class="err"></p></div>
+          <div class="fld"><label for="notes">还有什么需要我们知道的吗？ <span class="opt-note">（选填）</span></label>
+            <textarea id="notes" placeholder="医疗或发展方面的需要、敏感反应、害怕的事物、怎样能帮助孩子安定下来、饮食需要。"></textarea></div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>条款和签名</legend>
+          <p class="hint">请阅读以下条款，然后勾选并签名。</p>
+          <div class="terms" tabindex="0" role="region" aria-label="条款与细则"><h4 id="t-who">1. 条款适用对象</h4><p>当您预约 Growing Minds（[注册商业名称和 SSM 编号]，以下简称“我们”）的任何工作坊、试课、课程或课程项目时，本条款即适用。</p><p>签名即表示您确认自己是表格中所列孩子的父母或法定监护人，并有权代表孩子同意本条款。</p><h4 id="t-payment">2. 预约和付款</h4><p>收到付款后，名额才算确认。收费以预约时本网站所列的价格为准。</p><p><b>所有费用一律不予退还。</b>这包括试课、工作坊、假期课程，以及周末俱乐部和入学准备的费用，无论孩子是否出席。</p><p>如果您事先告知无法出席，我们可酌情安排补课、课程额度或转班，但不保证一定可以。</p><p>如果我们曾告知试课费用可折抵第一个月的费用，我们会在您正式加入时扣除。</p><h4 id="t-changes">3. 如果我们取消或更改课堂</h4><p>如果我们取消活动或课堂，我们会为您安排其他日期的名额，或退还该堂课的费用。</p><p>必要时，我们可能会更改场地、时间或带领老师，并会尽快通知您。</p><h4 id="t-health">4. 资料、健康和安全</h4><p>您确认提供给我们的资料准确而完整，包括任何过敏情况，以及可能影响孩子安全或参与的医疗、发展或行为方面的资料。如有任何变动，您会及时告知我们。</p><p>我们的活动可能会用到颜料、水、泡沫、食物、美术和手工材料及其他物质。我们会合理地小心处理，但无法保证环境完全不含过敏原。</p><p>如果孩子需要持续的一对一协助才能安全参与，请在预约时告诉我们，以便在上课前与您商量。</p><h4 id="t-emergency">5. 紧急情况</h4><p>如果孩子受伤或身体不适，我们会先尝试联络您。如果联络不上而情况紧急，您授权我们为孩子安排紧急医疗救护。任何医药费用由您负责。</p><h4 id="t-dropoff">6. 接送和看顾</h4><p>除非活动注明家长需留下，否则课堂均为家长送到后离开。整个课堂期间，您必须保持电话畅通，并准时接孩子。只有您本人，或您事先告知我们的人士，才可接走孩子。</p><h4 id="t-behaviour">7. 行为</h4><p>如果孩子的行为危及他自己或其他孩子的安全或学习体验，我们可能会请您接走孩子，并终止孩子的参与。这种情况下，费用不予退还。</p><h4 id="t-belongings">8. 衣物和随身物品</h4><p>请让孩子穿可以弄脏的衣服。对于遗失、损坏或弄脏的物品，我们概不负责。</p><h4 id="t-liability">9. 风险和责任</h4><p>您了解，活跃、会弄脏的团体游戏带有一般的风险，例如轻微的碰撞、擦伤和污渍。</p><p>在法律允许的最大范围内，对于并非因我们的疏忽而造成的损失、伤害或损坏，Growing Minds 概不负责。本条款的任何内容，均不限制依法无法排除的责任。</p><h4 id="t-nature">10. 我们课堂的性质</h4><p>工作坊、试课和课程属于教育课程。它们不是诊断、评估、医疗或治疗，试课也不能取代评估。</p><h4 id="t-photos">11. 照片和视频</h4><p>只有在您于预约表格上勾选选填的同意框后，我们才会在网站或社交媒体上使用有您孩子的照片或视频。您可随时通过讯息告知我们撤回同意，我们之后将不再在新的宣传材料中使用这些影像。</p><h4 id="t-privacy">12. 您的个人资料（隐私声明）</h4><p>我们会收集您在预约表格中提供的资料：您的姓名和电话号码；孩子的姓名、出生日期和性别；孩子的过敏情况、健康资料和其他重要事项；以及您的签名。</p><p>我们使用这些资料来处理您的预约、确保孩子的安全、联系您以及保存记录。健康资料属于敏感个人资料。我们只会在您明确同意的情况下使用，您可通过勾选表格上的同意框表示同意。</p><p>我们只会与我们的员工和带领老师分享这些资料，以及协助我们处理预约和付款的服务供应商。在紧急情况下，我们可能会向医疗或紧急服务单位提供，或在法律要求时提供给有关当局。</p><p>我们只会在达成上述目的和符合法律要求所需的期间内保存这些资料，并会妥善保管。</p><p>您可通过 WhatsApp 联系我们，或发电邮至 hallo.growingminds@gmail.com，要求查阅、更正或删除您的资料，或撤回您的同意。本声明依据马来西亚《2010 年个人资料保护法令》发出。</p><h4 id="t-law">13. 变更和适用法律</h4><p>我们可能会更新本条款。您签署的版本适用于您的预约。本条款受马来西亚法律管辖。</p></div>
+
+          <div class="chk"><label><input id="agreeTerms" type="checkbox"> <span>我已阅读并同意条款与细则。 <span class="req">*</span></span></label><p class="err"></p></div>
+          <div class="chk"><label><input id="healthConsent" type="checkbox"> <span>我同意 Growing Minds 收集并使用我孩子的健康资料（过敏、医疗和发展方面的备注），以确保孩子在课堂上的安全。 <span class="req">*</span></span></label><p class="err"></p></div>
+          <div class="chk chk--opt"><label><input id="photoConsent" type="checkbox"> <span><b>选填：</b>我同意 Growing Minds 在网站和社交媒体上使用我孩子的照片和视频。我可随时撤回同意。</span></label></div>
+
+          <div class="sigwrap">
+            <span class="lbl">家长签名 <span class="req">*</span></span>
+            <div id="sigBox" class="sig"><canvas id="sigCanvas" aria-label="签名框。请用手指或鼠标画出您的签名。"></canvas>
+              <span class="sig__line"></span><span id="sigPh" class="sig__ph">请在此签名</span></div>
+            <div id="sigTools" class="sigtools"><button type="button" id="sigClear" class="linkbtn">清除签名</button></div>
+            <div class="chk chk--typed"><label><input id="typedOnly" type="checkbox"> <span>我无法手绘签名。以下输入的姓名即为我的签名。</span></label></div>
+            <p class="err"></p>
+            <div class="fld fld--sig-name"><label for="signedName">请输入您的全名 <span class="req">*</span></label>
+              <input id="signedName" type="text" autocomplete="name"><p class="err"></p></div>
+            <p class="signed" id="signedAt"></p>
+          </div>
+        </fieldset>
+
+        <div class="hp" aria-hidden="true"><label>请保持空白 <input id="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="submitrow">
+          <button id="submitBtn" class="btn btn-sun" type="submit">同意、签名并前往付款</button>
+          <p>您的资料只用于安排课堂和确保孩子的安全。请参阅我们的隐私声明（上述条款第 12 条）。</p>
+        </div>
+      </form>
+
+      <noscript><div class="regmsg regmsg--bad"><h2>需要启用 JavaScript</h2><p>请启用 JavaScript，或通过 WhatsApp 联系我们预约。</p></div></noscript>
+        </div>
+    </section>
+
+    <footer></footer>
+
+    <script src="../site-config.js?v=3"></script>
+    <script src="../include.js?v=33"></script>
+    <script src="../register.js?v=4"></script>
+</body>
+</html>

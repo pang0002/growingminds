@@ -1,6 +1,15 @@
 // include.js - Enhanced with interactions (full-screen scroll disabled)
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Language: pages inside /zh/ are Simplified Chinese (html lang="zh-Hans").
+    // GM_ROOT points back to the site root for shared assets.
+    var GM_ZH = /^zh/i.test(document.documentElement.lang || '');
+    var GM_ROOT = GM_ZH ? '../' : '';
+    var GM_ZH_PAGES = ['index.html', 'about.html', 'weekend-club.html', 'clubs-ready-for-life.html',
+        'clubs-social-emotions.html', 'clubs-ready-to-learn.html', 'kindergarten-readiness.html',
+        'ready-for-big-school.html', 'individual-support.html', 'early-intervention.html', 'learning-profile.html',
+        'schools.html', 'blog.html', 'founder.html', 'register.html'];
+
     // Runs an init function in isolation — if it throws, the error is
     // logged but every OTHER init() call below it still runs normally.
     function safeInit(fn, label) {
@@ -49,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const btn = document.createElement('button');
         btn.className = 'back-to-top';
         btn.innerHTML = '↑';
-        btn.setAttribute('aria-label', 'Back to top');
+        btn.setAttribute('aria-label', GM_ZH ? '回到顶部' : 'Back to top');
         document.body.appendChild(btn);
 
         btn.addEventListener('click', function () {
@@ -96,10 +105,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var link = document.createElement('a');
         link.className = 'whatsapp-float';
         link.href = 'https://wa.me/60173886326?text=' +
-            encodeURIComponent('Hi Growing Minds, I would like to find out more.');
+            encodeURIComponent(GM_ZH ? '你好 Growing Minds，我想了解更多。' : 'Hi Growing Minds, I would like to find out more.');
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.setAttribute('aria-label', 'Chat on WhatsApp');
+        link.setAttribute('aria-label', GM_ZH ? '通过 WhatsApp 联系我们' : 'Chat on WhatsApp');
         link.innerHTML =
             '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">' +
             '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662a11.87 11.87 0 005.71 1.455h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>' +
@@ -486,6 +495,51 @@ document.addEventListener('DOMContentLoaded', function () {
     } // end HOME_TRANSITION_ENABLED
 
     // ============================================================
+    // LANGUAGE SWITCH (English <-> 中文)
+    // Sends the visitor to the same page in the other language.
+    // Pages with no Chinese version fall back to the Chinese home page.
+    // ============================================================
+    function initLangSwitch() {
+        var btn = document.getElementById('lang-btn');
+        var list = document.getElementById('lang-list');
+        var en = document.getElementById('lang-en');
+        var zh = document.getElementById('lang-zh');
+        if (!btn || !list || !en || !zh) return;
+
+        var file = window.location.pathname.split('/').pop() || 'index.html';
+        if (file.indexOf('.') === -1) file += '.html';
+        var qs = window.location.search || '';
+        var hash = window.location.hash || '';
+        if (GM_ZH) {
+            en.setAttribute('href', '../' + file + qs + hash);
+            zh.setAttribute('href', file + qs + hash);
+        } else {
+            en.setAttribute('href', file + qs + hash);
+            zh.setAttribute('href', (GM_ZH_PAGES.indexOf(file) > -1 ? 'zh/' + file : 'zh/index.html') + (GM_ZH_PAGES.indexOf(file) > -1 ? qs + hash : ''));
+        }
+
+        function setOpen(open) {
+            list.hidden = !open;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.parentNode.classList.toggle('is-open', open);
+        }
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setOpen(list.hidden);
+        });
+        document.addEventListener('click', function (e) {
+            if (!btn.parentNode.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !list.hidden) { setOpen(false); btn.focus(); }
+        });
+        // Choosing the language you are already on just closes the menu
+        list.querySelectorAll('a.is-current').forEach(function (a) {
+            a.addEventListener('click', function (e) { e.preventDefault(); setOpen(false); });
+        });
+    }
+
+    // ============================================================
     // LOAD HEADER
     // ============================================================
     fetch('header.html', { cache: 'no-store' })
@@ -497,6 +551,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('header').outerHTML = data;
             safeInit(initHeaderBehavior, 'initHeaderBehavior');
             safeInit(initSmoothScroll, 'initSmoothScroll');
+            safeInit(initLangSwitch, 'initLangSwitch');
             // bindHomeTransition(document); // ERROR FIXED: This call is commented out because the function is conditionally defined.
 
             setTimeout(function () {
@@ -1008,11 +1063,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (document.querySelector('link[rel="icon"]')) return; // page already has its own tags
 
         const links = [
-            { rel: 'icon', type: 'image/x-icon', href: 'images/favicon/favicon.ico' },
-            { rel: 'icon', type: 'image/png', sizes: '16x16', href: 'images/favicon/favicon-16x16.png' },
-            { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'images/favicon/favicon-32x32.png' },
-            { rel: 'apple-touch-icon', sizes: '180x180', href: 'images/favicon/apple-touch-icon.png' },
-            { rel: 'manifest', href: 'site.webmanifest' }
+            { rel: 'icon', type: 'image/x-icon', href: GM_ROOT + 'images/favicon/favicon.ico' },
+            { rel: 'icon', type: 'image/png', sizes: '16x16', href: GM_ROOT + 'images/favicon/favicon-16x16.png' },
+            { rel: 'icon', type: 'image/png', sizes: '32x32', href: GM_ROOT + 'images/favicon/favicon-32x32.png' },
+            { rel: 'apple-touch-icon', sizes: '180x180', href: GM_ROOT + 'images/favicon/apple-touch-icon.png' },
+            { rel: 'manifest', href: GM_ROOT + 'site.webmanifest' }
         ];
 
         links.forEach(function (attrs) {
@@ -1046,7 +1101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.setAttribute('aria-modal', 'true');
         overlay.hidden = true;
         overlay.innerHTML =
-            '<button type="button" class="gm-lightbox-close" aria-label="Close">&times;</button>' +
+            '<button type="button" class="gm-lightbox-close" aria-label="' + (GM_ZH ? '关闭' : 'Close') + '">&times;</button>' +
             '<img alt="" />';
         document.body.appendChild(overlay);
 
