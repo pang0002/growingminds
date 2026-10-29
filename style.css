@@ -12219,3 +12219,13 @@ html[lang^="zh"] h3 {
 html[lang^="zh"] #site-nav a {
     letter-spacing: 0.04em;
 }
+
+/* ===== SINGLE SCROLLBAR FIX =====
+   `overflow-x:hidden` on BOTH <html> and <body> turns <body> into its own
+   scroll container, which can show a second scrollbar next to the page's.
+   Only <html> clips sideways overflow now; <body> is left alone. */
+html { overflow-x: hidden; }
+body { overflow-x: visible; overflow-y: visible; }
+@supports (overflow: clip) {
+    html { overflow-x: clip; }
+}
