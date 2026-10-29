@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // GM_ROOT points back to the site root for shared assets.
     var GM_ZH = /^zh/i.test(document.documentElement.lang || '');
     var GM_ROOT = GM_ZH ? '../' : '';
-    var GM_ZH_PAGES = ['index.html', 'about.html', 'weekend-club.html', 'clubs-ready-for-life.html',
-        'clubs-social-emotions.html', 'clubs-ready-to-learn.html', 'kindergarten-readiness.html',
-        'ready-for-big-school.html', 'individual-support.html', 'early-intervention.html', 'learning-profile.html',
-        'schools.html', 'blog.html', 'founder.html', 'register.html'];
+    var GM_EN_ONLY = ['careers.html', 'submit-article.html', 'privacy.html', 'terms.html'];
+    function gmHasZh(file) {
+        if (GM_EN_ONLY.indexOf(file) > -1) return false;
+        if (/^(blog-|post-|article-)/i.test(file)) return false; // blog posts
+        return true;
+    }
 
     // Runs an init function in isolation — if it throws, the error is
     // logged but every OTHER init() call below it still runs normally.
@@ -515,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function () {
             zh.setAttribute('href', file + qs + hash);
         } else {
             en.setAttribute('href', file + qs + hash);
-            zh.setAttribute('href', (GM_ZH_PAGES.indexOf(file) > -1 ? 'zh/' + file : 'zh/index.html') + (GM_ZH_PAGES.indexOf(file) > -1 ? qs + hash : ''));
+            zh.setAttribute('href', (gmHasZh(file) ? 'zh/' + file + qs + hash : 'zh/index.html'));
         }
 
         function setOpen(open) {
