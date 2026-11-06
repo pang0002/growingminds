@@ -12230,19 +12230,26 @@ body { overflow-x: visible; overflow-y: visible; }
     html { overflow-x: clip; }
 }
 
-/* ===== HOMEPAGE PROGRAMMES — 4 cards as a tidy 2 x 2 grid =====
-   Row 1: Assessment + Weekend Club (open to any child)
-   Row 2: Early Intervention + Individual Support (extra support) */
+/* ===== HOMEPAGE PROGRAMMES — 4 cards in one compact row =====
+   Desktop: 4 across. Tablet: 2 x 2. Phone: 1 column. */
 .programmes-grid.programmes-grid--four {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1100px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
+}
+.programmes-grid--four .wc-card { padding: 22px 20px 20px; }
+.programmes-grid--four .wc-card h3 { font-size: 21px; line-height: 1.25; }
+.programmes-grid--four .wc-card-desc { font-size: 15.5px; line-height: 1.55; }
+.programmes-grid--four .wc-card-tagline { font-size: 15px; }
+.programmes-grid--four .wc-card-tag { margin-bottom: 12px; font-size: 13px; }
+@media (max-width: 1100px) {
+    .programmes-grid.programmes-grid--four { grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 820px; }
 }
 @media (max-width: 640px) {
     .programmes-grid.programmes-grid--four { grid-template-columns: 1fr; max-width: 480px; }
 }
-.programmes-grid--four .wc-card-tag { margin-bottom: 16px; }
 @supports (grid-template-rows: subgrid) and selector(:has(a)) {
     .programmes-grid--four > .wc-card:has(> :nth-child(9)):not(:has(> :nth-child(10))) {
         display: grid;
