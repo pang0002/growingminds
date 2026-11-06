@@ -12229,3 +12229,26 @@ body { overflow-x: visible; overflow-y: visible; }
 @supports (overflow: clip) {
     html { overflow-x: clip; }
 }
+
+/* ===== HOMEPAGE PROGRAMMES — 4 cards as a tidy 2 x 2 grid =====
+   Row 1: Assessment + Weekend Club (open to any child)
+   Row 2: Early Intervention + Individual Support (extra support) */
+.programmes-grid.programmes-grid--four {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 640px) {
+    .programmes-grid.programmes-grid--four { grid-template-columns: 1fr; max-width: 480px; }
+}
+.programmes-grid--four .wc-card-tag { margin-bottom: 16px; }
+@supports (grid-template-rows: subgrid) and selector(:has(a)) {
+    .programmes-grid--four > .wc-card:has(> :nth-child(9)):not(:has(> :nth-child(10))) {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 8;
+        row-gap: 0;
+        align-content: start;
+    }
+}
