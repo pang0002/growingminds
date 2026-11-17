@@ -84,7 +84,7 @@
 
   <url>
     <loc>https://growingminds.com.my/blog.html</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
     <xhtml:link rel="alternate" hreflang="en" href="https://growingminds.com.my/blog.html"/>
@@ -131,6 +131,15 @@
     <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://growingminds.com.my/blog-post-kiddy123-article.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://growingminds.com.my/blog-post-kiddy123-article.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://growingminds.com.my/zh/blog-post-kiddy123-article.html"/>
   </url>
 
   <url>
@@ -314,11 +323,20 @@
 
   <url>
     <loc>https://growingminds.com.my/zh/blog.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
     <xhtml:link rel="alternate" hreflang="en" href="https://growingminds.com.my/blog.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://growingminds.com.my/zh/blog.html"/>
+  </url>
+
+  <url>
+    <loc>https://growingminds.com.my/zh/blog-post-kiddy123-article.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://growingminds.com.my/blog-post-kiddy123-article.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://growingminds.com.my/zh/blog-post-kiddy123-article.html"/>
   </url>
 
   <url>
