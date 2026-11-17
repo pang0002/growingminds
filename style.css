@@ -12313,3 +12313,12 @@ body { overflow-x: visible; overflow-y: visible; }
     font-size: 15.5px;
     text-align: left;
 }
+
+
+/* Blog article title kept on a single line on desktop */
+@media (min-width: 1000px) {
+    .blog-post-hero h1.blog-post-title--oneline {
+        max-width: none;
+        white-space: nowrap;
+    }
+}
