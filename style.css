@@ -12273,9 +12273,26 @@ body { overflow-x: visible; overflow-y: visible; }
     text-justify: inter-word;
     -webkit-hyphens: auto;
     hyphens: auto;
+    hyphenate-limit-chars: 8 4 4;
+    font-size: 19px;
+    line-height: 1.85;
 }
 .blog-post-body blockquote {
     text-align: left;
+    font-size: 21px;
+    line-height: 1.7;
+}
+@media (max-width: 640px) {
+    .blog-post-body p,
+    .blog-post-body li {
+        font-size: 17.5px;
+        text-align: left;
+        hyphens: manual;
+        -webkit-hyphens: manual;
+    }
+    .blog-post-body blockquote {
+        font-size: 19px;
+    }
 }
 .blog-post-figure {
     margin: 32px 0;
