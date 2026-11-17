@@ -12259,3 +12259,40 @@ body { overflow-x: visible; overflow-y: visible; }
         align-content: start;
     }
 }
+
+/* ==========================================================
+   Blog article pages: wide layout, justified text, in-article
+   photo and source credit (matches the .blog-post-cover width)
+   ========================================================== */
+.blog-post-body.blog-post-body--wide {
+    max-width: 900px;
+}
+.blog-post-body p,
+.blog-post-body li {
+    text-align: justify;
+    text-justify: inter-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+.blog-post-body blockquote {
+    text-align: left;
+}
+.blog-post-figure {
+    margin: 32px 0;
+}
+.blog-post-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+    object-position: center 70%;
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(31, 60, 136, 0.10);
+}
+.blog-post-body p.article-source {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(31, 60, 136, 0.12);
+    font-size: 15.5px;
+    text-align: left;
+}
