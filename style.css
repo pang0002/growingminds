@@ -12322,3 +12322,27 @@ body { overflow-x: visible; overflow-y: visible; }
         white-space: nowrap;
     }
 }
+
+/* Portrait (vertical) photo inside an article: show it uncropped, centred */
+.blog-post-figure.blog-post-figure--portrait {
+    text-align: center;
+}
+.blog-post-figure.blog-post-figure--portrait img {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    max-height: 600px;
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+/* Choose which part of a wide-cropped photo stays visible (default is center 70%) */
+.blog-post-figure.blog-post-figure--top img {
+    object-position: center top;
+}
+.blog-post-figure.blog-post-figure--upper img {
+    object-position: center 40%;
+}
+.blog-post-figure.blog-post-figure--middle img {
+    object-position: center center;
+}
