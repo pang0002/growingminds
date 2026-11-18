@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // GM_ROOT points back to the site root for shared assets.
     var GM_ZH = /^zh/i.test(document.documentElement.lang || '');
     var GM_ROOT = GM_ZH ? '../' : '';
+    // Pages known to exist only in English (instant answer, no lookup needed).
+    // Every other page is checked automatically against the /zh/ folder when it
+    // loads (see initLangSwitch), so new pages and translations just work.
     var GM_EN_ONLY = ['careers.html', 'submit-article.html', 'privacy.html', 'terms.html'];
-    function gmHasZh(file) {
-        if (GM_EN_ONLY.indexOf(file) > -1) return false;
-        if (/^(blog-|post-|article-)/i.test(file)) return false; // blog posts
-        return true;
+    function gmIsPost(file) {
+        return /^(blog-post|post-|article-)/i.test(file);
     }
 
     // Runs an init function in isolation — if it throws, the error is
@@ -512,12 +513,40 @@ document.addEventListener('DOMContentLoaded', function () {
         if (file.indexOf('.') === -1) file += '.html';
         var qs = window.location.search || '';
         var hash = window.location.hash || '';
+
+        // Same page in the other language; if that page does not exist, fall
+        // back to the nearest sensible page (blog list for posts, else home).
+        var sameUrl, fallbackUrl, target, probeUrl;
         if (GM_ZH) {
             en.setAttribute('href', '../' + file + qs + hash);
             zh.setAttribute('href', file + qs + hash);
+            target = en;
+            sameUrl = '../' + file + qs + hash;
+            fallbackUrl = gmIsPost(file) ? '../blog.html' : '../index.html';
+            probeUrl = '../' + file;
         } else {
             en.setAttribute('href', file + qs + hash);
-            zh.setAttribute('href', (gmHasZh(file) ? 'zh/' + file + qs + hash : 'zh/index.html'));
+            target = zh;
+            sameUrl = 'zh/' + file + qs + hash;
+            fallbackUrl = gmIsPost(file) ? 'zh/blog.html' : 'zh/index.html';
+            probeUrl = 'zh/' + file;
+            if (GM_EN_ONLY.indexOf(file) > -1) {
+                sameUrl = fallbackUrl;
+            }
+        }
+        target.setAttribute('href', sameUrl);
+
+        // Quietly check that the other-language page really exists.
+        // Only a definite "not found" changes the link; any other result
+        // (offline, local file preview, etc.) keeps the same-page link.
+        if (sameUrl !== fallbackUrl && window.fetch && /^https?:/i.test(window.location.protocol)) {
+            fetch(probeUrl, { method: 'HEAD', cache: 'no-store' })
+                .then(function (res) {
+                    if (res.status === 404 || res.status === 410) {
+                        target.setAttribute('href', fallbackUrl);
+                    }
+                })
+                .catch(function () { /* keep same-page link */ });
         }
 
         function setOpen(open) {
